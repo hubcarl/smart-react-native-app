@@ -19,12 +19,12 @@ import {
 } from 'react-native';
 
 
-class SmartRectNativeApp extends Component {
+class SecondReactActivity extends Component {
     constructor(props){
         super(props);
 
         this.state = {
-            text: 'Welcome to React Native!',
+            text: 'Welcome to Second React Activity!',
             navigateCount: 0
         };
     }
@@ -33,28 +33,24 @@ class SmartRectNativeApp extends Component {
         if (Platform.OS === 'android') {
             BackAndroid.addEventListener('hardwareBackPress', ()=>this._backButton());
         }
-     }
-    
-    _backButton(){
-        const {navigateCount} = this.state;
-        if (navigateCount) {
-            NativeModules.RNIntentModule.backActivity(navigateCount)
-            return true;
-        }
-        return false;
-    }
-
-    _secondActivity(){
-           NativeModules.RNIntentModule.openSecondActivity();
     }
 
      _secondReactActivity(){
           NativeModules.RNIntentModule.openSecondReactActivity();
      }
 
-    _clickButton(){
-        NativeModules.RNIntentModule.finishActivity('我是来自React Native的消息');
-    }
+      _thirdReactActivity(){
+               NativeModules.RNIntentModule.openThirdReactActivity();
+      }
+
+     _backButton(){
+             const {navigateCount} = this.state;
+             if (navigateCount) {
+                 NativeModules.RNIntentModule.backActivity(navigateCount)
+                 return true;
+             }
+             return false;
+     }
 
     render() {
         return (
@@ -62,19 +58,9 @@ class SmartRectNativeApp extends Component {
                 <Text style={styles.welcome}>
                     {this.state.text}
                 </Text>
-                <TouchableOpacity activeOpacity={0.8} onPress={this._clickButton}>
+                 <TouchableOpacity activeOpacity={0.8} onPress={this._thirdReactActivity}>
                     <Text style={styles.instructions}>
-                        点击我，给Android Native点颜色看看
-                    </Text>
-                </TouchableOpacity>
-                <TouchableOpacity activeOpacity={0.8} onPress={this._secondActivity}>
-                    <Text style={styles.instructions}>
-                        点击我，打开Android Native Activity页面
-                    </Text>
-                </TouchableOpacity>
-                <TouchableOpacity activeOpacity={0.8} onPress={this._secondReactActivity}>
-                    <Text style={styles.instructions}>
-                        点击我，打开Android Second React Activity页面
+                        点击我，打开Android third React Activity页面
                     </Text>
                 </TouchableOpacity>
                 <Text style={styles.instructions}>
@@ -86,11 +72,10 @@ class SmartRectNativeApp extends Component {
 
     componentDidMount() {
         NativeModules.RNIntentModule.getDataFromIntent(
-            successMsg => this.setState({text: successMsg, navigateCount: 1}),
-            errorMsg => this.setState({text: errorMsg, navigateCount: 1})
-       );
-
-       NativeModules.ToastAndroid.show('Toast 是原生支持的!', 3000);
+                    successMsg => this.setState({text: successMsg, navigateCount: 1}),
+                    errorMsg => this.setState({text: errorMsg, navigateCount: 1})
+         );
+        NativeModules.ToastAndroid.show('Toast 是原生支持的!', 3000);
     }
 
     componentWillUnmount() {
@@ -122,4 +107,4 @@ const styles = StyleSheet.create({
     },
 });
 
-AppRegistry.registerComponent('SmartRectNativeApp', () => SmartRectNativeApp);
+AppRegistry.registerComponent('SecondReactActivity', () => SecondReactActivity);

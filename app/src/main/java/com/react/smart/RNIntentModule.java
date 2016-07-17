@@ -50,6 +50,26 @@ public class RNIntentModule extends ReactContextBaseJavaModule {
         }
     }
 
+    @ReactMethod
+    public void openSecondActivity() {
+        Activity currentActivity = getCurrentActivity();
+        Intent intent = new Intent(currentActivity, SecondNativeActivity.class);
+        currentActivity.startActivity(intent);
+    }
+
+    @ReactMethod
+    public void openSecondReactActivity() {
+        Activity currentActivity = getCurrentActivity();
+        Intent intent = new Intent(currentActivity, SecondReactActivity.class);
+        currentActivity.startActivity(intent);
+    }
+
+    @ReactMethod
+    public void openThirdReactActivity() {
+        Activity currentActivity = getCurrentActivity();
+        Intent intent = new Intent(currentActivity, ThirdReactActivity.class);
+        currentActivity.startActivity(intent);
+    }
 
     @ReactMethod
     public void finishActivity(String result) {

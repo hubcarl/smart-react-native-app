@@ -14,36 +14,7 @@ import java.util.List;
 /**
  * Created by sky on 16/7/15.
  */
-public class CustomApplication extends Application implements ReactApplication {
-    private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
-        @Override
-        public String getJSMainModuleName() {
-            return "index.android";
-        }
+public class CustomApplication extends Application {
 
-        @Override
-        public @Nullable
-        String getBundleAssetName() {
-            return "index.android.bundle";
-        }
-
-        @Override
-        protected boolean getUseDeveloperSupport() {
-            return true;
-        }
-
-        @Override
-        protected List<ReactPackage> getPackages() {
-            return Arrays.<ReactPackage>asList(
-                    new MainReactPackage(),
-                    new RNPackage()
-            );
-        }
-    };
-
-    @Override
-    public ReactNativeHost getReactNativeHost() {
-        return mReactNativeHost;
-    }
 }
 

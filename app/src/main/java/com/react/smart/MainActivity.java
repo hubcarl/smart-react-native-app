@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(this, ReactNativeActivity.class);
+        Intent intent = new Intent(this, SecondReactActivity.class);
         intent.putExtra("fromAndroid", "我是来自Android Intent的消息");
         startActivityForResult(intent, 0);
     }
