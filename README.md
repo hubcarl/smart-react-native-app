@@ -17,16 +17,9 @@
 
 https://zhuanlan.zhihu.com/p/20872538
 http://bbs.reactnative.cn/topic/15/react-react-native-%E7%9A%84es5-es6%E5%86%99%E6%B3%95%E5%AF%B9%E7%85%A7%E8%A1%A8/10
+https://babeljs.io/blog/2015/06/07/react-on-es6-plus
+http://reactjs.cn/react/docs/reusable-components.html
 
-### 学习资料
-
-https://github.com/reactnativecn/react-native-guide
-
-http://reactnative.cn/docs/0.28/native-modules-android.html#content
-
-http://www.alloyteam.com/2015/10/react-native-android-steps-on-tour/
-
-http://www.lcode.org/react-native%E7%A7%BB%E6%A4%8D%E5%8E%9F%E7%94%9Fandroid%E9%A1%B9%E7%9B%AE-%E5%B7%B2%E6%9B%B4%E6%96%B0%E7%89%88%E6%9C%AC/
 
 ### 通信机制
 
@@ -41,6 +34,22 @@ android 通信机制：
 http://bugly.qq.com/bbs/forum.php?mod=viewthread&tid=663
 
 http://mobile.51cto.com/aprogram-493549.htm
+
+### React 原理剖析
+
+setState：http://web.jobbole.com/84306/
+diff算法：http://www.infoq.com/cn/articles/react-dom-diff
+diff算法：https://zhuanlan.zhihu.com/p/20346379
+
+### 学习资料
+
+https://github.com/reactnativecn/react-native-guide
+
+http://reactnative.cn/docs/0.28/native-modules-android.html#content
+
+http://www.alloyteam.com/2015/10/react-native-android-steps-on-tour/
+
+http://www.lcode.org/react-native%E7%A7%BB%E6%A4%8D%E5%8E%9F%E7%94%9Fandroid%E9%A1%B9%E7%9B%AE-%E5%B7%B2%E6%9B%B4%E6%96%B0%E7%89%88%E6%9C%AC/
 
 ### import from React 和 import from react-native 0.25版本之后必须分开import
 

@@ -7,6 +7,10 @@
   },
   "dependencies": {
     "react": "15.2.0",
-    "react-native": "0.29.1"
+    "react-native": "0.29.1",
+    "react-native-material-design":"0.3.6",
+    "react-native-scrollable-tab-view":"0.5.3",
+    "react-native-tab-navigator":"0.3.2",
+    "react-native-viewpager": "0.2.11"
   }
 }

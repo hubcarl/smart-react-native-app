@@ -27,6 +27,12 @@
         <activity
             android:name=".ThirdReactActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
+        <activity
+            android:name=".TabReactActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
+        <activity
+            android:name=".DrawReactActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
         <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
         <activity
             android:name=".SecondNativeActivity"
