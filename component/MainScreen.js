@@ -9,12 +9,16 @@ import {
     Image,
     Text,
     View,
+    Alert,
     Navigator
 } from 'react-native';
 
 import Header from './Header';
 import HomePage from './HomePage';
 import TabNavigator from 'react-native-tab-navigator';
+
+import Category from './Category'
+import TabsExample from './tabs/index'
 
 const HOME = 'home';
 const HOME_NORMAL = require('../images/tabs/home_normal.png');
@@ -52,11 +56,18 @@ export default class MainScreen extends Component {
     }
 
     static _createChildView(tag) {
-        return (
-            <View style={{flex:1,backgroundColor:'#00baff',alignItems:'center',justifyContent:'center'}}>
-                <Text style={{fontSize:22}}>{tag}</Text>
-            </View>
-        )
+        //Alert.alert('提示', 'tag:' + tag);
+        if(tag === CATEGORY){
+          return <Category />
+        }else if(tag === FAXIAN){
+          return <TabsExample />
+        }else{
+          return (
+              <View style={{flex:1,backgroundColor:'#00baff',alignItems:'center',justifyContent:'center'}}>
+                  <Text style={{fontSize:22}}>{tag}</Text>
+              </View>
+          )
+        }
     }
 
     render() {
