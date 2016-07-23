@@ -23,10 +23,10 @@ import ViewPager from 'react-native-viewpager';
 import MenuButton from './MenuButton';
 
 const BANNER_IMGS = [
-    require('../images/banner/1.jpg'),
-    require('../images/banner/2.jpg'),
-    require('../images/banner/3.jpg'),
-    require('../images/banner/4.jpg')
+    require('../../images/banner/1.jpg'),
+    require('../../images/banner/2.jpg'),
+    require('../../images/banner/3.jpg'),
+    require('../../images/banner/4.jpg')
 ];
 
 const len = 160;
@@ -153,35 +153,34 @@ alignItems: 'center'}}>
                         isLoop={true}
                         autoPlay={true}/>
                     <View style={styles.menuView}>
-                        <MenuButton renderIcon={require('../images/home/wdgz.png')}
+                        <MenuButton renderIcon={require('../../images/home/wdgz.png')}
                                     showText={'我的关注'} tag={'wdgz'}
                                     onClick={this._onMenuClick}/>
-                        <MenuButton renderIcon={require('../images/home/wlcx.png')}
+                        <MenuButton renderIcon={require('../../images/home/wlcx.png')}
                                     showText={'物流查询'} tag={'wlcx'}
                                     onClick={this._onMenuClick}/>
-                        <MenuButton renderIcon={require('../images/home/cz.png')}
+                        <MenuButton renderIcon={require('../../images/home/cz.png')}
                                     showText={'充值'} tag={'cz'}
                                     onClick={this._onMenuClick}/>
-                        <MenuButton renderIcon={require('../images/home/dyp.png')}
+                        <MenuButton renderIcon={require('../../images/home/dyp.png')}
                                     showText={'电影票'} tag={'dyp'}
                                     onClick={this._onMenuClick}/>
                     </View>
                     <View style={styles.menuView}>
-                        <MenuButton renderIcon={require('../images/home/yxcz.png')}
+                        <MenuButton renderIcon={require('../../images/home/yxcz.png')}
                                     showText={'游戏充值'} tag={'yxcz'}
                                     onClick={this._onMenuClick}/>
-                        <MenuButton renderIcon={require('../images/home/xjk.png')}
+                        <MenuButton renderIcon={require('../../images/home/xjk.png')}
                                     showText={'小金库'} tag={'xjk'}
                                     onClick={this._onMenuClick}/>
-                        <MenuButton renderIcon={require('../images/home/ljd.png')}
+                        <MenuButton renderIcon={require('../../images/home/ljd.png')}
                                     showText={'领京豆'} tag={'ljd'}
                                     onClick={this._onMenuClick}/>
-                        <MenuButton renderIcon={require('../images/home/gd.png')}
+                        <MenuButton renderIcon={require('../../images/home/gd.png')}
                                     showText={'更多'} tag={'gd'}
                                     onClick={this._onMenuClick}/>
                     </View>
-                    <View style={{marginTop:15,borderWidth:0.5,borderColor:'#ccc'}}/>
-                    <Text style={{color:'#7f7f7f',fontSize:12,padding:10}}>猜你喜欢</Text>
+                    <View style={{marginTop:15, marginBottom:15, borderWidth:0.5,borderColor:'#ccc'}}/>
                 </View>)}}>
             </ListView>
         )

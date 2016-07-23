@@ -1,4 +1,4 @@
-package com.react.smart;
+package com.react.smart.componet;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,6 +8,9 @@ import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
+import com.react.smart.test.ThirdReactActivity;
+import com.react.smart.test.SecondNativeActivity;
+import com.react.smart.test.SecondReactActivity;
 
 
 /**

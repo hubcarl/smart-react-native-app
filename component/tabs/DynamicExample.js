@@ -45,7 +45,7 @@ export default React.createClass({
 
   render() {
     return <ScrollableTabView
-      style={{marginTop: 20, }}
+      style={{marginTop: 0, }}
       renderTabBar={() => <DefaultTabBar />}
       onChangeTab={this.handleChangeTab}
     >

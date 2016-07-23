@@ -1,4 +1,4 @@
-package com.react.smart;
+package com.react.smart.test;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
+
+import com.react.smart.R;
+import com.react.smart.HomeReactActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -22,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(this, TabReactActivity.class);
+        Intent intent = new Intent(this, HomeReactActivity.class);
         intent.putExtra("fromAndroid", "我是来自Android Intent的消息");
         startActivityForResult(intent, 0);
     }

@@ -89,7 +89,7 @@ class DrawReactActivity extends Component {
          <Drawer theme='light'>
              <Drawer.Header image={<Image source={{ uri: "http://facebook.github.io/react-native/img/opengraph.png?2" }}  />}>
                  <View style={styles.header}>
-                     <Avatar size={80} image={<Image source={require('./images/search.png')}/>} />
+                     <Avatar size={80} image={<Image source={require('../../images/search.png')}/>} />
                      <Text style={[styles.text, COLOR.paperGrey50, TYPO.paperFontSubhead]}>React Native</Text>
                  </View>
              </Drawer.Header>

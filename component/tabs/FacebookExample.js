@@ -12,7 +12,7 @@ import ScrollableTabView from 'react-native-scrollable-tab-view';
 export default React.createClass({
   render() {
     return <ScrollableTabView
-      style={{marginTop: 20, }}
+      style={{marginTop: 0, }}
       initialPage={1}
       renderTabBar={() => <FacebookTabBar />}
       >

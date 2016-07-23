@@ -1,4 +1,4 @@
-package com.react.smart;
+package com.react.smart.test;
 
 import com.facebook.react.BuildConfig;
 import com.facebook.react.ReactActivity;

@@ -1,4 +1,4 @@
-package com.react.smart;
+package com.react.smart.test;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -9,6 +9,8 @@ import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactRootView;
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 import com.facebook.react.shell.MainReactPackage;
+import com.react.smart.BuildConfig;
+import com.react.smart.componet.RNPackage;
 
 public class DrawReactActivity extends Activity implements DefaultHardwareBackBtnHandler {
 
@@ -22,8 +24,8 @@ public class DrawReactActivity extends Activity implements DefaultHardwareBackBt
 
         mReactInstanceManager = ReactInstanceManager.builder()
                 .setApplication(getApplication())
-                .setBundleAssetName("drawMD.android.bundle")
-                .setJSMainModuleName("drawMD.android")
+                .setBundleAssetName("components/test/drawMD.android.bundle")
+                .setJSMainModuleName("components/test/drawMD.android")
                 .setCurrentActivity(this)
                 //.setUseNewBridge()
                 .addPackage(new MainReactPackage())

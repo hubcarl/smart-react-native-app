@@ -9,8 +9,10 @@ import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactRootView;
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 import com.facebook.react.shell.MainReactPackage;
+import com.react.smart.BuildConfig;
+import com.react.smart.componet.RNPackage;
 
-public class TabReactActivity extends Activity implements DefaultHardwareBackBtnHandler {
+public class HomeReactActivity extends Activity implements DefaultHardwareBackBtnHandler {
 
     private ReactInstanceManager mReactInstanceManager;
     private ReactRootView mReactRootView;
@@ -22,8 +24,8 @@ public class TabReactActivity extends Activity implements DefaultHardwareBackBtn
 
         mReactInstanceManager = ReactInstanceManager.builder()
                 .setApplication(getApplication())
-                .setBundleAssetName("tab.android.bundle")
-                .setJSMainModuleName("tab.android")
+                .setBundleAssetName("index.android.bundle")
+                .setJSMainModuleName("index.android")
                 .setCurrentActivity(this)
                 //.setUseNewBridge()
                 .addPackage(new MainReactPackage())
@@ -32,7 +34,7 @@ public class TabReactActivity extends Activity implements DefaultHardwareBackBtn
                 .setInitialLifecycleState(LifecycleState.RESUMED)
                 .build();
 
-        mReactRootView.startReactApplication(mReactInstanceManager, "ReactTabApp", null);
+        mReactRootView.startReactApplication(mReactInstanceManager, "SmartReactApp", null);
 
         setContentView(mReactRootView);
     }

@@ -6,6 +6,7 @@ import {
   ScrollView,
   Navigator,
   TouchableOpacity,
+  BackAndroid
 } from 'react-native';
 import SimpleExample from './SimpleExample';
 import ScrollableTabsExample from './ScrollableTabsExample';
@@ -18,11 +19,13 @@ export default React.createClass({
     return <Navigator
       style={{flex: 1, }}
       initialRoute={{}}
+      configureScene={(route, routeStack) =>Navigator.SceneConfigs.FadeAndroid}
       renderScene={this.renderScene}
     />;
   },
 
   renderScene(route, nav) {
+    this._navigator = nav;
     switch (route.id) {
     case 'simple':
       return <SimpleExample />;
@@ -38,15 +41,13 @@ export default React.createClass({
       return <View style={styles.container}>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => nav.push({id: 'simple', })}
-        >
+          onPress={() => nav.push({id: 'simple', })}>
           <Text>Simple example</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           style={styles.button}
-          onPress={() => nav.push({id: 'scrollable', })}
-        >
+          onPress={() => nav.push({id: 'scrollable', })}>
           <Text>Scrollable tabs example</Text>
         </TouchableOpacity>
 
@@ -73,6 +74,23 @@ export default React.createClass({
       </View>;
     }
   },
+
+  componentDidMount() {
+      var navigator = this._navigator;
+      BackAndroid.addEventListener('hardwareBackPress', function() {
+          if (navigator && navigator.getCurrentRoutes().length > 1) {
+            navigator.pop();
+            return true;
+          }
+          return false;
+      });
+    },
+
+
+    componentWillUnmount() {
+      BackAndroid.removeEventListener('hardwareBackPress');
+    }
+
 });
 
 const styles = StyleSheet.create({

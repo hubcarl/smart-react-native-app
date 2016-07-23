@@ -1,4 +1,4 @@
-package com.react.smart;
+package com.react.smart.componet;
 
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.JavaScriptModule;

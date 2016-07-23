@@ -1,4 +1,4 @@
-package com.react.smart;
+package com.react.smart.test;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -9,6 +9,8 @@ import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactRootView;
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 import com.facebook.react.shell.MainReactPackage;
+import com.react.smart.BuildConfig;
+import com.react.smart.componet.RNPackage;
 
 public class ThirdReactActivity extends Activity implements DefaultHardwareBackBtnHandler {
 
@@ -22,8 +24,8 @@ public class ThirdReactActivity extends Activity implements DefaultHardwareBackB
 
         mReactInstanceManager = ReactInstanceManager.builder()
                 .setApplication(getApplication())
-                .setBundleAssetName("third.android.bundle")
-                .setJSMainModuleName("third.android")
+                .setBundleAssetName("components/test/third.android.bundle")
+                .setJSMainModuleName("components/test/third.android")
                 .setCurrentActivity(this)
                 //.setUseNewBridge()
                 .addPackage(new MainReactPackage())

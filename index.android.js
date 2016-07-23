@@ -1,125 +1,60 @@
 /**
-* Sample React Native App
-* https://github.com/facebook/react-native
-*/
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ */
+'use strict';
 
-import React, {
-    Component
-} from 'react';
+import React,{Component} from 'react';
 
 import {
     AppRegistry,
+    Navigator,
     StyleSheet,
     TouchableOpacity,
-    Platform,
     BackAndroid,
-    NativeModules,
-    Text,
-    View
+    Text
 } from 'react-native';
 
+import MainScreen from './component/home/MainScreen';
+import CustomWebView from './component/home/WebView';
 
-class SmartRectNativeApp extends Component {
-    constructor(props){
-        super(props);
-
-        this.state = {
-            text: 'Welcome to React Native!',
-            navigateCount: 0
-        };
-    }
-
-    componentWillMount() {
-        if (Platform.OS === 'android') {
-            BackAndroid.addEventListener('hardwareBackPress', ()=>this._backButton());
-        }
-     }
-    
-    _backButton(){
-        const {navigateCount} = this.state;
-        if (navigateCount) {
-            NativeModules.RNIntentModule.backActivity(navigateCount)
-            return true;
-        }
-        return false;
-    }
-
-    _secondActivity(){
-           NativeModules.RNIntentModule.openSecondActivity();
-    }
-
-     _secondReactActivity(){
-          NativeModules.RNIntentModule.openSecondReactActivity();
-     }
-
-    _clickButton(){
-        NativeModules.RNIntentModule.finishActivity('我是来自React Native的消息');
-    }
-
+class ReactTabApp extends Component {
     render() {
         return (
-            <View style={styles.container}>
-                <Text style={styles.welcome}>
-                    {this.state.text}
-                </Text>
-                <TouchableOpacity activeOpacity={0.8} onPress={this._clickButton}>
-                    <Text style={styles.instructions}>
-                        点击我，给Android Native点颜色看看
-                    </Text>
-                </TouchableOpacity>
-                <TouchableOpacity activeOpacity={0.8} onPress={this._secondActivity}>
-                    <Text style={styles.instructions}>
-                        点击我，打开Android Native Activity页面
-                    </Text>
-                </TouchableOpacity>
-                <TouchableOpacity activeOpacity={0.8} onPress={this._secondReactActivity}>
-                    <Text style={styles.instructions}>
-                        点击我，打开Android Second React Activity页面
-                    </Text>
-                </TouchableOpacity>
-                <Text style={styles.instructions}>
-                    Shake or press menu button for dev menu
-                </Text>
-            </View>
-        );
+           <Navigator
+               ref = {(navigator) => this.navigator = navigator}
+               initialRoute={{name: 'main', index: 0, id:'main'}}
+               configureScene={(route, routeStack) =>Navigator.SceneConfigs.FadeAndroid}
+               renderScene={(route, navigator) => ReactTabApp._renderPage(route,navigator)}
+           />
+        )
+    }
+
+    static _renderPage(route, nav) {
+        switch (route.id) {
+            case 'main':
+                return (<MainScreen nav={nav}/>);
+                break;
+            case 'webview':
+                return (<CustomWebView url={route.url}/>);
+                break;
+        }
     }
 
     componentDidMount() {
-        NativeModules.RNIntentModule.getDataFromIntent(
-            successMsg => this.setState({text: successMsg, navigateCount: 1}),
-            errorMsg => this.setState({text: errorMsg, navigateCount: 1})
-       );
-
-       NativeModules.ToastAndroid.show('Toast 是原生支持的!', 3000);
+        var navigator = this.navigator;
+        BackAndroid.addEventListener('hardwareBackPress', function() {
+            if (navigator && navigator.getCurrentRoutes().length > 1) {
+              navigator.pop();
+              return true;
+            }
+            return false;
+        });
     }
 
     componentWillUnmount() {
-        if (Platform.OS === 'android') {
-            BackAndroid.removeEventListener('hardwareBackPress', ()=>this._backButton());
-        }
+      BackAndroid.removeEventListener('hardwareBackPress');
     }
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#F5FCFF',
-    },
-    welcome: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10,
-        color: 'red'
-    },
-    instructions: {
-        textAlign: 'center',
-        color: '#333333',
-        marginTop: 15,
-        marginBottom: 5,
-        fontSize: 14,
-    },
-});
-
-AppRegistry.registerComponent('SmartRectNativeApp', () => SmartRectNativeApp);
+AppRegistry.registerComponent('SmartReactApp', () => ReactTabApp);

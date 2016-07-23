@@ -79,7 +79,7 @@ class DrawReactActivity extends Component {
                         alignItems:'center',
                         paddingLeft: 20,
                       }}>
-                        <Image source = { require('./images/ic_launcher.png') } style={{ height:10, width:10, margin:8 }}/>
+                        <Image source = { require('../../images/ic_launcher.png') } style={{ height:10, width:10, margin:8 }}/>
                         <Text style={ styles.listItem }>{rowData}</Text>
                      </View>
                    }
@@ -106,10 +106,10 @@ class DrawReactActivity extends Component {
                       paddingRight:20,
                     }}>
                       <TouchableOpacity onPress={() => this.drawer.openDrawer()} >
-                      <Image  source={require('./images/ic_launcher.png')} style={{  width: 20, height: 20}} />
+                      <Image  source={require('../../images/ic_launcher.png')} style={{  width: 20, height: 20}} />
                      </TouchableOpacity>
                       <Text style={{ fontSize:18,  color:'#484848' }}>SHOP</Text>
-                      <Image  source={require('./images/search.png')} style={{  width: 20, height: 20}} />
+                      <Image  source={require('../../images/search.png')} style={{  width: 20, height: 20}} />
                     </View>
                     <Image source= {{ uri: 'http://img.hb.aicdn.com/cbf3ebcae08ef62ef02dd61aa2407414dc64e794150313-KRUD1s_fw658' }}
                       style={{ height: 220, margin: 20}}  />
