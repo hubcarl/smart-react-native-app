@@ -29,6 +29,8 @@ http://c.blog.sina.com.cn/profile.php?blogid=e8e60bc08901ecz7&from=h5
 
 http://taobaofed.org/blog/2015/12/30/the-communication-scheme-of-react-native-in-ios/
 
+http://www.jianshu.com/p/269b21958030
+
 android 通信机制：
 
 http://bugly.qq.com/bbs/forum.php?mod=viewthread&tid=663

@@ -105,8 +105,7 @@ export default class HomePage extends Component {
                             style={{flexDirection:'row',width:len, marginTop: 6, marginBottom: 22,alignItems:'flex-start'}}>
                             <Text style={styles.priceText}>￥{rowData.left.jdPrice}</Text>
                             <TouchableWithoutFeedback>
-                                <View style={{width:50,height:18,borderWidth:1,borderColor:'#999999',borderRadius:3,justifyContent: 'center',
-alignItems: 'center'}}>
+                                <View style={{width:50,height:18,borderWidth:1,borderColor:'#999999',borderRadius:3,justifyContent: 'center', alignItems: 'center'}}>
                                     <Text
                                         style={{color:'#999999',fontSize:12,textAlign:'center'}}>看相似</Text>
                                 </View>

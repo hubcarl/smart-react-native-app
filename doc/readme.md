@@ -28,7 +28,11 @@ http://www.alloyteam.com/2015/10/react-native-android-steps-on-tour/
 
 http://www.lcode.org/react-native%E7%A7%BB%E6%A4%8D%E5%8E%9F%E7%94%9Fandroid%E9%A1%B9%E7%9B%AE-%E5%B7%B2%E6%9B%B4%E6%96%B0%E7%89%88%E6%9C%AC/
 
+http://blog.csdn.net/megatronkings/article/details/51069333
+
 ### 通信机制
+
+http://blog.csdn.net/megatronkings/article/details/51114278
 
 ios 通信机制：
 
@@ -36,11 +40,19 @@ http://c.blog.sina.com.cn/profile.php?blogid=e8e60bc08901ecz7&from=h5
 
 http://taobaofed.org/blog/2015/12/30/the-communication-scheme-of-react-native-in-ios/
 
+http://blog.cnbang.net/tech/2698/
+
 android 通信机制：
 
 http://bugly.qq.com/bbs/forum.php?mod=viewthread&tid=663
 
 http://mobile.51cto.com/aprogram-493549.htm
+
+http://www.tuicool.com/articles/y6zMVbb
+
+http://blog.csdn.net/MegatronKings/article/details/51195110
+
+http://www.howcode.cn/article/reactnative/e98741479a7b998f88b8f8c9f0b6b6f1.php
 
 ### import from React 和 import from react-native 0.25版本之后必须分开import
 

@@ -20,6 +20,9 @@ import TabNavigator from 'react-native-tab-navigator';
 import Category from './Category'
 import TabsExample from '../tabs/index'
 import TabOverlayExample from '../tabs/OverlayExample'
+import PullRefreshFromTop from '../test/pullrefresh'
+import ListViewPullRefreshExample from '../test/ListViewPullRefreshExample'
+
 
 const TAB_HOME = 'tab_home';
 const TAB_HOME_NORMAL = require('../../images/tabs/widget_bar_news_nor.png');
@@ -63,7 +66,7 @@ export default class MainScreen extends Component {
         }else if(tag === TAB_FIND){
           return <TabsExample />
         }else if(tag === TAB_ME){
-            return <Category />
+            return <ListViewPullRefreshExample />
         }else{
           return (
               <View style={{flex:1,backgroundColor:'#ffffff',alignItems:'center',justifyContent:'center'}}>

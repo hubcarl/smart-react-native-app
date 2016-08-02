@@ -8,6 +8,9 @@ import {
 import ScrollableTabView, { DefaultTabBar, } from 'react-native-scrollable-tab-view';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Category from '../home/Category'
+import RefreshControlExample from '../test/pullrefresh'
+import ListViewPullRefreshExample from '../test/ListViewPullRefreshExample'
+import ListViewRefreshExample from '../test/ListViewRefreshExample'
 
 // Using tabBarPosition='overlayTop' or 'overlayBottom' lets the content show through a
 // semitransparent tab bar. Note that if you build a custom tab bar component, its outer container
@@ -20,16 +23,14 @@ export default React.createClass({
       renderTabBar={()=><DefaultTabBar backgroundColor='rgba(255, 255, 255, 0.7)' />}
       tabBarPosition='overlayTop'
     >
-    <ScrollView tabLabel='Android'>
+    <View tabLabel='ListViewPullRefresh' style={{ flex: 1 }}>
+      <ListViewPullRefreshExample marginTop={48} />
+    </View>
+    <View tabLabel='ListViewRefreshExample' style={{ flex: 1 }}>
       <View style={styles.category}></View>
-      <Category/>
+      <ListViewRefreshExample/>
       <View style={styles.category}></View>
-    </ScrollView>
-    <ScrollView tabLabel='iOS'>
-      <Icon name='logo-android' color='#A4C639' size={300} style={styles.icon} />
-      <Icon name='logo-android' color='black' size={300} style={styles.icon} />
-      <Icon name='logo-android' color='brown' size={300} style={styles.icon} />
-    </ScrollView>
+    </View>
     </ScrollableTabView>;
   },
 });
@@ -40,6 +41,7 @@ const styles = StyleSheet.create({
   },
   container: {
     marginTop: 0,
+    marginBottom: 0
   },
   icon: {
     width: 300,
