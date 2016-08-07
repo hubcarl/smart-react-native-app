@@ -152,3 +152,80 @@ m_callback 为OnLoad.cpp 中的 class PlatformBridgeCallback : public BridgeCall
 
 最后调用 makeJavaCall方法调用java方法
 
+
+bundle.js
+
+MessageQueue：
+
+JS-N: __nativeCall  queue队列
+
+this._queue[MODULE_IDS].push(module);
+this._queue[METHOD_IDS].push(method);
+this._queue[PARAMS].push(params);
+
+var now = new Date().getTime();
+if (global.nativeFlushQueueImmediate &&
+now - this._lastFlush >= MIN_TIME_BETWEEN_FLUSHES_MS) {
+    global.nativeFlushQueueImmediate(this._queue);
+    this._queue = [[], [], [], this._callID];
+    this._lastFlush = now;
+}
+
+
+JSCExecutor.cpp 通过installGlobalFunction 定义 nativeFlushQueueImmediate方法
+
+m_context = JSGlobalContextCreateInGroup(nullptr, nullptr);
+s_globalContextRefToJSCExecutor[m_context] = this;
+installGlobalFunction(m_context, "nativeFlushQueueImmediate", nativeFlushQueueImmediate);
+installGlobalFunction(m_context, "nativePerformanceNow", nativePerformanceNow);
+installGlobalFunction(m_context, "nativeStartWorker", nativeStartWorker);
+installGlobalFunction(m_context, "nativePostMessageToWorker", nativePostMessageToWorker);
+installGlobalFunction(m_context, "nativeTerminateWorker", nativeTerminateWorker);
+installGlobalFunction(m_context, "nativeInjectHMRUpdate", nativeInjectHMRUpdate);
+
+N->js : __callFunction 和 __invokeCallback
+
+JSCExecutor.cpp
+
+m_batchedBridge = folly::make_unique<Object>(batchedBridgeValue.asObject());
+
+m_flushedQueueObj = folly::make_unique<Object>(m_batchedBridge->getProperty("flushedQueue").asObject());
+void JSCExecutor::flush() {
+  std::string calls = m_flushedQueueObj->callAsFunction().toJSONString();
+  m_bridge->callNativeModules(*this, calls, true);
+}
+
+m_callFunctionObj = folly::make_unique<Object>(m_batchedBridge->getProperty("callFunctionReturnFlushedQueue").asObject());
+void JSCExecutor::callFunction(const std::string& moduleId, const std::string& methodId, const folly::dynamic& arguments) {
+  String argsString = String(folly::toJson(std::move(arguments)).c_str());
+  String moduleIdStr(moduleId.c_str());
+  String methodIdStr(methodId.c_str());
+  JSValueRef args[] = {
+      JSValueMakeString(m_context, moduleIdStr),
+      JSValueMakeString(m_context, methodIdStr),
+      Value::fromJSON(m_context, argsString)
+  };
+  auto result = m_callFunctionObj->callAsFunction(3, args);
+  m_bridge->callNativeModules(*this, result.toJSONString(), true);
+}
+
+m_invokeCallbackObj = folly::make_unique<Object>(m_batchedBridge->getProperty("invokeCallbackAndReturnFlushedQueue").asObject());
+
+void JSCExecutor::invokeCallback(const double callbackId, const folly::dynamic& arguments) {
+  String argsString = String(folly::toJson(std::move(arguments)).c_str());
+  JSValueRef args[] = {
+      JSValueMakeNumber(m_context, callbackId),
+      Value::fromJSON(m_context, argsString)
+  };
+  auto result = m_invokeCallbackObj->callAsFunction(2, args);
+  m_bridge->callNativeModules(*this, result.toJSONString(), true);
+}
+
+JS：
+
+window.__fbBatchedBridge 方法定义(BatchedBridge对象)
+
+['invokeCallbackAndReturnFlushedQueue','callFunctionReturnFlushedQueue','flushedQueue'].
+forEach(function (fn) {
+  return _this[fn] = _this[fn].bind(_this);
+});

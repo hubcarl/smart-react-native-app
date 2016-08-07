@@ -43,7 +43,7 @@
     var module = __DEV__ ?
     modules[moduleId] || modules[verboseNamesToModuleIds[moduleId]] :
       modules[moduleId];
-      console.log('modules %o moduleId %d module %o',modules, moduleId, module);
+      //console.log('modules %o moduleId %d module %o',modules, moduleId, module);
     return module && module.isInitialized ?
       module.exports :
       guardedLoadModule(moduleId, module);
@@ -1372,14 +1372,18 @@
 })(typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : this);
 __d(0 /* SmartRectNativeApp/index.android.js */, function (global, require, module, exports) {
 
-
+   console.log(11111);
   'use strict';
   var _jsxFileName = '/Users/sky/dev/react/native/SmartReactNativeApp/index.android.js';
 
   var _react = require(12 /* react */);
+     console.log(2222);
+
   var _react2 = babelHelpers.interopRequireDefault(_react);
+     console.log(3333);
 
   var _reactNative = require(43 /* react-native */);
+     console.log(4444);
 
 
   var _MainScreen = require(632 /* ./component/home/MainScreen */);
@@ -1445,6 +1449,7 @@ __d(0 /* SmartRectNativeApp/index.android.js */, function (global, require, modu
           }
         }
       }]);
+      console.log(ReactTabApp);
       return ReactTabApp;
     }(_react.Component);
 
@@ -1452,6 +1457,9 @@ __d(0 /* SmartRectNativeApp/index.android.js */, function (global, require, modu
   _reactNative.AppRegistry.registerComponent('SmartReactApp', function () {
     return ReactTabApp;
   });
+
+  console.log(ReactTabApp);
+
 }, "SmartRectNativeApp/index.android.js");
 __d(12 /* react/react.js */, function (global, require, module, exports) {
   'use strict';
@@ -6018,8 +6026,8 @@ __d(62 /* MessageQueue */, function (global, require, module, exports) {
         });
 
         lazyProperty(this, 'RemoteModules', function () {
-          var _configProvider =
-            configProvider();
+          var _configProvider =configProvider();
+          console.log('---RemoteModules',_configProvider);
           var remoteModuleConfig = _configProvider.remoteModuleConfig;
           var modulesConfig = _this._genModulesConfig(remoteModuleConfig);
           var modules = _this._genModules(modulesConfig);
