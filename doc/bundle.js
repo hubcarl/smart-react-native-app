@@ -43,7 +43,6 @@
     var module = __DEV__ ?
     modules[moduleId] || modules[verboseNamesToModuleIds[moduleId]] :
       modules[moduleId];
-      //console.log('modules %o moduleId %d module %o',modules, moduleId, module);
     return module && module.isInitialized ?
       module.exports :
       guardedLoadModule(moduleId, module);
@@ -1370,97 +1369,92 @@
     }
   };
 })(typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : this);
-__d(0 /* SmartRectNativeApp/index.android.js */, function (global, require, module, exports) {
+__d(0 /* SmartRectNativeApp/debug.android.js */, function (global, require, module, exports) {
+  var _jsxFileName = '/Users/sky/dev/react/native/SmartReactNativeApp/debug.android.js';
 
-   console.log(11111);
-  'use strict';
-  var _jsxFileName = '/Users/sky/dev/react/native/SmartReactNativeApp/index.android.js';
 
   var _react = require(12 /* react */);
-     console.log(2222);
-
   var _react2 = babelHelpers.interopRequireDefault(_react);
-     console.log(3333);
+
 
   var _reactNative = require(43 /* react-native */);
-     console.log(4444);
+  var SmartDebugReactApp = function (_Component) {
+      babelHelpers.inherits(SmartDebugReactApp, _Component);
+      function SmartDebugReactApp(props) {
+        babelHelpers.classCallCheck(this, SmartDebugReactApp);
+        var _this = babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(SmartDebugReactApp).call(this,
+          props));
 
+        _this.state = {
+          text: 'Welcome to Second React Activity!',
+          navigateCount: 0
+        };
+        return _this;
 
-  var _MainScreen = require(632 /* ./component/home/MainScreen */);
-  var _MainScreen2 = babelHelpers.interopRequireDefault(_MainScreen);
-  var _WebView = require(809 /* ./component/home/WebView */);
-  var _WebView2 = babelHelpers.interopRequireDefault(_WebView);
-  var ReactTabApp = function (_Component) {
-      babelHelpers.inherits(ReactTabApp, _Component);
-      function ReactTabApp() {
-        babelHelpers.classCallCheck(this, ReactTabApp);
-        return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(ReactTabApp).apply(this, arguments));
       }
 
-      babelHelpers.createClass(ReactTabApp, [{
+      babelHelpers.createClass(SmartDebugReactApp, [{
         key: 'render', value: function render() {
-          var _this2 = this;
           return (
-            _react2.default.createElement(_reactNative.Navigator, {
-              ref: function ref(navigator) {
-                return _this2.navigator = navigator;
+            _react2.default.createElement(_reactNative.View, {
+                style: styles.container,
+                __source: { fileName: _jsxFileName, lineNumber: 35 }
               },
-              initialRoute: { name: 'main', index: 0, id: 'main' },
-              configureScene: function configureScene(route, routeStack) {
-                return _reactNative.Navigator.SceneConfigs.FadeAndroid;
-              },
-              renderScene: function renderScene(route, navigator) {
-                return ReactTabApp._renderPage(route, navigator);
-              }, __source: { fileName: _jsxFileName, lineNumber: 24 }
-            }));
+
+              _react2.default.createElement(_reactNative.Text, {
+                style: styles.instructions,
+                __source: { fileName: _jsxFileName, lineNumber: 37 }
+              }, 'Shake or press menu button for dev menu')));
 
 
         }
       }, {
         key: 'componentDidMount', value: function componentDidMount() {
-          var navigator = this.navigator;
-          _reactNative.BackAndroid.addEventListener('hardwareBackPress', function () {
-            if (navigator && navigator.getCurrentRoutes().length > 1) {
-              navigator.pop();
-              return true;
-            }
-            return false;
-          });
+
         }
       }, {
         key: 'componentWillUnmount', value: function componentWillUnmount() {
-          _reactNative.BackAndroid.removeEventListener('hardwareBackPress');
-        }
-      }], [{
-        key: '_renderPage', value: function _renderPage(route, nav) {
-          switch (route.id) {
-            case'main':
-              return _react2.default.createElement(_MainScreen2.default, {
-                nav: nav,
-                __source: { fileName: _jsxFileName, lineNumber: 36 }
-              });
-              break;
-            case'webview':
-              return _react2.default.createElement(_WebView2.default, {
-                url: route.url,
-                __source: { fileName: _jsxFileName, lineNumber: 39 }
-              });
-              break;
+          var _this2 = this;
+          if (_reactNative.Platform.OS === 'android') {
+            _reactNative.BackAndroid.removeEventListener('hardwareBackPress', function () {
+              return _this2._backButton();
+            });
           }
         }
       }]);
-      console.log(ReactTabApp);
-      return ReactTabApp;
+      return SmartDebugReactApp;
     }(_react.Component);
 
-   console.log('AppRegistry.registerComponent SmartReactApp');
-  _reactNative.AppRegistry.registerComponent('SmartReactApp', function () {
-    return ReactTabApp;
+
+  var styles = _reactNative.StyleSheet.create({
+    container: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: '#F5FCFF'
+    },
+
+    welcome: {
+      fontSize: 20,
+      textAlign: 'center',
+      margin: 10,
+      color: 'red'
+    },
+
+    instructions: {
+      textAlign: 'center',
+      color: '#333333',
+      marginTop: 15,
+      marginBottom: 5,
+      fontSize: 14
+    }
   });
 
-  console.log(ReactTabApp);
 
-}, "SmartRectNativeApp/index.android.js");
+  _reactNative.AppRegistry.registerComponent('SmartDebugReactApp', function () {
+    return SmartDebugReactApp;
+  });
+}, "SmartRectNativeApp/debug.android.js");
 __d(12 /* react/react.js */, function (global, require, module, exports) {
   'use strict';
 
@@ -5939,6 +5933,2212 @@ __d(61 /* BatchedBridge */, function (global, require, module, exports) {
 
   'use strict';
 
+  global.__fbBatchedBridgeConfig={
+    "remoteModuleConfig": {
+    "FrescoModule": {
+      "moduleID": 0,
+        "supportsWebWorkers": false,
+        "methods": {}
+    },
+    "RNIntentModule": {
+      "moduleID": 1,
+        "supportsWebWorkers": false,
+        "methods": {
+        "openThirdReactActivity": {
+          "methodID": 0,
+            "type": "remote"
+        },
+        "openSecondReactActivity": {
+          "methodID": 1,
+            "type": "remote"
+        },
+        "getDataFromIntent": {
+          "methodID": 2,
+            "type": "remote"
+        },
+        "finishActivity": {
+          "methodID": 3,
+            "type": "remote"
+        },
+        "backActivity": {
+          "methodID": 4,
+            "type": "remote"
+        },
+        "openSecondActivity": {
+          "methodID": 5,
+            "type": "remote"
+        }
+      }
+    },
+    "RKTiming": {
+      "moduleID": 2,
+        "supportsWebWorkers": true,
+        "methods": {
+        "deleteTimer": {
+          "methodID": 0,
+            "type": "remote"
+        },
+        "createTimer": {
+          "methodID": 1,
+            "type": "remote"
+        }
+      }
+    },
+    "RCTNetworking": {
+      "moduleID": 3,
+        "supportsWebWorkers": true,
+        "methods": {
+        "clearCookies": {
+          "methodID": 0,
+            "type": "remote"
+        },
+        "abortRequest": {
+          "methodID": 1,
+            "type": "remote"
+        },
+        "sendRequest": {
+          "methodID": 2,
+            "type": "remote"
+        }
+      }
+    },
+    "RKCameraRollManager": {
+      "moduleID": 4,
+        "supportsWebWorkers": false,
+        "methods": {
+        "saveToCameraRoll": {
+          "methodID": 0,
+            "type": "remoteAsync"
+        },
+        "getPhotos": {
+          "methodID": 1,
+            "type": "remoteAsync"
+        }
+      }
+    },
+    "DeviceEventManager": {
+      "moduleID": 5,
+        "supportsWebWorkers": false,
+        "methods": {
+        "invokeDefaultBackPressHandler": {
+          "methodID": 0,
+            "type": "remote"
+        }
+      }
+    },
+    "AndroidConstants": {
+      "moduleID": 6,
+        "supportsWebWorkers": false,
+        "methods": {},
+      "constants": {
+        "Version": 22,
+          "ServerHost": "localhost:8081"
+      }
+    },
+    "IntentAndroid": {
+      "moduleID": 7,
+        "supportsWebWorkers": false,
+        "methods": {
+        "openURL": {
+          "methodID": 0,
+            "type": "remoteAsync"
+        },
+        "getInitialURL": {
+          "methodID": 1,
+            "type": "remoteAsync"
+        },
+        "canOpenURL": {
+          "methodID": 2,
+            "type": "remoteAsync"
+        }
+      }
+    },
+    "AsyncSQLiteDBStorage": {
+      "moduleID": 8,
+        "supportsWebWorkers": false,
+        "methods": {
+        "multiRemove": {
+          "methodID": 0,
+            "type": "remote"
+        },
+        "getAllKeys": {
+          "methodID": 1,
+            "type": "remote"
+        },
+        "multiSet": {
+          "methodID": 2,
+            "type": "remote"
+        },
+        "clear": {
+          "methodID": 3,
+            "type": "remote"
+        },
+        "multiMerge": {
+          "methodID": 4,
+            "type": "remote"
+        },
+        "multiGet": {
+          "methodID": 5,
+            "type": "remote"
+        }
+      }
+    },
+    "DebugComponentOwnershipModule": {
+      "moduleID": 9,
+        "supportsWebWorkers": false,
+        "methods": {
+        "receiveOwnershipHierarchy": {
+          "methodID": 0,
+            "type": "remote"
+        }
+      }
+    },
+    "RKExceptionsManager": {
+      "moduleID": 10,
+        "supportsWebWorkers": false,
+        "methods": {
+        "reportSoftException": {
+          "methodID": 0,
+            "type": "remote"
+        },
+        "dismissRedbox": {
+          "methodID": 1,
+            "type": "remote"
+        },
+        "updateExceptionMessage": {
+          "methodID": 2,
+            "type": "remote"
+        },
+        "reportFatalException": {
+          "methodID": 3,
+            "type": "remote"
+        }
+      }
+    },
+    "ImageLoader": {
+      "moduleID": 11,
+        "supportsWebWorkers": false,
+        "methods": {
+        "prefetchImage": {
+          "methodID": 0,
+            "type": "remoteAsync"
+        },
+        "getSize": {
+          "methodID": 1,
+            "type": "remoteAsync"
+        }
+      }
+    },
+    "DialogManagerAndroid": {
+      "moduleID": 12,
+        "supportsWebWorkers": false,
+        "methods": {
+        "showAlert": {
+          "methodID": 0,
+            "type": "remote"
+        }
+      },
+      "constants": {
+        "buttonNegative": -2,
+          "dismissed": "dismissed",
+          "buttonNeutral": -3,
+          "buttonClicked": "buttonClicked",
+          "buttonPositive": -1
+      }
+    },
+    "ToastAndroid": {
+      "moduleID": 13,
+        "supportsWebWorkers": false,
+        "methods": {
+        "show": {
+          "methodID": 0,
+            "type": "remote"
+        }
+      },
+      "constants": {
+        "LONG": 1,
+          "SHORT": 0
+      }
+    },
+    "AnimationsDebugModule": {
+      "moduleID": 14,
+        "supportsWebWorkers": false,
+        "methods": {
+        "stopRecordingFps": {
+          "methodID": 0,
+            "type": "remote"
+        },
+        "startRecordingFps": {
+          "methodID": 1,
+            "type": "remote"
+        }
+      }
+    },
+    "Vibration": {
+      "moduleID": 15,
+        "supportsWebWorkers": false,
+        "methods": {
+        "cancel": {
+          "methodID": 0,
+            "type": "remote"
+        },
+        "vibrateByPattern": {
+          "methodID": 1,
+            "type": "remote"
+        },
+        "vibrate": {
+          "methodID": 2,
+            "type": "remote"
+        }
+      }
+    },
+    "LocationObserver": {
+      "moduleID": 16,
+        "supportsWebWorkers": false,
+        "methods": {
+        "getCurrentPosition": {
+          "methodID": 0,
+            "type": "remote"
+        },
+        "stopObserving": {
+          "methodID": 1,
+            "type": "remote"
+        },
+        "startObserving": {
+          "methodID": 2,
+            "type": "remote"
+        }
+      }
+    },
+    "NetInfo": {
+      "moduleID": 17,
+        "supportsWebWorkers": false,
+        "methods": {
+        "getCurrentConnectivity": {
+          "methodID": 0,
+            "type": "remoteAsync"
+        },
+        "isConnectionMetered": {
+          "methodID": 1,
+            "type": "remoteAsync"
+        }
+      }
+    },
+    "AndroidPermissions": {
+      "moduleID": 18,
+        "supportsWebWorkers": false,
+        "methods": {
+        "shouldShowRequestPermissionRationale": {
+          "methodID": 0,
+            "type": "remote"
+        },
+        "requestPermission": {
+          "methodID": 1,
+            "type": "remote"
+        },
+        "checkPermission": {
+          "methodID": 2,
+            "type": "remote"
+        }
+      }
+    },
+    "ImageStoreManager": {
+      "moduleID": 19,
+        "supportsWebWorkers": false,
+        "methods": {
+        "getBase64ForTag": {
+          "methodID": 0,
+            "type": "remote"
+        }
+      }
+    },
+    "AppState": {
+      "moduleID": 20,
+        "supportsWebWorkers": false,
+        "methods": {
+        "getCurrentAppState": {
+          "methodID": 0,
+            "type": "remote"
+        }
+      }
+    },
+    "RKImageEditingManager": {
+      "moduleID": 21,
+        "supportsWebWorkers": false,
+        "methods": {
+        "cropImage": {
+          "methodID": 0,
+            "type": "remote"
+        }
+      }
+    },
+    "JSCHeapCapture": {
+      "moduleID": 22,
+        "supportsWebWorkers": false,
+        "methods": {
+        "operationComplete": {
+          "methodID": 0,
+            "type": "remote"
+        }
+      }
+    },
+    "RCTSourceCode": {
+      "moduleID": 23,
+        "supportsWebWorkers": false,
+        "methods": {},
+      "constants": {
+        "scriptURL": "http://localhost:8081/debug.android.bundle?platform=android&dev=true&hot=false&minify=false"
+      }
+    },
+    "RKUIManager": {
+      "moduleID": 24,
+        "supportsWebWorkers": false,
+        "methods": {
+        "setJSResponder": {
+          "methodID": 0,
+            "type": "remote"
+        },
+        "manageChildren": {
+          "methodID": 1,
+            "type": "remote"
+        },
+        "showPopupMenu": {
+          "methodID": 2,
+            "type": "remote"
+        },
+        "dispatchViewManagerCommand": {
+          "methodID": 3,
+            "type": "remote"
+        },
+        "findSubviewIn": {
+          "methodID": 4,
+            "type": "remote"
+        },
+        "setLayoutAnimationEnabledExperimental": {
+          "methodID": 5,
+            "type": "remote"
+        },
+        "measureLayoutRelativeToParent": {
+          "methodID": 6,
+            "type": "remote"
+        },
+        "sendAccessibilityEvent": {
+          "methodID": 7,
+            "type": "remote"
+        },
+        "removeSubviewsFromContainerWithID": {
+          "methodID": 8,
+            "type": "remote"
+        },
+        "setChildren": {
+          "methodID": 9,
+            "type": "remote"
+        },
+        "measureLayout": {
+          "methodID": 10,
+            "type": "remote"
+        },
+        "replaceExistingNonRootView": {
+          "methodID": 11,
+            "type": "remote"
+        },
+        "updateView": {
+          "methodID": 12,
+            "type": "remote"
+        },
+        "clearJSResponder": {
+          "methodID": 13,
+            "type": "remote"
+        },
+        "configureNextLayoutAnimation": {
+          "methodID": 14,
+            "type": "remote"
+        },
+        "removeRootView": {
+          "methodID": 15,
+            "type": "remote"
+        },
+        "measureInWindow": {
+          "methodID": 16,
+            "type": "remote"
+        },
+        "measure": {
+          "methodID": 17,
+            "type": "remote"
+        },
+        "createView": {
+          "methodID": 18,
+            "type": "remote"
+        }
+      },
+      "constants": {
+        "customBubblingEventTypes": {
+          "topTouchStart": {
+            "phasedRegistrationNames": {
+              "captured": "onTouchStartCapture",
+                "bubbled": "onTouchStart"
+            }
+          },
+          "topEndEditing": {
+            "phasedRegistrationNames": {
+              "captured": "onEndEditingCapture",
+                "bubbled": "onEndEditing"
+            }
+          },
+          "topBlur": {
+            "phasedRegistrationNames": {
+              "captured": "onBlurCapture",
+                "bubbled": "onBlur"
+            }
+          },
+          "topTouchEnd": {
+            "phasedRegistrationNames": {
+              "captured": "onTouchEndCapture",
+                "bubbled": "onTouchEnd"
+            }
+          },
+          "topSelect": {
+            "phasedRegistrationNames": {
+              "captured": "onSelectCapture",
+                "bubbled": "onSelect"
+            }
+          },
+          "topTextInput": {
+            "phasedRegistrationNames": {
+              "captured": "onTextInputCapture",
+                "bubbled": "onTextInput"
+            }
+          },
+          "topChange": {
+            "phasedRegistrationNames": {
+              "captured": "onChangeCapture",
+                "bubbled": "onChange"
+            }
+          },
+          "topFocus": {
+            "phasedRegistrationNames": {
+              "captured": "onFocusCapture",
+                "bubbled": "onFocus"
+            }
+          },
+          "topSubmitEditing": {
+            "phasedRegistrationNames": {
+              "captured": "onSubmitEditingCapture",
+                "bubbled": "onSubmitEditing"
+            }
+          },
+          "topTouchMove": {
+            "phasedRegistrationNames": {
+              "captured": "onTouchMoveCapture",
+                "bubbled": "onTouchMove"
+            }
+          }
+        },
+        "AndroidRecyclerViewBackedScrollView": {
+          "NativeProps": {
+            "opacity": "number",
+              "renderToHardwareTextureAndroid": "boolean",
+              "borderBottomWidth": "number",
+              "scaleY": "number",
+              "minWidth": "number",
+              "position": "String",
+              "paddingTop": "number",
+              "borderWidth": "number",
+              "marginLeft": "number",
+              "marginHorizontal": "number",
+              "paddingBottom": "number",
+              "paddingHorizontal": "number",
+              "scaleX": "number",
+              "onLayout": "boolean",
+              "flexWrap": "String",
+              "borderTopWidth": "number",
+              "borderRightWidth": "number",
+              "marginTop": "number",
+              "translateX": "number",
+              "rotation": "number",
+              "accessibilityLiveRegion": "String",
+              "alignItems": "String",
+              "accessibilityComponentType": "String",
+              "paddingVertical": "number",
+              "flex": "number",
+              "marginBottom": "number",
+              "bottom": "number",
+              "maxWidth": "number",
+              "justifyContent": "String",
+              "padding": "number",
+              "onContentSizeChange": "boolean",
+              "elevation": "number",
+              "minHeight": "number",
+              "maxHeight": "number",
+              "alignSelf": "String",
+              "backgroundColor": "Color",
+              "right": "number",
+              "borderLeftWidth": "number",
+              "height": "number",
+              "left": "number",
+              "translateY": "number",
+              "paddingRight": "number",
+              "transform": "Map",
+              "flexDirection": "String",
+              "importantForAccessibility": "String",
+              "marginVertical": "number",
+              "accessibilityLabel": "String",
+              "width": "number",
+              "paddingLeft": "number",
+              "top": "number",
+              "margin": "number",
+              "decomposedMatrix": "Map",
+              "marginRight": "number",
+              "testID": "String"
+          }
+        },
+        "RCTScrollView": {
+          "Commands": {
+            "scrollTo": 1
+          },
+          "NativeProps": {
+            "opacity": "number",
+              "renderToHardwareTextureAndroid": "boolean",
+              "borderBottomWidth": "number",
+              "scaleY": "number",
+              "minWidth": "number",
+              "position": "String",
+              "paddingTop": "number",
+              "borderWidth": "number",
+              "marginLeft": "number",
+              "removeClippedSubviews": "boolean",
+              "marginHorizontal": "number",
+              "paddingBottom": "number",
+              "paddingHorizontal": "number",
+              "scaleX": "number",
+              "onLayout": "boolean",
+              "flexWrap": "String",
+              "borderTopWidth": "number",
+              "borderRightWidth": "number",
+              "marginTop": "number",
+              "translateX": "number",
+              "rotation": "number",
+              "accessibilityLiveRegion": "String",
+              "alignItems": "String",
+              "accessibilityComponentType": "String",
+              "paddingVertical": "number",
+              "flex": "number",
+              "scrollPerfTag": "String",
+              "marginBottom": "number",
+              "bottom": "number",
+              "maxWidth": "number",
+              "sendMomentumEvents": "boolean",
+              "justifyContent": "String",
+              "padding": "number",
+              "scrollEnabled": "boolean",
+              "elevation": "number",
+              "minHeight": "number",
+              "maxHeight": "number",
+              "alignSelf": "String",
+              "backgroundColor": "Color",
+              "right": "number",
+              "borderLeftWidth": "number",
+              "showsVerticalScrollIndicator": "boolean",
+              "height": "number",
+              "left": "number",
+              "translateY": "number",
+              "paddingRight": "number",
+              "transform": "Map",
+              "endFillColor": "Color",
+              "flexDirection": "String",
+              "importantForAccessibility": "String",
+              "marginVertical": "number",
+              "accessibilityLabel": "String",
+              "width": "number",
+              "paddingLeft": "number",
+              "top": "number",
+              "margin": "number",
+              "decomposedMatrix": "Map",
+              "marginRight": "number",
+              "testID": "String"
+          }
+        },
+        "customDirectEventTypes": {
+          "topRequestClose": {
+            "registrationName": "onRequestClose"
+          },
+          "topScroll": {
+            "registrationName": "onScroll"
+          },
+          "topDrawerStateChanged": {
+            "registrationName": "onDrawerStateChanged"
+          },
+          "topScrollAnimationEnd": {
+            "registrationName": "onScrollAnimationEnd"
+          },
+          "topLoadStart": {
+            "registrationName": "onLoadStart"
+          },
+          "topContentSizeChange": {
+            "registrationName": "onContentSizeChange"
+          },
+          "topLoadingError": {
+            "registrationName": "onLoadingError"
+          },
+          "topLoadingFinish": {
+            "registrationName": "onLoadingFinish"
+          },
+          "topPageScroll": {
+            "registrationName": "onPageScroll"
+          },
+          "topPageSelected": {
+            "registrationName": "onPageSelected"
+          },
+          "topLoadEnd": {
+            "registrationName": "onLoadEnd"
+          },
+          "topScrollEndDrag": {
+            "registrationName": "onScrollEndDrag"
+          },
+          "topSlidingComplete": {
+            "registrationName": "onSlidingComplete"
+          },
+          "topSelectionChange": {
+            "registrationName": "onSelectionChange"
+          },
+          "topLoadingStart": {
+            "registrationName": "onLoadingStart"
+          },
+          "topDrawerClosed": {
+            "registrationName": "onDrawerClose"
+          },
+          "topRefresh": {
+            "registrationName": "onRefresh"
+          },
+          "topDrawerOpened": {
+            "registrationName": "onDrawerOpen"
+          },
+          "topMomentumScrollBegin": {
+            "registrationName": "onMomentumScrollBegin"
+          },
+          "topDrawerSlide": {
+            "registrationName": "onDrawerSlide"
+          },
+          "topPageScrollStateChanged": {
+            "registrationName": "onPageScrollStateChanged"
+          },
+          "topLayout": {
+            "registrationName": "onLayout"
+          },
+          "topScrollBeginDrag": {
+            "registrationName": "onScrollBeginDrag"
+          },
+          "topLoad": {
+            "registrationName": "onLoad"
+          },
+          "topShow": {
+            "registrationName": "onShow"
+          },
+          "topMomentumScrollEnd": {
+            "registrationName": "onMomentumScrollEnd"
+          }
+        },
+        "RCTWebView": {
+          "Commands": {
+            "goForward": 2,
+              "reload": 3,
+              "stopLoading": 4,
+              "goBack": 1
+          },
+          "NativeProps": {
+            "opacity": "number",
+              "source": "Map",
+              "renderToHardwareTextureAndroid": "boolean",
+              "borderBottomWidth": "number",
+              "scaleY": "number",
+              "minWidth": "number",
+              "position": "String",
+              "paddingTop": "number",
+              "borderWidth": "number",
+              "javaScriptEnabled": "boolean",
+              "marginLeft": "number",
+              "marginHorizontal": "number",
+              "paddingBottom": "number",
+              "paddingHorizontal": "number",
+              "scaleX": "number",
+              "onLayout": "boolean",
+              "flexWrap": "String",
+              "borderTopWidth": "number",
+              "borderRightWidth": "number",
+              "marginTop": "number",
+              "translateX": "number",
+              "rotation": "number",
+              "accessibilityLiveRegion": "String",
+              "alignItems": "String",
+              "accessibilityComponentType": "String",
+              "paddingVertical": "number",
+              "flex": "number",
+              "marginBottom": "number",
+              "bottom": "number",
+              "maxWidth": "number",
+              "scalesPageToFit": "boolean",
+              "justifyContent": "String",
+              "padding": "number",
+              "mediaPlaybackRequiresUserAction": "boolean",
+              "elevation": "number",
+              "domStorageEnabled": "boolean",
+              "minHeight": "number",
+              "maxHeight": "number",
+              "alignSelf": "String",
+              "backgroundColor": "Color",
+              "right": "number",
+              "borderLeftWidth": "number",
+              "height": "number",
+              "left": "number",
+              "translateY": "number",
+              "paddingRight": "number",
+              "transform": "Map",
+              "injectedJavaScript": "String",
+              "flexDirection": "String",
+              "importantForAccessibility": "String",
+              "marginVertical": "number",
+              "accessibilityLabel": "String",
+              "width": "number",
+              "paddingLeft": "number",
+              "top": "number",
+              "margin": "number",
+              "decomposedMatrix": "Map",
+              "marginRight": "number",
+              "userAgent": "String",
+              "testID": "String"
+          }
+        },
+        "RCTTextInlineImage": {
+          "NativeProps": {
+            "marginBottom": "number",
+              "bottom": "number",
+              "maxWidth": "number",
+              "borderBottomWidth": "number",
+              "minWidth": "number",
+              "position": "String",
+              "paddingTop": "number",
+              "justifyContent": "String",
+              "padding": "number",
+              "src": "Array",
+              "borderWidth": "number",
+              "minHeight": "number",
+              "marginLeft": "number",
+              "maxHeight": "number",
+              "marginHorizontal": "number",
+              "alignSelf": "String",
+              "right": "number",
+              "borderLeftWidth": "number",
+              "paddingBottom": "number",
+              "paddingHorizontal": "number",
+              "height": "number",
+              "left": "number",
+              "onLayout": "boolean",
+              "paddingRight": "number",
+              "flexWrap": "String",
+              "borderTopWidth": "number",
+              "borderRightWidth": "number",
+              "marginTop": "number",
+              "flexDirection": "String",
+              "marginVertical": "number",
+              "width": "number",
+              "paddingLeft": "number",
+              "top": "number",
+              "margin": "number",
+              "alignItems": "String",
+              "paddingVertical": "number",
+              "marginRight": "number",
+              "flex": "number"
+          }
+        },
+        "AndroidSwipeRefreshLayout": {
+          "NativeProps": {
+            "opacity": "number",
+              "renderToHardwareTextureAndroid": "boolean",
+              "size": "number",
+              "progressViewOffset": "number",
+              "borderBottomWidth": "number",
+              "scaleY": "number",
+              "minWidth": "number",
+              "position": "String",
+              "paddingTop": "number",
+              "borderWidth": "number",
+              "marginLeft": "number",
+              "refreshing": "boolean",
+              "progressBackgroundColor": "Color",
+              "marginHorizontal": "number",
+              "paddingBottom": "number",
+              "paddingHorizontal": "number",
+              "scaleX": "number",
+              "onLayout": "boolean",
+              "flexWrap": "String",
+              "borderTopWidth": "number",
+              "borderRightWidth": "number",
+              "marginTop": "number",
+              "translateX": "number",
+              "rotation": "number",
+              "accessibilityLiveRegion": "String",
+              "alignItems": "String",
+              "accessibilityComponentType": "String",
+              "paddingVertical": "number",
+              "flex": "number",
+              "marginBottom": "number",
+              "bottom": "number",
+              "maxWidth": "number",
+              "enabled": "boolean",
+              "justifyContent": "String",
+              "padding": "number",
+              "elevation": "number",
+              "minHeight": "number",
+              "maxHeight": "number",
+              "alignSelf": "String",
+              "backgroundColor": "Color",
+              "right": "number",
+              "borderLeftWidth": "number",
+              "height": "number",
+              "left": "number",
+              "translateY": "number",
+              "paddingRight": "number",
+              "transform": "Map",
+              "flexDirection": "String",
+              "colors": "ColorArray",
+              "importantForAccessibility": "String",
+              "marginVertical": "number",
+              "accessibilityLabel": "String",
+              "width": "number",
+              "paddingLeft": "number",
+              "top": "number",
+              "margin": "number",
+              "decomposedMatrix": "Map",
+              "marginRight": "number",
+              "testID": "String"
+          },
+          "Constants": {
+            "SIZE": {
+              "DEFAULT": 1,
+                "LARGE": 0
+            }
+          }
+        },
+        "RCTText": {
+          "NativeProps": {
+            "opacity": "number",
+              "renderToHardwareTextureAndroid": "boolean",
+              "numberOfLines": "number",
+              "borderBottomWidth": "number",
+              "scaleY": "number",
+              "minWidth": "number",
+              "paddingTop": "number",
+              "position": "String",
+              "borderWidth": "number",
+              "color": "number",
+              "lineBreakMode": "String",
+              "marginLeft": "number",
+              "fontFamily": "String",
+              "marginHorizontal": "number",
+              "fontStyle": "String",
+              "paddingHorizontal": "number",
+              "paddingBottom": "number",
+              "scaleX": "number",
+              "onLayout": "boolean",
+              "borderTopWidth": "number",
+              "flexWrap": "String",
+              "borderRightWidth": "number",
+              "marginTop": "number",
+              "translateX": "number",
+              "textShadowColor": "Color",
+              "rotation": "number",
+              "accessibilityLiveRegion": "String",
+              "alignItems": "String",
+              "accessibilityComponentType": "String",
+              "paddingVertical": "number",
+              "flex": "number",
+              "bottom": "number",
+              "marginBottom": "number",
+              "maxWidth": "number",
+              "textAlign": "String",
+              "textShadowRadius": "number",
+              "textAlignVertical": "String",
+              "justifyContent": "String",
+              "fontWeight": "String",
+              "padding": "number",
+              "elevation": "number",
+              "textShadowOffset": "Map",
+              "minHeight": "number",
+              "alignSelf": "String",
+              "maxHeight": "number",
+              "backgroundColor": "number",
+              "borderLeftWidth": "number",
+              "right": "number",
+              "height": "number",
+              "textDecorationLine": "String",
+              "left": "number",
+              "translateY": "number",
+              "paddingRight": "number",
+              "transform": "Map",
+              "lineHeight": "number",
+              "flexDirection": "String",
+              "importantForAccessibility": "String",
+              "fontSize": "number",
+              "marginVertical": "number",
+              "accessibilityLabel": "String",
+              "text": "String",
+              "paddingLeft": "number",
+              "width": "number",
+              "margin": "number",
+              "top": "number",
+              "decomposedMatrix": "Map",
+              "marginRight": "number",
+              "testID": "String"
+          }
+        },
+        "AndroidTextInput": {
+          "Commands": {
+            "blurTextInput": 2,
+              "focusTextInput": 1
+          },
+          "NativeProps": {
+            "opacity": "number",
+              "numberOfLines": "number",
+              "renderToHardwareTextureAndroid": "boolean",
+              "borderBottomWidth": "number",
+              "autoCorrect": "boolean",
+              "scaleY": "number",
+              "minWidth": "number",
+              "position": "String",
+              "paddingTop": "number",
+              "placeholderTextColor": "Color",
+              "borderWidth": "number",
+              "selectionColor": "Color",
+              "onSelectionChange": "boolean",
+              "color": "number",
+              "marginLeft": "number",
+              "editable": "boolean",
+              "returnKeyLabel": "String",
+              "fontFamily": "String",
+              "underlineColorAndroid": "Color",
+              "secureTextEntry": "boolean",
+              "marginHorizontal": "number",
+              "fontStyle": "String",
+              "paddingBottom": "number",
+              "paddingHorizontal": "number",
+              "scaleX": "number",
+              "onLayout": "boolean",
+              "flexWrap": "String",
+              "borderTopWidth": "number",
+              "borderRightWidth": "number",
+              "maxLength": "number",
+              "marginTop": "number",
+              "translateX": "number",
+              "textShadowColor": "Color",
+              "autoCapitalize": "number",
+              "rotation": "number",
+              "accessibilityLiveRegion": "String",
+              "alignItems": "String",
+              "accessibilityComponentType": "String",
+              "paddingVertical": "number",
+              "returnKeyType": "String",
+              "flex": "number",
+              "keyboardType": "String",
+              "marginBottom": "number",
+              "bottom": "number",
+              "maxWidth": "number",
+              "textAlign": "String",
+              "textShadowRadius": "number",
+              "textAlignVertical": "String",
+              "justifyContent": "String",
+              "selectTextOnFocus": "boolean",
+              "fontWeight": "String",
+              "padding": "number",
+              "multiline": "boolean",
+              "elevation": "number",
+              "textShadowOffset": "Map",
+              "minHeight": "number",
+              "blurOnSubmit": "boolean",
+              "maxHeight": "number",
+              "alignSelf": "String",
+              "backgroundColor": "number",
+              "right": "number",
+              "borderLeftWidth": "number",
+              "height": "number",
+              "textDecorationLine": "String",
+              "left": "number",
+              "translateY": "number",
+              "paddingRight": "number",
+              "transform": "Map",
+              "lineHeight": "number",
+              "mostRecentEventCount": "number",
+              "flexDirection": "String",
+              "importantForAccessibility": "String",
+              "marginVertical": "number",
+              "placeholder": "String",
+              "fontSize": "number",
+              "accessibilityLabel": "String",
+              "width": "number",
+              "paddingLeft": "number",
+              "text": "String",
+              "top": "number",
+              "margin": "number",
+              "decomposedMatrix": "Map",
+              "marginRight": "number",
+              "testID": "String"
+          },
+          "Constants": {
+            "AutoCapitalizationType": {
+              "words": 8192,
+                "none": 0,
+                "sentences": 16384,
+                "characters": 4096
+            }
+          }
+        },
+        "StyleConstants": {
+          "PointerEventsValues": {
+            "none": 0,
+              "unspecified": 3,
+              "boxNone": 1,
+              "boxOnly": 2
+          }
+        },
+        "AndroidViewPager": {
+          "Commands": {
+            "setPage": 1,
+              "setPageWithoutAnimation": 2
+          },
+          "NativeProps": {
+            "opacity": "number",
+              "renderToHardwareTextureAndroid": "boolean",
+              "borderBottomWidth": "number",
+              "scaleY": "number",
+              "minWidth": "number",
+              "position": "String",
+              "paddingTop": "number",
+              "borderWidth": "number",
+              "marginLeft": "number",
+              "marginHorizontal": "number",
+              "paddingBottom": "number",
+              "paddingHorizontal": "number",
+              "scaleX": "number",
+              "pageMargin": "number",
+              "onLayout": "boolean",
+              "flexWrap": "String",
+              "borderTopWidth": "number",
+              "borderRightWidth": "number",
+              "marginTop": "number",
+              "translateX": "number",
+              "rotation": "number",
+              "accessibilityLiveRegion": "String",
+              "alignItems": "String",
+              "accessibilityComponentType": "String",
+              "paddingVertical": "number",
+              "flex": "number",
+              "marginBottom": "number",
+              "bottom": "number",
+              "maxWidth": "number",
+              "justifyContent": "String",
+              "padding": "number",
+              "scrollEnabled": "boolean",
+              "elevation": "number",
+              "minHeight": "number",
+              "maxHeight": "number",
+              "alignSelf": "String",
+              "backgroundColor": "Color",
+              "right": "number",
+              "borderLeftWidth": "number",
+              "height": "number",
+              "left": "number",
+              "translateY": "number",
+              "paddingRight": "number",
+              "transform": "Map",
+              "flexDirection": "String",
+              "importantForAccessibility": "String",
+              "marginVertical": "number",
+              "accessibilityLabel": "String",
+              "width": "number",
+              "paddingLeft": "number",
+              "top": "number",
+              "margin": "number",
+              "decomposedMatrix": "Map",
+              "marginRight": "number",
+              "testID": "String"
+          }
+        },
+        "PopupMenu": {
+          "itemSelected": "itemSelected",
+            "dismissed": "dismissed"
+        },
+        "Dimensions": {
+          "screenPhysicalPixels": {
+            "densityDpi": 480,
+              "height": 1920,
+              "width": 1080,
+              "scale": 3,
+              "fontScale": 3
+          },
+          "windowPhysicalPixels": {
+            "densityDpi": 480,
+              "height": 1776,
+              "width": 1080,
+              "scale": 3,
+              "fontScale": 3
+          }
+        },
+        "RCTSlider": {
+          "NativeProps": {
+            "opacity": "number",
+              "renderToHardwareTextureAndroid": "boolean",
+              "borderBottomWidth": "number",
+              "scaleY": "number",
+              "minWidth": "number",
+              "paddingTop": "number",
+              "position": "String",
+              "borderWidth": "number",
+              "value": "number",
+              "marginLeft": "number",
+              "marginHorizontal": "number",
+              "minimumValue": "number",
+              "paddingHorizontal": "number",
+              "paddingBottom": "number",
+              "scaleX": "number",
+              "onLayout": "boolean",
+              "borderTopWidth": "number",
+              "flexWrap": "String",
+              "borderRightWidth": "number",
+              "marginTop": "number",
+              "translateX": "number",
+              "maximumValue": "number",
+              "rotation": "number",
+              "accessibilityLiveRegion": "String",
+              "alignItems": "String",
+              "accessibilityComponentType": "String",
+              "paddingVertical": "number",
+              "flex": "number",
+              "bottom": "number",
+              "marginBottom": "number",
+              "maxWidth": "number",
+              "enabled": "boolean",
+              "justifyContent": "String",
+              "padding": "number",
+              "elevation": "number",
+              "minHeight": "number",
+              "step": "number",
+              "alignSelf": "String",
+              "maxHeight": "number",
+              "backgroundColor": "Color",
+              "borderLeftWidth": "number",
+              "right": "number",
+              "height": "number",
+              "left": "number",
+              "translateY": "number",
+              "paddingRight": "number",
+              "transform": "Map",
+              "flexDirection": "String",
+              "importantForAccessibility": "String",
+              "marginVertical": "number",
+              "accessibilityLabel": "String",
+              "paddingLeft": "number",
+              "width": "number",
+              "margin": "number",
+              "top": "number",
+              "decomposedMatrix": "Map",
+              "marginRight": "number",
+              "testID": "String"
+          }
+        },
+        "AndroidHorizontalScrollView": {
+          "NativeProps": {
+            "opacity": "number",
+              "renderToHardwareTextureAndroid": "boolean",
+              "borderBottomWidth": "number",
+              "scaleY": "number",
+              "minWidth": "number",
+              "position": "String",
+              "paddingTop": "number",
+              "borderWidth": "number",
+              "marginLeft": "number",
+              "removeClippedSubviews": "boolean",
+              "marginHorizontal": "number",
+              "paddingBottom": "number",
+              "paddingHorizontal": "number",
+              "scaleX": "number",
+              "onLayout": "boolean",
+              "flexWrap": "String",
+              "borderTopWidth": "number",
+              "showsHorizontalScrollIndicator": "boolean",
+              "borderRightWidth": "number",
+              "marginTop": "number",
+              "translateX": "number",
+              "rotation": "number",
+              "accessibilityLiveRegion": "String",
+              "alignItems": "String",
+              "accessibilityComponentType": "String",
+              "paddingVertical": "number",
+              "flex": "number",
+              "scrollPerfTag": "String",
+              "marginBottom": "number",
+              "bottom": "number",
+              "maxWidth": "number",
+              "sendMomentumEvents": "boolean",
+              "pagingEnabled": "boolean",
+              "justifyContent": "String",
+              "padding": "number",
+              "scrollEnabled": "boolean",
+              "elevation": "number",
+              "minHeight": "number",
+              "maxHeight": "number",
+              "alignSelf": "String",
+              "backgroundColor": "Color",
+              "right": "number",
+              "borderLeftWidth": "number",
+              "height": "number",
+              "left": "number",
+              "translateY": "number",
+              "paddingRight": "number",
+              "transform": "Map",
+              "endFillColor": "Color",
+              "flexDirection": "String",
+              "importantForAccessibility": "String",
+              "marginVertical": "number",
+              "accessibilityLabel": "String",
+              "width": "number",
+              "paddingLeft": "number",
+              "top": "number",
+              "margin": "number",
+              "decomposedMatrix": "Map",
+              "marginRight": "number",
+              "testID": "String"
+          }
+        },
+        "ARTGroup": {
+          "NativeProps": {
+            "clipping": "Array",
+              "opacity": "number",
+              "transform": "Array"
+          }
+        },
+        "AndroidProgressBar": {
+          "NativeProps": {
+            "opacity": "number",
+              "renderToHardwareTextureAndroid": "boolean",
+              "borderBottomWidth": "number",
+              "scaleY": "number",
+              "minWidth": "number",
+              "paddingTop": "number",
+              "position": "String",
+              "borderWidth": "number",
+              "color": "Color",
+              "marginLeft": "number",
+              "marginHorizontal": "number",
+              "paddingHorizontal": "number",
+              "paddingBottom": "number",
+              "scaleX": "number",
+              "onLayout": "boolean",
+              "borderTopWidth": "number",
+              "flexWrap": "String",
+              "borderRightWidth": "number",
+              "marginTop": "number",
+              "translateX": "number",
+              "indeterminate": "boolean",
+              "animating": "boolean",
+              "rotation": "number",
+              "accessibilityLiveRegion": "String",
+              "alignItems": "String",
+              "accessibilityComponentType": "String",
+              "paddingVertical": "number",
+              "flex": "number",
+              "bottom": "number",
+              "marginBottom": "number",
+              "maxWidth": "number",
+              "progress": "number",
+              "justifyContent": "String",
+              "padding": "number",
+              "elevation": "number",
+              "minHeight": "number",
+              "alignSelf": "String",
+              "maxHeight": "number",
+              "backgroundColor": "Color",
+              "borderLeftWidth": "number",
+              "right": "number",
+              "height": "number",
+              "left": "number",
+              "translateY": "number",
+              "paddingRight": "number",
+              "transform": "Map",
+              "flexDirection": "String",
+              "importantForAccessibility": "String",
+              "marginVertical": "number",
+              "accessibilityLabel": "String",
+              "paddingLeft": "number",
+              "width": "number",
+              "margin": "number",
+              "top": "number",
+              "decomposedMatrix": "Map",
+              "marginRight": "number",
+              "testID": "String",
+              "styleAttr": "String"
+          }
+        },
+        "RCTVirtualText": {
+          "NativeProps": {
+            "opacity": "number",
+              "renderToHardwareTextureAndroid": "boolean",
+              "numberOfLines": "number",
+              "borderBottomWidth": "number",
+              "scaleY": "number",
+              "minWidth": "number",
+              "paddingTop": "number",
+              "position": "String",
+              "borderWidth": "number",
+              "color": "number",
+              "lineBreakMode": "String",
+              "marginLeft": "number",
+              "fontFamily": "String",
+              "marginHorizontal": "number",
+              "fontStyle": "String",
+              "paddingHorizontal": "number",
+              "paddingBottom": "number",
+              "scaleX": "number",
+              "onLayout": "boolean",
+              "borderTopWidth": "number",
+              "flexWrap": "String",
+              "borderRightWidth": "number",
+              "marginTop": "number",
+              "translateX": "number",
+              "textShadowColor": "Color",
+              "rotation": "number",
+              "accessibilityLiveRegion": "String",
+              "alignItems": "String",
+              "accessibilityComponentType": "String",
+              "paddingVertical": "number",
+              "flex": "number",
+              "bottom": "number",
+              "marginBottom": "number",
+              "maxWidth": "number",
+              "textAlign": "String",
+              "textShadowRadius": "number",
+              "textAlignVertical": "String",
+              "justifyContent": "String",
+              "fontWeight": "String",
+              "padding": "number",
+              "elevation": "number",
+              "textShadowOffset": "Map",
+              "minHeight": "number",
+              "alignSelf": "String",
+              "maxHeight": "number",
+              "backgroundColor": "number",
+              "borderLeftWidth": "number",
+              "right": "number",
+              "height": "number",
+              "textDecorationLine": "String",
+              "left": "number",
+              "translateY": "number",
+              "paddingRight": "number",
+              "transform": "Map",
+              "lineHeight": "number",
+              "flexDirection": "String",
+              "importantForAccessibility": "String",
+              "fontSize": "number",
+              "marginVertical": "number",
+              "accessibilityLabel": "String",
+              "text": "String",
+              "paddingLeft": "number",
+              "width": "number",
+              "margin": "number",
+              "top": "number",
+              "decomposedMatrix": "Map",
+              "marginRight": "number",
+              "testID": "String"
+          }
+        },
+        "ARTText": {
+          "NativeProps": {
+            "frame": "Map",
+              "strokeCap": "number",
+              "opacity": "number",
+              "stroke": "Array",
+              "d": "Array",
+              "strokeDash": "Array",
+              "strokeWidth": "number",
+              "fill": "Array",
+              "strokeJoin": "number",
+              "alignment": "number",
+              "transform": "Array"
+          }
+        },
+        "AccessibilityEventTypes": {
+          "typeViewClicked": 1,
+            "typeWindowStateChanged": 32
+        },
+        "AndroidDialogPicker": {
+          "NativeProps": {
+            "opacity": "number",
+              "renderToHardwareTextureAndroid": "boolean",
+              "borderBottomWidth": "number",
+              "scaleY": "number",
+              "minWidth": "number",
+              "position": "String",
+              "paddingTop": "number",
+              "borderWidth": "number",
+              "color": "Color",
+              "marginLeft": "number",
+              "marginHorizontal": "number",
+              "paddingBottom": "number",
+              "paddingHorizontal": "number",
+              "scaleX": "number",
+              "onLayout": "boolean",
+              "flexWrap": "String",
+              "borderTopWidth": "number",
+              "borderRightWidth": "number",
+              "items": "Array",
+              "marginTop": "number",
+              "translateX": "number",
+              "rotation": "number",
+              "accessibilityLiveRegion": "String",
+              "alignItems": "String",
+              "accessibilityComponentType": "String",
+              "paddingVertical": "number",
+              "flex": "number",
+              "marginBottom": "number",
+              "bottom": "number",
+              "maxWidth": "number",
+              "prompt": "String",
+              "enabled": "boolean",
+              "justifyContent": "String",
+              "padding": "number",
+              "elevation": "number",
+              "minHeight": "number",
+              "maxHeight": "number",
+              "alignSelf": "String",
+              "backgroundColor": "Color",
+              "selected": "number",
+              "right": "number",
+              "borderLeftWidth": "number",
+              "height": "number",
+              "left": "number",
+              "translateY": "number",
+              "paddingRight": "number",
+              "transform": "Map",
+              "flexDirection": "String",
+              "importantForAccessibility": "String",
+              "marginVertical": "number",
+              "accessibilityLabel": "String",
+              "width": "number",
+              "paddingLeft": "number",
+              "top": "number",
+              "margin": "number",
+              "decomposedMatrix": "Map",
+              "marginRight": "number",
+              "testID": "String"
+          }
+        },
+        "RCTModalHostView": {
+          "NativeProps": {
+            "opacity": "number",
+              "renderToHardwareTextureAndroid": "boolean",
+              "borderBottomWidth": "number",
+              "scaleY": "number",
+              "minWidth": "number",
+              "paddingTop": "number",
+              "position": "String",
+              "borderWidth": "number",
+              "marginLeft": "number",
+              "marginHorizontal": "number",
+              "paddingHorizontal": "number",
+              "paddingBottom": "number",
+              "scaleX": "number",
+              "onLayout": "boolean",
+              "borderTopWidth": "number",
+              "flexWrap": "String",
+              "borderRightWidth": "number",
+              "marginTop": "number",
+              "translateX": "number",
+              "rotation": "number",
+              "accessibilityLiveRegion": "String",
+              "alignItems": "String",
+              "accessibilityComponentType": "String",
+              "paddingVertical": "number",
+              "transparent": "boolean",
+              "flex": "number",
+              "bottom": "number",
+              "marginBottom": "number",
+              "maxWidth": "number",
+              "justifyContent": "String",
+              "padding": "number",
+              "elevation": "number",
+              "minHeight": "number",
+              "alignSelf": "String",
+              "maxHeight": "number",
+              "backgroundColor": "Color",
+              "borderLeftWidth": "number",
+              "right": "number",
+              "height": "number",
+              "left": "number",
+              "translateY": "number",
+              "paddingRight": "number",
+              "transform": "Map",
+              "flexDirection": "String",
+              "importantForAccessibility": "String",
+              "marginVertical": "number",
+              "accessibilityLabel": "String",
+              "paddingLeft": "number",
+              "width": "number",
+              "margin": "number",
+              "top": "number",
+              "animationType": "String",
+              "decomposedMatrix": "Map",
+              "marginRight": "number",
+              "testID": "String"
+          },
+          "Constants": {
+            "StatusBarHeight": 25
+          }
+        },
+        "AndroidSwitch": {
+          "NativeProps": {
+            "opacity": "number",
+              "renderToHardwareTextureAndroid": "boolean",
+              "on": "boolean",
+              "borderBottomWidth": "number",
+              "scaleY": "number",
+              "minWidth": "number",
+              "paddingTop": "number",
+              "position": "String",
+              "borderWidth": "number",
+              "marginLeft": "number",
+              "marginHorizontal": "number",
+              "paddingHorizontal": "number",
+              "paddingBottom": "number",
+              "scaleX": "number",
+              "onLayout": "boolean",
+              "borderTopWidth": "number",
+              "flexWrap": "String",
+              "borderRightWidth": "number",
+              "marginTop": "number",
+              "translateX": "number",
+              "rotation": "number",
+              "accessibilityLiveRegion": "String",
+              "alignItems": "String",
+              "accessibilityComponentType": "String",
+              "paddingVertical": "number",
+              "flex": "number",
+              "bottom": "number",
+              "marginBottom": "number",
+              "maxWidth": "number",
+              "enabled": "boolean",
+              "justifyContent": "String",
+              "padding": "number",
+              "elevation": "number",
+              "minHeight": "number",
+              "alignSelf": "String",
+              "maxHeight": "number",
+              "backgroundColor": "Color",
+              "borderLeftWidth": "number",
+              "right": "number",
+              "height": "number",
+              "left": "number",
+              "translateY": "number",
+              "paddingRight": "number",
+              "transform": "Map",
+              "flexDirection": "String",
+              "importantForAccessibility": "String",
+              "marginVertical": "number",
+              "accessibilityLabel": "String",
+              "paddingLeft": "number",
+              "width": "number",
+              "margin": "number",
+              "top": "number",
+              "decomposedMatrix": "Map",
+              "marginRight": "number",
+              "testID": "String"
+          }
+        },
+        "RCTRawText": {
+          "NativeProps": {
+            "opacity": "number",
+              "numberOfLines": "number",
+              "renderToHardwareTextureAndroid": "boolean",
+              "borderBottomWidth": "number",
+              "scaleY": "number",
+              "minWidth": "number",
+              "paddingTop": "number",
+              "position": "String",
+              "borderWidth": "number",
+              "color": "number",
+              "lineBreakMode": "String",
+              "marginLeft": "number",
+              "fontFamily": "String",
+              "marginHorizontal": "number",
+              "fontStyle": "String",
+              "paddingHorizontal": "number",
+              "paddingBottom": "number",
+              "scaleX": "number",
+              "onLayout": "boolean",
+              "borderTopWidth": "number",
+              "flexWrap": "String",
+              "borderRightWidth": "number",
+              "marginTop": "number",
+              "translateX": "number",
+              "textShadowColor": "Color",
+              "rotation": "number",
+              "accessibilityLiveRegion": "String",
+              "alignItems": "String",
+              "accessibilityComponentType": "String",
+              "paddingVertical": "number",
+              "flex": "number",
+              "bottom": "number",
+              "marginBottom": "number",
+              "maxWidth": "number",
+              "textAlign": "String",
+              "textShadowRadius": "number",
+              "textAlignVertical": "String",
+              "justifyContent": "String",
+              "fontWeight": "String",
+              "padding": "number",
+              "elevation": "number",
+              "textShadowOffset": "Map",
+              "minHeight": "number",
+              "alignSelf": "String",
+              "maxHeight": "number",
+              "backgroundColor": "number",
+              "borderLeftWidth": "number",
+              "right": "number",
+              "height": "number",
+              "textDecorationLine": "String",
+              "left": "number",
+              "translateY": "number",
+              "paddingRight": "number",
+              "transform": "Map",
+              "lineHeight": "number",
+              "flexDirection": "String",
+              "importantForAccessibility": "String",
+              "fontSize": "number",
+              "marginVertical": "number",
+              "accessibilityLabel": "String",
+              "text": "String",
+              "paddingLeft": "number",
+              "width": "number",
+              "margin": "number",
+              "top": "number",
+              "decomposedMatrix": "Map",
+              "marginRight": "number",
+              "testID": "String"
+          }
+        },
+        "ARTSurfaceView": {
+          "NativeProps": {
+            "opacity": "number",
+              "renderToHardwareTextureAndroid": "boolean",
+              "borderBottomWidth": "number",
+              "scaleY": "number",
+              "minWidth": "number",
+              "paddingTop": "number",
+              "position": "String",
+              "borderWidth": "number",
+              "marginLeft": "number",
+              "marginHorizontal": "number",
+              "paddingHorizontal": "number",
+              "paddingBottom": "number",
+              "scaleX": "number",
+              "onLayout": "boolean",
+              "borderTopWidth": "number",
+              "flexWrap": "String",
+              "borderRightWidth": "number",
+              "marginTop": "number",
+              "translateX": "number",
+              "rotation": "number",
+              "accessibilityLiveRegion": "String",
+              "alignItems": "String",
+              "accessibilityComponentType": "String",
+              "paddingVertical": "number",
+              "flex": "number",
+              "bottom": "number",
+              "marginBottom": "number",
+              "maxWidth": "number",
+              "justifyContent": "String",
+              "padding": "number",
+              "elevation": "number",
+              "minHeight": "number",
+              "alignSelf": "String",
+              "maxHeight": "number",
+              "backgroundColor": "Color",
+              "borderLeftWidth": "number",
+              "right": "number",
+              "height": "number",
+              "left": "number",
+              "translateY": "number",
+              "paddingRight": "number",
+              "transform": "Map",
+              "flexDirection": "String",
+              "importantForAccessibility": "String",
+              "marginVertical": "number",
+              "accessibilityLabel": "String",
+              "paddingLeft": "number",
+              "width": "number",
+              "margin": "number",
+              "top": "number",
+              "decomposedMatrix": "Map",
+              "marginRight": "number",
+              "testID": "String"
+          }
+        },
+        "UIView": {
+          "ContentMode": {
+            "ScaleAspectFill": 6,
+              "ScaleAspectFit": 3,
+              "ScaleAspectCenter": 7
+          }
+        },
+        "RCTView": {
+          "Commands": {
+            "setPressed": 2,
+              "hotspotUpdate": 1
+          },
+          "NativeProps": {
+            "opacity": "number",
+              "renderToHardwareTextureAndroid": "boolean",
+              "borderBottomLeftRadius": "number",
+              "borderBottomWidth": "number",
+              "scaleY": "number",
+              "minWidth": "number",
+              "position": "String",
+              "paddingTop": "number",
+              "borderWidth": "number",
+              "hitSlop": "Map",
+              "marginLeft": "number",
+              "removeClippedSubviews": "boolean",
+              "borderRightColor": "Color",
+              "marginHorizontal": "number",
+              "borderTopLeftRadius": "number",
+              "paddingBottom": "number",
+              "paddingHorizontal": "number",
+              "scaleX": "number",
+              "onLayout": "boolean",
+              "flexWrap": "String",
+              "borderTopWidth": "number",
+              "collapsable": "boolean",
+              "borderRightWidth": "number",
+              "marginTop": "number",
+              "translateX": "number",
+              "accessible": "boolean",
+              "rotation": "number",
+              "accessibilityLiveRegion": "String",
+              "alignItems": "String",
+              "accessibilityComponentType": "String",
+              "paddingVertical": "number",
+              "pointerEvents": "String",
+              "flex": "number",
+              "marginBottom": "number",
+              "bottom": "number",
+              "maxWidth": "number",
+              "borderTopColor": "Color",
+              "borderRadius": "number",
+              "justifyContent": "String",
+              "padding": "number",
+              "borderColor": "Color",
+              "elevation": "number",
+              "minHeight": "number",
+              "borderStyle": "String",
+              "borderLeftColor": "Color",
+              "maxHeight": "number",
+              "alignSelf": "String",
+              "backgroundColor": "Color",
+              "right": "number",
+              "borderLeftWidth": "number",
+              "height": "number",
+              "left": "number",
+              "translateY": "number",
+              "paddingRight": "number",
+              "transform": "Map",
+              "needsOffscreenAlphaCompositing": "boolean",
+              "flexDirection": "String",
+              "importantForAccessibility": "String",
+              "nativeBackgroundAndroid": "Map",
+              "borderBottomColor": "Color",
+              "marginVertical": "number",
+              "accessibilityLabel": "String",
+              "width": "number",
+              "paddingLeft": "number",
+              "top": "number",
+              "margin": "number",
+              "borderBottomRightRadius": "number",
+              "borderTopRightRadius": "number",
+              "decomposedMatrix": "Map",
+              "marginRight": "number",
+              "testID": "String"
+          }
+        },
+        "ToolbarAndroid": {
+          "NativeProps": {
+            "opacity": "number",
+              "renderToHardwareTextureAndroid": "boolean",
+              "borderBottomWidth": "number",
+              "scaleY": "number",
+              "subtitle": "String",
+              "minWidth": "number",
+              "position": "String",
+              "paddingTop": "number",
+              "borderWidth": "number",
+              "rtl": "boolean",
+              "marginLeft": "number",
+              "titleColor": "Color",
+              "marginHorizontal": "number",
+              "paddingBottom": "number",
+              "paddingHorizontal": "number",
+              "scaleX": "number",
+              "onLayout": "boolean",
+              "flexWrap": "String",
+              "borderTopWidth": "number",
+              "borderRightWidth": "number",
+              "nativeActions": "Array",
+              "marginTop": "number",
+              "translateX": "number",
+              "rotation": "number",
+              "accessibilityLiveRegion": "String",
+              "alignItems": "String",
+              "accessibilityComponentType": "String",
+              "paddingVertical": "number",
+              "logo": "Map",
+              "flex": "number",
+              "marginBottom": "number",
+              "bottom": "number",
+              "maxWidth": "number",
+              "contentInsetStart": "number",
+              "justifyContent": "String",
+              "padding": "number",
+              "elevation": "number",
+              "minHeight": "number",
+              "subtitleColor": "Color",
+              "overflowIcon": "Map",
+              "maxHeight": "number",
+              "alignSelf": "String",
+              "backgroundColor": "Color",
+              "right": "number",
+              "borderLeftWidth": "number",
+              "navIcon": "Map",
+              "height": "number",
+              "left": "number",
+              "translateY": "number",
+              "paddingRight": "number",
+              "transform": "Map",
+              "flexDirection": "String",
+              "title": "String",
+              "importantForAccessibility": "String",
+              "marginVertical": "number",
+              "accessibilityLabel": "String",
+              "width": "number",
+              "paddingLeft": "number",
+              "top": "number",
+              "margin": "number",
+              "contentInsetEnd": "number",
+              "decomposedMatrix": "Map",
+              "marginRight": "number",
+              "testID": "String"
+          },
+          "Constants": {
+            "ShowAsAction": {
+              "always": 2,
+                "never": 0,
+                "ifRoom": 1
+            }
+          }
+        },
+        "RCTImageView": {
+          "NativeProps": {
+            "tintColor": "Color",
+              "opacity": "number",
+              "renderToHardwareTextureAndroid": "boolean",
+              "borderBottomLeftRadius": "number",
+              "borderBottomWidth": "number",
+              "scaleY": "number",
+              "minWidth": "number",
+              "position": "String",
+              "paddingTop": "number",
+              "borderWidth": "number",
+              "marginLeft": "number",
+              "marginHorizontal": "number",
+              "borderTopLeftRadius": "number",
+              "paddingBottom": "number",
+              "paddingHorizontal": "number",
+              "scaleX": "number",
+              "onLayout": "boolean",
+              "flexWrap": "String",
+              "borderTopWidth": "number",
+              "borderRightWidth": "number",
+              "marginTop": "number",
+              "translateX": "number",
+              "rotation": "number",
+              "accessibilityLiveRegion": "String",
+              "alignItems": "String",
+              "accessibilityComponentType": "String",
+              "paddingVertical": "number",
+              "overlayColor": "number",
+              "flex": "number",
+              "marginBottom": "number",
+              "bottom": "number",
+              "maxWidth": "number",
+              "shouldNotifyLoadEvents": "boolean",
+              "borderRadius": "number",
+              "justifyContent": "String",
+              "resizeMode": "String",
+              "loadingIndicatorSrc": "String",
+              "padding": "number",
+              "src": "Array",
+              "fadeDuration": "number",
+              "borderColor": "Color",
+              "elevation": "number",
+              "minHeight": "number",
+              "maxHeight": "number",
+              "alignSelf": "String",
+              "backgroundColor": "Color",
+              "right": "number",
+              "borderLeftWidth": "number",
+              "height": "number",
+              "left": "number",
+              "translateY": "number",
+              "paddingRight": "number",
+              "transform": "Map",
+              "flexDirection": "String",
+              "progressiveRenderingEnabled": "boolean",
+              "importantForAccessibility": "String",
+              "marginVertical": "number",
+              "accessibilityLabel": "String",
+              "width": "number",
+              "paddingLeft": "number",
+              "top": "number",
+              "margin": "number",
+              "borderBottomRightRadius": "number",
+              "borderTopRightRadius": "number",
+              "decomposedMatrix": "Map",
+              "marginRight": "number",
+              "testID": "String"
+          }
+        },
+        "AndroidDropdownPicker": {
+          "NativeProps": {
+            "opacity": "number",
+              "renderToHardwareTextureAndroid": "boolean",
+              "borderBottomWidth": "number",
+              "scaleY": "number",
+              "minWidth": "number",
+              "position": "String",
+              "paddingTop": "number",
+              "borderWidth": "number",
+              "color": "Color",
+              "marginLeft": "number",
+              "marginHorizontal": "number",
+              "paddingBottom": "number",
+              "paddingHorizontal": "number",
+              "scaleX": "number",
+              "onLayout": "boolean",
+              "flexWrap": "String",
+              "borderTopWidth": "number",
+              "borderRightWidth": "number",
+              "items": "Array",
+              "marginTop": "number",
+              "translateX": "number",
+              "rotation": "number",
+              "accessibilityLiveRegion": "String",
+              "alignItems": "String",
+              "accessibilityComponentType": "String",
+              "paddingVertical": "number",
+              "flex": "number",
+              "marginBottom": "number",
+              "bottom": "number",
+              "maxWidth": "number",
+              "prompt": "String",
+              "enabled": "boolean",
+              "justifyContent": "String",
+              "padding": "number",
+              "elevation": "number",
+              "minHeight": "number",
+              "maxHeight": "number",
+              "alignSelf": "String",
+              "backgroundColor": "Color",
+              "selected": "number",
+              "right": "number",
+              "borderLeftWidth": "number",
+              "height": "number",
+              "left": "number",
+              "translateY": "number",
+              "paddingRight": "number",
+              "transform": "Map",
+              "flexDirection": "String",
+              "importantForAccessibility": "String",
+              "marginVertical": "number",
+              "accessibilityLabel": "String",
+              "width": "number",
+              "paddingLeft": "number",
+              "top": "number",
+              "margin": "number",
+              "decomposedMatrix": "Map",
+              "marginRight": "number",
+              "testID": "String"
+          }
+        },
+        "ARTShape": {
+          "NativeProps": {
+            "strokeCap": "number",
+              "opacity": "number",
+              "stroke": "Array",
+              "strokeDash": "Array",
+              "d": "Array",
+              "strokeWidth": "number",
+              "strokeJoin": "number",
+              "fill": "Array",
+              "transform": "Array"
+          }
+        },
+        "AndroidDrawerLayout": {
+          "Commands": {
+            "openDrawer": 1,
+              "closeDrawer": 2
+          },
+          "NativeProps": {
+            "opacity": "number",
+              "renderToHardwareTextureAndroid": "boolean",
+              "borderBottomWidth": "number",
+              "scaleY": "number",
+              "minWidth": "number",
+              "position": "String",
+              "paddingTop": "number",
+              "borderWidth": "number",
+              "marginLeft": "number",
+              "marginHorizontal": "number",
+              "paddingBottom": "number",
+              "paddingHorizontal": "number",
+              "scaleX": "number",
+              "onLayout": "boolean",
+              "flexWrap": "String",
+              "borderTopWidth": "number",
+              "borderRightWidth": "number",
+              "marginTop": "number",
+              "drawerPosition": "number",
+              "translateX": "number",
+              "rotation": "number",
+              "accessibilityLiveRegion": "String",
+              "alignItems": "String",
+              "accessibilityComponentType": "String",
+              "paddingVertical": "number",
+              "flex": "number",
+              "marginBottom": "number",
+              "bottom": "number",
+              "maxWidth": "number",
+              "drawerWidth": "number",
+              "justifyContent": "String",
+              "drawerLockMode": "String",
+              "padding": "number",
+              "elevation": "number",
+              "minHeight": "number",
+              "maxHeight": "number",
+              "alignSelf": "String",
+              "backgroundColor": "Color",
+              "right": "number",
+              "borderLeftWidth": "number",
+              "height": "number",
+              "left": "number",
+              "translateY": "number",
+              "paddingRight": "number",
+              "transform": "Map",
+              "flexDirection": "String",
+              "importantForAccessibility": "String",
+              "marginVertical": "number",
+              "accessibilityLabel": "String",
+              "width": "number",
+              "paddingLeft": "number",
+              "top": "number",
+              "margin": "number",
+              "decomposedMatrix": "Map",
+              "marginRight": "number",
+              "testID": "String"
+          },
+          "Constants": {
+            "DrawerPosition": {
+              "Right": 8388613,
+                "Left": 8388611
+            }
+          }
+        }
+      }
+    },
+    "WebSocketModule": {
+      "moduleID": 25,
+        "supportsWebWorkers": false,
+        "methods": {
+        "sendBinary": {
+          "methodID": 0,
+            "type": "remote"
+        },
+        "connect": {
+          "methodID": 1,
+            "type": "remote"
+        },
+        "send": {
+          "methodID": 2,
+            "type": "remote"
+        },
+        "close": {
+          "methodID": 3,
+            "type": "remote"
+        }
+      }
+    },
+    "StatusBarManager": {
+      "moduleID": 26,
+        "supportsWebWorkers": false,
+        "methods": {
+        "setTranslucent": {
+          "methodID": 0,
+            "type": "remoteAsync"
+        },
+        "setHidden": {
+          "methodID": 1,
+            "type": "remoteAsync"
+        },
+        "setColor": {
+          "methodID": 2,
+            "type": "remoteAsync"
+        }
+      },
+      "constants": {
+        "HEIGHT": 25
+      }
+    },
+    "TimePickerAndroid": {
+      "moduleID": 27,
+        "supportsWebWorkers": false,
+        "methods": {
+        "open": {
+          "methodID": 0,
+            "type": "remoteAsync"
+        }
+      }
+    },
+    "Clipboard": {
+      "moduleID": 28,
+        "supportsWebWorkers": false,
+        "methods": {
+        "setString": {
+          "methodID": 0,
+            "type": "remote"
+        },
+        "getString": {
+          "methodID": 1,
+            "type": "remoteAsync"
+        }
+      }
+    },
+    "DatePickerAndroid": {
+      "moduleID": 29,
+        "supportsWebWorkers": false,
+        "methods": {
+        "open": {
+          "methodID": 0,
+            "type": "remoteAsync"
+        }
+      }
+    }
+  }
+};
+
   var MessageQueue = require(62 /* MessageQueue */);
 
   var BatchedBridge = new MessageQueue(
@@ -6026,8 +8226,8 @@ __d(62 /* MessageQueue */, function (global, require, module, exports) {
         });
 
         lazyProperty(this, 'RemoteModules', function () {
-          var _configProvider =configProvider();
-          console.log('---RemoteModules',_configProvider);
+          var _configProvider = configProvider();
+          console.log(_configProvider);
           var remoteModuleConfig = _configProvider.remoteModuleConfig;
           var modulesConfig = _this._genModulesConfig(remoteModuleConfig);
           var modules = _this._genModules(modulesConfig);
@@ -46404,7 +48604,6 @@ __d(465 /* AdSupportIOS */, function (global, require, module, exports) {
 }, "AdSupportIOS");
 __d(466 /* AppRegistry */, function (global, require, module, exports) {
 
-
   'use strict';
 
   var BatchedBridge = require(61 /* BatchedBridge */);
@@ -46507,10 +48706,7 @@ __d(467 /* BugReporting */, function (global, require, module, exports) {
     });
   }
 
-  var
-
-
-    BugReporting = function () {
+  var BugReporting = function () {
       function BugReporting() {
         babelHelpers.classCallCheck(this, BugReporting);
       }
@@ -62860,14564 +65056,6 @@ __d(631 /* renderSubtreeIntoContainer */, function (global, require, module, exp
 
   module.exports = ReactMount.renderSubtreeIntoContainer;
 }, "renderSubtreeIntoContainer");
-__d(632 /* SmartRectNativeApp/component/home/MainScreen.js */, function (global, require, module, exports) {
-
-
-  'use strict';
-  Object.defineProperty(exports, "__esModule", { value: true });
-  var _jsxFileName = '/Users/sky/dev/react/native/SmartReactNativeApp/component/home/MainScreen.js';
-  var _react = require(12 /* react */);
-  var _react2 = babelHelpers.interopRequireDefault(_react);
-
-  var _reactNative = require(43 /* react-native */);
-
-
-  var _Header = require(633 /* ./Header */);
-  var _Header2 = babelHelpers.interopRequireDefault(_Header);
-  var _HomePage = require(638 /* ./HomePage */);
-  var _HomePage2 = babelHelpers.interopRequireDefault(_HomePage);
-  var _reactNativeTabNavigator = require(656 /* react-native-tab-navigator */);
-  var _reactNativeTabNavigator2 = babelHelpers.interopRequireDefault(_reactNativeTabNavigator);
-
-  var _Category = require(664 /* ./Category */);
-  var _Category2 = babelHelpers.interopRequireDefault(_Category);
-  var _index = require(665 /* ../tabs/index */);
-  var _index2 = babelHelpers.interopRequireDefault(_index);
-  var _OverlayExample = require(676 /* ../tabs/OverlayExample */);
-  var _OverlayExample2 = babelHelpers.interopRequireDefault(_OverlayExample);
-  var _pullrefresh = require(792 /* ../test/pullrefresh */);
-  var _pullrefresh2 = babelHelpers.interopRequireDefault(_pullrefresh);
-  var _ListViewPullRefreshExample = require(793 /* ../test/ListViewPullRefreshExample */);
-  var _ListViewPullRefreshExample2 = babelHelpers.interopRequireDefault(_ListViewPullRefreshExample);
-
-
-  var TAB_HOME = 'tab_home';
-  var TAB_HOME_NORMAL = require(801 /* ../../images/tabs/widget_bar_news_nor.png */);
-  var TAB_HOME_FOCUS = require(802 /* ../../images/tabs/widget_bar_news_over.png */);
-
-  var TAB_TWEET = 'tab_tweet';
-  var TAB_TWEET_NORMAL = require(803 /* ../../images/tabs/widget_bar_tweet_nor.png */);
-  var TAB_TWEET_FOCUS = require(804 /* ../../images/tabs/widget_bar_tweet_over.png */);
-
-  var TAB_FIND = 'tab_find';
-  var TAB_FIND_NORMAL = require(805 /* ../../images/tabs/widget_bar_explore_nor.png */);
-  var TAB_FIND_FOCUS = require(806 /* ../../images/tabs/widget_bar_explore_over.png */);
-
-  var TAB_ME = 'tab_me';
-  var TAB_ME_NORMAL = require(807 /* ../../images/tabs/widget_bar_me_nor.png */);
-  var TAB_ME_FOCUS = require(808 /* ../../images/tabs/widget_bar_me_over.png */);
-  var
-
-    MainScreen = function (_Component) {
-      babelHelpers.inherits(MainScreen, _Component);
-
-      function MainScreen(props) {
-        babelHelpers.classCallCheck(this, MainScreen);
-        var _this = babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(MainScreen).call(this,
-          props));
-        _this.state = { selectedTab: TAB_HOME };
-        return _this;
-      }
-
-      babelHelpers.createClass(MainScreen, [{
-        key: '_renderTabItem', value: function _renderTabItem(img, selectedImg, tag, childView) {
-          var _this2 = this;
-          return (
-            _react2.default.createElement(_reactNativeTabNavigator2.default.Item, {
-                selected: this.state.selectedTab === tag,
-                renderIcon: function renderIcon() {
-                  return _react2.default.createElement(_reactNative.Image, {
-                    style: styles.tabIcon,
-                    source: img,
-                    __source: { fileName: _jsxFileName, lineNumber: 54 }
-                  });
-                },
-                renderSelectedIcon: function renderSelectedIcon() {
-                  return _react2.default.createElement(_reactNative.Image, {
-                    style: styles.tabIcon,
-                    source: selectedImg,
-                    __source: { fileName: _jsxFileName, lineNumber: 55 }
-                  });
-                },
-                onPress: function onPress() {
-                  return _this2.setState({ selectedTab: tag });
-                }, __source: { fileName: _jsxFileName, lineNumber: 52 }
-              },
-              childView));
-
-
-        }
-      }, {
-        key: 'render', value: function render() {
-          return (
-            _react2.default.createElement(_reactNative.View, {
-                style: { flex: 1 },
-                __source: { fileName: _jsxFileName, lineNumber: 81 }
-              },
-              _react2.default.createElement(_Header2.default, { __source: { fileName: _jsxFileName, lineNumber: 82 } }),
-              _react2.default.createElement(_reactNativeTabNavigator2.default, {
-                  hidesTabTouch: true,
-                  tabBarStyle: styles.tab,
-                  __source: { fileName: _jsxFileName, lineNumber: 83 }
-                },
-                this._renderTabItem(TAB_HOME_NORMAL, TAB_HOME_FOCUS, TAB_HOME, _react2.default.createElement(_HomePage2.default, {
-                  nav: this.props.nav,
-                  __source: { fileName: _jsxFileName, lineNumber: 84 }
-                })),
-                this._renderTabItem(TAB_TWEET_NORMAL, TAB_TWEET_FOCUS, TAB_TWEET, MainScreen._createChildView(TAB_TWEET)),
-                this._renderTabItem(TAB_FIND_NORMAL, TAB_FIND_FOCUS, TAB_FIND, MainScreen._createChildView(TAB_FIND)),
-                this._renderTabItem(TAB_ME_NORMAL, TAB_ME_FOCUS, TAB_ME, MainScreen._createChildView(TAB_ME)))));
-
-
-        }
-      }], [{
-        key: '_createChildView', value: function _createChildView(tag) {
-          if (tag === TAB_TWEET) {
-            return _react2.default.createElement(_OverlayExample2.default, {
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 65
-              }
-            });
-          } else if (tag === TAB_FIND) {
-            return _react2.default.createElement(_index2.default, {
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 67
-              }
-            });
-          } else if (tag === TAB_ME) {
-            return _react2.default.createElement(_ListViewPullRefreshExample2.default, {
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 69
-              }
-            });
-          } else {
-            return _react2.default.createElement(_reactNative.View, {
-              style: {
-                flex: 1,
-                backgroundColor: '#ffffff',
-                alignItems: 'center',
-                justifyContent: 'center'
-              }, __source: { fileName: _jsxFileName, lineNumber: 72 }
-            }, _react2.default.createElement(_reactNative.Text, {
-              style: { fontSize: 22 },
-              __source: { fileName: _jsxFileName, lineNumber: 73 }
-            }, tag));
-          }
-        }
-      }]);
-      return MainScreen;
-    }(_react.Component);
-  exports.default = MainScreen;
-
-
-  var styles = _reactNative.StyleSheet.create({
-    tab: {
-      height: 48,
-      backgroundColor: '#ffffff',
-      alignItems: 'center'
-    },
-
-    tabIcon: {
-      width: 30,
-      height: 36,
-      resizeMode: 'stretch',
-      marginTop: 6
-    }
-  });
-}, "SmartRectNativeApp/component/home/MainScreen.js");
-__d(633 /* SmartRectNativeApp/component/home/Header.js */, function (global, require, module, exports) {
-
-
-  'use strict';
-  Object.defineProperty(exports, "__esModule", { value: true });
-  var _jsxFileName = '/Users/sky/dev/react/native/SmartReactNativeApp/component/home/Header.js';
-
-  var _react = require(12 /* react */);
-  var _react2 = babelHelpers.interopRequireDefault(_react);
-
-  var _reactNative = require(43 /* react-native */);
-  var
-
-
-    Header = function (_Component) {
-      babelHelpers.inherits(Header, _Component);
-      function Header() {
-        babelHelpers.classCallCheck(this, Header);
-        return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(Header).apply(this, arguments));
-      }
-
-      babelHelpers.createClass(Header, [{
-        key: 'render', value: function render() {
-          return (
-            _react2.default.createElement(_reactNative.View, {
-                style: styles.container,
-                __source: { fileName: _jsxFileName, lineNumber: 19 }
-              },
-              _react2.default.createElement(_reactNative.Image, {
-                source: require(634 /* ../../images/header/logo.png */),
-                style: styles.logo,
-                __source: { fileName: _jsxFileName, lineNumber: 20 }
-              }),
-              _react2.default.createElement(_reactNative.View, {
-                  style: styles.searchBox,
-                  __source: { fileName: _jsxFileName, lineNumber: 21 }
-                },
-                _react2.default.createElement(_reactNative.Image, {
-                  source: require(635 /* ../../images/header/icon_search.png */),
-                  style: styles.searchIcon,
-                  __source: { fileName: _jsxFileName, lineNumber: 22 }
-                }),
-                _react2.default.createElement(_reactNative.TextInput, {
-                  keyboardType: 'web-search',
-                  placeholder: '杈撳叆鎼滅储鍏抽敭瀛�',
-                  style: styles.inputText, __source: { fileName: _jsxFileName, lineNumber: 23 }
-                }),
-                _react2.default.createElement(_reactNative.Image, {
-                  source: require(636 /* ../../images/header/icon_voice.png */),
-                  style: styles.voiceIcon,
-                  __source: { fileName: _jsxFileName, lineNumber: 27 }
-                })),
-
-              _react2.default.createElement(_reactNative.Image, {
-                source: require(637 /* ../../images/header/icon_qr.png */),
-                style: styles.scanIcon,
-                __source: { fileName: _jsxFileName, lineNumber: 29 }
-              })));
-
-
-        }
-      }]);
-      return Header;
-    }(_react.Component);
-  exports.default = Header;
-
-
-  var styles = _reactNative.StyleSheet.create({
-    container: {
-      flexDirection: 'row',
-      paddingLeft: 10,
-      paddingRight: 10,
-      paddingTop: _reactNative.Platform.OS === 'ios' ? 20 : 0,
-      height: _reactNative.Platform.OS === 'ios' ? 68 : 48,
-      backgroundColor: '#1E90FF',
-      alignItems: 'center'
-    },
-
-    logo: {
-      height: 48,
-      width: 48,
-      resizeMode: 'stretch'
-    },
-
-    searchBox: {
-      height: 30,
-      flexDirection: 'row',
-      flex: 1,
-      borderRadius: 5,
-      backgroundColor: 'white',
-      alignItems: 'center',
-      marginLeft: 8,
-      marginRight: 12
-    },
-
-    scanIcon: {
-      height: 26.7,
-      width: 26.7,
-      resizeMode: 'stretch'
-    },
-
-    searchIcon: {
-      marginLeft: 6,
-      marginRight: 6,
-      width: 16.7,
-      height: 16.7,
-      resizeMode: 'stretch'
-    },
-
-    voiceIcon: {
-      marginLeft: 5,
-      marginRight: 8,
-      width: 15,
-      height: 20,
-      resizeMode: 'stretch'
-    },
-
-    inputText: {
-      flex: 1,
-      height: 60,
-      backgroundColor: 'transparent',
-      fontSize: 14
-    }
-  });
-}, "SmartRectNativeApp/component/home/Header.js");
-__d(634 /* SmartRectNativeApp/images/header/logo.png */, function (global, require, module, exports) {
-  module.exports = require(169 /* react-native/Libraries/Image/AssetRegistry */).registerAsset({
-    "__packager_asset": true,
-    "fileSystemLocation": "/Users/sky/dev/react/native/SmartReactNativeApp/images/header",
-    "httpServerLocation": "/assets/images/header",
-    "width": 122,
-    "height": 122,
-    "scales": [1],
-    "files": ["/Users/sky/dev/react/native/SmartReactNativeApp/images/header/logo.png"],
-    "hash": "5e9e7d62f9c1540a6362da7ad6e451b3",
-    "name": "logo",
-    "type": "png"
-  });
-}, "SmartRectNativeApp/images/header/logo.png");
-__d(635 /* SmartRectNativeApp/images/header/icon_search.png */, function (global, require, module, exports) {
-  module.exports = require(169 /* react-native/Libraries/Image/AssetRegistry */).registerAsset({
-    "__packager_asset": true,
-    "fileSystemLocation": "/Users/sky/dev/react/native/SmartReactNativeApp/images/header",
-    "httpServerLocation": "/assets/images/header",
-    "width": 50,
-    "height": 50,
-    "scales": [1],
-    "files": ["/Users/sky/dev/react/native/SmartReactNativeApp/images/header/icon_search.png"],
-    "hash": "a81088712f91f3df42d2b78607c24e49",
-    "name": "icon_search",
-    "type": "png"
-  });
-}, "SmartRectNativeApp/images/header/icon_search.png");
-__d(636 /* SmartRectNativeApp/images/header/icon_voice.png */, function (global, require, module, exports) {
-  module.exports = require(169 /* react-native/Libraries/Image/AssetRegistry */).registerAsset({
-    "__packager_asset": true,
-    "fileSystemLocation": "/Users/sky/dev/react/native/SmartReactNativeApp/images/header",
-    "httpServerLocation": "/assets/images/header",
-    "width": 27,
-    "height": 35,
-    "scales": [1],
-    "files": ["/Users/sky/dev/react/native/SmartReactNativeApp/images/header/icon_voice.png"],
-    "hash": "a81088712f91f3df42d2b78607c24e49",
-    "name": "icon_voice",
-    "type": "png"
-  });
-}, "SmartRectNativeApp/images/header/icon_voice.png");
-__d(637 /* SmartRectNativeApp/images/header/icon_qr.png */, function (global, require, module, exports) {
-  module.exports = require(169 /* react-native/Libraries/Image/AssetRegistry */).registerAsset({
-    "__packager_asset": true,
-    "fileSystemLocation": "/Users/sky/dev/react/native/SmartReactNativeApp/images/header",
-    "httpServerLocation": "/assets/images/header",
-    "width": 40,
-    "height": 40,
-    "scales": [1],
-    "files": ["/Users/sky/dev/react/native/SmartReactNativeApp/images/header/icon_qr.png"],
-    "hash": "a81088712f91f3df42d2b78607c24e49",
-    "name": "icon_qr",
-    "type": "png"
-  });
-}, "SmartRectNativeApp/images/header/icon_qr.png");
-__d(638 /* SmartRectNativeApp/component/home/HomePage.js */, function (global, require, module, exports) {
-
-
-  'use strict';
-  Object.defineProperty(exports, "__esModule", { value: true });
-  var _jsxFileName = '/Users/sky/dev/react/native/SmartReactNativeApp/component/home/HomePage.js';
-
-  var _react = require(12 /* react */);
-  var _react2 = babelHelpers.interopRequireDefault(_react);
-
-  var _reactNative = require(43 /* react-native */);
-
-
-  var _reactNativeViewpager = require(639 /* react-native-viewpager */);
-  var _reactNativeViewpager2 = babelHelpers.interopRequireDefault(_reactNativeViewpager);
-  var _MenuButton = require(643 /* ./MenuButton */);
-  var _MenuButton2 = babelHelpers.interopRequireDefault(_MenuButton);
-
-  var BANNER_IMGS = [
-    require(644 /* ../../images/banner/1.jpg */),
-    require(645 /* ../../images/banner/2.jpg */),
-    require(646 /* ../../images/banner/3.jpg */),
-    require(647 /* ../../images/banner/4.jpg */)];
-
-
-  var len = 160;
-  var
-
-    HomePage = function (_Component) {
-      babelHelpers.inherits(HomePage, _Component);
-
-      function HomePage(props) {
-        babelHelpers.classCallCheck(this, HomePage);
-        var _this = babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(HomePage).call(this,
-          props));
-
-
-        var dataSource = new _reactNativeViewpager2.default.DataSource({
-          pageHasChanged: function pageHasChanged(p1, p2) {
-            return p1 !== p2;
-          }
-        });
-
-        _this._onMenuClick = _this._onMenuClick.bind(_this);
-        _this._onRecommendClick = _this._onRecommendClick.bind(_this);
-        _this._renderRow = _this._renderRow.bind(_this);
-        var ds = new _reactNative.ListView.DataSource({
-          rowHasChanged: function rowHasChanged(r1, r2) {
-            return r1 !== r2;
-          }
-        });
-
-        _this.state = {
-          dataSource: dataSource.cloneWithPages(BANNER_IMGS),
-          listData: ds
-        };
-        return _this;
-
-      }
-
-      babelHelpers.createClass(HomePage, [{
-        key: 'componentWillMount', value: function componentWillMount() {
-          var _this2 = this;
-          fetch('http://m.jd.com/index/recommend.action?_format_=json&page=1').
-          then(function (res) {
-            return res.json();
-          }).
-          then(function (str) {
-            var arr = JSON.parse(str.recommend).wareInfoList;
-            var rows = [];
-            for (var i = 0; i < arr.length; i += 2) {
-              var item = { id: i, left: null, right: null };
-              item.left = arr[i];
-              if (i < arr.length - 1) {
-                item.right = arr[i + 1];
-              }
-              rows.push(item);
-            }
-            var ds = _this2.state.listData.cloneWithRows(rows);
-            _this2.setState({ listData: ds });
-          });
-        }
-      }, {
-        key: '_renderPage', value: function _renderPage(data, pageID) {
-          return (
-            _react2.default.createElement(_reactNative.Image, {
-              source: data,
-              style: styles.page, __source: { fileName: _jsxFileName, lineNumber: 75 }
-            }));
-
-        }
-      }, {
-        key: '_onMenuClick', value: function _onMenuClick(title, tag) {
-          _reactNative.Alert.alert('鎻愮ず', '浣犵偣鍑讳簡:' + title + " Tag:" + tag);
-        }
-      }, {
-        key: '_onRecommendClick', value: function _onRecommendClick(wareId) {
-          var url = 'http://item.m.jd.com/product/' + wareId + '.html';
-          this.props.nav.push({
-            id: 'webview',
-            title: 'webiew',
-            url: url
-          });
-
-        }
-      }, {
-        key: '_renderRow', value: function _renderRow(rowData) {
-          var _this3 = this;
-          return (
-            _react2.default.createElement(_reactNative.View, {
-                style: { flexDirection: 'row' },
-                __source: { fileName: _jsxFileName, lineNumber: 96 }
-              },
-              _react2.default.createElement(_reactNative.TouchableWithoutFeedback, {
-                  style: { flex: 1, alignItems: 'center' },
-                  onPress: function onPress() {
-                    _this3._onRecommendClick(rowData.left.wareId);
-                  }, __source: { fileName: _jsxFileName, lineNumber: 97 }
-                },
-                _react2.default.createElement(_reactNative.View, {
-                    style: { flex: 1, alignItems: 'center' },
-                    __source: { fileName: _jsxFileName, lineNumber: 99 }
-                  },
-                  _react2.default.createElement(_reactNative.Image, {
-                    resizeMode: 'stretch', source: { uri: rowData.left.imageurl },
-                    style: { width: len, height: len }, __source: { fileName: _jsxFileName, lineNumber: 100 }
-                  }),
-                  _react2.default.createElement(_reactNative.Text, {
-                    numberOfLines: 2,
-                    style: styles.recommendTitle,
-                    __source: { fileName: _jsxFileName, lineNumber: 102 }
-                  }, rowData.left.wname),
-                  _react2.default.createElement(_reactNative.View, {
-                    style: {
-                      width: len,
-                      borderWidth: 0.5,
-                      borderColor: '#d7d7d7'
-                    }, __source: { fileName: _jsxFileName, lineNumber: 103 }
-                  }),
-                  _react2.default.createElement(_reactNative.View, {
-                      style: {
-                        flexDirection: 'row',
-                        width: len,
-                        marginTop: 6,
-                        marginBottom: 22,
-                        alignItems: 'flex-start'
-                      }, __source: { fileName: _jsxFileName, lineNumber: 104 }
-                    },
-                    _react2.default.createElement(_reactNative.Text, {
-                      style: styles.priceText,
-                      __source: { fileName: _jsxFileName, lineNumber: 106 }
-                    }, '锟�', rowData.left.jdPrice),
-                    _react2.default.createElement(_reactNative.TouchableWithoutFeedback, {
-                        __source: {
-                          fileName: _jsxFileName,
-                          lineNumber: 107
-                        }
-                      },
-                      _react2.default.createElement(_reactNative.View, {
-                          style: {
-                            width: 50,
-                            height: 18,
-                            borderWidth: 1,
-                            borderColor: '#999999',
-                            borderRadius: 3,
-                            justifyContent: 'center',
-                            alignItems: 'center'
-                          }, __source: { fileName: _jsxFileName, lineNumber: 108 }
-                        },
-                        _react2.default.createElement(_reactNative.Text, {
-                          style: { color: '#999999', fontSize: 12, textAlign: 'center' },
-                          __source: { fileName: _jsxFileName, lineNumber: 110 }
-                        }, '鐪嬬浉浼�')))))),
-
-
-              _react2.default.createElement(_reactNative.TouchableWithoutFeedback, {
-                  style: { flex: 1, alignItems: 'center' },
-                  onPress: function onPress() {
-                    _this3._onRecommendClick(rowData.right.wareId);
-                  }, __source: { fileName: _jsxFileName, lineNumber: 117 }
-                },
-                _react2.default.createElement(_reactNative.View, {
-                    style: { flex: 1, alignItems: 'center' },
-                    __source: { fileName: _jsxFileName, lineNumber: 119 }
-                  },
-                  _react2.default.createElement(_reactNative.Image, {
-                    resizeMode: 'stretch', source: { uri: rowData.right.imageurl },
-                    style: { width: len, height: len }, __source: { fileName: _jsxFileName, lineNumber: 120 }
-                  }),
-                  _react2.default.createElement(_reactNative.Text, {
-                    numberOfLines: 2,
-                    style: styles.recommendTitle,
-                    __source: { fileName: _jsxFileName, lineNumber: 122 }
-                  }, rowData.right.wname),
-                  _react2.default.createElement(_reactNative.View, {
-                    style: {
-                      width: len,
-                      borderWidth: 0.5,
-                      borderColor: '#d7d7d7'
-                    }, __source: { fileName: _jsxFileName, lineNumber: 123 }
-                  }),
-                  _react2.default.createElement(_reactNative.View, {
-                      style: {
-                        flexDirection: 'row',
-                        width: len,
-                        marginTop: 6,
-                        marginBottom: 22,
-                        alignItems: 'flex-start'
-                      }, __source: { fileName: _jsxFileName, lineNumber: 124 }
-                    },
-                    _react2.default.createElement(_reactNative.Text, {
-                      style: styles.priceText,
-                      __source: { fileName: _jsxFileName, lineNumber: 126 }
-                    }, '锟�', rowData.right.jdPrice),
-                    _react2.default.createElement(_reactNative.TouchableWithoutFeedback, {
-                        __source: {
-                          fileName: _jsxFileName,
-                          lineNumber: 127
-                        }
-                      },
-                      _react2.default.createElement(_reactNative.View, {
-                          style: {
-                            width: 50,
-                            height: 18,
-                            borderWidth: 1,
-                            borderColor: '#999999',
-                            borderRadius: 3,
-                            justifyContent: 'center',
-                            alignItems: 'center'
-                          }, __source: { fileName: _jsxFileName, lineNumber: 128 }
-                        },
-                        _react2.default.createElement(_reactNative.Text, {
-                          style: { color: '#999999', fontSize: 12, textAlign: 'center' },
-                          __source: { fileName: _jsxFileName, lineNumber: 130 }
-                        }, '鐪嬬浉浼�'))))))));
-
-
-        }
-      }, {
-        key: 'render', value: function render() {
-          var _this4 = this;
-          return (
-            _react2.default.createElement(_reactNative.ListView, {
-              style: { flex: 1, backgroundColor: 'white' },
-              dataSource: this.state.listData,
-              renderRow: this._renderRow,
-              renderHeader: function renderHeader() {
-                return (
-                  _react2.default.createElement(_reactNative.View, {
-                      __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 148
-                      }
-                    },
-                    _react2.default.createElement(_reactNativeViewpager2.default, {
-                      style: { height: 130 },
-                      dataSource: _this4.state.dataSource,
-                      renderPage: _this4._renderPage,
-                      isLoop: true,
-                      autoPlay: true, __source: { fileName: _jsxFileName, lineNumber: 149 }
-                    }),
-                    _react2.default.createElement(_reactNative.View, {
-                        style: styles.menuView,
-                        __source: { fileName: _jsxFileName, lineNumber: 155 }
-                      },
-                      _react2.default.createElement(_MenuButton2.default, {
-                        renderIcon: require(648 /* ../../images/home/wdgz.png */),
-                        showText: '鎴戠殑鍏虫敞', tag: 'wdgz',
-                        onClick: _this4._onMenuClick, __source: { fileName: _jsxFileName, lineNumber: 156 }
-                      }),
-                      _react2.default.createElement(_MenuButton2.default, {
-                        renderIcon: require(649 /* ../../images/home/wlcx.png */),
-                        showText: '鐗╂祦鏌ヨ', tag: 'wlcx',
-                        onClick: _this4._onMenuClick, __source: { fileName: _jsxFileName, lineNumber: 159 }
-                      }),
-                      _react2.default.createElement(_MenuButton2.default, {
-                        renderIcon: require(650 /* ../../images/home/cz.png */),
-                        showText: '鍏呭€�', tag: 'cz',
-                        onClick: _this4._onMenuClick, __source: { fileName: _jsxFileName, lineNumber: 162 }
-                      }),
-                      _react2.default.createElement(_MenuButton2.default, {
-                        renderIcon: require(651 /* ../../images/home/dyp.png */),
-                        showText: '鐢靛奖绁�', tag: 'dyp',
-                        onClick: _this4._onMenuClick, __source: { fileName: _jsxFileName, lineNumber: 165 }
-                      })),
-
-                    _react2.default.createElement(_reactNative.View, {
-                        style: styles.menuView,
-                        __source: { fileName: _jsxFileName, lineNumber: 169 }
-                      },
-                      _react2.default.createElement(_MenuButton2.default, {
-                        renderIcon: require(652 /* ../../images/home/yxcz.png */),
-                        showText: '娓告垙鍏呭€�', tag: 'yxcz',
-                        onClick: _this4._onMenuClick, __source: { fileName: _jsxFileName, lineNumber: 170 }
-                      }),
-                      _react2.default.createElement(_MenuButton2.default, {
-                        renderIcon: require(653 /* ../../images/home/xjk.png */),
-                        showText: '灏忛噾搴�', tag: 'xjk',
-                        onClick: _this4._onMenuClick, __source: { fileName: _jsxFileName, lineNumber: 173 }
-                      }),
-                      _react2.default.createElement(_MenuButton2.default, {
-                        renderIcon: require(654 /* ../../images/home/ljd.png */),
-                        showText: '棰嗕含璞�', tag: 'ljd',
-                        onClick: _this4._onMenuClick, __source: { fileName: _jsxFileName, lineNumber: 176 }
-                      }),
-                      _react2.default.createElement(_MenuButton2.default, {
-                        renderIcon: require(655 /* ../../images/home/gd.png */),
-                        showText: '鏇村', tag: 'gd',
-                        onClick: _this4._onMenuClick, __source: { fileName: _jsxFileName, lineNumber: 179 }
-                      })),
-
-                    _react2.default.createElement(_reactNative.View, {
-                      style: {
-                        marginTop: 15,
-                        marginBottom: 15,
-                        borderWidth: 0.5,
-                        borderColor: '#ccc'
-                      }, __source: { fileName: _jsxFileName, lineNumber: 183 }
-                    })));
-              }, __source: { fileName: _jsxFileName, lineNumber: 143 }
-            }));
-
-
-        }
-      }]);
-      return HomePage;
-    }(_react.Component);
-  exports.default = HomePage;
-
-
-  var styles = _reactNative.StyleSheet.create({
-    page: {
-      flex: 1,
-      height: 130,
-      resizeMode: 'stretch'
-    },
-
-    menuView: {
-      flexDirection: 'row',
-      marginTop: 10
-    },
-
-    recommendTitle: {
-      width: len,
-      flexWrap: 'wrap',
-      fontSize: 12,
-      color: 'black',
-      flex: 1,
-      marginTop: 8,
-      marginBottom: 8,
-      height: 30
-    },
-
-    priceText: {
-      flex: 1,
-      alignSelf: 'flex-start',
-      textAlign: 'left',
-      fontSize: 13,
-      color: '#f15353'
-    }
-  });
-}, "SmartRectNativeApp/component/home/HomePage.js");
-__d(639 /* react-native-viewpager/ViewPager.js */, function (global, require, module, exports) {
-  'use strict';
-  var _jsxFileName = '/Users/sky/dev/react/native/SmartReactNativeApp/node_modules/react-native-viewpager/ViewPager.js';
-
-  var React = require(12 /* react */);
-  var
-    PropTypes = React.PropTypes;
-
-  var ReactNative = require(43 /* react-native */);
-  var
-
-    Dimensions =
-
-
-      ReactNative.Dimensions;
-  var Text = ReactNative.Text;
-  var View = ReactNative.View;
-  var TouchableOpacity = ReactNative.TouchableOpacity;
-  var PanResponder = ReactNative.PanResponder;
-  var Animated = ReactNative.Animated;
-  var StyleSheet = ReactNative.StyleSheet;
-
-  var StaticRenderer = require(396 /* react-native/Libraries/Components/StaticRenderer */);
-  var TimerMixin = require(640 /* react-timer-mixin */);
-
-  var DefaultViewPageIndicator = require(641 /* ./DefaultViewPageIndicator */);
-  var deviceWidth = Dimensions.get('window').width;
-  var ViewPagerDataSource = require(642 /* ./ViewPagerDataSource */);
-
-  var ViewPager = React.createClass({
-    displayName: 'ViewPager',
-    mixins: [TimerMixin],
-
-    statics: {
-      DataSource: ViewPagerDataSource
-    },
-
-
-    propTypes: babelHelpers.extends({},
-      View.propTypes, {
-        dataSource: PropTypes.instanceOf(ViewPagerDataSource).isRequired,
-        renderPage: PropTypes.func.isRequired,
-        onChangePage: PropTypes.func,
-        renderPageIndicator: PropTypes.oneOfType([
-          PropTypes.func,
-          PropTypes.bool]),
-
-        isLoop: PropTypes.bool,
-        locked: PropTypes.bool,
-        autoPlay: PropTypes.bool,
-        animation: PropTypes.func,
-        initialPage: PropTypes.number
-      }),
-
-
-    fling: false,
-
-    getDefaultProps: function getDefaultProps() {
-      return {
-        isLoop: false,
-        locked: false,
-        animation: function animation(animate, toValue, gs) {
-          return Animated.spring(animate,
-            {
-              toValue: toValue,
-              friction: 10,
-              tension: 50
-            });
-
-        }
-      };
-
-    },
-
-    getInitialState: function getInitialState() {
-      return {
-        currentPage: 0,
-        viewWidth: 0,
-        scrollValue: new Animated.Value(0)
-      };
-
-    },
-
-    componentWillMount: function componentWillMount() {
-      var _this = this;
-      this.childIndex = 0;
-
-      var release = function release(e, gestureState) {
-        var relativeGestureDistance = gestureState.dx / deviceWidth,
-
-          vx = gestureState.vx;
-
-        var step = 0;
-        if (relativeGestureDistance < -0.5 || relativeGestureDistance < 0 && vx <= -1e-6) {
-          step = 1;
-        } else if (relativeGestureDistance > 0.5 || relativeGestureDistance > 0 && vx >= 1e-6) {
-          step = -1;
-        }
-
-        _this.props.hasTouch && _this.props.hasTouch(false);
-
-        _this.movePage(step, gestureState);
-      };
-
-      this._panResponder = PanResponder.create({
-
-        onMoveShouldSetPanResponder: function onMoveShouldSetPanResponder(e, gestureState) {
-          if (Math.abs(gestureState.dx) > Math.abs(gestureState.dy)) {
-            if (
-
-              _this.props.locked !== true && !_this.fling) {
-              _this.props.hasTouch && _this.props.hasTouch(true);
-              return true;
-            }
-          }
-        },
-
-
-        onPanResponderRelease: release,
-        onPanResponderTerminate: release,
-
-
-        onPanResponderMove: function onPanResponderMove(e, gestureState) {
-          var dx = gestureState.dx;
-          var offsetX = -dx / _this.state.viewWidth + _this.childIndex;
-          _this.state.scrollValue.setValue(offsetX);
-        }
-      });
-
-
-      if (this.props.isLoop) {
-        this.childIndex = 1;
-        this.state.scrollValue.setValue(1);
-      }
-      if (this.props.initialPage) {
-        var initialPage = Number(this.props.initialPage);
-        if (initialPage > 0) {
-          this.goToPage(initialPage, false);
-        }
-      }
-    },
-
-    componentDidMount: function componentDidMount() {
-      if (this.props.autoPlay) {
-        this._startAutoPlay();
-      }
-    },
-
-    componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
-      if (nextProps.autoPlay) {
-        this._startAutoPlay();
-      } else {
-        if (this._autoPlayer) {
-          this.clearInterval(this._autoPlayer);
-          this._autoPlayer = null;
-        }
-      }
-
-      if (nextProps.dataSource) {
-        var maxPage = nextProps.dataSource.getPageCount() - 1;
-        var constrainedPage = Math.max(0, Math.min(this.state.currentPage, maxPage));
-        this.setState({
-          currentPage: constrainedPage
-        });
-
-
-        if (!nextProps.isLoop) {
-          this.state.scrollValue.setValue(constrainedPage > 0 ? 1 : 0);
-        }
-
-        this.childIndex = Math.min(this.childIndex, constrainedPage);
-        this.fling = false;
-      }
-
-    },
-
-    _startAutoPlay: function _startAutoPlay() {
-      var _this2 = this;
-      if (!this._autoPlayer) {
-        this._autoPlayer = this.setInterval(
-          function () {
-            _this2.movePage(1);
-          },
-          5000);
-
-      }
-    },
-
-    goToPage: function goToPage(pageNumber) {
-      var animate = arguments.length <= 1 || arguments[1] === undefined ? true : arguments[1];
-
-      var pageCount = this.props.dataSource.getPageCount();
-      if (pageNumber < 0 || pageNumber >= pageCount) {
-        console.error('Invalid page number: ', pageNumber);
-        return;
-      }
-
-      var step = pageNumber - this.state.currentPage;
-      this.movePage(step, null, animate);
-    },
-
-    movePage: function movePage(step, gs) {
-      var _this3 = this;
-      var animate = arguments.length <= 2 || arguments[2] === undefined ? true : arguments[2];
-      var pageCount = this.props.dataSource.getPageCount();
-      var pageNumber = this.state.currentPage + step;
-      if (this.props.isLoop) {
-        pageNumber = (pageNumber + pageCount) % pageCount;
-      } else {
-        pageNumber = Math.min(Math.max(0, pageNumber), pageCount - 1);
-      }
-
-      var moved = pageNumber !== this.state.currentPage;
-      var scrollStep = (moved ? step : 0) + this.childIndex;
-      var nextChildIdx = pageNumber > 0 || this.props.isLoop ? 1 : 0;
-
-      var postChange = function postChange() {
-        _this3.fling = false;
-        _this3.childIndex = nextChildIdx;
-        _this3.state.scrollValue.setValue(nextChildIdx);
-        _this3.setState({
-          currentPage: pageNumber
-        });
-
-      };
-
-      if (animate) {
-        this.fling = true;
-        this.props.animation(this.state.scrollValue, scrollStep, gs).
-        start(function (event) {
-          if (event.finished) {
-            postChange();
-          }
-          moved && _this3.props.onChangePage && _this3.props.onChangePage(pageNumber);
-        });
-      } else {
-        postChange();
-        moved && this.props.onChangePage && this.props.onChangePage(pageNumber);
-      }
-    },
-
-    getCurrentPage: function getCurrentPage() {
-      return this.state.currentPage;
-    },
-
-    renderPageIndicator: function renderPageIndicator(props) {
-      if (this.props.renderPageIndicator === false) {
-        return null;
-      } else if (this.props.renderPageIndicator) {
-        return React.cloneElement(this.props.renderPageIndicator(), props);
-      } else {
-        return (
-          React.createElement(View, { style: styles.indicators, __source: { fileName: _jsxFileName, lineNumber: 231 } },
-            React.createElement(DefaultViewPageIndicator, babelHelpers.extends({}, props, {
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 232
-              }
-            }))));
-
-
-      }
-    },
-
-    _getPage: function _getPage(pageIdx) {
-      var loop = arguments.length <= 1 || arguments[1] === undefined ? false : arguments[1];
-      var dataSource = this.props.dataSource;
-      var pageID = dataSource.pageIdentities[pageIdx];
-      return (
-        React.createElement(StaticRenderer, {
-          key: 'p_' + pageID + (loop ? '_1' : ''),
-          shouldUpdate: true,
-          render: this.props.renderPage.bind(
-            null,
-            dataSource.getPageData(pageIdx),
-            pageID,
-            this.state.currentPage), __source: { fileName: _jsxFileName, lineNumber: 242 }
-        }));
-
-
-    },
-
-    render: function render() {
-      var _this4 = this;
-      var dataSource = this.props.dataSource;
-      var pageIDs = dataSource.pageIdentities;
-
-      var bodyComponents = [];
-
-      var pagesNum = 0;
-      var hasLeft = false;
-      var viewWidth = this.state.viewWidth;
-
-      if (pageIDs.length > 0 && viewWidth > 0) {
-
-        if (this.state.currentPage > 0) {
-          bodyComponents.push(this._getPage(this.state.currentPage - 1));
-          pagesNum++;
-          hasLeft = true;
-        } else if (this.state.currentPage == 0 && this.props.isLoop) {
-          bodyComponents.push(this._getPage(pageIDs.length - 1, true));
-          pagesNum++;
-          hasLeft = true;
-        }
-
-
-        bodyComponents.push(this._getPage(this.state.currentPage));
-        pagesNum++;
-
-
-        if (this.state.currentPage < pageIDs.length - 1) {
-          bodyComponents.push(this._getPage(this.state.currentPage + 1));
-          pagesNum++;
-        } else if (this.state.currentPage == pageIDs.length - 1 && this.props.isLoop) {
-          bodyComponents.push(this._getPage(0, true));
-          pagesNum++;
-        }
-      }
-
-      var sceneContainerStyle = {
-        width: viewWidth * pagesNum,
-        flex: 1,
-        flexDirection: 'row'
-      };
-
-
-      var translateX = this.state.scrollValue.interpolate({
-        inputRange: [0, 1], outputRange: [0, -viewWidth]
-      });
-
-
-      return (
-        React.createElement(View, {
-            style: { flex: 1 },
-            onLayout: function onLayout(event) {
-
-              var viewWidth = event.nativeEvent.layout.width;
-              if (!viewWidth || _this4.state.viewWidth === viewWidth) {
-                return;
-              }
-              _this4.setState({
-                currentPage: _this4.state.currentPage,
-                viewWidth: viewWidth
-              });
-
-            }, __source: { fileName: _jsxFileName, lineNumber: 304 }
-          },
-
-
-          React.createElement(Animated.View, babelHelpers.extends({ style: [sceneContainerStyle, { transform: [{ translateX: translateX }] }] },
-            this._panResponder.panHandlers, { __source: { fileName: _jsxFileName, lineNumber: 318 } }),
-            bodyComponents),
-
-
-          this.renderPageIndicator({
-            goToPage: this.goToPage,
-            pageCount: pageIDs.length,
-            activePage: this.state.currentPage,
-            scrollValue: this.state.scrollValue,
-            scrollOffset: this.childIndex
-          })));
-
-
-    }
-  });
-
-
-  var styles = StyleSheet.create({
-    indicators: {
-      flex: 1,
-      alignItems: 'center',
-      position: 'absolute',
-      bottom: 10,
-      left: 0,
-      right: 0,
-      backgroundColor: 'transparent'
-    }
-  });
-
-
-  module.exports = ViewPager;
-}, "react-native-viewpager/ViewPager.js");
-__d(640 /* react-timer-mixin/TimerMixin.js */, function (global, require, module, exports) {
-
-
-  'use strict';
-
-  var GLOBAL = typeof window === 'undefined' ? global : window;
-
-  var setter = function setter(_setter, _clearer, array) {
-    return function (callback, delta) {
-      var id = _setter(function () {
-        _clearer.call(this, id);
-        callback.apply(this, arguments);
-      }.bind(this), delta);
-
-      if (!this[array]) {
-        this[array] = [id];
-      } else {
-        this[array].push(id);
-      }
-      return id;
-    };
-  };
-
-  var clearer = function clearer(_clearer, array) {
-    return function (id) {
-      if (this[array]) {
-        var index = this[array].indexOf(id);
-        if (index !== -1) {
-          this[array].splice(index, 1);
-        }
-      }
-      _clearer(id);
-    };
-  };
-
-  var _timeouts = 'TimerMixin_timeouts';
-  var _clearTimeout = clearer(GLOBAL.clearTimeout, _timeouts);
-  var _setTimeout = setter(GLOBAL.setTimeout, _clearTimeout, _timeouts);
-
-  var _intervals = 'TimerMixin_intervals';
-  var _clearInterval = clearer(GLOBAL.clearInterval, _intervals);
-  var _setInterval = setter(GLOBAL.setInterval, function () {
-  }, _intervals);
-
-  var _immediates = 'TimerMixin_immediates';
-  var _clearImmediate = clearer(GLOBAL.clearImmediate, _immediates);
-  var _setImmediate = setter(GLOBAL.setImmediate, _clearImmediate, _immediates);
-
-  var _rafs = 'TimerMixin_rafs';
-  var _cancelAnimationFrame = clearer(GLOBAL.cancelAnimationFrame, _rafs);
-  var _requestAnimationFrame = setter(GLOBAL.requestAnimationFrame, _cancelAnimationFrame, _rafs);
-
-  var TimerMixin = {
-    componentWillUnmount: function componentWillUnmount() {
-      this[_timeouts] && this[_timeouts].forEach(function (id) {
-        GLOBAL.clearTimeout(id);
-      });
-      this[_timeouts] = null;
-      this[_intervals] && this[_intervals].forEach(function (id) {
-        GLOBAL.clearInterval(id);
-      });
-      this[_intervals] = null;
-      this[_immediates] && this[_immediates].forEach(function (id) {
-        GLOBAL.clearImmediate(id);
-      });
-      this[_immediates] = null;
-      this[_rafs] && this[_rafs].forEach(function (id) {
-        GLOBAL.cancelAnimationFrame(id);
-      });
-      this[_rafs] = null;
-    },
-
-    setTimeout: _setTimeout,
-    clearTimeout: _clearTimeout,
-
-    setInterval: _setInterval,
-    clearInterval: _clearInterval,
-
-    setImmediate: _setImmediate,
-    clearImmediate: _clearImmediate,
-
-    requestAnimationFrame: _requestAnimationFrame,
-    cancelAnimationFrame: _cancelAnimationFrame
-  };
-
-
-  module.exports = TimerMixin;
-}, "react-timer-mixin/TimerMixin.js");
-__d(641 /* react-native-viewpager/DefaultViewPageIndicator.js */, function (global, require, module, exports) {
-  'use strict';
-  var _jsxFileName = '/Users/sky/dev/react/native/SmartReactNativeApp/node_modules/react-native-viewpager/DefaultViewPageIndicator.js';
-
-  var React = require(12 /* react */);
-  var ReactNative = require(43 /* react-native */);
-  var
-
-    Dimensions =
-
-
-      ReactNative.Dimensions;
-  var StyleSheet = ReactNative.StyleSheet;
-  var Text = ReactNative.Text;
-  var TouchableOpacity = ReactNative.TouchableOpacity;
-  var View = ReactNative.View;
-  var Animated = ReactNative.Animated;
-
-  var deviceWidth = Dimensions.get('window').width;
-  var DOT_SIZE = 6;
-  var DOT_SAPCE = 4;
-
-  var styles = StyleSheet.create({
-    tab: {
-      alignItems: 'center'
-    },
-
-
-    tabs: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'center'
-    },
-
-
-    dot: {
-      width: DOT_SIZE,
-      height: DOT_SIZE,
-      borderRadius: DOT_SIZE / 2,
-      backgroundColor: '#E0E1E2',
-      marginLeft: DOT_SAPCE,
-      marginRight: DOT_SAPCE
-    },
-
-
-    curDot: {
-      position: 'absolute',
-      width: DOT_SIZE,
-      height: DOT_SIZE,
-      borderRadius: DOT_SIZE / 2,
-      backgroundColor: '#80ACD0',
-      margin: DOT_SAPCE,
-      bottom: 0
-    }
-  });
-
-
-  var DefaultViewPageIndicator = React.createClass({
-    displayName: 'DefaultViewPageIndicator',
-    propTypes: {
-      goToPage: React.PropTypes.func,
-      activePage: React.PropTypes.number,
-      pageCount: React.PropTypes.number
-    },
-
-
-    getInitialState: function getInitialState() {
-      return {
-        viewWidth: 0
-      };
-
-    },
-
-    renderIndicator: function renderIndicator(page) {
-      var _this = this;
-
-      return (
-        React.createElement(TouchableOpacity, {
-            style: styles.tab, key: 'idc_' + page, onPress: function onPress() {
-              return _this.props.goToPage(page);
-            }, __source: { fileName: _jsxFileName, lineNumber: 65 }
-          },
-          React.createElement(View, { style: styles.dot, __source: { fileName: _jsxFileName, lineNumber: 66 } })));
-
-
-    },
-
-    render: function render() {
-      var _this2 = this;
-      var pageCount = this.props.pageCount;
-      var itemWidth = DOT_SIZE + DOT_SAPCE * 2;
-      var offset = (this.state.viewWidth - itemWidth * pageCount) / 2 + itemWidth * this.props.activePage;
-
-
-      var offsetX = itemWidth * (this.props.activePage - this.props.scrollOffset);
-      var left = this.props.scrollValue.interpolate({
-        inputRange: [0, 1], outputRange: [offsetX, offsetX + itemWidth]
-      });
-
-
-      var indicators = [];
-      for (var i = 0; i < pageCount; i++) {
-        indicators.push(this.renderIndicator(i));
-      }
-
-      return (
-        React.createElement(View, {
-            style: styles.tabs,
-            onLayout: function onLayout(event) {
-              var viewWidth = event.nativeEvent.layout.width;
-              if (!viewWidth || _this2.state.viewWidth === viewWidth) {
-                return;
-              }
-              _this2.setState({
-                viewWidth: viewWidth
-              });
-
-            }, __source: { fileName: _jsxFileName, lineNumber: 88 }
-          },
-          indicators,
-          React.createElement(Animated.View, {
-            style: [styles.curDot, { left: left }],
-            __source: { fileName: _jsxFileName, lineNumber: 99 }
-          })));
-
-
-    }
-  });
-
-
-  module.exports = DefaultViewPageIndicator;
-}, "react-native-viewpager/DefaultViewPageIndicator.js");
-__d(642 /* react-native-viewpager/ViewPagerDataSource.js */, function (global, require, module, exports) {
-  'use strict';
-
-
-  function defaultGetPageData(dataBlob,
-                              pageID) {
-    return dataBlob[pageID];
-  }
-
-  var
-
-
-    ViewPagerDataSource = function () {
-
-      function ViewPagerDataSource(params) {
-        babelHelpers.classCallCheck(this, ViewPagerDataSource);
-        this._getPageData = params.getPageData || defaultGetPageData;
-        this._pageHasChanged = params.pageHasChanged;
-
-        this.pageIdentities = [];
-      }
-
-      babelHelpers.createClass(ViewPagerDataSource, [{
-        key: 'cloneWithPages', value: function cloneWithPages(dataBlob,
-                                                              pageIdentities) {
-
-          var newSource = new ViewPagerDataSource({
-            getPageData: this._getPageData,
-            pageHasChanged: this._pageHasChanged
-          });
-
-
-          newSource._dataBlob = dataBlob;
-
-          if (pageIdentities) {
-            newSource.pageIdentities = pageIdentities;
-          } else {
-            newSource.pageIdentities = Object.keys(dataBlob);
-          }
-
-          newSource._cachedPageCount = newSource.pageIdentities.length;
-          newSource._calculateDirtyPages(
-            this._dataBlob,
-            this.pageIdentities);
-
-          return newSource;
-        }
-      }, {
-        key: 'getPageCount', value: function getPageCount() {
-          return this._cachedPageCount;
-        }
-      }, {
-        key: 'pageShouldUpdate', value: function pageShouldUpdate(pageIndex) {
-          var needsUpdate = this._dirtyPages[pageIndex];
-
-
-          return needsUpdate;
-        }
-      }, {
-        key: 'getPageData', value: function getPageData(pageIndex) {
-          if (!this.getPageData) {
-            return null;
-          }
-          var pageID = this.pageIdentities[pageIndex];
-
-
-          return this._getPageData(this._dataBlob, pageID);
-        }
-      }, {
-        key: '_calculateDirtyPages', value: function _calculateDirtyPages(prevDataBlob,
-                                                                          prevPageIDs) {
-
-          var prevPagesHash = keyedDictionaryFromArray(prevPageIDs);
-          this._dirtyPages = [];
-
-          var dirty;
-          for (var sIndex = 0; sIndex < this.pageIdentities.length; sIndex++) {
-            var pageID = this.pageIdentities[sIndex];
-            dirty = !prevPagesHash[pageID];
-            var pageHasChanged = this._pageHasChanged;
-            if (!dirty && pageHasChanged) {
-              dirty = pageHasChanged(
-                this._getPageData(prevDataBlob, pageID),
-                this._getPageData(this._dataBlob, pageID));
-
-            }
-            this._dirtyPages.push(!!dirty);
-          }
-        }
-      }]);
-      return ViewPagerDataSource;
-    }();
-
-
-  function keyedDictionaryFromArray(arr) {
-    if (arr.length === 0) {
-      return {};
-    }
-    var result = {};
-    for (var ii = 0; ii < arr.length; ii++) {
-      var key = arr[ii];
-
-      result[key] = true;
-    }
-    return result;
-  }
-
-  module.exports = ViewPagerDataSource;
-}, "react-native-viewpager/ViewPagerDataSource.js");
-__d(643 /* SmartRectNativeApp/component/home/MenuButton.js */, function (global, require, module, exports) {
-
-
-  'use strict';
-  Object.defineProperty(exports, "__esModule", { value: true });
-  var _jsxFileName = '/Users/sky/dev/react/native/SmartReactNativeApp/component/home/MenuButton.js';
-  var _react = require(12 /* react */);
-  var _react2 = babelHelpers.interopRequireDefault(_react);
-
-  var _reactNative = require(43 /* react-native */);
-  var
-
-
-    MenuButton = function (_React$Component) {
-      babelHelpers.inherits(MenuButton, _React$Component);
-
-
-      function MenuButton(props) {
-        babelHelpers.classCallCheck(this, MenuButton);
-        var _this = babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(MenuButton).call(this,
-          props));
-        _this._onClick = _this._onClick.bind(_this);
-        return _this;
-      }
-
-      babelHelpers.createClass(MenuButton, [{
-        key: '_onClick', value: function _onClick() {
-          if (this.props.onClick) {
-            this.props.onClick(this.props.showText, this.props.tag);
-          }
-        }
-      }, {
-        key: 'render', value: function render() {
-          return (
-            _react2.default.createElement(_reactNative.TouchableWithoutFeedback, {
-                onPress: this._onClick,
-                __source: { fileName: _jsxFileName, lineNumber: 37 }
-              },
-              _react2.default.createElement(_reactNative.View, {
-                  style: { alignItems: 'center', flex: 1 },
-                  __source: { fileName: _jsxFileName, lineNumber: 38 }
-                },
-                _react2.default.createElement(_reactNative.Image, {
-                  style: styles.iconImg,
-                  source: this.props.renderIcon,
-                  __source: { fileName: _jsxFileName, lineNumber: 39 }
-                }),
-                _react2.default.createElement(_reactNative.Text, {
-                  style: styles.showText,
-                  __source: { fileName: _jsxFileName, lineNumber: 40 }
-                }, this.props.showText))));
-
-
-        }
-      }]);
-      return MenuButton;
-    }(_react2.default.Component);
-  MenuButton.propTypes = {
-    renderIcon: _react.PropTypes.number,
-    showText: _react.PropTypes.string,
-    tag: _react.PropTypes.string,
-    onClick: _react.PropTypes.func
-  };
-  exports.default = MenuButton;
-
-
-  var styles = _reactNative.StyleSheet.create({
-    iconImg: {
-      width: 38,
-      height: 38,
-      marginBottom: 2
-    },
-
-    showText: {
-      fontSize: 12
-    }
-  });
-}, "SmartRectNativeApp/component/home/MenuButton.js");
-__d(644 /* SmartRectNativeApp/images/banner/1.jpg */, function (global, require, module, exports) {
-  module.exports = require(169 /* react-native/Libraries/Image/AssetRegistry */).registerAsset({
-    "__packager_asset": true,
-    "fileSystemLocation": "/Users/sky/dev/react/native/SmartReactNativeApp/images/banner",
-    "httpServerLocation": "/assets/images/banner",
-    "width": 670,
-    "height": 240,
-    "scales": [1],
-    "files": ["/Users/sky/dev/react/native/SmartReactNativeApp/images/banner/1.jpg"],
-    "hash": "a81088712f91f3df42d2b78607c24e49",
-    "name": "1",
-    "type": "jpg"
-  });
-}, "SmartRectNativeApp/images/banner/1.jpg");
-__d(645 /* SmartRectNativeApp/images/banner/2.jpg */, function (global, require, module, exports) {
-  module.exports = require(169 /* react-native/Libraries/Image/AssetRegistry */).registerAsset({
-    "__packager_asset": true,
-    "fileSystemLocation": "/Users/sky/dev/react/native/SmartReactNativeApp/images/banner",
-    "httpServerLocation": "/assets/images/banner",
-    "width": 670,
-    "height": 240,
-    "scales": [1],
-    "files": ["/Users/sky/dev/react/native/SmartReactNativeApp/images/banner/2.jpg"],
-    "hash": "a81088712f91f3df42d2b78607c24e49",
-    "name": "2",
-    "type": "jpg"
-  });
-}, "SmartRectNativeApp/images/banner/2.jpg");
-__d(646 /* SmartRectNativeApp/images/banner/3.jpg */, function (global, require, module, exports) {
-  module.exports = require(169 /* react-native/Libraries/Image/AssetRegistry */).registerAsset({
-    "__packager_asset": true,
-    "fileSystemLocation": "/Users/sky/dev/react/native/SmartReactNativeApp/images/banner",
-    "httpServerLocation": "/assets/images/banner",
-    "width": 670,
-    "height": 240,
-    "scales": [1],
-    "files": ["/Users/sky/dev/react/native/SmartReactNativeApp/images/banner/3.jpg"],
-    "hash": "a81088712f91f3df42d2b78607c24e49",
-    "name": "3",
-    "type": "jpg"
-  });
-}, "SmartRectNativeApp/images/banner/3.jpg");
-__d(647 /* SmartRectNativeApp/images/banner/4.jpg */, function (global, require, module, exports) {
-  module.exports = require(169 /* react-native/Libraries/Image/AssetRegistry */).registerAsset({
-    "__packager_asset": true,
-    "fileSystemLocation": "/Users/sky/dev/react/native/SmartReactNativeApp/images/banner",
-    "httpServerLocation": "/assets/images/banner",
-    "width": 670,
-    "height": 240,
-    "scales": [1],
-    "files": ["/Users/sky/dev/react/native/SmartReactNativeApp/images/banner/4.jpg"],
-    "hash": "a81088712f91f3df42d2b78607c24e49",
-    "name": "4",
-    "type": "jpg"
-  });
-}, "SmartRectNativeApp/images/banner/4.jpg");
-__d(648 /* SmartRectNativeApp/images/home/wdgz.png */, function (global, require, module, exports) {
-  module.exports = require(169 /* react-native/Libraries/Image/AssetRegistry */).registerAsset({
-    "__packager_asset": true,
-    "fileSystemLocation": "/Users/sky/dev/react/native/SmartReactNativeApp/images/home",
-    "httpServerLocation": "/assets/images/home",
-    "width": 76,
-    "height": 75,
-    "scales": [1],
-    "files": ["/Users/sky/dev/react/native/SmartReactNativeApp/images/home/wdgz.png"],
-    "hash": "a81088712f91f3df42d2b78607c24e49",
-    "name": "wdgz",
-    "type": "png"
-  });
-}, "SmartRectNativeApp/images/home/wdgz.png");
-__d(649 /* SmartRectNativeApp/images/home/wlcx.png */, function (global, require, module, exports) {
-  module.exports = require(169 /* react-native/Libraries/Image/AssetRegistry */).registerAsset({
-    "__packager_asset": true,
-    "fileSystemLocation": "/Users/sky/dev/react/native/SmartReactNativeApp/images/home",
-    "httpServerLocation": "/assets/images/home",
-    "width": 75,
-    "height": 75,
-    "scales": [1],
-    "files": ["/Users/sky/dev/react/native/SmartReactNativeApp/images/home/wlcx.png"],
-    "hash": "a81088712f91f3df42d2b78607c24e49",
-    "name": "wlcx",
-    "type": "png"
-  });
-}, "SmartRectNativeApp/images/home/wlcx.png");
-__d(650 /* SmartRectNativeApp/images/home/cz.png */, function (global, require, module, exports) {
-  module.exports = require(169 /* react-native/Libraries/Image/AssetRegistry */).registerAsset({
-    "__packager_asset": true,
-    "fileSystemLocation": "/Users/sky/dev/react/native/SmartReactNativeApp/images/home",
-    "httpServerLocation": "/assets/images/home",
-    "width": 76,
-    "height": 76,
-    "scales": [1],
-    "files": ["/Users/sky/dev/react/native/SmartReactNativeApp/images/home/cz.png"],
-    "hash": "a81088712f91f3df42d2b78607c24e49",
-    "name": "cz",
-    "type": "png"
-  });
-}, "SmartRectNativeApp/images/home/cz.png");
-__d(651 /* SmartRectNativeApp/images/home/dyp.png */, function (global, require, module, exports) {
-  module.exports = require(169 /* react-native/Libraries/Image/AssetRegistry */).registerAsset({
-    "__packager_asset": true,
-    "fileSystemLocation": "/Users/sky/dev/react/native/SmartReactNativeApp/images/home",
-    "httpServerLocation": "/assets/images/home",
-    "width": 76,
-    "height": 75,
-    "scales": [1],
-    "files": ["/Users/sky/dev/react/native/SmartReactNativeApp/images/home/dyp.png"],
-    "hash": "a81088712f91f3df42d2b78607c24e49",
-    "name": "dyp",
-    "type": "png"
-  });
-}, "SmartRectNativeApp/images/home/dyp.png");
-__d(652 /* SmartRectNativeApp/images/home/yxcz.png */, function (global, require, module, exports) {
-  module.exports = require(169 /* react-native/Libraries/Image/AssetRegistry */).registerAsset({
-    "__packager_asset": true,
-    "fileSystemLocation": "/Users/sky/dev/react/native/SmartReactNativeApp/images/home",
-    "httpServerLocation": "/assets/images/home",
-    "width": 76,
-    "height": 76,
-    "scales": [1],
-    "files": ["/Users/sky/dev/react/native/SmartReactNativeApp/images/home/yxcz.png"],
-    "hash": "a81088712f91f3df42d2b78607c24e49",
-    "name": "yxcz",
-    "type": "png"
-  });
-}, "SmartRectNativeApp/images/home/yxcz.png");
-__d(653 /* SmartRectNativeApp/images/home/xjk.png */, function (global, require, module, exports) {
-  module.exports = require(169 /* react-native/Libraries/Image/AssetRegistry */).registerAsset({
-    "__packager_asset": true,
-    "fileSystemLocation": "/Users/sky/dev/react/native/SmartReactNativeApp/images/home",
-    "httpServerLocation": "/assets/images/home",
-    "width": 76,
-    "height": 76,
-    "scales": [1],
-    "files": ["/Users/sky/dev/react/native/SmartReactNativeApp/images/home/xjk.png"],
-    "hash": "a81088712f91f3df42d2b78607c24e49",
-    "name": "xjk",
-    "type": "png"
-  });
-}, "SmartRectNativeApp/images/home/xjk.png");
-__d(654 /* SmartRectNativeApp/images/home/ljd.png */, function (global, require, module, exports) {
-  module.exports = require(169 /* react-native/Libraries/Image/AssetRegistry */).registerAsset({
-    "__packager_asset": true,
-    "fileSystemLocation": "/Users/sky/dev/react/native/SmartReactNativeApp/images/home",
-    "httpServerLocation": "/assets/images/home",
-    "width": 74,
-    "height": 74,
-    "scales": [1],
-    "files": ["/Users/sky/dev/react/native/SmartReactNativeApp/images/home/ljd.png"],
-    "hash": "a81088712f91f3df42d2b78607c24e49",
-    "name": "ljd",
-    "type": "png"
-  });
-}, "SmartRectNativeApp/images/home/ljd.png");
-__d(655 /* SmartRectNativeApp/images/home/gd.png */, function (global, require, module, exports) {
-  module.exports = require(169 /* react-native/Libraries/Image/AssetRegistry */).registerAsset({
-    "__packager_asset": true,
-    "fileSystemLocation": "/Users/sky/dev/react/native/SmartReactNativeApp/images/home",
-    "httpServerLocation": "/assets/images/home",
-    "width": 74,
-    "height": 74,
-    "scales": [1],
-    "files": ["/Users/sky/dev/react/native/SmartReactNativeApp/images/home/gd.png"],
-    "hash": "a81088712f91f3df42d2b78607c24e49",
-    "name": "gd",
-    "type": "png"
-  });
-}, "SmartRectNativeApp/images/home/gd.png");
-__d(656 /* react-native-tab-navigator/TabNavigator.js */, function (global, require, module, exports) {
-  'use strict';
-  Object.defineProperty(exports, "__esModule", { value: true });
-  var _jsxFileName = '/Users/sky/dev/react/native/SmartReactNativeApp/node_modules/react-native-tab-navigator/TabNavigator.js';
-
-  var _immutable = require(657 /* immutable */);
-  var _react = require(12 /* react */);
-  var _react2 = babelHelpers.interopRequireDefault(_react);
-
-
-  var _reactNative = require(43 /* react-native */);
-
-
-  var _Badge = require(658 /* ./Badge */);
-  var _Badge2 = babelHelpers.interopRequireDefault(_Badge);
-  var _Layout = require(659 /* ./Layout */);
-  var _Layout2 = babelHelpers.interopRequireDefault(_Layout);
-  var _StaticContainer = require(660 /* ./StaticContainer */);
-  var _StaticContainer2 = babelHelpers.interopRequireDefault(_StaticContainer);
-  var _Tab = require(661 /* ./Tab */);
-  var _Tab2 = babelHelpers.interopRequireDefault(_Tab);
-  var _TabBar = require(662 /* ./TabBar */);
-  var _TabBar2 = babelHelpers.interopRequireDefault(_TabBar);
-  var _TabNavigatorItem = require(663 /* ./TabNavigatorItem */);
-  var _TabNavigatorItem2 = babelHelpers.interopRequireDefault(_TabNavigatorItem);
-  var
-
-    TabNavigator = function (_React$Component) {
-      babelHelpers.inherits(TabNavigator, _React$Component);
-
-
-      function TabNavigator(props, context) {
-        babelHelpers.classCallCheck(this, TabNavigator);
-        var _this = babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(TabNavigator).call(this,
-          props, context));
-        _this.state = {
-          renderedSceneKeys: _this._updateRenderedSceneKeys(props.children)
-        };
-
-
-        _this._renderTab = _this._renderTab.bind(_this);
-        return _this;
-      }
-
-      babelHelpers.createClass(TabNavigator, [{
-        key: 'componentWillReceiveProps', value: function componentWillReceiveProps(nextProps) {
-          var
-            renderedSceneKeys = this.state.renderedSceneKeys;
-          this.setState({
-            renderedSceneKeys: this._updateRenderedSceneKeys(
-              nextProps.children,
-              renderedSceneKeys)
-          });
-
-
-        }
-      }, {
-        key: '_getSceneKey', value: function _getSceneKey(item, index) {
-          return 'scene-' + (item.key !== null ? item.key : index);
-        }
-      }, {
-        key: '_updateRenderedSceneKeys', value: function _updateRenderedSceneKeys(children) {
-          var _this2 = this;
-          var oldSceneKeys = arguments.length <= 1 || arguments[1] === undefined ? (0, _immutable.Set)() : arguments[1];
-          var newSceneKeys = (0, _immutable.Set)().asMutable();
-          _react2.default.Children.forEach(children, function (item, index) {
-            var key = _this2._getSceneKey(item, index);
-            if (oldSceneKeys.has(key) || item.props.selected) {
-              newSceneKeys.add(key);
-            }
-          });
-          return newSceneKeys.asImmutable();
-        }
-      }, {
-        key: 'render', value: function render() {
-          var _this3 = this;
-          var _props =
-            this.props;
-          var style = _props.style;
-          var children = _props.children;
-          var tabBarStyle = _props.tabBarStyle;
-          var tabBarShadowStyle = _props.tabBarShadowStyle;
-          var sceneStyle = _props.sceneStyle;
-          var props = babelHelpers.objectWithoutProperties(_props, ['style', 'children', 'tabBarStyle', 'tabBarShadowStyle', 'sceneStyle']);
-          var scenes = [];
-
-          _react2.default.Children.forEach(children, function (item, index) {
-            var sceneKey = _this3._getSceneKey(item, index);
-            if (!_this3.state.renderedSceneKeys.has(sceneKey)) {
-              return;
-            }
-            var
-
-              selected = item.props.selected;
-            var scene =
-              _react2.default.createElement(SceneContainer, {
-                  key: sceneKey,
-                  selected: selected,
-                  style: sceneStyle,
-                  __source: { fileName: _jsxFileName, lineNumber: 74 }
-                },
-                item);
-
-
-            scenes.push(scene);
-          });
-
-          return (
-            _react2.default.createElement(_reactNative.View, babelHelpers.extends({}, props, {
-                style: [styles.container, style],
-                __source: { fileName: _jsxFileName, lineNumber: 82 }
-              }),
-              scenes,
-              _react2.default.createElement(_TabBar2.default, {
-                  style: tabBarStyle,
-                  shadowStyle: tabBarShadowStyle,
-                  __source: { fileName: _jsxFileName, lineNumber: 84 }
-                },
-                _react2.default.Children.map(children, this._renderTab))));
-
-
-        }
-      }, {
-        key: '_renderTab', value: function _renderTab(item) {
-          var icon = void 0;
-          if (item.props.selected) {
-            if (item.props.renderSelectedIcon) {
-              icon = item.props.renderSelectedIcon();
-            } else if (item.props.renderIcon) {
-              var defaultIcon = item.props.renderIcon();
-              icon = _react2.default.cloneElement(defaultIcon, {
-                style: [defaultIcon.props.style, styles.defaultSelectedIcon]
-              });
-
-            }
-          } else if (item.props.renderIcon) {
-            icon = item.props.renderIcon();
-          }
-
-          var badge = void 0;
-          if (item.props.renderBadge) {
-            badge = item.props.renderBadge();
-          } else if (item.props.badgeText) {
-            badge = _react2.default.createElement(_Badge2.default, {
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 110
-              }
-            }, item.props.badgeText);
-          }
-
-          return (
-            _react2.default.createElement(_Tab2.default, {
-                testID: item.props.testID,
-                title: item.props.title,
-                allowFontScaling: item.props.allowFontScaling,
-                titleStyle: [
-                  item.props.titleStyle,
-                  item.props.selected ? [
-                    styles.defaultSelectedTitle,
-                    item.props.selectedTitleStyle] :
-                    null],
-
-                badge: badge,
-                onPress: item.props.onPress,
-                hidesTabTouch: this.props.hidesTabTouch,
-                style: item.props.tabStyle, __source: { fileName: _jsxFileName, lineNumber: 114 }
-              },
-              icon));
-
-
-        }
-      }]);
-      return TabNavigator;
-    }(_react2.default.Component);
-  TabNavigator.propTypes = babelHelpers.extends({}, _reactNative.View.propTypes, {
-    sceneStyle: _reactNative.View.propTypes.style,
-    tabBarStyle: _TabBar2.default.propTypes.style,
-    tabBarShadowStyle: _TabBar2.default.propTypes.shadowStyle,
-    hidesTabTouch: _react.PropTypes.bool
-  });
-  exports.default = TabNavigator;
-  var
-
-
-    SceneContainer = function (_React$Component2) {
-      babelHelpers.inherits(SceneContainer, _React$Component2);
-      function SceneContainer() {
-        babelHelpers.classCallCheck(this, SceneContainer);
-        return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(SceneContainer).apply(this, arguments));
-      }
-
-      babelHelpers.createClass(SceneContainer, [{
-        key: 'render', value: function render() {
-          var _props2 =
-            this.props;
-          var selected = _props2.selected;
-          var props = babelHelpers.objectWithoutProperties(_props2, ['selected']);
-          return (
-            _react2.default.createElement(_reactNative.View, babelHelpers.extends({},
-              props, {
-                pointerEvents: selected ? 'auto' : 'none',
-                removeClippedSubviews: !selected,
-                style: [
-                  styles.sceneContainer,
-                  selected ? null : styles.hiddenSceneContainer,
-                  props.style], __source: { fileName: _jsxFileName, lineNumber: 144 }
-              }),
-
-              _react2.default.createElement(_StaticContainer2.default, {
-                  shouldUpdate: selected,
-                  __source: { fileName: _jsxFileName, lineNumber: 153 }
-                },
-                this.props.children)));
-
-
-        }
-      }]);
-      return SceneContainer;
-    }(_react2.default.Component);
-  SceneContainer.propTypes = babelHelpers.extends({}, _reactNative.View.propTypes, { selected: _react.PropTypes.bool });
-
-
-  var styles = _reactNative.StyleSheet.create({
-    container: {
-      flex: 1
-    },
-
-    sceneContainer: {
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      paddingBottom: _Layout2.default.tabBarHeight
-    },
-
-    hiddenSceneContainer: {
-      overflow: 'hidden',
-      opacity: 0
-    },
-
-    defaultSelectedTitle: {
-      color: 'rgb(0, 122, 255)'
-    },
-
-    defaultSelectedIcon: {
-      tintColor: 'rgb(0, 122, 255)'
-    }
-  });
-
-
-  TabNavigator.Item = _TabNavigatorItem2.default;
-}, "react-native-tab-navigator/TabNavigator.js");
-__d(657 /* immutable/dist/immutable.js */, function (global, require, module, exports) {
-
-
-  (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-      typeof define === 'function' && define.amd ? define(factory) :
-        global.Immutable = factory();
-  })(this, function () {
-    'use strict';
-    var SLICE$0 = Array.prototype.slice;
-
-    function createClass(ctor, superClass) {
-      if (superClass) {
-        ctor.prototype = Object.create(superClass.prototype);
-      }
-      ctor.prototype.constructor = ctor;
-    }
-
-    function Iterable(value) {
-      return isIterable(value) ? value : Seq(value);
-    }
-
-
-    createClass(KeyedIterable, Iterable);
-    function KeyedIterable(value) {
-      return isKeyed(value) ? value : KeyedSeq(value);
-    }
-
-
-    createClass(IndexedIterable, Iterable);
-    function IndexedIterable(value) {
-      return isIndexed(value) ? value : IndexedSeq(value);
-    }
-
-
-    createClass(SetIterable, Iterable);
-    function SetIterable(value) {
-      return isIterable(value) && !isAssociative(value) ? value : SetSeq(value);
-    }
-
-
-    function isIterable(maybeIterable) {
-      return !!(maybeIterable && maybeIterable[IS_ITERABLE_SENTINEL]);
-    }
-
-    function isKeyed(maybeKeyed) {
-      return !!(maybeKeyed && maybeKeyed[IS_KEYED_SENTINEL]);
-    }
-
-    function isIndexed(maybeIndexed) {
-      return !!(maybeIndexed && maybeIndexed[IS_INDEXED_SENTINEL]);
-    }
-
-    function isAssociative(maybeAssociative) {
-      return isKeyed(maybeAssociative) || isIndexed(maybeAssociative);
-    }
-
-    function isOrdered(maybeOrdered) {
-      return !!(maybeOrdered && maybeOrdered[IS_ORDERED_SENTINEL]);
-    }
-
-    Iterable.isIterable = isIterable;
-    Iterable.isKeyed = isKeyed;
-    Iterable.isIndexed = isIndexed;
-    Iterable.isAssociative = isAssociative;
-    Iterable.isOrdered = isOrdered;
-
-    Iterable.Keyed = KeyedIterable;
-    Iterable.Indexed = IndexedIterable;
-    Iterable.Set = SetIterable;
-
-
-    var IS_ITERABLE_SENTINEL = '@@__IMMUTABLE_ITERABLE__@@';
-    var IS_KEYED_SENTINEL = '@@__IMMUTABLE_KEYED__@@';
-    var IS_INDEXED_SENTINEL = '@@__IMMUTABLE_INDEXED__@@';
-    var IS_ORDERED_SENTINEL = '@@__IMMUTABLE_ORDERED__@@';
-
-
-    var DELETE = 'delete';
-
-
-    var SHIFT = 5;
-    var SIZE = 1 << SHIFT;
-    var MASK = SIZE - 1;
-
-
-    var NOT_SET = {};
-
-
-    var CHANGE_LENGTH = { value: false };
-    var DID_ALTER = { value: false };
-
-    function MakeRef(ref) {
-      ref.value = false;
-      return ref;
-    }
-
-    function SetRef(ref) {
-      ref && (ref.value = true);
-    }
-
-
-    function OwnerID() {
-    }
-
-
-    function arrCopy(arr, offset) {
-      offset = offset || 0;
-      var len = Math.max(0, arr.length - offset);
-      var newArr = new Array(len);
-      for (var ii = 0; ii < len; ii++) {
-        newArr[ii] = arr[ii + offset];
-      }
-      return newArr;
-    }
-
-    function ensureSize(iter) {
-      if (iter.size === undefined) {
-        iter.size = iter.__iterate(returnTrue);
-      }
-      return iter.size;
-    }
-
-    function wrapIndex(iter, index) {
-
-
-      if (typeof index !== 'number') {
-        var uint32Index = index >>> 0;
-        if ('' + uint32Index !== index || uint32Index === 4294967295) {
-          return NaN;
-        }
-        index = uint32Index;
-      }
-      return index < 0 ? ensureSize(iter) + index : index;
-    }
-
-    function returnTrue() {
-      return true;
-    }
-
-    function wholeSlice(begin, end, size) {
-      return (begin === 0 || size !== undefined && begin <= -size) && (
-        end === undefined || size !== undefined && end >= size);
-    }
-
-    function resolveBegin(begin, size) {
-      return resolveIndex(begin, size, 0);
-    }
-
-    function resolveEnd(end, size) {
-      return resolveIndex(end, size, size);
-    }
-
-    function resolveIndex(index, size, defaultIndex) {
-      return index === undefined ?
-        defaultIndex :
-        index < 0 ?
-          Math.max(0, size + index) :
-          size === undefined ?
-            index :
-            Math.min(size, index);
-    }
-
-
-    var ITERATE_KEYS = 0;
-    var ITERATE_VALUES = 1;
-    var ITERATE_ENTRIES = 2;
-
-    var REAL_ITERATOR_SYMBOL = typeof Symbol === 'function' && (typeof Symbol === 'function' ? Symbol.iterator : '@@iterator');
-    var FAUX_ITERATOR_SYMBOL = '@@iterator';
-
-    var ITERATOR_SYMBOL = REAL_ITERATOR_SYMBOL || FAUX_ITERATOR_SYMBOL;
-
-
-    function Iterator(next) {
-      this.next = next;
-    }
-
-    Iterator.prototype.toString = function () {
-      return '[Iterator]';
-    };
-
-
-    Iterator.KEYS = ITERATE_KEYS;
-    Iterator.VALUES = ITERATE_VALUES;
-    Iterator.ENTRIES = ITERATE_ENTRIES;
-
-    Iterator.prototype.inspect =
-      Iterator.prototype.toSource = function () {
-        return this.toString();
-      };
-    Iterator.prototype[ITERATOR_SYMBOL] = function () {
-      return this;
-    };
-
-
-    function iteratorValue(type, k, v, iteratorResult) {
-      var value = type === 0 ? k : type === 1 ? v : [k, v];
-      iteratorResult ? iteratorResult.value = value : iteratorResult = {
-        value: value, done: false
-      };
-
-      return iteratorResult;
-    }
-
-    function iteratorDone() {
-      return { value: undefined, done: true };
-    }
-
-    function hasIterator(maybeIterable) {
-      return !!getIteratorFn(maybeIterable);
-    }
-
-    function isIterator(maybeIterator) {
-      return maybeIterator && typeof maybeIterator.next === 'function';
-    }
-
-    function getIterator(iterable) {
-      var iteratorFn = getIteratorFn(iterable);
-      return iteratorFn && iteratorFn.call(iterable);
-    }
-
-    function getIteratorFn(iterable) {
-      var iteratorFn = iterable && (
-        REAL_ITERATOR_SYMBOL && iterable[REAL_ITERATOR_SYMBOL] ||
-        iterable[FAUX_ITERATOR_SYMBOL]);
-
-      if (typeof iteratorFn === 'function') {
-        return iteratorFn;
-      }
-    }
-
-    function isArrayLike(value) {
-      return value && typeof value.length === 'number';
-    }
-
-    createClass(Seq, Iterable);
-    function Seq(value) {
-      return value === null || value === undefined ? emptySequence() :
-        isIterable(value) ? value.toSeq() : seqFromValue(value);
-    }
-
-    Seq.of = function () {
-      return Seq(arguments);
-    };
-
-    Seq.prototype.toSeq = function () {
-      return this;
-    };
-
-    Seq.prototype.toString = function () {
-      return this.__toString('Seq {', '}');
-    };
-
-    Seq.prototype.cacheResult = function () {
-      if (!this._cache && this.__iterateUncached) {
-        this._cache = this.entrySeq().toArray();
-        this.size = this._cache.length;
-      }
-      return this;
-    };
-
-
-    Seq.prototype.__iterate = function (fn, reverse) {
-      return seqIterate(this, fn, reverse, true);
-    };
-
-
-    Seq.prototype.__iterator = function (type, reverse) {
-      return seqIterator(this, type, reverse, true);
-    };
-
-
-    createClass(KeyedSeq, Seq);
-    function KeyedSeq(value) {
-      return value === null || value === undefined ?
-        emptySequence().toKeyedSeq() :
-        isIterable(value) ?
-          isKeyed(value) ? value.toSeq() : value.fromEntrySeq() :
-          keyedSeqFromValue(value);
-    }
-
-    KeyedSeq.prototype.toKeyedSeq = function () {
-      return this;
-    };
-
-
-    createClass(IndexedSeq, Seq);
-    function IndexedSeq(value) {
-      return value === null || value === undefined ? emptySequence() :
-        !isIterable(value) ? indexedSeqFromValue(value) :
-          isKeyed(value) ? value.entrySeq() : value.toIndexedSeq();
-    }
-
-    IndexedSeq.of = function () {
-      return IndexedSeq(arguments);
-    };
-
-    IndexedSeq.prototype.toIndexedSeq = function () {
-      return this;
-    };
-
-    IndexedSeq.prototype.toString = function () {
-      return this.__toString('Seq [', ']');
-    };
-
-    IndexedSeq.prototype.__iterate = function (fn, reverse) {
-      return seqIterate(this, fn, reverse, false);
-    };
-
-    IndexedSeq.prototype.__iterator = function (type, reverse) {
-      return seqIterator(this, type, reverse, false);
-    };
-
-
-    createClass(SetSeq, Seq);
-    function SetSeq(value) {
-      return (
-        value === null || value === undefined ? emptySequence() :
-          !isIterable(value) ? indexedSeqFromValue(value) :
-            isKeyed(value) ? value.entrySeq() : value).
-      toSetSeq();
-    }
-
-    SetSeq.of = function () {
-      return SetSeq(arguments);
-    };
-
-    SetSeq.prototype.toSetSeq = function () {
-      return this;
-    };
-
-
-    Seq.isSeq = isSeq;
-    Seq.Keyed = KeyedSeq;
-    Seq.Set = SetSeq;
-    Seq.Indexed = IndexedSeq;
-
-    var IS_SEQ_SENTINEL = '@@__IMMUTABLE_SEQ__@@';
-
-    Seq.prototype[IS_SEQ_SENTINEL] = true;
-
-
-    createClass(ArraySeq, IndexedSeq);
-    function ArraySeq(array) {
-      this._array = array;
-      this.size = array.length;
-    }
-
-    ArraySeq.prototype.get = function (index, notSetValue) {
-      return this.has(index) ? this._array[wrapIndex(this, index)] : notSetValue;
-    };
-
-    ArraySeq.prototype.__iterate = function (fn, reverse) {
-      var array = this._array;
-      var maxIndex = array.length - 1;
-      for (var ii = 0; ii <= maxIndex; ii++) {
-        if (fn(array[reverse ? maxIndex - ii : ii], ii, this) === false) {
-          return ii + 1;
-        }
-      }
-      return ii;
-    };
-
-    ArraySeq.prototype.__iterator = function (type, reverse) {
-      var array = this._array;
-      var maxIndex = array.length - 1;
-      var ii = 0;
-      return new Iterator(function () {
-        return ii > maxIndex ?
-          iteratorDone() :
-          iteratorValue(type, ii, array[reverse ? maxIndex - ii++ : ii++]);
-      });
-
-    };
-
-
-    createClass(ObjectSeq, KeyedSeq);
-    function ObjectSeq(object) {
-      var keys = Object.keys(object);
-      this._object = object;
-      this._keys = keys;
-      this.size = keys.length;
-    }
-
-    ObjectSeq.prototype.get = function (key, notSetValue) {
-      if (notSetValue !== undefined && !this.has(key)) {
-        return notSetValue;
-      }
-      return this._object[key];
-    };
-
-    ObjectSeq.prototype.has = function (key) {
-      return this._object.hasOwnProperty(key);
-    };
-
-    ObjectSeq.prototype.__iterate = function (fn, reverse) {
-      var object = this._object;
-      var keys = this._keys;
-      var maxIndex = keys.length - 1;
-      for (var ii = 0; ii <= maxIndex; ii++) {
-        var key = keys[reverse ? maxIndex - ii : ii];
-        if (fn(object[key], key, this) === false) {
-          return ii + 1;
-        }
-      }
-      return ii;
-    };
-
-    ObjectSeq.prototype.__iterator = function (type, reverse) {
-      var object = this._object;
-      var keys = this._keys;
-      var maxIndex = keys.length - 1;
-      var ii = 0;
-      return new Iterator(function () {
-        var key = keys[reverse ? maxIndex - ii : ii];
-        return ii++ > maxIndex ?
-          iteratorDone() :
-          iteratorValue(type, key, object[key]);
-      });
-    };
-
-    ObjectSeq.prototype[IS_ORDERED_SENTINEL] = true;
-
-
-    createClass(IterableSeq, IndexedSeq);
-    function IterableSeq(iterable) {
-      this._iterable = iterable;
-      this.size = iterable.length || iterable.size;
-    }
-
-    IterableSeq.prototype.__iterateUncached = function (fn, reverse) {
-      if (reverse) {
-        return this.cacheResult().__iterate(fn, reverse);
-      }
-      var iterable = this._iterable;
-      var iterator = getIterator(iterable);
-      var iterations = 0;
-      if (isIterator(iterator)) {
-        var step;
-        while (!(step = iterator.next()).done) {
-          if (fn(step.value, iterations++, this) === false) {
-            break;
-          }
-        }
-      }
-      return iterations;
-    };
-
-    IterableSeq.prototype.__iteratorUncached = function (type, reverse) {
-      if (reverse) {
-        return this.cacheResult().__iterator(type, reverse);
-      }
-      var iterable = this._iterable;
-      var iterator = getIterator(iterable);
-      if (!isIterator(iterator)) {
-        return new Iterator(iteratorDone);
-      }
-      var iterations = 0;
-      return new Iterator(function () {
-        var step = iterator.next();
-        return step.done ? step : iteratorValue(type, iterations++, step.value);
-      });
-    };
-
-
-    createClass(IteratorSeq, IndexedSeq);
-    function IteratorSeq(iterator) {
-      this._iterator = iterator;
-      this._iteratorCache = [];
-    }
-
-    IteratorSeq.prototype.__iterateUncached = function (fn, reverse) {
-      if (reverse) {
-        return this.cacheResult().__iterate(fn, reverse);
-      }
-      var iterator = this._iterator;
-      var cache = this._iteratorCache;
-      var iterations = 0;
-      while (iterations < cache.length) {
-        if (fn(cache[iterations], iterations++, this) === false) {
-          return iterations;
-        }
-      }
-      var step;
-      while (!(step = iterator.next()).done) {
-        var val = step.value;
-        cache[iterations] = val;
-        if (fn(val, iterations++, this) === false) {
-          break;
-        }
-      }
-      return iterations;
-    };
-
-    IteratorSeq.prototype.__iteratorUncached = function (type, reverse) {
-      if (reverse) {
-        return this.cacheResult().__iterator(type, reverse);
-      }
-      var iterator = this._iterator;
-      var cache = this._iteratorCache;
-      var iterations = 0;
-      return new Iterator(function () {
-        if (iterations >= cache.length) {
-          var step = iterator.next();
-          if (step.done) {
-            return step;
-          }
-          cache[iterations] = step.value;
-        }
-        return iteratorValue(type, iterations, cache[iterations++]);
-      });
-    };
-
-
-    function isSeq(maybeSeq) {
-      return !!(maybeSeq && maybeSeq[IS_SEQ_SENTINEL]);
-    }
-
-    var EMPTY_SEQ;
-
-    function emptySequence() {
-      return EMPTY_SEQ || (EMPTY_SEQ = new ArraySeq([]));
-    }
-
-    function keyedSeqFromValue(value) {
-      var seq =
-        Array.isArray(value) ? new ArraySeq(value).fromEntrySeq() :
-          isIterator(value) ? new IteratorSeq(value).fromEntrySeq() :
-            hasIterator(value) ? new IterableSeq(value).fromEntrySeq() :
-              typeof value === 'object' ? new ObjectSeq(value) :
-                undefined;
-      if (!seq) {
-        throw new TypeError(
-          'Expected Array or iterable object of [k, v] entries, ' +
-          'or keyed object: ' + value);
-
-      }
-      return seq;
-    }
-
-    function indexedSeqFromValue(value) {
-      var seq = maybeIndexedSeqFromValue(value);
-      if (!seq) {
-        throw new TypeError(
-          'Expected Array or iterable object of values: ' + value);
-
-      }
-      return seq;
-    }
-
-    function seqFromValue(value) {
-      var seq = maybeIndexedSeqFromValue(value) ||
-        typeof value === 'object' && new ObjectSeq(value);
-      if (!seq) {
-        throw new TypeError(
-          'Expected Array or iterable object of values, or keyed object: ' + value);
-
-      }
-      return seq;
-    }
-
-    function maybeIndexedSeqFromValue(value) {
-      return (
-        isArrayLike(value) ? new ArraySeq(value) :
-          isIterator(value) ? new IteratorSeq(value) :
-            hasIterator(value) ? new IterableSeq(value) :
-              undefined);
-
-    }
-
-    function seqIterate(seq, fn, reverse, useKeys) {
-      var cache = seq._cache;
-      if (cache) {
-        var maxIndex = cache.length - 1;
-        for (var ii = 0; ii <= maxIndex; ii++) {
-          var entry = cache[reverse ? maxIndex - ii : ii];
-          if (fn(entry[1], useKeys ? entry[0] : ii, seq) === false) {
-            return ii + 1;
-          }
-        }
-        return ii;
-      }
-      return seq.__iterateUncached(fn, reverse);
-    }
-
-    function seqIterator(seq, type, reverse, useKeys) {
-      var cache = seq._cache;
-      if (cache) {
-        var maxIndex = cache.length - 1;
-        var ii = 0;
-        return new Iterator(function () {
-          var entry = cache[reverse ? maxIndex - ii : ii];
-          return ii++ > maxIndex ?
-            iteratorDone() :
-            iteratorValue(type, useKeys ? entry[0] : ii - 1, entry[1]);
-        });
-      }
-      return seq.__iteratorUncached(type, reverse);
-    }
-
-    function fromJS(json, converter) {
-      return converter ?
-        fromJSWith(converter, json, '', { '': json }) :
-        fromJSDefault(json);
-    }
-
-    function fromJSWith(converter, json, key, parentJSON) {
-      if (Array.isArray(json)) {
-        return converter.call(parentJSON, key, IndexedSeq(json).map(function (v, k) {
-          return fromJSWith(converter, v, k, json);
-        }));
-      }
-      if (isPlainObj(json)) {
-        return converter.call(parentJSON, key, KeyedSeq(json).map(function (v, k) {
-          return fromJSWith(converter, v, k, json);
-        }));
-      }
-      return json;
-    }
-
-    function fromJSDefault(json) {
-      if (Array.isArray(json)) {
-        return IndexedSeq(json).map(fromJSDefault).toList();
-      }
-      if (isPlainObj(json)) {
-        return KeyedSeq(json).map(fromJSDefault).toMap();
-      }
-      return json;
-    }
-
-    function isPlainObj(value) {
-      return value && (value.constructor === Object || value.constructor === undefined);
-    }
-
-
-    function is(valueA, valueB) {
-      if (valueA === valueB || valueA !== valueA && valueB !== valueB) {
-        return true;
-      }
-      if (!valueA || !valueB) {
-        return false;
-      }
-      if (typeof valueA.valueOf === 'function' &&
-        typeof valueB.valueOf === 'function') {
-        valueA = valueA.valueOf();
-        valueB = valueB.valueOf();
-        if (valueA === valueB || valueA !== valueA && valueB !== valueB) {
-          return true;
-        }
-        if (!valueA || !valueB) {
-          return false;
-        }
-      }
-      if (typeof valueA.equals === 'function' &&
-        typeof valueB.equals === 'function' &&
-        valueA.equals(valueB)) {
-        return true;
-      }
-      return false;
-    }
-
-    function deepEqual(a, b) {
-      if (a === b) {
-        return true;
-      }
-
-      if (
-        !isIterable(b) ||
-        a.size !== undefined && b.size !== undefined && a.size !== b.size ||
-        a.__hash !== undefined && b.__hash !== undefined && a.__hash !== b.__hash ||
-        isKeyed(a) !== isKeyed(b) ||
-        isIndexed(a) !== isIndexed(b) ||
-        isOrdered(a) !== isOrdered(b)) {
-        return false;
-      }
-
-      if (a.size === 0 && b.size === 0) {
-        return true;
-      }
-
-      var notAssociative = !isAssociative(a);
-
-      if (isOrdered(a)) {
-        var entries = a.entries();
-        return b.every(function (v, k) {
-            var entry = entries.next().value;
-            return entry && is(entry[1], v) && (notAssociative || is(entry[0], k));
-          }) && entries.next().done;
-      }
-
-      var flipped = false;
-
-      if (a.size === undefined) {
-        if (b.size === undefined) {
-          if (typeof a.cacheResult === 'function') {
-            a.cacheResult();
-          }
-        } else {
-          flipped = true;
-          var _ = a;
-          a = b;
-          b = _;
-        }
-      }
-
-      var allEqual = true;
-      var bSize = b.__iterate(function (v, k) {
-        if (notAssociative ? !a.has(v) :
-            flipped ? !is(v, a.get(k, NOT_SET)) : !is(a.get(k, NOT_SET), v)) {
-          allEqual = false;
-          return false;
-        }
-      });
-
-      return allEqual && a.size === bSize;
-    }
-
-    createClass(Repeat, IndexedSeq);
-
-    function Repeat(value, times) {
-      if (!(this instanceof Repeat)) {
-        return new Repeat(value, times);
-      }
-      this._value = value;
-      this.size = times === undefined ? Infinity : Math.max(0, times);
-      if (this.size === 0) {
-        if (EMPTY_REPEAT) {
-          return EMPTY_REPEAT;
-        }
-        EMPTY_REPEAT = this;
-      }
-    }
-
-    Repeat.prototype.toString = function () {
-      if (this.size === 0) {
-        return 'Repeat []';
-      }
-      return 'Repeat [ ' + this._value + ' ' + this.size + ' times ]';
-    };
-
-    Repeat.prototype.get = function (index, notSetValue) {
-      return this.has(index) ? this._value : notSetValue;
-    };
-
-    Repeat.prototype.includes = function (searchValue) {
-      return is(this._value, searchValue);
-    };
-
-    Repeat.prototype.slice = function (begin, end) {
-      var size = this.size;
-      return wholeSlice(begin, end, size) ? this :
-        new Repeat(this._value, resolveEnd(end, size) - resolveBegin(begin, size));
-    };
-
-    Repeat.prototype.reverse = function () {
-      return this;
-    };
-
-    Repeat.prototype.indexOf = function (searchValue) {
-      if (is(this._value, searchValue)) {
-        return 0;
-      }
-      return -1;
-    };
-
-    Repeat.prototype.lastIndexOf = function (searchValue) {
-      if (is(this._value, searchValue)) {
-        return this.size;
-      }
-      return -1;
-    };
-
-    Repeat.prototype.__iterate = function (fn, reverse) {
-      for (var ii = 0; ii < this.size; ii++) {
-        if (fn(this._value, ii, this) === false) {
-          return ii + 1;
-        }
-      }
-      return ii;
-    };
-
-    Repeat.prototype.__iterator = function (type, reverse) {
-      var this$0 = this;
-      var ii = 0;
-      return new Iterator(function () {
-        return ii < this$0.size ? iteratorValue(type, ii++, this$0._value) : iteratorDone();
-      });
-
-    };
-
-    Repeat.prototype.equals = function (other) {
-      return other instanceof Repeat ?
-        is(this._value, other._value) :
-        deepEqual(other);
-    };
-
-
-    var EMPTY_REPEAT;
-
-    function invariant(condition, error) {
-      if (!condition)throw new Error(error);
-    }
-
-    createClass(Range, IndexedSeq);
-
-    function Range(start, end, step) {
-      if (!(this instanceof Range)) {
-        return new Range(start, end, step);
-      }
-      invariant(step !== 0, 'Cannot step a Range by 0');
-      start = start || 0;
-      if (end === undefined) {
-        end = Infinity;
-      }
-      step = step === undefined ? 1 : Math.abs(step);
-      if (end < start) {
-        step = -step;
-      }
-      this._start = start;
-      this._end = end;
-      this._step = step;
-      this.size = Math.max(0, Math.ceil((end - start) / step - 1) + 1);
-      if (this.size === 0) {
-        if (EMPTY_RANGE) {
-          return EMPTY_RANGE;
-        }
-        EMPTY_RANGE = this;
-      }
-    }
-
-    Range.prototype.toString = function () {
-      if (this.size === 0) {
-        return 'Range []';
-      }
-      return 'Range [ ' +
-        this._start + '...' + this._end + (
-          this._step !== 1 ? ' by ' + this._step : '') +
-        ' ]';
-    };
-
-    Range.prototype.get = function (index, notSetValue) {
-      return this.has(index) ?
-      this._start + wrapIndex(this, index) * this._step :
-        notSetValue;
-    };
-
-    Range.prototype.includes = function (searchValue) {
-      var possibleIndex = (searchValue - this._start) / this._step;
-      return possibleIndex >= 0 &&
-        possibleIndex < this.size &&
-        possibleIndex === Math.floor(possibleIndex);
-    };
-
-    Range.prototype.slice = function (begin, end) {
-      if (wholeSlice(begin, end, this.size)) {
-        return this;
-      }
-      begin = resolveBegin(begin, this.size);
-      end = resolveEnd(end, this.size);
-      if (end <= begin) {
-        return new Range(0, 0);
-      }
-      return new Range(this.get(begin, this._end), this.get(end, this._end), this._step);
-    };
-
-    Range.prototype.indexOf = function (searchValue) {
-      var offsetValue = searchValue - this._start;
-      if (offsetValue % this._step === 0) {
-        var index = offsetValue / this._step;
-        if (index >= 0 && index < this.size) {
-          return index;
-        }
-      }
-      return -1;
-    };
-
-    Range.prototype.lastIndexOf = function (searchValue) {
-      return this.indexOf(searchValue);
-    };
-
-    Range.prototype.__iterate = function (fn, reverse) {
-      var maxIndex = this.size - 1;
-      var step = this._step;
-      var value = reverse ? this._start + maxIndex * step : this._start;
-      for (var ii = 0; ii <= maxIndex; ii++) {
-        if (fn(value, ii, this) === false) {
-          return ii + 1;
-        }
-        value += reverse ? -step : step;
-      }
-      return ii;
-    };
-
-    Range.prototype.__iterator = function (type, reverse) {
-      var maxIndex = this.size - 1;
-      var step = this._step;
-      var value = reverse ? this._start + maxIndex * step : this._start;
-      var ii = 0;
-      return new Iterator(function () {
-        var v = value;
-        value += reverse ? -step : step;
-        return ii > maxIndex ? iteratorDone() : iteratorValue(type, ii++, v);
-      });
-    };
-
-    Range.prototype.equals = function (other) {
-      return other instanceof Range ?
-      this._start === other._start &&
-      this._end === other._end &&
-      this._step === other._step :
-        deepEqual(this, other);
-    };
-
-
-    var EMPTY_RANGE;
-
-    createClass(Collection, Iterable);
-    function Collection() {
-      throw TypeError('Abstract');
-    }
-
-
-    createClass(KeyedCollection, Collection);
-    function KeyedCollection() {
-    }
-
-    createClass(IndexedCollection, Collection);
-    function IndexedCollection() {
-    }
-
-    createClass(SetCollection, Collection);
-    function SetCollection() {
-    }
-
-
-    Collection.Keyed = KeyedCollection;
-    Collection.Indexed = IndexedCollection;
-    Collection.Set = SetCollection;
-
-    var imul =
-      typeof Math.imul === 'function' && Math.imul(0xffffffff, 2) === -2 ?
-        Math.imul :
-        function imul(a, b) {
-          a = a | 0;
-          b = b | 0;
-          var c = a & 0xffff;
-          var d = b & 0xffff;
-
-          return c * d + ((a >>> 16) * d + c * (b >>> 16) << 16 >>> 0) | 0;
-        };
-
-
-    function smi(i32) {
-      return i32 >>> 1 & 0x40000000 | i32 & 0xBFFFFFFF;
-    }
-
-    function hash(o) {
-      if (o === false || o === null || o === undefined) {
-        return 0;
-      }
-      if (typeof o.valueOf === 'function') {
-        o = o.valueOf();
-        if (o === false || o === null || o === undefined) {
-          return 0;
-        }
-      }
-      if (o === true) {
-        return 1;
-      }
-      var type = typeof o;
-      if (type === 'number') {
-        if (o !== o || o === Infinity) {
-          return 0;
-        }
-        var h = o | 0;
-        if (h !== o) {
-          h ^= o * 0xFFFFFFFF;
-        }
-        while (o > 0xFFFFFFFF) {
-          o /= 0xFFFFFFFF;
-          h ^= o;
-        }
-        return smi(h);
-      }
-      if (type === 'string') {
-        return o.length > STRING_HASH_CACHE_MIN_STRLEN ? cachedHashString(o) : hashString(o);
-      }
-      if (typeof o.hashCode === 'function') {
-        return o.hashCode();
-      }
-      if (type === 'object') {
-        return hashJSObj(o);
-      }
-      if (typeof o.toString === 'function') {
-        return hashString(o.toString());
-      }
-      throw new Error('Value type ' + type + ' cannot be hashed.');
-    }
-
-    function cachedHashString(string) {
-      var hash = stringHashCache[string];
-      if (hash === undefined) {
-        hash = hashString(string);
-        if (STRING_HASH_CACHE_SIZE === STRING_HASH_CACHE_MAX_SIZE) {
-          STRING_HASH_CACHE_SIZE = 0;
-          stringHashCache = {};
-        }
-        STRING_HASH_CACHE_SIZE++;
-        stringHashCache[string] = hash;
-      }
-      return hash;
-    }
-
-
-    function hashString(string) {
-
-
-      var hash = 0;
-      for (var ii = 0; ii < string.length; ii++) {
-        hash = 31 * hash + string.charCodeAt(ii) | 0;
-      }
-      return smi(hash);
-    }
-
-    function hashJSObj(obj) {
-      var hash;
-      if (usingWeakMap) {
-        hash = weakMap.get(obj);
-        if (hash !== undefined) {
-          return hash;
-        }
-      }
-
-      hash = obj[UID_HASH_KEY];
-      if (hash !== undefined) {
-        return hash;
-      }
-
-      if (!canDefineProperty) {
-        hash = obj.propertyIsEnumerable && obj.propertyIsEnumerable[UID_HASH_KEY];
-        if (hash !== undefined) {
-          return hash;
-        }
-
-        hash = getIENodeHash(obj);
-        if (hash !== undefined) {
-          return hash;
-        }
-      }
-
-      hash = ++objHashUID;
-      if (objHashUID & 0x40000000) {
-        objHashUID = 0;
-      }
-
-      if (usingWeakMap) {
-        weakMap.set(obj, hash);
-      } else if (isExtensible !== undefined && isExtensible(obj) === false) {
-        throw new Error('Non-extensible objects are not allowed as keys.');
-      } else if (canDefineProperty) {
-        Object.defineProperty(obj, UID_HASH_KEY, {
-          'enumerable': false,
-          'configurable': false,
-          'writable': false,
-          'value': hash
-        });
-
-      } else if (obj.propertyIsEnumerable !== undefined &&
-        obj.propertyIsEnumerable === obj.constructor.prototype.propertyIsEnumerable) {
-
-
-        obj.propertyIsEnumerable = function () {
-          return this.constructor.prototype.propertyIsEnumerable.apply(this, arguments);
-        };
-        obj.propertyIsEnumerable[UID_HASH_KEY] = hash;
-      } else if (obj.nodeType !== undefined) {
-
-
-        obj[UID_HASH_KEY] = hash;
-      } else {
-        throw new Error('Unable to set a non-enumerable property on object.');
-      }
-
-      return hash;
-    }
-
-
-    var isExtensible = Object.isExtensible;
-
-
-    var canDefineProperty = function () {
-      try {
-        Object.defineProperty({}, '@', {});
-        return true;
-      } catch (e) {
-        return false;
-      }
-    }();
-
-
-    function getIENodeHash(node) {
-      if (node && node.nodeType > 0) {
-        switch (node.nodeType) {
-          case 1:
-            return node.uniqueID;
-          case 9:
-            return node.documentElement && node.documentElement.uniqueID;
-        }
-
-      }
-    }
-
-
-    var usingWeakMap = typeof WeakMap === 'function';
-    var weakMap;
-    if (usingWeakMap) {
-      weakMap = new WeakMap();
-    }
-
-    var objHashUID = 0;
-
-    var UID_HASH_KEY = '__immutablehash__';
-    if (typeof Symbol === 'function') {
-      UID_HASH_KEY = Symbol(UID_HASH_KEY);
-    }
-
-    var STRING_HASH_CACHE_MIN_STRLEN = 16;
-    var STRING_HASH_CACHE_MAX_SIZE = 255;
-    var STRING_HASH_CACHE_SIZE = 0;
-    var stringHashCache = {};
-
-    function assertNotInfinite(size) {
-      invariant(
-        size !== Infinity,
-        'Cannot perform this action with an infinite size.');
-
-    }
-
-    createClass(Map, KeyedCollection);
-
-
-    function Map(value) {
-      return value === null || value === undefined ? emptyMap() :
-        isMap(value) && !isOrdered(value) ? value :
-          emptyMap().withMutations(function (map) {
-            var iter = KeyedIterable(value);
-            assertNotInfinite(iter.size);
-            iter.forEach(function (v, k) {
-              return map.set(k, v);
-            });
-          });
-    }
-
-    Map.of = function () {
-      var keyValues = SLICE$0.call(arguments, 0);
-      return emptyMap().withMutations(function (map) {
-        for (var i = 0; i < keyValues.length; i += 2) {
-          if (i + 1 >= keyValues.length) {
-            throw new Error('Missing value for key: ' + keyValues[i]);
-          }
-          map.set(keyValues[i], keyValues[i + 1]);
-        }
-      });
-    };
-
-    Map.prototype.toString = function () {
-      return this.__toString('Map {', '}');
-    };
-
-
-    Map.prototype.get = function (k, notSetValue) {
-      return this._root ?
-        this._root.get(0, undefined, k, notSetValue) :
-        notSetValue;
-    };
-
-
-    Map.prototype.set = function (k, v) {
-      return updateMap(this, k, v);
-    };
-
-    Map.prototype.setIn = function (keyPath, v) {
-      return this.updateIn(keyPath, NOT_SET, function () {
-        return v;
-      });
-    };
-
-    Map.prototype.remove = function (k) {
-      return updateMap(this, k, NOT_SET);
-    };
-
-    Map.prototype.deleteIn = function (keyPath) {
-      return this.updateIn(keyPath, function () {
-        return NOT_SET;
-      });
-    };
-
-    Map.prototype.update = function (k, notSetValue, updater) {
-      return arguments.length === 1 ?
-        k(this) :
-        this.updateIn([k], notSetValue, updater);
-    };
-
-    Map.prototype.updateIn = function (keyPath, notSetValue, updater) {
-      if (!updater) {
-        updater = notSetValue;
-        notSetValue = undefined;
-      }
-      var updatedValue = updateInDeepMap(
-        this,
-        forceIterator(keyPath),
-        notSetValue,
-        updater);
-
-      return updatedValue === NOT_SET ? undefined : updatedValue;
-    };
-
-    Map.prototype.clear = function () {
-      if (this.size === 0) {
-        return this;
-      }
-      if (this.__ownerID) {
-        this.size = 0;
-        this._root = null;
-        this.__hash = undefined;
-        this.__altered = true;
-        return this;
-      }
-      return emptyMap();
-    };
-
-
-    Map.prototype.merge = function () {
-      return mergeIntoMapWith(this, undefined, arguments);
-    };
-
-    Map.prototype.mergeWith = function (merger) {
-      var iters = SLICE$0.call(arguments, 1);
-      return mergeIntoMapWith(this, merger, iters);
-    };
-
-    Map.prototype.mergeIn = function (keyPath) {
-      var iters = SLICE$0.call(arguments, 1);
-      return this.updateIn(
-        keyPath,
-        emptyMap(),
-        function (m) {
-          return typeof m.merge === 'function' ?
-            m.merge.apply(m, iters) :
-            iters[iters.length - 1];
-        });
-
-    };
-
-    Map.prototype.mergeDeep = function () {
-      return mergeIntoMapWith(this, deepMerger, arguments);
-    };
-
-    Map.prototype.mergeDeepWith = function (merger) {
-      var iters = SLICE$0.call(arguments, 1);
-      return mergeIntoMapWith(this, deepMergerWith(merger), iters);
-    };
-
-    Map.prototype.mergeDeepIn = function (keyPath) {
-      var iters = SLICE$0.call(arguments, 1);
-      return this.updateIn(
-        keyPath,
-        emptyMap(),
-        function (m) {
-          return typeof m.mergeDeep === 'function' ?
-            m.mergeDeep.apply(m, iters) :
-            iters[iters.length - 1];
-        });
-
-    };
-
-    Map.prototype.sort = function (comparator) {
-
-      return OrderedMap(sortFactory(this, comparator));
-    };
-
-    Map.prototype.sortBy = function (mapper, comparator) {
-
-      return OrderedMap(sortFactory(this, comparator, mapper));
-    };
-
-
-    Map.prototype.withMutations = function (fn) {
-      var mutable = this.asMutable();
-      fn(mutable);
-      return mutable.wasAltered() ? mutable.__ensureOwner(this.__ownerID) : this;
-    };
-
-    Map.prototype.asMutable = function () {
-      return this.__ownerID ? this : this.__ensureOwner(new OwnerID());
-    };
-
-    Map.prototype.asImmutable = function () {
-      return this.__ensureOwner();
-    };
-
-    Map.prototype.wasAltered = function () {
-      return this.__altered;
-    };
-
-    Map.prototype.__iterator = function (type, reverse) {
-      return new MapIterator(this, type, reverse);
-    };
-
-    Map.prototype.__iterate = function (fn, reverse) {
-      var this$0 = this;
-      var iterations = 0;
-      this._root && this._root.iterate(function (entry) {
-        iterations++;
-        return fn(entry[1], entry[0], this$0);
-      }, reverse);
-      return iterations;
-    };
-
-    Map.prototype.__ensureOwner = function (ownerID) {
-      if (ownerID === this.__ownerID) {
-        return this;
-      }
-      if (!ownerID) {
-        this.__ownerID = ownerID;
-        this.__altered = false;
-        return this;
-      }
-      return makeMap(this.size, this._root, ownerID, this.__hash);
-    };
-
-
-    function isMap(maybeMap) {
-      return !!(maybeMap && maybeMap[IS_MAP_SENTINEL]);
-    }
-
-    Map.isMap = isMap;
-
-    var IS_MAP_SENTINEL = '@@__IMMUTABLE_MAP__@@';
-
-    var MapPrototype = Map.prototype;
-    MapPrototype[IS_MAP_SENTINEL] = true;
-    MapPrototype[DELETE] = MapPrototype.remove;
-    MapPrototype.removeIn = MapPrototype.deleteIn;
-
-
-    function ArrayMapNode(ownerID, entries) {
-      this.ownerID = ownerID;
-      this.entries = entries;
-    }
-
-    ArrayMapNode.prototype.get = function (shift, keyHash, key, notSetValue) {
-      var entries = this.entries;
-      for (var ii = 0, len = entries.length; ii < len; ii++) {
-        if (is(key, entries[ii][0])) {
-          return entries[ii][1];
-        }
-      }
-      return notSetValue;
-    };
-
-    ArrayMapNode.prototype.update = function (ownerID, shift, keyHash, key, value, didChangeSize, didAlter) {
-      var removed = value === NOT_SET;
-
-      var entries = this.entries;
-      var idx = 0;
-      for (var len = entries.length; idx < len; idx++) {
-        if (is(key, entries[idx][0])) {
-          break;
-        }
-      }
-      var exists = idx < len;
-
-      if (exists ? entries[idx][1] === value : removed) {
-        return this;
-      }
-
-      SetRef(didAlter);
-      (removed || !exists) && SetRef(didChangeSize);
-
-      if (removed && entries.length === 1) {
-        return;
-      }
-
-      if (!exists && !removed && entries.length >= MAX_ARRAY_MAP_SIZE) {
-        return createNodes(ownerID, entries, key, value);
-      }
-
-      var isEditable = ownerID && ownerID === this.ownerID;
-      var newEntries = isEditable ? entries : arrCopy(entries);
-
-      if (exists) {
-        if (removed) {
-          idx === len - 1 ? newEntries.pop() : newEntries[idx] = newEntries.pop();
-        } else {
-          newEntries[idx] = [key, value];
-        }
-      } else {
-        newEntries.push([key, value]);
-      }
-
-      if (isEditable) {
-        this.entries = newEntries;
-        return this;
-      }
-
-      return new ArrayMapNode(ownerID, newEntries);
-    };
-
-
-    function BitmapIndexedNode(ownerID, bitmap, nodes) {
-      this.ownerID = ownerID;
-      this.bitmap = bitmap;
-      this.nodes = nodes;
-    }
-
-    BitmapIndexedNode.prototype.get = function (shift, keyHash, key, notSetValue) {
-      if (keyHash === undefined) {
-        keyHash = hash(key);
-      }
-      var bit = 1 << ((shift === 0 ? keyHash : keyHash >>> shift) & MASK);
-      var bitmap = this.bitmap;
-      return (bitmap & bit) === 0 ? notSetValue :
-        this.nodes[popCount(bitmap & bit - 1)].get(shift + SHIFT, keyHash, key, notSetValue);
-    };
-
-    BitmapIndexedNode.prototype.update = function (ownerID, shift, keyHash, key, value, didChangeSize, didAlter) {
-      if (keyHash === undefined) {
-        keyHash = hash(key);
-      }
-      var keyHashFrag = (shift === 0 ? keyHash : keyHash >>> shift) & MASK;
-      var bit = 1 << keyHashFrag;
-      var bitmap = this.bitmap;
-      var exists = (bitmap & bit) !== 0;
-
-      if (!exists && value === NOT_SET) {
-        return this;
-      }
-
-      var idx = popCount(bitmap & bit - 1);
-      var nodes = this.nodes;
-      var node = exists ? nodes[idx] : undefined;
-      var newNode = updateNode(node, ownerID, shift + SHIFT, keyHash, key, value, didChangeSize, didAlter);
-
-      if (newNode === node) {
-        return this;
-      }
-
-      if (!exists && newNode && nodes.length >= MAX_BITMAP_INDEXED_SIZE) {
-        return expandNodes(ownerID, nodes, bitmap, keyHashFrag, newNode);
-      }
-
-      if (exists && !newNode && nodes.length === 2 && isLeafNode(nodes[idx ^ 1])) {
-        return nodes[idx ^ 1];
-      }
-
-      if (exists && newNode && nodes.length === 1 && isLeafNode(newNode)) {
-        return newNode;
-      }
-
-      var isEditable = ownerID && ownerID === this.ownerID;
-      var newBitmap = exists ? newNode ? bitmap : bitmap ^ bit : bitmap | bit;
-      var newNodes = exists ? newNode ?
-        setIn(nodes, idx, newNode, isEditable) :
-        spliceOut(nodes, idx, isEditable) :
-        spliceIn(nodes, idx, newNode, isEditable);
-
-      if (isEditable) {
-        this.bitmap = newBitmap;
-        this.nodes = newNodes;
-        return this;
-      }
-
-      return new BitmapIndexedNode(ownerID, newBitmap, newNodes);
-    };
-
-
-    function HashArrayMapNode(ownerID, count, nodes) {
-      this.ownerID = ownerID;
-      this.count = count;
-      this.nodes = nodes;
-    }
-
-    HashArrayMapNode.prototype.get = function (shift, keyHash, key, notSetValue) {
-      if (keyHash === undefined) {
-        keyHash = hash(key);
-      }
-      var idx = (shift === 0 ? keyHash : keyHash >>> shift) & MASK;
-      var node = this.nodes[idx];
-      return node ? node.get(shift + SHIFT, keyHash, key, notSetValue) : notSetValue;
-    };
-
-    HashArrayMapNode.prototype.update = function (ownerID, shift, keyHash, key, value, didChangeSize, didAlter) {
-      if (keyHash === undefined) {
-        keyHash = hash(key);
-      }
-      var idx = (shift === 0 ? keyHash : keyHash >>> shift) & MASK;
-      var removed = value === NOT_SET;
-      var nodes = this.nodes;
-      var node = nodes[idx];
-
-      if (removed && !node) {
-        return this;
-      }
-
-      var newNode = updateNode(node, ownerID, shift + SHIFT, keyHash, key, value, didChangeSize, didAlter);
-      if (newNode === node) {
-        return this;
-      }
-
-      var newCount = this.count;
-      if (!node) {
-        newCount++;
-      } else if (!newNode) {
-        newCount--;
-        if (newCount < MIN_HASH_ARRAY_MAP_SIZE) {
-          return packNodes(ownerID, nodes, newCount, idx);
-        }
-      }
-
-      var isEditable = ownerID && ownerID === this.ownerID;
-      var newNodes = setIn(nodes, idx, newNode, isEditable);
-
-      if (isEditable) {
-        this.count = newCount;
-        this.nodes = newNodes;
-        return this;
-      }
-
-      return new HashArrayMapNode(ownerID, newCount, newNodes);
-    };
-
-
-    function HashCollisionNode(ownerID, keyHash, entries) {
-      this.ownerID = ownerID;
-      this.keyHash = keyHash;
-      this.entries = entries;
-    }
-
-    HashCollisionNode.prototype.get = function (shift, keyHash, key, notSetValue) {
-      var entries = this.entries;
-      for (var ii = 0, len = entries.length; ii < len; ii++) {
-        if (is(key, entries[ii][0])) {
-          return entries[ii][1];
-        }
-      }
-      return notSetValue;
-    };
-
-    HashCollisionNode.prototype.update = function (ownerID, shift, keyHash, key, value, didChangeSize, didAlter) {
-      if (keyHash === undefined) {
-        keyHash = hash(key);
-      }
-
-      var removed = value === NOT_SET;
-
-      if (keyHash !== this.keyHash) {
-        if (removed) {
-          return this;
-        }
-        SetRef(didAlter);
-        SetRef(didChangeSize);
-        return mergeIntoNode(this, ownerID, shift, keyHash, [key, value]);
-      }
-
-      var entries = this.entries;
-      var idx = 0;
-      for (var len = entries.length; idx < len; idx++) {
-        if (is(key, entries[idx][0])) {
-          break;
-        }
-      }
-      var exists = idx < len;
-
-      if (exists ? entries[idx][1] === value : removed) {
-        return this;
-      }
-
-      SetRef(didAlter);
-      (removed || !exists) && SetRef(didChangeSize);
-
-      if (removed && len === 2) {
-        return new ValueNode(ownerID, this.keyHash, entries[idx ^ 1]);
-      }
-
-      var isEditable = ownerID && ownerID === this.ownerID;
-      var newEntries = isEditable ? entries : arrCopy(entries);
-
-      if (exists) {
-        if (removed) {
-          idx === len - 1 ? newEntries.pop() : newEntries[idx] = newEntries.pop();
-        } else {
-          newEntries[idx] = [key, value];
-        }
-      } else {
-        newEntries.push([key, value]);
-      }
-
-      if (isEditable) {
-        this.entries = newEntries;
-        return this;
-      }
-
-      return new HashCollisionNode(ownerID, this.keyHash, newEntries);
-    };
-
-
-    function ValueNode(ownerID, keyHash, entry) {
-      this.ownerID = ownerID;
-      this.keyHash = keyHash;
-      this.entry = entry;
-    }
-
-    ValueNode.prototype.get = function (shift, keyHash, key, notSetValue) {
-      return is(key, this.entry[0]) ? this.entry[1] : notSetValue;
-    };
-
-    ValueNode.prototype.update = function (ownerID, shift, keyHash, key, value, didChangeSize, didAlter) {
-      var removed = value === NOT_SET;
-      var keyMatch = is(key, this.entry[0]);
-      if (keyMatch ? value === this.entry[1] : removed) {
-        return this;
-      }
-
-      SetRef(didAlter);
-
-      if (removed) {
-        SetRef(didChangeSize);
-        return;
-      }
-
-      if (keyMatch) {
-        if (ownerID && ownerID === this.ownerID) {
-          this.entry[1] = value;
-          return this;
-        }
-        return new ValueNode(ownerID, this.keyHash, [key, value]);
-      }
-
-      SetRef(didChangeSize);
-      return mergeIntoNode(this, ownerID, shift, hash(key), [key, value]);
-    };
-
-
-    ArrayMapNode.prototype.iterate =
-      HashCollisionNode.prototype.iterate = function (fn, reverse) {
-        var entries = this.entries;
-        for (var ii = 0, maxIndex = entries.length - 1; ii <= maxIndex; ii++) {
-          if (fn(entries[reverse ? maxIndex - ii : ii]) === false) {
-            return false;
-          }
-        }
-      };
-
-    BitmapIndexedNode.prototype.iterate =
-      HashArrayMapNode.prototype.iterate = function (fn, reverse) {
-        var nodes = this.nodes;
-        for (var ii = 0, maxIndex = nodes.length - 1; ii <= maxIndex; ii++) {
-          var node = nodes[reverse ? maxIndex - ii : ii];
-          if (node && node.iterate(fn, reverse) === false) {
-            return false;
-          }
-        }
-      };
-
-    ValueNode.prototype.iterate = function (fn, reverse) {
-      return fn(this.entry);
-    };
-
-    createClass(MapIterator, Iterator);
-
-    function MapIterator(map, type, reverse) {
-      this._type = type;
-      this._reverse = reverse;
-      this._stack = map._root && mapIteratorFrame(map._root);
-    }
-
-    MapIterator.prototype.next = function () {
-      var type = this._type;
-      var stack = this._stack;
-      while (stack) {
-        var node = stack.node;
-        var index = stack.index++;
-        var maxIndex;
-        if (node.entry) {
-          if (index === 0) {
-            return mapIteratorValue(type, node.entry);
-          }
-        } else if (node.entries) {
-          maxIndex = node.entries.length - 1;
-          if (index <= maxIndex) {
-            return mapIteratorValue(type, node.entries[this._reverse ? maxIndex - index : index]);
-          }
-        } else {
-          maxIndex = node.nodes.length - 1;
-          if (index <= maxIndex) {
-            var subNode = node.nodes[this._reverse ? maxIndex - index : index];
-            if (subNode) {
-              if (subNode.entry) {
-                return mapIteratorValue(type, subNode.entry);
-              }
-              stack = this._stack = mapIteratorFrame(subNode, stack);
-            }
-            continue;
-          }
-        }
-        stack = this._stack = this._stack.__prev;
-      }
-      return iteratorDone();
-    };
-
-
-    function mapIteratorValue(type, entry) {
-      return iteratorValue(type, entry[0], entry[1]);
-    }
-
-    function mapIteratorFrame(node, prev) {
-      return {
-        node: node,
-        index: 0,
-        __prev: prev
-      };
-
-    }
-
-    function makeMap(size, root, ownerID, hash) {
-      var map = Object.create(MapPrototype);
-      map.size = size;
-      map._root = root;
-      map.__ownerID = ownerID;
-      map.__hash = hash;
-      map.__altered = false;
-      return map;
-    }
-
-    var EMPTY_MAP;
-
-    function emptyMap() {
-      return EMPTY_MAP || (EMPTY_MAP = makeMap(0));
-    }
-
-    function updateMap(map, k, v) {
-      var newRoot;
-      var newSize;
-      if (!map._root) {
-        if (v === NOT_SET) {
-          return map;
-        }
-        newSize = 1;
-        newRoot = new ArrayMapNode(map.__ownerID, [[k, v]]);
-      } else {
-        var didChangeSize = MakeRef(CHANGE_LENGTH);
-        var didAlter = MakeRef(DID_ALTER);
-        newRoot = updateNode(map._root, map.__ownerID, 0, undefined, k, v, didChangeSize, didAlter);
-        if (!didAlter.value) {
-          return map;
-        }
-        newSize = map.size + (didChangeSize.value ? v === NOT_SET ? -1 : 1 : 0);
-      }
-      if (map.__ownerID) {
-        map.size = newSize;
-        map._root = newRoot;
-        map.__hash = undefined;
-        map.__altered = true;
-        return map;
-      }
-      return newRoot ? makeMap(newSize, newRoot) : emptyMap();
-    }
-
-    function updateNode(node, ownerID, shift, keyHash, key, value, didChangeSize, didAlter) {
-      if (!node) {
-        if (value === NOT_SET) {
-          return node;
-        }
-        SetRef(didAlter);
-        SetRef(didChangeSize);
-        return new ValueNode(ownerID, keyHash, [key, value]);
-      }
-      return node.update(ownerID, shift, keyHash, key, value, didChangeSize, didAlter);
-    }
-
-    function isLeafNode(node) {
-      return node.constructor === ValueNode || node.constructor === HashCollisionNode;
-    }
-
-    function mergeIntoNode(node, ownerID, shift, keyHash, entry) {
-      if (node.keyHash === keyHash) {
-        return new HashCollisionNode(ownerID, keyHash, [node.entry, entry]);
-      }
-
-      var idx1 = (shift === 0 ? node.keyHash : node.keyHash >>> shift) & MASK;
-      var idx2 = (shift === 0 ? keyHash : keyHash >>> shift) & MASK;
-
-      var newNode;
-      var nodes = idx1 === idx2 ?
-        [mergeIntoNode(node, ownerID, shift + SHIFT, keyHash, entry)] : (
-        newNode = new ValueNode(ownerID, keyHash, entry), idx1 < idx2 ? [node, newNode] : [newNode, node]);
-
-      return new BitmapIndexedNode(ownerID, 1 << idx1 | 1 << idx2, nodes);
-    }
-
-    function createNodes(ownerID, entries, key, value) {
-      if (!ownerID) {
-        ownerID = new OwnerID();
-      }
-      var node = new ValueNode(ownerID, hash(key), [key, value]);
-      for (var ii = 0; ii < entries.length; ii++) {
-        var entry = entries[ii];
-        node = node.update(ownerID, 0, undefined, entry[0], entry[1]);
-      }
-      return node;
-    }
-
-    function packNodes(ownerID, nodes, count, excluding) {
-      var bitmap = 0;
-      var packedII = 0;
-      var packedNodes = new Array(count);
-      for (var ii = 0, bit = 1, len = nodes.length; ii < len; ii++, bit <<= 1) {
-        var node = nodes[ii];
-        if (node !== undefined && ii !== excluding) {
-          bitmap |= bit;
-          packedNodes[packedII++] = node;
-        }
-      }
-      return new BitmapIndexedNode(ownerID, bitmap, packedNodes);
-    }
-
-    function expandNodes(ownerID, nodes, bitmap, including, node) {
-      var count = 0;
-      var expandedNodes = new Array(SIZE);
-      for (var ii = 0; bitmap !== 0; ii++, bitmap >>>= 1) {
-        expandedNodes[ii] = bitmap & 1 ? nodes[count++] : undefined;
-      }
-      expandedNodes[including] = node;
-      return new HashArrayMapNode(ownerID, count + 1, expandedNodes);
-    }
-
-    function mergeIntoMapWith(map, merger, iterables) {
-      var iters = [];
-      for (var ii = 0; ii < iterables.length; ii++) {
-        var value = iterables[ii];
-        var iter = KeyedIterable(value);
-        if (!isIterable(value)) {
-          iter = iter.map(function (v) {
-            return fromJS(v);
-          });
-        }
-        iters.push(iter);
-      }
-      return mergeIntoCollectionWith(map, merger, iters);
-    }
-
-    function deepMerger(existing, value, key) {
-      return existing && existing.mergeDeep && isIterable(value) ?
-        existing.mergeDeep(value) :
-        is(existing, value) ? existing : value;
-    }
-
-    function deepMergerWith(merger) {
-      return function (existing, value, key) {
-        if (existing && existing.mergeDeepWith && isIterable(value)) {
-          return existing.mergeDeepWith(merger, value);
-        }
-        var nextValue = merger(existing, value, key);
-        return is(existing, nextValue) ? existing : nextValue;
-      };
-    }
-
-    function mergeIntoCollectionWith(collection, merger, iters) {
-      iters = iters.filter(function (x) {
-        return x.size !== 0;
-      });
-      if (iters.length === 0) {
-        return collection;
-      }
-      if (collection.size === 0 && !collection.__ownerID && iters.length === 1) {
-        return collection.constructor(iters[0]);
-      }
-      return collection.withMutations(function (collection) {
-        var mergeIntoMap = merger ?
-          function (value, key) {
-            collection.update(key, NOT_SET, function (existing) {
-              return existing === NOT_SET ? value : merger(existing, value, key);
-            });
-
-          } :
-          function (value, key) {
-            collection.set(key, value);
-          };
-        for (var ii = 0; ii < iters.length; ii++) {
-          iters[ii].forEach(mergeIntoMap);
-        }
-      });
-    }
-
-    function updateInDeepMap(existing, keyPathIter, notSetValue, updater) {
-      var isNotSet = existing === NOT_SET;
-      var step = keyPathIter.next();
-      if (step.done) {
-        var existingValue = isNotSet ? notSetValue : existing;
-        var newValue = updater(existingValue);
-        return newValue === existingValue ? existing : newValue;
-      }
-      invariant(
-        isNotSet || existing && existing.set,
-        'invalid keyPath');
-
-      var key = step.value;
-      var nextExisting = isNotSet ? NOT_SET : existing.get(key, NOT_SET);
-      var nextUpdated = updateInDeepMap(
-        nextExisting,
-        keyPathIter,
-        notSetValue,
-        updater);
-
-      return nextUpdated === nextExisting ? existing :
-        nextUpdated === NOT_SET ? existing.remove(key) :
-          (isNotSet ? emptyMap() : existing).set(key, nextUpdated);
-    }
-
-    function popCount(x) {
-      x = x - (x >> 1 & 0x55555555);
-      x = (x & 0x33333333) + (x >> 2 & 0x33333333);
-      x = x + (x >> 4) & 0x0f0f0f0f;
-      x = x + (x >> 8);
-      x = x + (x >> 16);
-      return x & 0x7f;
-    }
-
-    function setIn(array, idx, val, canEdit) {
-      var newArray = canEdit ? array : arrCopy(array);
-      newArray[idx] = val;
-      return newArray;
-    }
-
-    function spliceIn(array, idx, val, canEdit) {
-      var newLen = array.length + 1;
-      if (canEdit && idx + 1 === newLen) {
-        array[idx] = val;
-        return array;
-      }
-      var newArray = new Array(newLen);
-      var after = 0;
-      for (var ii = 0; ii < newLen; ii++) {
-        if (ii === idx) {
-          newArray[ii] = val;
-          after = -1;
-        } else {
-          newArray[ii] = array[ii + after];
-        }
-      }
-      return newArray;
-    }
-
-    function spliceOut(array, idx, canEdit) {
-      var newLen = array.length - 1;
-      if (canEdit && idx === newLen) {
-        array.pop();
-        return array;
-      }
-      var newArray = new Array(newLen);
-      var after = 0;
-      for (var ii = 0; ii < newLen; ii++) {
-        if (ii === idx) {
-          after = 1;
-        }
-        newArray[ii] = array[ii + after];
-      }
-      return newArray;
-    }
-
-    var MAX_ARRAY_MAP_SIZE = SIZE / 4;
-    var MAX_BITMAP_INDEXED_SIZE = SIZE / 2;
-    var MIN_HASH_ARRAY_MAP_SIZE = SIZE / 4;
-
-    createClass(List, IndexedCollection);
-
-
-    function List(value) {
-      var empty = emptyList();
-      if (value === null || value === undefined) {
-        return empty;
-      }
-      if (isList(value)) {
-        return value;
-      }
-      var iter = IndexedIterable(value);
-      var size = iter.size;
-      if (size === 0) {
-        return empty;
-      }
-      assertNotInfinite(size);
-      if (size > 0 && size < SIZE) {
-        return makeList(0, size, SHIFT, null, new VNode(iter.toArray()));
-      }
-      return empty.withMutations(function (list) {
-        list.setSize(size);
-        iter.forEach(function (v, i) {
-          return list.set(i, v);
-        });
-      });
-    }
-
-    List.of = function () {
-      return this(arguments);
-    };
-
-    List.prototype.toString = function () {
-      return this.__toString('List [', ']');
-    };
-
-
-    List.prototype.get = function (index, notSetValue) {
-      index = wrapIndex(this, index);
-      if (index >= 0 && index < this.size) {
-        index += this._origin;
-        var node = listNodeFor(this, index);
-        return node && node.array[index & MASK];
-      }
-      return notSetValue;
-    };
-
-
-    List.prototype.set = function (index, value) {
-      return updateList(this, index, value);
-    };
-
-    List.prototype.remove = function (index) {
-      return !this.has(index) ? this :
-        index === 0 ? this.shift() :
-          index === this.size - 1 ? this.pop() :
-            this.splice(index, 1);
-    };
-
-    List.prototype.insert = function (index, value) {
-      return this.splice(index, 0, value);
-    };
-
-    List.prototype.clear = function () {
-      if (this.size === 0) {
-        return this;
-      }
-      if (this.__ownerID) {
-        this.size = this._origin = this._capacity = 0;
-        this._level = SHIFT;
-        this._root = this._tail = null;
-        this.__hash = undefined;
-        this.__altered = true;
-        return this;
-      }
-      return emptyList();
-    };
-
-    List.prototype.push = function () {
-      var values = arguments;
-      var oldSize = this.size;
-      return this.withMutations(function (list) {
-        setListBounds(list, 0, oldSize + values.length);
-        for (var ii = 0; ii < values.length; ii++) {
-          list.set(oldSize + ii, values[ii]);
-        }
-      });
-    };
-
-    List.prototype.pop = function () {
-      return setListBounds(this, 0, -1);
-    };
-
-    List.prototype.unshift = function () {
-      var values = arguments;
-      return this.withMutations(function (list) {
-        setListBounds(list, -values.length);
-        for (var ii = 0; ii < values.length; ii++) {
-          list.set(ii, values[ii]);
-        }
-      });
-    };
-
-    List.prototype.shift = function () {
-      return setListBounds(this, 1);
-    };
-
-
-    List.prototype.merge = function () {
-      return mergeIntoListWith(this, undefined, arguments);
-    };
-
-    List.prototype.mergeWith = function (merger) {
-      var iters = SLICE$0.call(arguments, 1);
-      return mergeIntoListWith(this, merger, iters);
-    };
-
-    List.prototype.mergeDeep = function () {
-      return mergeIntoListWith(this, deepMerger, arguments);
-    };
-
-    List.prototype.mergeDeepWith = function (merger) {
-      var iters = SLICE$0.call(arguments, 1);
-      return mergeIntoListWith(this, deepMergerWith(merger), iters);
-    };
-
-    List.prototype.setSize = function (size) {
-      return setListBounds(this, 0, size);
-    };
-
-
-    List.prototype.slice = function (begin, end) {
-      var size = this.size;
-      if (wholeSlice(begin, end, size)) {
-        return this;
-      }
-      return setListBounds(
-        this,
-        resolveBegin(begin, size),
-        resolveEnd(end, size));
-
-    };
-
-    List.prototype.__iterator = function (type, reverse) {
-      var index = 0;
-      var values = iterateList(this, reverse);
-      return new Iterator(function () {
-        var value = values();
-        return value === DONE ?
-          iteratorDone() :
-          iteratorValue(type, index++, value);
-      });
-    };
-
-    List.prototype.__iterate = function (fn, reverse) {
-      var index = 0;
-      var values = iterateList(this, reverse);
-      var value;
-      while ((value = values()) !== DONE) {
-        if (fn(value, index++, this) === false) {
-          break;
-        }
-      }
-      return index;
-    };
-
-    List.prototype.__ensureOwner = function (ownerID) {
-      if (ownerID === this.__ownerID) {
-        return this;
-      }
-      if (!ownerID) {
-        this.__ownerID = ownerID;
-        return this;
-      }
-      return makeList(this._origin, this._capacity, this._level, this._root, this._tail, ownerID, this.__hash);
-    };
-
-
-    function isList(maybeList) {
-      return !!(maybeList && maybeList[IS_LIST_SENTINEL]);
-    }
-
-    List.isList = isList;
-
-    var IS_LIST_SENTINEL = '@@__IMMUTABLE_LIST__@@';
-
-    var ListPrototype = List.prototype;
-    ListPrototype[IS_LIST_SENTINEL] = true;
-    ListPrototype[DELETE] = ListPrototype.remove;
-    ListPrototype.setIn = MapPrototype.setIn;
-    ListPrototype.deleteIn =
-      ListPrototype.removeIn = MapPrototype.removeIn;
-    ListPrototype.update = MapPrototype.update;
-    ListPrototype.updateIn = MapPrototype.updateIn;
-    ListPrototype.mergeIn = MapPrototype.mergeIn;
-    ListPrototype.mergeDeepIn = MapPrototype.mergeDeepIn;
-    ListPrototype.withMutations = MapPrototype.withMutations;
-    ListPrototype.asMutable = MapPrototype.asMutable;
-    ListPrototype.asImmutable = MapPrototype.asImmutable;
-    ListPrototype.wasAltered = MapPrototype.wasAltered;
-
-
-    function VNode(array, ownerID) {
-      this.array = array;
-      this.ownerID = ownerID;
-    }
-
-
-    VNode.prototype.removeBefore = function (ownerID, level, index) {
-      if (index === level ? 1 << level : 0 || this.array.length === 0) {
-        return this;
-      }
-      var originIndex = index >>> level & MASK;
-      if (originIndex >= this.array.length) {
-        return new VNode([], ownerID);
-      }
-      var removingFirst = originIndex === 0;
-      var newChild;
-      if (level > 0) {
-        var oldChild = this.array[originIndex];
-        newChild = oldChild && oldChild.removeBefore(ownerID, level - SHIFT, index);
-        if (newChild === oldChild && removingFirst) {
-          return this;
-        }
-      }
-      if (removingFirst && !newChild) {
-        return this;
-      }
-      var editable = editableVNode(this, ownerID);
-      if (!removingFirst) {
-        for (var ii = 0; ii < originIndex; ii++) {
-          editable.array[ii] = undefined;
-        }
-      }
-      if (newChild) {
-        editable.array[originIndex] = newChild;
-      }
-      return editable;
-    };
-
-    VNode.prototype.removeAfter = function (ownerID, level, index) {
-      if (index === (level ? 1 << level : 0) || this.array.length === 0) {
-        return this;
-      }
-      var sizeIndex = index - 1 >>> level & MASK;
-      if (sizeIndex >= this.array.length) {
-        return this;
-      }
-
-      var newChild;
-      if (level > 0) {
-        var oldChild = this.array[sizeIndex];
-        newChild = oldChild && oldChild.removeAfter(ownerID, level - SHIFT, index);
-        if (newChild === oldChild && sizeIndex === this.array.length - 1) {
-          return this;
-        }
-      }
-
-      var editable = editableVNode(this, ownerID);
-      editable.array.splice(sizeIndex + 1);
-      if (newChild) {
-        editable.array[sizeIndex] = newChild;
-      }
-      return editable;
-    };
-
-
-    var DONE = {};
-
-    function iterateList(list, reverse) {
-      var left = list._origin;
-      var right = list._capacity;
-      var tailPos = getTailOffset(right);
-      var tail = list._tail;
-
-      return iterateNodeOrLeaf(list._root, list._level, 0);
-
-      function iterateNodeOrLeaf(node, level, offset) {
-        return level === 0 ?
-          iterateLeaf(node, offset) :
-          iterateNode(node, level, offset);
-      }
-
-      function iterateLeaf(node, offset) {
-        var array = offset === tailPos ? tail && tail.array : node && node.array;
-        var from = offset > left ? 0 : left - offset;
-        var to = right - offset;
-        if (to > SIZE) {
-          to = SIZE;
-        }
-        return function () {
-          if (from === to) {
-            return DONE;
-          }
-          var idx = reverse ? --to : from++;
-          return array && array[idx];
-        };
-      }
-
-      function iterateNode(node, level, offset) {
-        var values;
-        var array = node && node.array;
-        var from = offset > left ? 0 : left - offset >> level;
-        var to = (right - offset >> level) + 1;
-        if (to > SIZE) {
-          to = SIZE;
-        }
-        return function () {
-          do {
-            if (values) {
-              var value = values();
-              if (value !== DONE) {
-                return value;
-              }
-              values = null;
-            }
-            if (from === to) {
-              return DONE;
-            }
-            var idx = reverse ? --to : from++;
-            values = iterateNodeOrLeaf(
-              array && array[idx], level - SHIFT, offset + (idx << level));
-
-          } while (true);
-        };
-      }
-    }
-
-    function makeList(origin, capacity, level, root, tail, ownerID, hash) {
-      var list = Object.create(ListPrototype);
-      list.size = capacity - origin;
-      list._origin = origin;
-      list._capacity = capacity;
-      list._level = level;
-      list._root = root;
-      list._tail = tail;
-      list.__ownerID = ownerID;
-      list.__hash = hash;
-      list.__altered = false;
-      return list;
-    }
-
-    var EMPTY_LIST;
-
-    function emptyList() {
-      return EMPTY_LIST || (EMPTY_LIST = makeList(0, 0, SHIFT));
-    }
-
-    function updateList(list, index, value) {
-      index = wrapIndex(list, index);
-
-      if (index !== index) {
-        return list;
-      }
-
-      if (index >= list.size || index < 0) {
-        return list.withMutations(function (list) {
-          index < 0 ?
-            setListBounds(list, index).set(0, value) :
-            setListBounds(list, 0, index + 1).set(index, value);
-        });
-      }
-
-      index += list._origin;
-
-      var newTail = list._tail;
-      var newRoot = list._root;
-      var didAlter = MakeRef(DID_ALTER);
-      if (index >= getTailOffset(list._capacity)) {
-        newTail = updateVNode(newTail, list.__ownerID, 0, index, value, didAlter);
-      } else {
-        newRoot = updateVNode(newRoot, list.__ownerID, list._level, index, value, didAlter);
-      }
-
-      if (!didAlter.value) {
-        return list;
-      }
-
-      if (list.__ownerID) {
-        list._root = newRoot;
-        list._tail = newTail;
-        list.__hash = undefined;
-        list.__altered = true;
-        return list;
-      }
-      return makeList(list._origin, list._capacity, list._level, newRoot, newTail);
-    }
-
-    function updateVNode(node, ownerID, level, index, value, didAlter) {
-      var idx = index >>> level & MASK;
-      var nodeHas = node && idx < node.array.length;
-      if (!nodeHas && value === undefined) {
-        return node;
-      }
-
-      var newNode;
-
-      if (level > 0) {
-        var lowerNode = node && node.array[idx];
-        var newLowerNode = updateVNode(lowerNode, ownerID, level - SHIFT, index, value, didAlter);
-        if (newLowerNode === lowerNode) {
-          return node;
-        }
-        newNode = editableVNode(node, ownerID);
-        newNode.array[idx] = newLowerNode;
-        return newNode;
-      }
-
-      if (nodeHas && node.array[idx] === value) {
-        return node;
-      }
-
-      SetRef(didAlter);
-
-      newNode = editableVNode(node, ownerID);
-      if (value === undefined && idx === newNode.array.length - 1) {
-        newNode.array.pop();
-      } else {
-        newNode.array[idx] = value;
-      }
-      return newNode;
-    }
-
-    function editableVNode(node, ownerID) {
-      if (ownerID && node && ownerID === node.ownerID) {
-        return node;
-      }
-      return new VNode(node ? node.array.slice() : [], ownerID);
-    }
-
-    function listNodeFor(list, rawIndex) {
-      if (rawIndex >= getTailOffset(list._capacity)) {
-        return list._tail;
-      }
-      if (rawIndex < 1 << list._level + SHIFT) {
-        var node = list._root;
-        var level = list._level;
-        while (node && level > 0) {
-          node = node.array[rawIndex >>> level & MASK];
-          level -= SHIFT;
-        }
-        return node;
-      }
-    }
-
-    function setListBounds(list, begin, end) {
-
-
-      if (begin !== undefined) {
-        begin = begin | 0;
-      }
-      if (end !== undefined) {
-        end = end | 0;
-      }
-      var owner = list.__ownerID || new OwnerID();
-      var oldOrigin = list._origin;
-      var oldCapacity = list._capacity;
-      var newOrigin = oldOrigin + begin;
-      var newCapacity = end === undefined ? oldCapacity : end < 0 ? oldCapacity + end : oldOrigin + end;
-      if (newOrigin === oldOrigin && newCapacity === oldCapacity) {
-        return list;
-      }
-
-
-      if (newOrigin >= newCapacity) {
-        return list.clear();
-      }
-
-      var newLevel = list._level;
-      var newRoot = list._root;
-
-
-      var offsetShift = 0;
-      while (newOrigin + offsetShift < 0) {
-        newRoot = new VNode(newRoot && newRoot.array.length ? [undefined, newRoot] : [], owner);
-        newLevel += SHIFT;
-        offsetShift += 1 << newLevel;
-      }
-      if (offsetShift) {
-        newOrigin += offsetShift;
-        oldOrigin += offsetShift;
-        newCapacity += offsetShift;
-        oldCapacity += offsetShift;
-      }
-
-      var oldTailOffset = getTailOffset(oldCapacity);
-      var newTailOffset = getTailOffset(newCapacity);
-
-
-      while (newTailOffset >= 1 << newLevel + SHIFT) {
-        newRoot = new VNode(newRoot && newRoot.array.length ? [newRoot] : [], owner);
-        newLevel += SHIFT;
-      }
-
-
-      var oldTail = list._tail;
-      var newTail = newTailOffset < oldTailOffset ?
-        listNodeFor(list, newCapacity - 1) :
-        newTailOffset > oldTailOffset ? new VNode([], owner) : oldTail;
-
-
-      if (oldTail && newTailOffset > oldTailOffset && newOrigin < oldCapacity && oldTail.array.length) {
-        newRoot = editableVNode(newRoot, owner);
-        var node = newRoot;
-        for (var level = newLevel; level > SHIFT; level -= SHIFT) {
-          var idx = oldTailOffset >>> level & MASK;
-          node = node.array[idx] = editableVNode(node.array[idx], owner);
-        }
-        node.array[oldTailOffset >>> SHIFT & MASK] = oldTail;
-      }
-
-
-      if (newCapacity < oldCapacity) {
-        newTail = newTail && newTail.removeAfter(owner, 0, newCapacity);
-      }
-
-
-      if (newOrigin >= newTailOffset) {
-        newOrigin -= newTailOffset;
-        newCapacity -= newTailOffset;
-        newLevel = SHIFT;
-        newRoot = null;
-        newTail = newTail && newTail.removeBefore(owner, 0, newOrigin);
-
-
-      } else if (newOrigin > oldOrigin || newTailOffset < oldTailOffset) {
-        offsetShift = 0;
-
-
-        while (newRoot) {
-          var beginIndex = newOrigin >>> newLevel & MASK;
-          if (beginIndex !== newTailOffset >>> newLevel & MASK) {
-            break;
-          }
-          if (beginIndex) {
-            offsetShift += (1 << newLevel) * beginIndex;
-          }
-          newLevel -= SHIFT;
-          newRoot = newRoot.array[beginIndex];
-        }
-
-
-        if (newRoot && newOrigin > oldOrigin) {
-          newRoot = newRoot.removeBefore(owner, newLevel, newOrigin - offsetShift);
-        }
-        if (newRoot && newTailOffset < oldTailOffset) {
-          newRoot = newRoot.removeAfter(owner, newLevel, newTailOffset - offsetShift);
-        }
-        if (offsetShift) {
-          newOrigin -= offsetShift;
-          newCapacity -= offsetShift;
-        }
-      }
-
-      if (list.__ownerID) {
-        list.size = newCapacity - newOrigin;
-        list._origin = newOrigin;
-        list._capacity = newCapacity;
-        list._level = newLevel;
-        list._root = newRoot;
-        list._tail = newTail;
-        list.__hash = undefined;
-        list.__altered = true;
-        return list;
-      }
-      return makeList(newOrigin, newCapacity, newLevel, newRoot, newTail);
-    }
-
-    function mergeIntoListWith(list, merger, iterables) {
-      var iters = [];
-      var maxSize = 0;
-      for (var ii = 0; ii < iterables.length; ii++) {
-        var value = iterables[ii];
-        var iter = IndexedIterable(value);
-        if (iter.size > maxSize) {
-          maxSize = iter.size;
-        }
-        if (!isIterable(value)) {
-          iter = iter.map(function (v) {
-            return fromJS(v);
-          });
-        }
-        iters.push(iter);
-      }
-      if (maxSize > list.size) {
-        list = list.setSize(maxSize);
-      }
-      return mergeIntoCollectionWith(list, merger, iters);
-    }
-
-    function getTailOffset(size) {
-      return size < SIZE ? 0 : size - 1 >>> SHIFT << SHIFT;
-    }
-
-    createClass(OrderedMap, Map);
-
-
-    function OrderedMap(value) {
-      return value === null || value === undefined ? emptyOrderedMap() :
-        isOrderedMap(value) ? value :
-          emptyOrderedMap().withMutations(function (map) {
-            var iter = KeyedIterable(value);
-            assertNotInfinite(iter.size);
-            iter.forEach(function (v, k) {
-              return map.set(k, v);
-            });
-          });
-    }
-
-    OrderedMap.of = function () {
-      return this(arguments);
-    };
-
-    OrderedMap.prototype.toString = function () {
-      return this.__toString('OrderedMap {', '}');
-    };
-
-
-    OrderedMap.prototype.get = function (k, notSetValue) {
-      var index = this._map.get(k);
-      return index !== undefined ? this._list.get(index)[1] : notSetValue;
-    };
-
-
-    OrderedMap.prototype.clear = function () {
-      if (this.size === 0) {
-        return this;
-      }
-      if (this.__ownerID) {
-        this.size = 0;
-        this._map.clear();
-        this._list.clear();
-        return this;
-      }
-      return emptyOrderedMap();
-    };
-
-    OrderedMap.prototype.set = function (k, v) {
-      return updateOrderedMap(this, k, v);
-    };
-
-    OrderedMap.prototype.remove = function (k) {
-      return updateOrderedMap(this, k, NOT_SET);
-    };
-
-    OrderedMap.prototype.wasAltered = function () {
-      return this._map.wasAltered() || this._list.wasAltered();
-    };
-
-    OrderedMap.prototype.__iterate = function (fn, reverse) {
-      var this$0 = this;
-      return this._list.__iterate(
-        function (entry) {
-          return entry && fn(entry[1], entry[0], this$0);
-        },
-        reverse);
-
-    };
-
-    OrderedMap.prototype.__iterator = function (type, reverse) {
-      return this._list.fromEntrySeq().__iterator(type, reverse);
-    };
-
-    OrderedMap.prototype.__ensureOwner = function (ownerID) {
-      if (ownerID === this.__ownerID) {
-        return this;
-      }
-      var newMap = this._map.__ensureOwner(ownerID);
-      var newList = this._list.__ensureOwner(ownerID);
-      if (!ownerID) {
-        this.__ownerID = ownerID;
-        this._map = newMap;
-        this._list = newList;
-        return this;
-      }
-      return makeOrderedMap(newMap, newList, ownerID, this.__hash);
-    };
-
-
-    function isOrderedMap(maybeOrderedMap) {
-      return isMap(maybeOrderedMap) && isOrdered(maybeOrderedMap);
-    }
-
-    OrderedMap.isOrderedMap = isOrderedMap;
-
-    OrderedMap.prototype[IS_ORDERED_SENTINEL] = true;
-    OrderedMap.prototype[DELETE] = OrderedMap.prototype.remove;
-
-
-    function makeOrderedMap(map, list, ownerID, hash) {
-      var omap = Object.create(OrderedMap.prototype);
-      omap.size = map ? map.size : 0;
-      omap._map = map;
-      omap._list = list;
-      omap.__ownerID = ownerID;
-      omap.__hash = hash;
-      return omap;
-    }
-
-    var EMPTY_ORDERED_MAP;
-
-    function emptyOrderedMap() {
-      return EMPTY_ORDERED_MAP || (EMPTY_ORDERED_MAP = makeOrderedMap(emptyMap(), emptyList()));
-    }
-
-    function updateOrderedMap(omap, k, v) {
-      var map = omap._map;
-      var list = omap._list;
-      var i = map.get(k);
-      var has = i !== undefined;
-      var newMap;
-      var newList;
-      if (v === NOT_SET) {
-        if (!has) {
-          return omap;
-        }
-        if (list.size >= SIZE && list.size >= map.size * 2) {
-          newList = list.filter(function (entry, idx) {
-            return entry !== undefined && i !== idx;
-          });
-          newMap = newList.toKeyedSeq().map(function (entry) {
-            return entry[0];
-          }).flip().toMap();
-          if (omap.__ownerID) {
-            newMap.__ownerID = newList.__ownerID = omap.__ownerID;
-          }
-        } else {
-          newMap = map.remove(k);
-          newList = i === list.size - 1 ? list.pop() : list.set(i, undefined);
-        }
-      } else {
-        if (has) {
-          if (v === list.get(i)[1]) {
-            return omap;
-          }
-          newMap = map;
-          newList = list.set(i, [k, v]);
-        } else {
-          newMap = map.set(k, list.size);
-          newList = list.set(list.size, [k, v]);
-        }
-      }
-      if (omap.__ownerID) {
-        omap.size = newMap.size;
-        omap._map = newMap;
-        omap._list = newList;
-        omap.__hash = undefined;
-        return omap;
-      }
-      return makeOrderedMap(newMap, newList);
-    }
-
-    createClass(ToKeyedSequence, KeyedSeq);
-    function ToKeyedSequence(indexed, useKeys) {
-      this._iter = indexed;
-      this._useKeys = useKeys;
-      this.size = indexed.size;
-    }
-
-    ToKeyedSequence.prototype.get = function (key, notSetValue) {
-      return this._iter.get(key, notSetValue);
-    };
-
-    ToKeyedSequence.prototype.has = function (key) {
-      return this._iter.has(key);
-    };
-
-    ToKeyedSequence.prototype.valueSeq = function () {
-      return this._iter.valueSeq();
-    };
-
-    ToKeyedSequence.prototype.reverse = function () {
-      var this$0 = this;
-      var reversedSequence = reverseFactory(this, true);
-      if (!this._useKeys) {
-        reversedSequence.valueSeq = function () {
-          return this$0._iter.toSeq().reverse();
-        };
-      }
-      return reversedSequence;
-    };
-
-    ToKeyedSequence.prototype.map = function (mapper, context) {
-      var this$0 = this;
-      var mappedSequence = mapFactory(this, mapper, context);
-      if (!this._useKeys) {
-        mappedSequence.valueSeq = function () {
-          return this$0._iter.toSeq().map(mapper, context);
-        };
-      }
-      return mappedSequence;
-    };
-
-    ToKeyedSequence.prototype.__iterate = function (fn, reverse) {
-      var this$0 = this;
-      var ii;
-      return this._iter.__iterate(
-        this._useKeys ?
-          function (v, k) {
-            return fn(v, k, this$0);
-          } : (
-          ii = reverse ? resolveSize(this) : 0,
-            function (v) {
-              return fn(v, reverse ? --ii : ii++, this$0);
-            }),
-        reverse);
-
-    };
-
-    ToKeyedSequence.prototype.__iterator = function (type, reverse) {
-      if (this._useKeys) {
-        return this._iter.__iterator(type, reverse);
-      }
-      var iterator = this._iter.__iterator(ITERATE_VALUES, reverse);
-      var ii = reverse ? resolveSize(this) : 0;
-      return new Iterator(function () {
-        var step = iterator.next();
-        return step.done ? step :
-          iteratorValue(type, reverse ? --ii : ii++, step.value, step);
-      });
-    };
-
-    ToKeyedSequence.prototype[IS_ORDERED_SENTINEL] = true;
-
-
-    createClass(ToIndexedSequence, IndexedSeq);
-    function ToIndexedSequence(iter) {
-      this._iter = iter;
-      this.size = iter.size;
-    }
-
-    ToIndexedSequence.prototype.includes = function (value) {
-      return this._iter.includes(value);
-    };
-
-    ToIndexedSequence.prototype.__iterate = function (fn, reverse) {
-      var this$0 = this;
-      var iterations = 0;
-      return this._iter.__iterate(function (v) {
-        return fn(v, iterations++, this$0);
-      }, reverse);
-    };
-
-    ToIndexedSequence.prototype.__iterator = function (type, reverse) {
-      var iterator = this._iter.__iterator(ITERATE_VALUES, reverse);
-      var iterations = 0;
-      return new Iterator(function () {
-        var step = iterator.next();
-        return step.done ? step :
-          iteratorValue(type, iterations++, step.value, step);
-      });
-    };
-
-
-    createClass(ToSetSequence, SetSeq);
-    function ToSetSequence(iter) {
-      this._iter = iter;
-      this.size = iter.size;
-    }
-
-    ToSetSequence.prototype.has = function (key) {
-      return this._iter.includes(key);
-    };
-
-    ToSetSequence.prototype.__iterate = function (fn, reverse) {
-      var this$0 = this;
-      return this._iter.__iterate(function (v) {
-        return fn(v, v, this$0);
-      }, reverse);
-    };
-
-    ToSetSequence.prototype.__iterator = function (type, reverse) {
-      var iterator = this._iter.__iterator(ITERATE_VALUES, reverse);
-      return new Iterator(function () {
-        var step = iterator.next();
-        return step.done ? step :
-          iteratorValue(type, step.value, step.value, step);
-      });
-    };
-
-
-    createClass(FromEntriesSequence, KeyedSeq);
-    function FromEntriesSequence(entries) {
-      this._iter = entries;
-      this.size = entries.size;
-    }
-
-    FromEntriesSequence.prototype.entrySeq = function () {
-      return this._iter.toSeq();
-    };
-
-    FromEntriesSequence.prototype.__iterate = function (fn, reverse) {
-      var this$0 = this;
-      return this._iter.__iterate(function (entry) {
-
-
-        if (entry) {
-          validateEntry(entry);
-          var indexedIterable = isIterable(entry);
-          return fn(
-            indexedIterable ? entry.get(1) : entry[1],
-            indexedIterable ? entry.get(0) : entry[0],
-            this$0);
-
-        }
-      }, reverse);
-    };
-
-    FromEntriesSequence.prototype.__iterator = function (type, reverse) {
-      var iterator = this._iter.__iterator(ITERATE_VALUES, reverse);
-      return new Iterator(function () {
-        while (true) {
-          var step = iterator.next();
-          if (step.done) {
-            return step;
-          }
-          var entry = step.value;
-
-
-          if (entry) {
-            validateEntry(entry);
-            var indexedIterable = isIterable(entry);
-            return iteratorValue(
-              type,
-              indexedIterable ? entry.get(0) : entry[0],
-              indexedIterable ? entry.get(1) : entry[1],
-              step);
-
-          }
-        }
-      });
-    };
-
-
-    ToIndexedSequence.prototype.cacheResult =
-      ToKeyedSequence.prototype.cacheResult =
-        ToSetSequence.prototype.cacheResult =
-          FromEntriesSequence.prototype.cacheResult =
-            cacheResultThrough;
-
-
-    function flipFactory(iterable) {
-      var flipSequence = makeSequence(iterable);
-      flipSequence._iter = iterable;
-      flipSequence.size = iterable.size;
-      flipSequence.flip = function () {
-        return iterable;
-      };
-      flipSequence.reverse = function () {
-        var reversedSequence = iterable.reverse.apply(this);
-        reversedSequence.flip = function () {
-          return iterable.reverse();
-        };
-        return reversedSequence;
-      };
-      flipSequence.has = function (key) {
-        return iterable.includes(key);
-      };
-      flipSequence.includes = function (key) {
-        return iterable.has(key);
-      };
-      flipSequence.cacheResult = cacheResultThrough;
-      flipSequence.__iterateUncached = function (fn, reverse) {
-        var this$0 = this;
-        return iterable.__iterate(function (v, k) {
-          return fn(k, v, this$0) !== false;
-        }, reverse);
-      };
-      flipSequence.__iteratorUncached = function (type, reverse) {
-        if (type === ITERATE_ENTRIES) {
-          var iterator = iterable.__iterator(type, reverse);
-          return new Iterator(function () {
-            var step = iterator.next();
-            if (!step.done) {
-              var k = step.value[0];
-              step.value[0] = step.value[1];
-              step.value[1] = k;
-            }
-            return step;
-          });
-        }
-        return iterable.__iterator(
-          type === ITERATE_VALUES ? ITERATE_KEYS : ITERATE_VALUES,
-          reverse);
-
-      };
-      return flipSequence;
-    }
-
-
-    function mapFactory(iterable, mapper, context) {
-      var mappedSequence = makeSequence(iterable);
-      mappedSequence.size = iterable.size;
-      mappedSequence.has = function (key) {
-        return iterable.has(key);
-      };
-      mappedSequence.get = function (key, notSetValue) {
-        var v = iterable.get(key, NOT_SET);
-        return v === NOT_SET ?
-          notSetValue :
-          mapper.call(context, v, key, iterable);
-      };
-      mappedSequence.__iterateUncached = function (fn, reverse) {
-        var this$0 = this;
-        return iterable.__iterate(
-          function (v, k, c) {
-            return fn(mapper.call(context, v, k, c), k, this$0) !== false;
-          },
-          reverse);
-
-      };
-      mappedSequence.__iteratorUncached = function (type, reverse) {
-        var iterator = iterable.__iterator(ITERATE_ENTRIES, reverse);
-        return new Iterator(function () {
-          var step = iterator.next();
-          if (step.done) {
-            return step;
-          }
-          var entry = step.value;
-          var key = entry[0];
-          return iteratorValue(
-            type,
-            key,
-            mapper.call(context, entry[1], key, iterable),
-            step);
-
-        });
-      };
-      return mappedSequence;
-    }
-
-
-    function reverseFactory(iterable, useKeys) {
-      var reversedSequence = makeSequence(iterable);
-      reversedSequence._iter = iterable;
-      reversedSequence.size = iterable.size;
-      reversedSequence.reverse = function () {
-        return iterable;
-      };
-      if (iterable.flip) {
-        reversedSequence.flip = function () {
-          var flipSequence = flipFactory(iterable);
-          flipSequence.reverse = function () {
-            return iterable.flip();
-          };
-          return flipSequence;
-        };
-      }
-      reversedSequence.get = function (key, notSetValue) {
-        return iterable.get(useKeys ? key : -1 - key, notSetValue);
-      };
-      reversedSequence.has = function (key) {
-        return iterable.has(useKeys ? key : -1 - key);
-      };
-      reversedSequence.includes = function (value) {
-        return iterable.includes(value);
-      };
-      reversedSequence.cacheResult = cacheResultThrough;
-      reversedSequence.__iterate = function (fn, reverse) {
-        var this$0 = this;
-        return iterable.__iterate(function (v, k) {
-          return fn(v, k, this$0);
-        }, !reverse);
-      };
-      reversedSequence.__iterator =
-        function (type, reverse) {
-          return iterable.__iterator(type, !reverse);
-        };
-      return reversedSequence;
-    }
-
-
-    function filterFactory(iterable, predicate, context, useKeys) {
-      var filterSequence = makeSequence(iterable);
-      if (useKeys) {
-        filterSequence.has = function (key) {
-          var v = iterable.get(key, NOT_SET);
-          return v !== NOT_SET && !!predicate.call(context, v, key, iterable);
-        };
-        filterSequence.get = function (key, notSetValue) {
-          var v = iterable.get(key, NOT_SET);
-          return v !== NOT_SET && predicate.call(context, v, key, iterable) ?
-            v : notSetValue;
-        };
-      }
-      filterSequence.__iterateUncached = function (fn, reverse) {
-        var this$0 = this;
-        var iterations = 0;
-        iterable.__iterate(function (v, k, c) {
-          if (predicate.call(context, v, k, c)) {
-            iterations++;
-            return fn(v, useKeys ? k : iterations - 1, this$0);
-          }
-        }, reverse);
-        return iterations;
-      };
-      filterSequence.__iteratorUncached = function (type, reverse) {
-        var iterator = iterable.__iterator(ITERATE_ENTRIES, reverse);
-        var iterations = 0;
-        return new Iterator(function () {
-          while (true) {
-            var step = iterator.next();
-            if (step.done) {
-              return step;
-            }
-            var entry = step.value;
-            var key = entry[0];
-            var value = entry[1];
-            if (predicate.call(context, value, key, iterable)) {
-              return iteratorValue(type, useKeys ? key : iterations++, value, step);
-            }
-          }
-        });
-      };
-      return filterSequence;
-    }
-
-
-    function countByFactory(iterable, grouper, context) {
-      var groups = Map().asMutable();
-      iterable.__iterate(function (v, k) {
-        groups.update(
-          grouper.call(context, v, k, iterable),
-          0,
-          function (a) {
-            return a + 1;
-          });
-
-      });
-      return groups.asImmutable();
-    }
-
-
-    function groupByFactory(iterable, grouper, context) {
-      var isKeyedIter = isKeyed(iterable);
-      var groups = (isOrdered(iterable) ? OrderedMap() : Map()).asMutable();
-      iterable.__iterate(function (v, k) {
-        groups.update(
-          grouper.call(context, v, k, iterable),
-          function (a) {
-            return a = a || [], a.push(isKeyedIter ? [k, v] : v), a;
-          });
-
-      });
-      var coerce = iterableClass(iterable);
-      return groups.map(function (arr) {
-        return reify(iterable, coerce(arr));
-      });
-    }
-
-
-    function sliceFactory(iterable, begin, end, useKeys) {
-      var originalSize = iterable.size;
-
-
-      if (begin !== undefined) {
-        begin = begin | 0;
-      }
-      if (end !== undefined) {
-        if (end === Infinity) {
-          end = originalSize;
-        } else {
-          end = end | 0;
-        }
-      }
-
-      if (wholeSlice(begin, end, originalSize)) {
-        return iterable;
-      }
-
-      var resolvedBegin = resolveBegin(begin, originalSize);
-      var resolvedEnd = resolveEnd(end, originalSize);
-
-
-      if (resolvedBegin !== resolvedBegin || resolvedEnd !== resolvedEnd) {
-        return sliceFactory(iterable.toSeq().cacheResult(), begin, end, useKeys);
-      }
-
-
-      var resolvedSize = resolvedEnd - resolvedBegin;
-      var sliceSize;
-      if (resolvedSize === resolvedSize) {
-        sliceSize = resolvedSize < 0 ? 0 : resolvedSize;
-      }
-
-      var sliceSeq = makeSequence(iterable);
-
-
-      sliceSeq.size = sliceSize === 0 ? sliceSize : iterable.size && sliceSize || undefined;
-
-      if (!useKeys && isSeq(iterable) && sliceSize >= 0) {
-        sliceSeq.get = function (index, notSetValue) {
-          index = wrapIndex(this, index);
-          return index >= 0 && index < sliceSize ?
-            iterable.get(index + resolvedBegin, notSetValue) :
-            notSetValue;
-        };
-      }
-
-      sliceSeq.__iterateUncached = function (fn, reverse) {
-        var this$0 = this;
-        if (sliceSize === 0) {
-          return 0;
-        }
-        if (reverse) {
-          return this.cacheResult().__iterate(fn, reverse);
-        }
-        var skipped = 0;
-        var isSkipping = true;
-        var iterations = 0;
-        iterable.__iterate(function (v, k) {
-          if (!(isSkipping && (isSkipping = skipped++ < resolvedBegin))) {
-            iterations++;
-            return fn(v, useKeys ? k : iterations - 1, this$0) !== false &&
-              iterations !== sliceSize;
-          }
-        });
-        return iterations;
-      };
-
-      sliceSeq.__iteratorUncached = function (type, reverse) {
-        if (sliceSize !== 0 && reverse) {
-          return this.cacheResult().__iterator(type, reverse);
-        }
-
-        var iterator = sliceSize !== 0 && iterable.__iterator(type, reverse);
-        var skipped = 0;
-        var iterations = 0;
-        return new Iterator(function () {
-          while (skipped++ < resolvedBegin) {
-            iterator.next();
-          }
-          if (++iterations > sliceSize) {
-            return iteratorDone();
-          }
-          var step = iterator.next();
-          if (useKeys || type === ITERATE_VALUES) {
-            return step;
-          } else if (type === ITERATE_KEYS) {
-            return iteratorValue(type, iterations - 1, undefined, step);
-          } else {
-            return iteratorValue(type, iterations - 1, step.value[1], step);
-          }
-        });
-      };
-
-      return sliceSeq;
-    }
-
-
-    function takeWhileFactory(iterable, predicate, context) {
-      var takeSequence = makeSequence(iterable);
-      takeSequence.__iterateUncached = function (fn, reverse) {
-        var this$0 = this;
-        if (reverse) {
-          return this.cacheResult().__iterate(fn, reverse);
-        }
-        var iterations = 0;
-        iterable.__iterate(function (v, k, c) {
-          return predicate.call(context, v, k, c) && ++iterations && fn(v, k, this$0);
-        });
-
-        return iterations;
-      };
-      takeSequence.__iteratorUncached = function (type, reverse) {
-        var this$0 = this;
-        if (reverse) {
-          return this.cacheResult().__iterator(type, reverse);
-        }
-        var iterator = iterable.__iterator(ITERATE_ENTRIES, reverse);
-        var iterating = true;
-        return new Iterator(function () {
-          if (!iterating) {
-            return iteratorDone();
-          }
-          var step = iterator.next();
-          if (step.done) {
-            return step;
-          }
-          var entry = step.value;
-          var k = entry[0];
-          var v = entry[1];
-          if (!predicate.call(context, v, k, this$0)) {
-            iterating = false;
-            return iteratorDone();
-          }
-          return type === ITERATE_ENTRIES ? step :
-            iteratorValue(type, k, v, step);
-        });
-      };
-      return takeSequence;
-    }
-
-
-    function skipWhileFactory(iterable, predicate, context, useKeys) {
-      var skipSequence = makeSequence(iterable);
-      skipSequence.__iterateUncached = function (fn, reverse) {
-        var this$0 = this;
-        if (reverse) {
-          return this.cacheResult().__iterate(fn, reverse);
-        }
-        var isSkipping = true;
-        var iterations = 0;
-        iterable.__iterate(function (v, k, c) {
-          if (!(isSkipping && (isSkipping = predicate.call(context, v, k, c)))) {
-            iterations++;
-            return fn(v, useKeys ? k : iterations - 1, this$0);
-          }
-        });
-        return iterations;
-      };
-      skipSequence.__iteratorUncached = function (type, reverse) {
-        var this$0 = this;
-        if (reverse) {
-          return this.cacheResult().__iterator(type, reverse);
-        }
-        var iterator = iterable.__iterator(ITERATE_ENTRIES, reverse);
-        var skipping = true;
-        var iterations = 0;
-        return new Iterator(function () {
-          var step, k, v;
-          do {
-            step = iterator.next();
-            if (step.done) {
-              if (useKeys || type === ITERATE_VALUES) {
-                return step;
-              } else if (type === ITERATE_KEYS) {
-                return iteratorValue(type, iterations++, undefined, step);
-              } else {
-                return iteratorValue(type, iterations++, step.value[1], step);
-              }
-            }
-            var entry = step.value;
-            k = entry[0];
-            v = entry[1];
-            skipping && (skipping = predicate.call(context, v, k, this$0));
-          } while (skipping);
-          return type === ITERATE_ENTRIES ? step :
-            iteratorValue(type, k, v, step);
-        });
-      };
-      return skipSequence;
-    }
-
-
-    function concatFactory(iterable, values) {
-      var isKeyedIterable = isKeyed(iterable);
-      var iters = [iterable].concat(values).map(function (v) {
-        if (!isIterable(v)) {
-          v = isKeyedIterable ?
-            keyedSeqFromValue(v) :
-            indexedSeqFromValue(Array.isArray(v) ? v : [v]);
-        } else if (isKeyedIterable) {
-          v = KeyedIterable(v);
-        }
-        return v;
-      }).filter(function (v) {
-        return v.size !== 0;
-      });
-
-      if (iters.length === 0) {
-        return iterable;
-      }
-
-      if (iters.length === 1) {
-        var singleton = iters[0];
-        if (singleton === iterable ||
-          isKeyedIterable && isKeyed(singleton) ||
-          isIndexed(iterable) && isIndexed(singleton)) {
-          return singleton;
-        }
-      }
-
-      var concatSeq = new ArraySeq(iters);
-      if (isKeyedIterable) {
-        concatSeq = concatSeq.toKeyedSeq();
-      } else if (!isIndexed(iterable)) {
-        concatSeq = concatSeq.toSetSeq();
-      }
-      concatSeq = concatSeq.flatten(true);
-      concatSeq.size = iters.reduce(
-        function (sum, seq) {
-          if (sum !== undefined) {
-            var size = seq.size;
-            if (size !== undefined) {
-              return sum + size;
-            }
-          }
-        },
-        0);
-
-      return concatSeq;
-    }
-
-
-    function flattenFactory(iterable, depth, useKeys) {
-      var flatSequence = makeSequence(iterable);
-      flatSequence.__iterateUncached = function (fn, reverse) {
-        var iterations = 0;
-        var stopped = false;
-
-        function flatDeep(iter, currentDepth) {
-          var this$0 = this;
-          iter.__iterate(function (v, k) {
-            if ((!depth || currentDepth < depth) && isIterable(v)) {
-              flatDeep(v, currentDepth + 1);
-            } else if (fn(v, useKeys ? k : iterations++, this$0) === false) {
-              stopped = true;
-            }
-            return !stopped;
-          }, reverse);
-        }
-
-        flatDeep(iterable, 0);
-        return iterations;
-      };
-      flatSequence.__iteratorUncached = function (type, reverse) {
-        var iterator = iterable.__iterator(type, reverse);
-        var stack = [];
-        var iterations = 0;
-        return new Iterator(function () {
-          while (iterator) {
-            var step = iterator.next();
-            if (step.done !== false) {
-              iterator = stack.pop();
-              continue;
-            }
-            var v = step.value;
-            if (type === ITERATE_ENTRIES) {
-              v = v[1];
-            }
-            if ((!depth || stack.length < depth) && isIterable(v)) {
-              stack.push(iterator);
-              iterator = v.__iterator(type, reverse);
-            } else {
-              return useKeys ? step : iteratorValue(type, iterations++, v, step);
-            }
-          }
-          return iteratorDone();
-        });
-      };
-      return flatSequence;
-    }
-
-
-    function flatMapFactory(iterable, mapper, context) {
-      var coerce = iterableClass(iterable);
-      return iterable.toSeq().map(
-        function (v, k) {
-          return coerce(mapper.call(context, v, k, iterable));
-        }).
-      flatten(true);
-    }
-
-
-    function interposeFactory(iterable, separator) {
-      var interposedSequence = makeSequence(iterable);
-      interposedSequence.size = iterable.size && iterable.size * 2 - 1;
-      interposedSequence.__iterateUncached = function (fn, reverse) {
-        var this$0 = this;
-        var iterations = 0;
-        iterable.__iterate(function (v, k) {
-            return (!iterations || fn(separator, iterations++, this$0) !== false) &&
-              fn(v, iterations++, this$0) !== false;
-          },
-          reverse);
-
-        return iterations;
-      };
-      interposedSequence.__iteratorUncached = function (type, reverse) {
-        var iterator = iterable.__iterator(ITERATE_VALUES, reverse);
-        var iterations = 0;
-        var step;
-        return new Iterator(function () {
-          if (!step || iterations % 2) {
-            step = iterator.next();
-            if (step.done) {
-              return step;
-            }
-          }
-          return iterations % 2 ?
-            iteratorValue(type, iterations++, separator) :
-            iteratorValue(type, iterations++, step.value, step);
-        });
-      };
-      return interposedSequence;
-    }
-
-
-    function sortFactory(iterable, comparator, mapper) {
-      if (!comparator) {
-        comparator = defaultComparator;
-      }
-      var isKeyedIterable = isKeyed(iterable);
-      var index = 0;
-      var entries = iterable.toSeq().map(
-        function (v, k) {
-          return [k, v, index++, mapper ? mapper(v, k, iterable) : v];
-        }).
-      toArray();
-      entries.sort(function (a, b) {
-        return comparator(a[3], b[3]) || a[2] - b[2];
-      }).forEach(
-        isKeyedIterable ?
-          function (v, i) {
-            entries[i].length = 2;
-          } :
-          function (v, i) {
-            entries[i] = v[1];
-          });
-
-      return isKeyedIterable ? KeyedSeq(entries) :
-        isIndexed(iterable) ? IndexedSeq(entries) :
-          SetSeq(entries);
-    }
-
-
-    function maxFactory(iterable, comparator, mapper) {
-      if (!comparator) {
-        comparator = defaultComparator;
-      }
-      if (mapper) {
-        var entry = iterable.toSeq().
-        map(function (v, k) {
-          return [v, mapper(v, k, iterable)];
-        }).
-        reduce(function (a, b) {
-          return maxCompare(comparator, a[1], b[1]) ? b : a;
-        });
-        return entry && entry[0];
-      } else {
-        return iterable.reduce(function (a, b) {
-          return maxCompare(comparator, a, b) ? b : a;
-        });
-      }
-    }
-
-    function maxCompare(comparator, a, b) {
-      var comp = comparator(b, a);
-
-
-      return comp === 0 && b !== a && (b === undefined || b === null || b !== b) || comp > 0;
-    }
-
-
-    function zipWithFactory(keyIter, zipper, iters) {
-      var zipSequence = makeSequence(keyIter);
-      zipSequence.size = new ArraySeq(iters).map(function (i) {
-        return i.size;
-      }).min();
-
-
-      zipSequence.__iterate = function (fn, reverse) {
-
-
-        var iterator = this.__iterator(ITERATE_VALUES, reverse);
-        var step;
-        var iterations = 0;
-        while (!(step = iterator.next()).done) {
-          if (fn(step.value, iterations++, this) === false) {
-            break;
-          }
-        }
-        return iterations;
-      };
-      zipSequence.__iteratorUncached = function (type, reverse) {
-        var iterators = iters.map(function (i) {
-          return i = Iterable(i), getIterator(reverse ? i.reverse() : i);
-        });
-
-        var iterations = 0;
-        var isDone = false;
-        return new Iterator(function () {
-          var steps;
-          if (!isDone) {
-            steps = iterators.map(function (i) {
-              return i.next();
-            });
-            isDone = steps.some(function (s) {
-              return s.done;
-            });
-          }
-          if (isDone) {
-            return iteratorDone();
-          }
-          return iteratorValue(
-            type,
-            iterations++,
-            zipper.apply(null, steps.map(function (s) {
-              return s.value;
-            })));
-
-        });
-      };
-      return zipSequence;
-    }
-
-
-    function reify(iter, seq) {
-      return isSeq(iter) ? seq : iter.constructor(seq);
-    }
-
-    function validateEntry(entry) {
-      if (entry !== Object(entry)) {
-        throw new TypeError('Expected [K, V] tuple: ' + entry);
-      }
-    }
-
-    function resolveSize(iter) {
-      assertNotInfinite(iter.size);
-      return ensureSize(iter);
-    }
-
-    function iterableClass(iterable) {
-      return isKeyed(iterable) ? KeyedIterable :
-        isIndexed(iterable) ? IndexedIterable :
-          SetIterable;
-    }
-
-    function makeSequence(iterable) {
-      return Object.create(
-        (
-          isKeyed(iterable) ? KeyedSeq :
-            isIndexed(iterable) ? IndexedSeq :
-              SetSeq).
-          prototype);
-
-    }
-
-    function cacheResultThrough() {
-      if (this._iter.cacheResult) {
-        this._iter.cacheResult();
-        this.size = this._iter.size;
-        return this;
-      } else {
-        return Seq.prototype.cacheResult.call(this);
-      }
-    }
-
-    function defaultComparator(a, b) {
-      return a > b ? 1 : a < b ? -1 : 0;
-    }
-
-    function forceIterator(keyPath) {
-      var iter = getIterator(keyPath);
-      if (!iter) {
-
-
-        if (!isArrayLike(keyPath)) {
-          throw new TypeError('Expected iterable or array-like: ' + keyPath);
-        }
-        iter = getIterator(Iterable(keyPath));
-      }
-      return iter;
-    }
-
-    createClass(Record, KeyedCollection);
-
-    function Record(defaultValues, name) {
-      var hasInitialized;
-
-      var RecordType = function Record(values) {
-        if (values instanceof RecordType) {
-          return values;
-        }
-        if (!(this instanceof RecordType)) {
-          return new RecordType(values);
-        }
-        if (!hasInitialized) {
-          hasInitialized = true;
-          var keys = Object.keys(defaultValues);
-          setProps(RecordTypePrototype, keys);
-          RecordTypePrototype.size = keys.length;
-          RecordTypePrototype._name = name;
-          RecordTypePrototype._keys = keys;
-          RecordTypePrototype._defaultValues = defaultValues;
-        }
-        this._map = Map(values);
-      };
-
-      var RecordTypePrototype = RecordType.prototype = Object.create(RecordPrototype);
-      RecordTypePrototype.constructor = RecordType;
-
-      return RecordType;
-    }
-
-    Record.prototype.toString = function () {
-      return this.__toString(recordName(this) + ' {', '}');
-    };
-
-
-    Record.prototype.has = function (k) {
-      return this._defaultValues.hasOwnProperty(k);
-    };
-
-    Record.prototype.get = function (k, notSetValue) {
-      if (!this.has(k)) {
-        return notSetValue;
-      }
-      var defaultVal = this._defaultValues[k];
-      return this._map ? this._map.get(k, defaultVal) : defaultVal;
-    };
-
-
-    Record.prototype.clear = function () {
-      if (this.__ownerID) {
-        this._map && this._map.clear();
-        return this;
-      }
-      var RecordType = this.constructor;
-      return RecordType._empty || (RecordType._empty = makeRecord(this, emptyMap()));
-    };
-
-    Record.prototype.set = function (k, v) {
-      if (!this.has(k)) {
-        throw new Error('Cannot set unknown key "' + k + '" on ' + recordName(this));
-      }
-      if (this._map && !this._map.has(k)) {
-        var defaultVal = this._defaultValues[k];
-        if (v === defaultVal) {
-          return this;
-        }
-      }
-      var newMap = this._map && this._map.set(k, v);
-      if (this.__ownerID || newMap === this._map) {
-        return this;
-      }
-      return makeRecord(this, newMap);
-    };
-
-    Record.prototype.remove = function (k) {
-      if (!this.has(k)) {
-        return this;
-      }
-      var newMap = this._map && this._map.remove(k);
-      if (this.__ownerID || newMap === this._map) {
-        return this;
-      }
-      return makeRecord(this, newMap);
-    };
-
-    Record.prototype.wasAltered = function () {
-      return this._map.wasAltered();
-    };
-
-    Record.prototype.__iterator = function (type, reverse) {
-      var this$0 = this;
-      return KeyedIterable(this._defaultValues).map(function (_, k) {
-        return this$0.get(k);
-      }).__iterator(type, reverse);
-    };
-
-    Record.prototype.__iterate = function (fn, reverse) {
-      var this$0 = this;
-      return KeyedIterable(this._defaultValues).map(function (_, k) {
-        return this$0.get(k);
-      }).__iterate(fn, reverse);
-    };
-
-    Record.prototype.__ensureOwner = function (ownerID) {
-      if (ownerID === this.__ownerID) {
-        return this;
-      }
-      var newMap = this._map && this._map.__ensureOwner(ownerID);
-      if (!ownerID) {
-        this.__ownerID = ownerID;
-        this._map = newMap;
-        return this;
-      }
-      return makeRecord(this, newMap, ownerID);
-    };
-
-
-    var RecordPrototype = Record.prototype;
-    RecordPrototype[DELETE] = RecordPrototype.remove;
-    RecordPrototype.deleteIn =
-      RecordPrototype.removeIn = MapPrototype.removeIn;
-    RecordPrototype.merge = MapPrototype.merge;
-    RecordPrototype.mergeWith = MapPrototype.mergeWith;
-    RecordPrototype.mergeIn = MapPrototype.mergeIn;
-    RecordPrototype.mergeDeep = MapPrototype.mergeDeep;
-    RecordPrototype.mergeDeepWith = MapPrototype.mergeDeepWith;
-    RecordPrototype.mergeDeepIn = MapPrototype.mergeDeepIn;
-    RecordPrototype.setIn = MapPrototype.setIn;
-    RecordPrototype.update = MapPrototype.update;
-    RecordPrototype.updateIn = MapPrototype.updateIn;
-    RecordPrototype.withMutations = MapPrototype.withMutations;
-    RecordPrototype.asMutable = MapPrototype.asMutable;
-    RecordPrototype.asImmutable = MapPrototype.asImmutable;
-
-
-    function makeRecord(likeRecord, map, ownerID) {
-      var record = Object.create(Object.getPrototypeOf(likeRecord));
-      record._map = map;
-      record.__ownerID = ownerID;
-      return record;
-    }
-
-    function recordName(record) {
-      return record._name || record.constructor.name || 'Record';
-    }
-
-    function setProps(prototype, names) {
-      try {
-        names.forEach(setProp.bind(undefined, prototype));
-      } catch (error) {
-
-      }
-    }
-
-    function setProp(prototype, name) {
-      Object.defineProperty(prototype, name, {
-        get: function get() {
-          return this.get(name);
-        },
-        set: function set(value) {
-          invariant(this.__ownerID, 'Cannot set on an immutable record.');
-          this.set(name, value);
-        }
-      });
-
-    }
-
-    createClass(Set, SetCollection);
-
-
-    function Set(value) {
-      return value === null || value === undefined ? emptySet() :
-        isSet(value) && !isOrdered(value) ? value :
-          emptySet().withMutations(function (set) {
-            var iter = SetIterable(value);
-            assertNotInfinite(iter.size);
-            iter.forEach(function (v) {
-              return set.add(v);
-            });
-          });
-    }
-
-    Set.of = function () {
-      return this(arguments);
-    };
-
-    Set.fromKeys = function (value) {
-      return this(KeyedIterable(value).keySeq());
-    };
-
-    Set.prototype.toString = function () {
-      return this.__toString('Set {', '}');
-    };
-
-
-    Set.prototype.has = function (value) {
-      return this._map.has(value);
-    };
-
-
-    Set.prototype.add = function (value) {
-      return updateSet(this, this._map.set(value, true));
-    };
-
-    Set.prototype.remove = function (value) {
-      return updateSet(this, this._map.remove(value));
-    };
-
-    Set.prototype.clear = function () {
-      return updateSet(this, this._map.clear());
-    };
-
-
-    Set.prototype.union = function () {
-      var iters = SLICE$0.call(arguments, 0);
-      iters = iters.filter(function (x) {
-        return x.size !== 0;
-      });
-      if (iters.length === 0) {
-        return this;
-      }
-      if (this.size === 0 && !this.__ownerID && iters.length === 1) {
-        return this.constructor(iters[0]);
-      }
-      return this.withMutations(function (set) {
-        for (var ii = 0; ii < iters.length; ii++) {
-          SetIterable(iters[ii]).forEach(function (value) {
-            return set.add(value);
-          });
-        }
-      });
-    };
-
-    Set.prototype.intersect = function () {
-      var iters = SLICE$0.call(arguments, 0);
-      if (iters.length === 0) {
-        return this;
-      }
-      iters = iters.map(function (iter) {
-        return SetIterable(iter);
-      });
-      var originalSet = this;
-      return this.withMutations(function (set) {
-        originalSet.forEach(function (value) {
-          if (!iters.every(function (iter) {
-              return iter.includes(value);
-            })) {
-            set.remove(value);
-          }
-        });
-      });
-    };
-
-    Set.prototype.subtract = function () {
-      var iters = SLICE$0.call(arguments, 0);
-      if (iters.length === 0) {
-        return this;
-      }
-      iters = iters.map(function (iter) {
-        return SetIterable(iter);
-      });
-      var originalSet = this;
-      return this.withMutations(function (set) {
-        originalSet.forEach(function (value) {
-          if (iters.some(function (iter) {
-              return iter.includes(value);
-            })) {
-            set.remove(value);
-          }
-        });
-      });
-    };
-
-    Set.prototype.merge = function () {
-      return this.union.apply(this, arguments);
-    };
-
-    Set.prototype.mergeWith = function (merger) {
-      var iters = SLICE$0.call(arguments, 1);
-      return this.union.apply(this, iters);
-    };
-
-    Set.prototype.sort = function (comparator) {
-
-      return OrderedSet(sortFactory(this, comparator));
-    };
-
-    Set.prototype.sortBy = function (mapper, comparator) {
-
-      return OrderedSet(sortFactory(this, comparator, mapper));
-    };
-
-    Set.prototype.wasAltered = function () {
-      return this._map.wasAltered();
-    };
-
-    Set.prototype.__iterate = function (fn, reverse) {
-      var this$0 = this;
-      return this._map.__iterate(function (_, k) {
-        return fn(k, k, this$0);
-      }, reverse);
-    };
-
-    Set.prototype.__iterator = function (type, reverse) {
-      return this._map.map(function (_, k) {
-        return k;
-      }).__iterator(type, reverse);
-    };
-
-    Set.prototype.__ensureOwner = function (ownerID) {
-      if (ownerID === this.__ownerID) {
-        return this;
-      }
-      var newMap = this._map.__ensureOwner(ownerID);
-      if (!ownerID) {
-        this.__ownerID = ownerID;
-        this._map = newMap;
-        return this;
-      }
-      return this.__make(newMap, ownerID);
-    };
-
-
-    function isSet(maybeSet) {
-      return !!(maybeSet && maybeSet[IS_SET_SENTINEL]);
-    }
-
-    Set.isSet = isSet;
-
-    var IS_SET_SENTINEL = '@@__IMMUTABLE_SET__@@';
-
-    var SetPrototype = Set.prototype;
-    SetPrototype[IS_SET_SENTINEL] = true;
-    SetPrototype[DELETE] = SetPrototype.remove;
-    SetPrototype.mergeDeep = SetPrototype.merge;
-    SetPrototype.mergeDeepWith = SetPrototype.mergeWith;
-    SetPrototype.withMutations = MapPrototype.withMutations;
-    SetPrototype.asMutable = MapPrototype.asMutable;
-    SetPrototype.asImmutable = MapPrototype.asImmutable;
-
-    SetPrototype.__empty = emptySet;
-    SetPrototype.__make = makeSet;
-
-    function updateSet(set, newMap) {
-      if (set.__ownerID) {
-        set.size = newMap.size;
-        set._map = newMap;
-        return set;
-      }
-      return newMap === set._map ? set :
-        newMap.size === 0 ? set.__empty() :
-          set.__make(newMap);
-    }
-
-    function makeSet(map, ownerID) {
-      var set = Object.create(SetPrototype);
-      set.size = map ? map.size : 0;
-      set._map = map;
-      set.__ownerID = ownerID;
-      return set;
-    }
-
-    var EMPTY_SET;
-
-    function emptySet() {
-      return EMPTY_SET || (EMPTY_SET = makeSet(emptyMap()));
-    }
-
-    createClass(OrderedSet, Set);
-
-
-    function OrderedSet(value) {
-      return value === null || value === undefined ? emptyOrderedSet() :
-        isOrderedSet(value) ? value :
-          emptyOrderedSet().withMutations(function (set) {
-            var iter = SetIterable(value);
-            assertNotInfinite(iter.size);
-            iter.forEach(function (v) {
-              return set.add(v);
-            });
-          });
-    }
-
-    OrderedSet.of = function () {
-      return this(arguments);
-    };
-
-    OrderedSet.fromKeys = function (value) {
-      return this(KeyedIterable(value).keySeq());
-    };
-
-    OrderedSet.prototype.toString = function () {
-      return this.__toString('OrderedSet {', '}');
-    };
-
-
-    function isOrderedSet(maybeOrderedSet) {
-      return isSet(maybeOrderedSet) && isOrdered(maybeOrderedSet);
-    }
-
-    OrderedSet.isOrderedSet = isOrderedSet;
-
-    var OrderedSetPrototype = OrderedSet.prototype;
-    OrderedSetPrototype[IS_ORDERED_SENTINEL] = true;
-
-    OrderedSetPrototype.__empty = emptyOrderedSet;
-    OrderedSetPrototype.__make = makeOrderedSet;
-
-    function makeOrderedSet(map, ownerID) {
-      var set = Object.create(OrderedSetPrototype);
-      set.size = map ? map.size : 0;
-      set._map = map;
-      set.__ownerID = ownerID;
-      return set;
-    }
-
-    var EMPTY_ORDERED_SET;
-
-    function emptyOrderedSet() {
-      return EMPTY_ORDERED_SET || (EMPTY_ORDERED_SET = makeOrderedSet(emptyOrderedMap()));
-    }
-
-    createClass(Stack, IndexedCollection);
-
-
-    function Stack(value) {
-      return value === null || value === undefined ? emptyStack() :
-        isStack(value) ? value :
-          emptyStack().unshiftAll(value);
-    }
-
-    Stack.of = function () {
-      return this(arguments);
-    };
-
-    Stack.prototype.toString = function () {
-      return this.__toString('Stack [', ']');
-    };
-
-
-    Stack.prototype.get = function (index, notSetValue) {
-      var head = this._head;
-      index = wrapIndex(this, index);
-      while (head && index--) {
-        head = head.next;
-      }
-      return head ? head.value : notSetValue;
-    };
-
-    Stack.prototype.peek = function () {
-      return this._head && this._head.value;
-    };
-
-
-    Stack.prototype.push = function () {
-      if (arguments.length === 0) {
-        return this;
-      }
-      var newSize = this.size + arguments.length;
-      var head = this._head;
-      for (var ii = arguments.length - 1; ii >= 0; ii--) {
-        head = {
-          value: arguments[ii],
-          next: head
-        };
-
-      }
-      if (this.__ownerID) {
-        this.size = newSize;
-        this._head = head;
-        this.__hash = undefined;
-        this.__altered = true;
-        return this;
-      }
-      return makeStack(newSize, head);
-    };
-
-    Stack.prototype.pushAll = function (iter) {
-      iter = IndexedIterable(iter);
-      if (iter.size === 0) {
-        return this;
-      }
-      assertNotInfinite(iter.size);
-      var newSize = this.size;
-      var head = this._head;
-      iter.reverse().forEach(function (value) {
-        newSize++;
-        head = {
-          value: value,
-          next: head
-        };
-
-      });
-      if (this.__ownerID) {
-        this.size = newSize;
-        this._head = head;
-        this.__hash = undefined;
-        this.__altered = true;
-        return this;
-      }
-      return makeStack(newSize, head);
-    };
-
-    Stack.prototype.pop = function () {
-      return this.slice(1);
-    };
-
-    Stack.prototype.unshift = function () {
-      return this.push.apply(this, arguments);
-    };
-
-    Stack.prototype.unshiftAll = function (iter) {
-      return this.pushAll(iter);
-    };
-
-    Stack.prototype.shift = function () {
-      return this.pop.apply(this, arguments);
-    };
-
-    Stack.prototype.clear = function () {
-      if (this.size === 0) {
-        return this;
-      }
-      if (this.__ownerID) {
-        this.size = 0;
-        this._head = undefined;
-        this.__hash = undefined;
-        this.__altered = true;
-        return this;
-      }
-      return emptyStack();
-    };
-
-    Stack.prototype.slice = function (begin, end) {
-      if (wholeSlice(begin, end, this.size)) {
-        return this;
-      }
-      var resolvedBegin = resolveBegin(begin, this.size);
-      var resolvedEnd = resolveEnd(end, this.size);
-      if (resolvedEnd !== this.size) {
-
-        return IndexedCollection.prototype.slice.call(this, begin, end);
-      }
-      var newSize = this.size - resolvedBegin;
-      var head = this._head;
-      while (resolvedBegin--) {
-        head = head.next;
-      }
-      if (this.__ownerID) {
-        this.size = newSize;
-        this._head = head;
-        this.__hash = undefined;
-        this.__altered = true;
-        return this;
-      }
-      return makeStack(newSize, head);
-    };
-
-
-    Stack.prototype.__ensureOwner = function (ownerID) {
-      if (ownerID === this.__ownerID) {
-        return this;
-      }
-      if (!ownerID) {
-        this.__ownerID = ownerID;
-        this.__altered = false;
-        return this;
-      }
-      return makeStack(this.size, this._head, ownerID, this.__hash);
-    };
-
-
-    Stack.prototype.__iterate = function (fn, reverse) {
-      if (reverse) {
-        return this.reverse().__iterate(fn);
-      }
-      var iterations = 0;
-      var node = this._head;
-      while (node) {
-        if (fn(node.value, iterations++, this) === false) {
-          break;
-        }
-        node = node.next;
-      }
-      return iterations;
-    };
-
-    Stack.prototype.__iterator = function (type, reverse) {
-      if (reverse) {
-        return this.reverse().__iterator(type);
-      }
-      var iterations = 0;
-      var node = this._head;
-      return new Iterator(function () {
-        if (node) {
-          var value = node.value;
-          node = node.next;
-          return iteratorValue(type, iterations++, value);
-        }
-        return iteratorDone();
-      });
-    };
-
-
-    function isStack(maybeStack) {
-      return !!(maybeStack && maybeStack[IS_STACK_SENTINEL]);
-    }
-
-    Stack.isStack = isStack;
-
-    var IS_STACK_SENTINEL = '@@__IMMUTABLE_STACK__@@';
-
-    var StackPrototype = Stack.prototype;
-    StackPrototype[IS_STACK_SENTINEL] = true;
-    StackPrototype.withMutations = MapPrototype.withMutations;
-    StackPrototype.asMutable = MapPrototype.asMutable;
-    StackPrototype.asImmutable = MapPrototype.asImmutable;
-    StackPrototype.wasAltered = MapPrototype.wasAltered;
-
-
-    function makeStack(size, head, ownerID, hash) {
-      var map = Object.create(StackPrototype);
-      map.size = size;
-      map._head = head;
-      map.__ownerID = ownerID;
-      map.__hash = hash;
-      map.__altered = false;
-      return map;
-    }
-
-    var EMPTY_STACK;
-
-    function emptyStack() {
-      return EMPTY_STACK || (EMPTY_STACK = makeStack(0));
-    }
-
-
-    function mixin(ctor, methods) {
-      var keyCopier = function keyCopier(key) {
-        ctor.prototype[key] = methods[key];
-      };
-      Object.keys(methods).forEach(keyCopier);
-      Object.getOwnPropertySymbols &&
-      Object.getOwnPropertySymbols(methods).forEach(keyCopier);
-      return ctor;
-    }
-
-    Iterable.Iterator = Iterator;
-
-    mixin(Iterable, {
-
-
-      toArray: function toArray() {
-        assertNotInfinite(this.size);
-        var array = new Array(this.size || 0);
-        this.valueSeq().__iterate(function (v, i) {
-          array[i] = v;
-        });
-        return array;
-      },
-
-      toIndexedSeq: function toIndexedSeq() {
-        return new ToIndexedSequence(this);
-      },
-
-      toJS: function toJS() {
-        return this.toSeq().map(
-          function (value) {
-            return value && typeof value.toJS === 'function' ? value.toJS() : value;
-          }).
-        __toJS();
-      },
-
-      toJSON: function toJSON() {
-        return this.toSeq().map(
-          function (value) {
-            return value && typeof value.toJSON === 'function' ? value.toJSON() : value;
-          }).
-        __toJS();
-      },
-
-      toKeyedSeq: function toKeyedSeq() {
-        return new ToKeyedSequence(this, true);
-      },
-
-      toMap: function toMap() {
-
-        return Map(this.toKeyedSeq());
-      },
-
-      toObject: function toObject() {
-        assertNotInfinite(this.size);
-        var object = {};
-        this.__iterate(function (v, k) {
-          object[k] = v;
-        });
-        return object;
-      },
-
-      toOrderedMap: function toOrderedMap() {
-
-        return OrderedMap(this.toKeyedSeq());
-      },
-
-      toOrderedSet: function toOrderedSet() {
-
-        return OrderedSet(isKeyed(this) ? this.valueSeq() : this);
-      },
-
-      toSet: function toSet() {
-
-        return Set(isKeyed(this) ? this.valueSeq() : this);
-      },
-
-      toSetSeq: function toSetSeq() {
-        return new ToSetSequence(this);
-      },
-
-      toSeq: function toSeq() {
-        return isIndexed(this) ? this.toIndexedSeq() :
-          isKeyed(this) ? this.toKeyedSeq() :
-            this.toSetSeq();
-      },
-
-      toStack: function toStack() {
-
-        return Stack(isKeyed(this) ? this.valueSeq() : this);
-      },
-
-      toList: function toList() {
-
-        return List(isKeyed(this) ? this.valueSeq() : this);
-      },
-
-
-      toString: function toString() {
-        return '[Iterable]';
-      },
-
-      __toString: function __toString(head, tail) {
-        if (this.size === 0) {
-          return head + tail;
-        }
-        return head + ' ' + this.toSeq().map(this.__toStringMapper).join(', ') + ' ' + tail;
-      },
-
-
-      concat: function concat() {
-        var values = SLICE$0.call(arguments, 0);
-        return reify(this, concatFactory(this, values));
-      },
-
-      includes: function includes(searchValue) {
-        return this.some(function (value) {
-          return is(value, searchValue);
-        });
-      },
-
-      entries: function entries() {
-        return this.__iterator(ITERATE_ENTRIES);
-      },
-
-      every: function every(predicate, context) {
-        assertNotInfinite(this.size);
-        var returnValue = true;
-        this.__iterate(function (v, k, c) {
-          if (!predicate.call(context, v, k, c)) {
-            returnValue = false;
-            return false;
-          }
-        });
-        return returnValue;
-      },
-
-      filter: function filter(predicate, context) {
-        return reify(this, filterFactory(this, predicate, context, true));
-      },
-
-      find: function find(predicate, context, notSetValue) {
-        var entry = this.findEntry(predicate, context);
-        return entry ? entry[1] : notSetValue;
-      },
-
-      forEach: function forEach(sideEffect, context) {
-        assertNotInfinite(this.size);
-        return this.__iterate(context ? sideEffect.bind(context) : sideEffect);
-      },
-
-      join: function join(separator) {
-        assertNotInfinite(this.size);
-        separator = separator !== undefined ? '' + separator : ',';
-        var joined = '';
-        var isFirst = true;
-        this.__iterate(function (v) {
-          isFirst ? isFirst = false : joined += separator;
-          joined += v !== null && v !== undefined ? v.toString() : '';
-        });
-        return joined;
-      },
-
-      keys: function keys() {
-        return this.__iterator(ITERATE_KEYS);
-      },
-
-      map: function map(mapper, context) {
-        return reify(this, mapFactory(this, mapper, context));
-      },
-
-      reduce: function reduce(reducer, initialReduction, context) {
-        assertNotInfinite(this.size);
-        var reduction;
-        var useFirst;
-        if (arguments.length < 2) {
-          useFirst = true;
-        } else {
-          reduction = initialReduction;
-        }
-        this.__iterate(function (v, k, c) {
-          if (useFirst) {
-            useFirst = false;
-            reduction = v;
-          } else {
-            reduction = reducer.call(context, reduction, v, k, c);
-          }
-        });
-        return reduction;
-      },
-
-      reduceRight: function reduceRight(reducer, initialReduction, context) {
-        var reversed = this.toKeyedSeq().reverse();
-        return reversed.reduce.apply(reversed, arguments);
-      },
-
-      reverse: function reverse() {
-        return reify(this, reverseFactory(this, true));
-      },
-
-      slice: function slice(begin, end) {
-        return reify(this, sliceFactory(this, begin, end, true));
-      },
-
-      some: function some(predicate, context) {
-        return !this.every(not(predicate), context);
-      },
-
-      sort: function sort(comparator) {
-        return reify(this, sortFactory(this, comparator));
-      },
-
-      values: function values() {
-        return this.__iterator(ITERATE_VALUES);
-      },
-
-
-      butLast: function butLast() {
-        return this.slice(0, -1);
-      },
-
-      isEmpty: function isEmpty() {
-        return this.size !== undefined ? this.size === 0 : !this.some(function () {
-          return true;
-        });
-      },
-
-      count: function count(predicate, context) {
-        return ensureSize(
-          predicate ? this.toSeq().filter(predicate, context) : this);
-
-      },
-
-      countBy: function countBy(grouper, context) {
-        return countByFactory(this, grouper, context);
-      },
-
-      equals: function equals(other) {
-        return deepEqual(this, other);
-      },
-
-      entrySeq: function entrySeq() {
-        var iterable = this;
-        if (iterable._cache) {
-
-          return new ArraySeq(iterable._cache);
-        }
-        var entriesSequence = iterable.toSeq().map(entryMapper).toIndexedSeq();
-        entriesSequence.fromEntrySeq = function () {
-          return iterable.toSeq();
-        };
-        return entriesSequence;
-      },
-
-      filterNot: function filterNot(predicate, context) {
-        return this.filter(not(predicate), context);
-      },
-
-      findEntry: function findEntry(predicate, context, notSetValue) {
-        var found = notSetValue;
-        this.__iterate(function (v, k, c) {
-          if (predicate.call(context, v, k, c)) {
-            found = [k, v];
-            return false;
-          }
-        });
-        return found;
-      },
-
-      findKey: function findKey(predicate, context) {
-        var entry = this.findEntry(predicate, context);
-        return entry && entry[0];
-      },
-
-      findLast: function findLast(predicate, context, notSetValue) {
-        return this.toKeyedSeq().reverse().find(predicate, context, notSetValue);
-      },
-
-      findLastEntry: function findLastEntry(predicate, context, notSetValue) {
-        return this.toKeyedSeq().reverse().findEntry(predicate, context, notSetValue);
-      },
-
-      findLastKey: function findLastKey(predicate, context) {
-        return this.toKeyedSeq().reverse().findKey(predicate, context);
-      },
-
-      first: function first() {
-        return this.find(returnTrue);
-      },
-
-      flatMap: function flatMap(mapper, context) {
-        return reify(this, flatMapFactory(this, mapper, context));
-      },
-
-      flatten: function flatten(depth) {
-        return reify(this, flattenFactory(this, depth, true));
-      },
-
-      fromEntrySeq: function fromEntrySeq() {
-        return new FromEntriesSequence(this);
-      },
-
-      get: function get(searchKey, notSetValue) {
-        return this.find(function (_, key) {
-          return is(key, searchKey);
-        }, undefined, notSetValue);
-      },
-
-      getIn: function getIn(searchKeyPath, notSetValue) {
-        var nested = this;
-
-
-        var iter = forceIterator(searchKeyPath);
-        var step;
-        while (!(step = iter.next()).done) {
-          var key = step.value;
-          nested = nested && nested.get ? nested.get(key, NOT_SET) : NOT_SET;
-          if (nested === NOT_SET) {
-            return notSetValue;
-          }
-        }
-        return nested;
-      },
-
-      groupBy: function groupBy(grouper, context) {
-        return groupByFactory(this, grouper, context);
-      },
-
-      has: function has(searchKey) {
-        return this.get(searchKey, NOT_SET) !== NOT_SET;
-      },
-
-      hasIn: function hasIn(searchKeyPath) {
-        return this.getIn(searchKeyPath, NOT_SET) !== NOT_SET;
-      },
-
-      isSubset: function isSubset(iter) {
-        iter = typeof iter.includes === 'function' ? iter : Iterable(iter);
-        return this.every(function (value) {
-          return iter.includes(value);
-        });
-      },
-
-      isSuperset: function isSuperset(iter) {
-        iter = typeof iter.isSubset === 'function' ? iter : Iterable(iter);
-        return iter.isSubset(this);
-      },
-
-      keyOf: function keyOf(searchValue) {
-        return this.findKey(function (value) {
-          return is(value, searchValue);
-        });
-      },
-
-      keySeq: function keySeq() {
-        return this.toSeq().map(keyMapper).toIndexedSeq();
-      },
-
-      last: function last() {
-        return this.toSeq().reverse().first();
-      },
-
-      lastKeyOf: function lastKeyOf(searchValue) {
-        return this.toKeyedSeq().reverse().keyOf(searchValue);
-      },
-
-      max: function max(comparator) {
-        return maxFactory(this, comparator);
-      },
-
-      maxBy: function maxBy(mapper, comparator) {
-        return maxFactory(this, comparator, mapper);
-      },
-
-      min: function min(comparator) {
-        return maxFactory(this, comparator ? neg(comparator) : defaultNegComparator);
-      },
-
-      minBy: function minBy(mapper, comparator) {
-        return maxFactory(this, comparator ? neg(comparator) : defaultNegComparator, mapper);
-      },
-
-      rest: function rest() {
-        return this.slice(1);
-      },
-
-      skip: function skip(amount) {
-        return this.slice(Math.max(0, amount));
-      },
-
-      skipLast: function skipLast(amount) {
-        return reify(this, this.toSeq().reverse().skip(amount).reverse());
-      },
-
-      skipWhile: function skipWhile(predicate, context) {
-        return reify(this, skipWhileFactory(this, predicate, context, true));
-      },
-
-      skipUntil: function skipUntil(predicate, context) {
-        return this.skipWhile(not(predicate), context);
-      },
-
-      sortBy: function sortBy(mapper, comparator) {
-        return reify(this, sortFactory(this, comparator, mapper));
-      },
-
-      take: function take(amount) {
-        return this.slice(0, Math.max(0, amount));
-      },
-
-      takeLast: function takeLast(amount) {
-        return reify(this, this.toSeq().reverse().take(amount).reverse());
-      },
-
-      takeWhile: function takeWhile(predicate, context) {
-        return reify(this, takeWhileFactory(this, predicate, context));
-      },
-
-      takeUntil: function takeUntil(predicate, context) {
-        return this.takeWhile(not(predicate), context);
-      },
-
-      valueSeq: function valueSeq() {
-        return this.toIndexedSeq();
-      },
-
-
-      hashCode: function hashCode() {
-        return this.__hash || (this.__hash = hashIterable(this));
-      }
-    });
-
-
-    var IterablePrototype = Iterable.prototype;
-    IterablePrototype[IS_ITERABLE_SENTINEL] = true;
-    IterablePrototype[ITERATOR_SYMBOL] = IterablePrototype.values;
-    IterablePrototype.__toJS = IterablePrototype.toArray;
-    IterablePrototype.__toStringMapper = quoteString;
-    IterablePrototype.inspect =
-      IterablePrototype.toSource = function () {
-        return this.toString();
-      };
-    IterablePrototype.chain = IterablePrototype.flatMap;
-    IterablePrototype.contains = IterablePrototype.includes;
-
-    mixin(KeyedIterable, {
-
-
-      flip: function flip() {
-        return reify(this, flipFactory(this));
-      },
-
-      mapEntries: function mapEntries(mapper, context) {
-        var this$0 = this;
-        var iterations = 0;
-        return reify(this,
-          this.toSeq().map(
-            function (v, k) {
-              return mapper.call(context, [k, v], iterations++, this$0);
-            }).
-          fromEntrySeq());
-
-      },
-
-      mapKeys: function mapKeys(mapper, context) {
-        var this$0 = this;
-        return reify(this,
-          this.toSeq().flip().map(
-            function (k, v) {
-              return mapper.call(context, k, v, this$0);
-            }).
-          flip());
-
-      }
-    });
-
-
-    var KeyedIterablePrototype = KeyedIterable.prototype;
-    KeyedIterablePrototype[IS_KEYED_SENTINEL] = true;
-    KeyedIterablePrototype[ITERATOR_SYMBOL] = IterablePrototype.entries;
-    KeyedIterablePrototype.__toJS = IterablePrototype.toObject;
-    KeyedIterablePrototype.__toStringMapper = function (v, k) {
-      return JSON.stringify(k) + ': ' + quoteString(v);
-    };
-
-
-    mixin(IndexedIterable, {
-
-
-      toKeyedSeq: function toKeyedSeq() {
-        return new ToKeyedSequence(this, false);
-      },
-
-
-      filter: function filter(predicate, context) {
-        return reify(this, filterFactory(this, predicate, context, false));
-      },
-
-      findIndex: function findIndex(predicate, context) {
-        var entry = this.findEntry(predicate, context);
-        return entry ? entry[0] : -1;
-      },
-
-      indexOf: function indexOf(searchValue) {
-        var key = this.keyOf(searchValue);
-        return key === undefined ? -1 : key;
-      },
-
-      lastIndexOf: function lastIndexOf(searchValue) {
-        var key = this.lastKeyOf(searchValue);
-        return key === undefined ? -1 : key;
-      },
-
-      reverse: function reverse() {
-        return reify(this, reverseFactory(this, false));
-      },
-
-      slice: function slice(begin, end) {
-        return reify(this, sliceFactory(this, begin, end, false));
-      },
-
-      splice: function splice(index, removeNum) {
-        var numArgs = arguments.length;
-        removeNum = Math.max(removeNum | 0, 0);
-        if (numArgs === 0 || numArgs === 2 && !removeNum) {
-          return this;
-        }
-
-
-        index = resolveBegin(index, index < 0 ? this.count() : this.size);
-        var spliced = this.slice(0, index);
-        return reify(
-          this,
-          numArgs === 1 ?
-            spliced :
-            spliced.concat(arrCopy(arguments, 2), this.slice(index + removeNum)));
-
-      },
-
-
-      findLastIndex: function findLastIndex(predicate, context) {
-        var entry = this.findLastEntry(predicate, context);
-        return entry ? entry[0] : -1;
-      },
-
-      first: function first() {
-        return this.get(0);
-      },
-
-      flatten: function flatten(depth) {
-        return reify(this, flattenFactory(this, depth, false));
-      },
-
-      get: function get(index, notSetValue) {
-        index = wrapIndex(this, index);
-        return index < 0 || this.size === Infinity ||
-        this.size !== undefined && index > this.size ?
-          notSetValue :
-          this.find(function (_, key) {
-            return key === index;
-          }, undefined, notSetValue);
-      },
-
-      has: function has(index) {
-        index = wrapIndex(this, index);
-        return index >= 0 && (this.size !== undefined ?
-          this.size === Infinity || index < this.size :
-          this.indexOf(index) !== -1);
-
-      },
-
-      interpose: function interpose(separator) {
-        return reify(this, interposeFactory(this, separator));
-      },
-
-      interleave: function interleave() {
-        var iterables = [this].concat(arrCopy(arguments));
-        var zipped = zipWithFactory(this.toSeq(), IndexedSeq.of, iterables);
-        var interleaved = zipped.flatten(true);
-        if (zipped.size) {
-          interleaved.size = zipped.size * iterables.length;
-        }
-        return reify(this, interleaved);
-      },
-
-      keySeq: function keySeq() {
-        return Range(0, this.size);
-      },
-
-      last: function last() {
-        return this.get(-1);
-      },
-
-      skipWhile: function skipWhile(predicate, context) {
-        return reify(this, skipWhileFactory(this, predicate, context, false));
-      },
-
-      zip: function zip() {
-        var iterables = [this].concat(arrCopy(arguments));
-        return reify(this, zipWithFactory(this, defaultZipper, iterables));
-      },
-
-      zipWith: function zipWith(zipper) {
-        var iterables = arrCopy(arguments);
-        iterables[0] = this;
-        return reify(this, zipWithFactory(this, zipper, iterables));
-      }
-    });
-
-
-    IndexedIterable.prototype[IS_INDEXED_SENTINEL] = true;
-    IndexedIterable.prototype[IS_ORDERED_SENTINEL] = true;
-
-
-    mixin(SetIterable, {
-
-
-      get: function get(value, notSetValue) {
-        return this.has(value) ? value : notSetValue;
-      },
-
-      includes: function includes(value) {
-        return this.has(value);
-      },
-
-
-      keySeq: function keySeq() {
-        return this.valueSeq();
-      }
-    });
-
-
-    SetIterable.prototype.has = IterablePrototype.includes;
-    SetIterable.prototype.contains = SetIterable.prototype.includes;
-
-
-    mixin(KeyedSeq, KeyedIterable.prototype);
-    mixin(IndexedSeq, IndexedIterable.prototype);
-    mixin(SetSeq, SetIterable.prototype);
-
-    mixin(KeyedCollection, KeyedIterable.prototype);
-    mixin(IndexedCollection, IndexedIterable.prototype);
-    mixin(SetCollection, SetIterable.prototype);
-
-
-    function keyMapper(v, k) {
-      return k;
-    }
-
-    function entryMapper(v, k) {
-      return [k, v];
-    }
-
-    function not(predicate) {
-      return function () {
-        return !predicate.apply(this, arguments);
-      };
-    }
-
-    function neg(predicate) {
-      return function () {
-        return -predicate.apply(this, arguments);
-      };
-    }
-
-    function quoteString(value) {
-      return typeof value === 'string' ? JSON.stringify(value) : String(value);
-    }
-
-    function defaultZipper() {
-      return arrCopy(arguments);
-    }
-
-    function defaultNegComparator(a, b) {
-      return a < b ? 1 : a > b ? -1 : 0;
-    }
-
-    function hashIterable(iterable) {
-      if (iterable.size === Infinity) {
-        return 0;
-      }
-      var ordered = isOrdered(iterable);
-      var keyed = isKeyed(iterable);
-      var h = ordered ? 1 : 0;
-      var size = iterable.__iterate(
-        keyed ?
-          ordered ?
-            function (v, k) {
-              h = 31 * h + hashMerge(hash(v), hash(k)) | 0;
-            } :
-            function (v, k) {
-              h = h + hashMerge(hash(v), hash(k)) | 0;
-            } :
-          ordered ?
-            function (v) {
-              h = 31 * h + hash(v) | 0;
-            } :
-            function (v) {
-              h = h + hash(v) | 0;
-            });
-
-      return murmurHashOfSize(size, h);
-    }
-
-    function murmurHashOfSize(size, h) {
-      h = imul(h, 0xCC9E2D51);
-      h = imul(h << 15 | h >>> -15, 0x1B873593);
-      h = imul(h << 13 | h >>> -13, 5);
-      h = (h + 0xE6546B64 | 0) ^ size;
-      h = imul(h ^ h >>> 16, 0x85EBCA6B);
-      h = imul(h ^ h >>> 13, 0xC2B2AE35);
-      h = smi(h ^ h >>> 16);
-      return h;
-    }
-
-    function hashMerge(a, b) {
-      return a ^ b + 0x9E3779B9 + (a << 6) + (a >> 2) | 0;
-    }
-
-    var Immutable = {
-
-      Iterable: Iterable,
-
-      Seq: Seq,
-      Collection: Collection,
-      Map: Map,
-      OrderedMap: OrderedMap,
-      List: List,
-      Stack: Stack,
-      Set: Set,
-      OrderedSet: OrderedSet,
-
-      Record: Record,
-      Range: Range,
-      Repeat: Repeat,
-
-      is: is,
-      fromJS: fromJS
-    };
-
-
-    return Immutable;
-
-  });
-}, "immutable/dist/immutable.js");
-__d(658 /* react-native-tab-navigator/Badge.js */, function (global, require, module, exports) {
-  'use strict';
-  Object.defineProperty(exports, "__esModule", { value: true });
-  var _jsxFileName = '/Users/sky/dev/react/native/SmartReactNativeApp/node_modules/react-native-tab-navigator/Badge.js';
-
-  var _react = require(12 /* react */);
-  var _react2 = babelHelpers.interopRequireDefault(_react);
-  var _reactNative = require(43 /* react-native */);
-
-
-  var _Layout = require(659 /* ./Layout */);
-  var _Layout2 = babelHelpers.interopRequireDefault(_Layout);
-  var
-
-    Badge = function (_React$Component) {
-      babelHelpers.inherits(Badge, _React$Component);
-
-
-      function Badge(props, context) {
-        babelHelpers.classCallCheck(this, Badge);
-        var _this = babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(Badge).call(this,
-          props, context));
-        _this.
-
-
-          state = {
-          computedSize: null
-        };
-        _this._handleLayout = _this._handleLayout.bind(_this);
-        return _this;
-      }
-
-      babelHelpers.createClass(Badge, [{
-        key: 'render', value: function render() {
-          var
-            computedSize = this.state.computedSize;
-          var style = {};
-          if (!computedSize) {
-            style.opacity = 0;
-          } else {
-            style.width = Math.max(computedSize.height, computedSize.width);
-          }
-
-          return (
-            _react2.default.createElement(_reactNative.Text, babelHelpers.extends({},
-              this.props, {
-                numberOfLines: 1,
-                onLayout: this._handleLayout,
-                style: [styles.container, this.props.style, style], __source: { fileName: _jsxFileName, lineNumber: 34 }
-              }),
-              this.props.children));
-
-
-        }
-      }, {
-        key: '_handleLayout', value: function _handleLayout(event) {
-          var _event$nativeEvent$la =
-            event.nativeEvent.layout;
-          var width = _event$nativeEvent$la.width;
-          var height = _event$nativeEvent$la.height;
-          var
-            computedSize = this.state.computedSize;
-          if (computedSize && computedSize.height === height &&
-            computedSize.width === width) {
-            return;
-          }
-
-          this.setState({
-            computedSize: { width: width, height: height }
-          });
-
-
-          if (this.props.onLayout) {
-            this.props.onLayout(event);
-          }
-        }
-      }]);
-      return Badge;
-    }(_react2.default.Component);
-  Badge.propTypes = _reactNative.Text.propTypes;
-  exports.default = Badge;
-
-
-  var styles = _reactNative.StyleSheet.create({
-    container: {
-      fontSize: 12,
-      color: '#fff',
-      backgroundColor: 'rgb(0, 122, 255)',
-      lineHeight: 15,
-      textAlign: 'center',
-      borderWidth: 1 + _Layout2.default.pixel,
-      borderColor: '#fefefe',
-      borderRadius: 17 / 2,
-      overflow: 'hidden'
-    }
-  });
-}, "react-native-tab-navigator/Badge.js");
-__d(659 /* react-native-tab-navigator/Layout.js */, function (global, require, module, exports) {
-  'use strict';
-  Object.defineProperty(exports, "__esModule", { value: true });
-
-  var _reactNative = require(43 /* react-native */);
-  exports.default =
-
-  {
-    pixel: 1 / _reactNative.PixelRatio.get(),
-    tabBarHeight: 49
-  };
-}, "react-native-tab-navigator/Layout.js");
-__d(660 /* react-native-tab-navigator/StaticContainer.js */, function (global, require, module, exports) {
-  'use strict';
-  Object.defineProperty(exports, "__esModule", { value: true });
-
-  var _react = require(12 /* react */);
-  var _react2 = babelHelpers.interopRequireDefault(_react);
-  var
-
-
-    StaticContainer = function (_React$Component) {
-      babelHelpers.inherits(StaticContainer, _React$Component);
-      function StaticContainer() {
-        babelHelpers.classCallCheck(this, StaticContainer);
-        return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(StaticContainer).apply(this, arguments));
-      }
-
-      babelHelpers.createClass(StaticContainer, [{
-        key: 'shouldComponentUpdate', value: function shouldComponentUpdate(nextProps) {
-          return !!nextProps.shouldUpdate;
-        }
-      }, {
-        key: 'render', value: function render() {
-          var
-            children = this.props.children;
-          return children ? _react2.default.Children.only(children) : null;
-        }
-      }]);
-      return StaticContainer;
-    }(_react2.default.Component);
-  StaticContainer.propTypes = { shouldUpdate: _react.PropTypes.bool };
-  exports.default = StaticContainer;
-}, "react-native-tab-navigator/StaticContainer.js");
-__d(661 /* react-native-tab-navigator/Tab.js */, function (global, require, module, exports) {
-  'use strict';
-  Object.defineProperty(exports, "__esModule", { value: true });
-  var _jsxFileName = '/Users/sky/dev/react/native/SmartReactNativeApp/node_modules/react-native-tab-navigator/Tab.js';
-  var _react = require(12 /* react */);
-  var _react2 = babelHelpers.interopRequireDefault(_react);
-
-
-  var _reactNative = require(43 /* react-native */);
-
-
-  var _Layout = require(659 /* ./Layout */);
-  var _Layout2 = babelHelpers.interopRequireDefault(_Layout);
-  var
-
-    Tab = function (_React$Component) {
-      babelHelpers.inherits(Tab, _React$Component);
-
-
-      function Tab(props, context) {
-        babelHelpers.classCallCheck(this, Tab);
-        var _this = babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(Tab).call(this,
-          props, context));
-
-        _this._handlePress = _this._handlePress.bind(_this);
-        return _this;
-      }
-
-      babelHelpers.createClass(Tab, [{
-        key: 'render', value: function render() {
-          var _props =
-            this.props;
-          var title = _props.title;
-          var badge = _props.badge;
-          var icon = null;
-          if (_react2.default.Children.count(this.props.children) > 0) {
-            icon = _react2.default.Children.only(this.props.children);
-          }
-
-          if (title) {
-            title =
-              _react2.default.createElement(_reactNative.Text, {
-                  numberOfLines: 1,
-                  allowFontScaling: !!this.props.allowFontScaling,
-                  style: [styles.title, this.props.titleStyle], __source: { fileName: _jsxFileName, lineNumber: 41 }
-                },
-                title);
-
-          }
-
-          if (badge) {
-            badge = _react2.default.cloneElement(badge, {
-              style: [styles.badge, badge.props.style]
-            });
-
-          }
-
-          var tabStyle = [
-            styles.container,
-            title ? null : styles.untitledContainer,
-            this.props.style];
-
-          return (
-            _react2.default.createElement(_reactNative.TouchableOpacity, {
-                testID: this.props.testID,
-                activeOpacity: this.props.hidesTabTouch ? 1.0 : 0.8,
-                onPress: this._handlePress,
-                style: tabStyle, __source: { fileName: _jsxFileName, lineNumber: 61 }
-              },
-              _react2.default.createElement(_reactNative.View, { __source: { fileName: _jsxFileName, lineNumber: 66 } },
-                icon,
-                badge),
-
-              title));
-
-
-        }
-      }, {
-        key: '_handlePress', value: function _handlePress(event) {
-          if (this.props.onPress) {
-            this.props.onPress(event);
-          }
-        }
-      }]);
-      return Tab;
-    }(_react2.default.Component);
-  Tab.propTypes = {
-    testID: _react.PropTypes.string,
-    title: _react.PropTypes.string,
-    titleStyle: _reactNative.Text.propTypes.style,
-    badge: _react.PropTypes.element,
-    onPress: _react.PropTypes.func,
-    hidesTabTouch: _react.PropTypes.bool,
-    allowFontScaling: _react.PropTypes.bool,
-    style: _reactNative.View.propTypes.style
-  };
-  exports.default = Tab;
-
-
-  var styles = _reactNative.StyleSheet.create({
-    badge: {
-      position: 'absolute',
-      top: -6,
-      right: -10
-    },
-
-    container: {
-      flex: 1,
-      flexDirection: 'column',
-      justifyContent: 'flex-end',
-      alignItems: 'center'
-    },
-
-    untitledContainer: {
-      paddingBottom: 13
-    },
-
-    title: {
-      color: '#929292',
-      fontSize: 10,
-      textAlign: 'center',
-      alignSelf: 'stretch',
-      marginTop: 4,
-      marginBottom: 1 + _Layout2.default.pixel
-    }
-  });
-}, "react-native-tab-navigator/Tab.js");
-__d(662 /* react-native-tab-navigator/TabBar.js */, function (global, require, module, exports) {
-  'use strict';
-  Object.defineProperty(exports, "__esModule", { value: true });
-  var _jsxFileName = '/Users/sky/dev/react/native/SmartReactNativeApp/node_modules/react-native-tab-navigator/TabBar.js';
-
-  var _react = require(12 /* react */);
-  var _react2 = babelHelpers.interopRequireDefault(_react);
-  var _reactNative = require(43 /* react-native */);
-
-
-  var _Layout = require(659 /* ./Layout */);
-  var _Layout2 = babelHelpers.interopRequireDefault(_Layout);
-  var
-
-    TabBar = function (_React$Component) {
-      babelHelpers.inherits(TabBar, _React$Component);
-      function TabBar() {
-        babelHelpers.classCallCheck(this, TabBar);
-        return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(TabBar).apply(this, arguments));
-      }
-
-      babelHelpers.createClass(TabBar, [{
-        key: 'render', value: function render() {
-          return (
-            _react2.default.createElement(_reactNative.Animated.View, babelHelpers.extends({}, this.props, {
-                style: [styles.container, this.props.style],
-                __source: { fileName: _jsxFileName, lineNumber: 21 }
-              }),
-              this.props.children,
-              _react2.default.createElement(_reactNative.View, {
-                style: [styles.shadow, this.props.shadowStyle],
-                __source: { fileName: _jsxFileName, lineNumber: 23 }
-              })));
-
-
-        }
-      }]);
-      return TabBar;
-    }(_react2.default.Component);
-  TabBar.propTypes = babelHelpers.extends({}, _reactNative.Animated.View.propTypes, { shadowStyle: _reactNative.View.propTypes.style });
-  exports.default = TabBar;
-
-
-  var styles = _reactNative.StyleSheet.create({
-    container: {
-      backgroundColor: '#f8f8f8',
-      flexDirection: 'row',
-      justifyContent: 'space-around',
-      height: _Layout2.default.tabBarHeight,
-      position: 'absolute',
-      bottom: 0,
-      left: 0,
-      right: 0
-    },
-
-    shadow: {
-      backgroundColor: 'rgba(0, 0, 0, 0.25)',
-      height: _Layout2.default.pixel,
-      position: 'absolute',
-      left: 0,
-      right: 0,
-      top: _reactNative.Platform.OS === 'android' ? 0 : -_Layout2.default.pixel
-    }
-  });
-}, "react-native-tab-navigator/TabBar.js");
-__d(663 /* react-native-tab-navigator/TabNavigatorItem.js */, function (global, require, module, exports) {
-  'use strict';
-  Object.defineProperty(exports, "__esModule", { value: true });
-
-  var _react = require(12 /* react */);
-  var _react2 = babelHelpers.interopRequireDefault(_react);
-
-
-  var _reactNative = require(43 /* react-native */);
-  var
-
-
-    TabNavigatorItem = function (_React$Component) {
-      babelHelpers.inherits(TabNavigatorItem, _React$Component);
-      function TabNavigatorItem() {
-        babelHelpers.classCallCheck(this, TabNavigatorItem);
-        return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(TabNavigatorItem).apply(this, arguments));
-      }
-
-      babelHelpers.createClass(TabNavigatorItem, [{
-        key: 'render', value: function render() {
-          var child = _react2.default.Children.only(this.props.children);
-          return _react2.default.cloneElement(child, {
-            style: [child.props.style, this.props.style]
-          });
-
-        }
-      }]);
-      return TabNavigatorItem;
-    }(_react2.default.Component);
-  TabNavigatorItem.propTypes = {
-    renderIcon: _react.PropTypes.func,
-    renderSelectedIcon: _react.PropTypes.func,
-    badgeText: _react.PropTypes.oneOfType([_react.PropTypes.string, _react.PropTypes.number]),
-    renderBadge: _react.PropTypes.func,
-    title: _react.PropTypes.string,
-    titleStyle: _reactNative.Text.propTypes.style,
-    selectedTitleStyle: _reactNative.Text.propTypes.style,
-    tabStyle: _reactNative.View.propTypes.style,
-    selected: _react.PropTypes.bool,
-    onPress: _react.PropTypes.func,
-    allowFontScaling: _react.PropTypes.bool
-  };
-  TabNavigatorItem.defaultProps = {};
-  exports.default = TabNavigatorItem;
-}, "react-native-tab-navigator/TabNavigatorItem.js");
-__d(664 /* SmartRectNativeApp/component/home/Category.js */, function (global, require, module, exports) {
-  'use strict';
-  Object.defineProperty(exports, "__esModule", { value: true });
-  var _jsxFileName = '/Users/sky/dev/react/native/SmartReactNativeApp/component/home/Category.js';
-
-  var _react = require(12 /* react */);
-  var _react2 = babelHelpers.interopRequireDefault(_react);
-
-  var _reactNative = require(43 /* react-native */);
-  var
-
-
-    Category = function (_Component) {
-      babelHelpers.inherits(Category, _Component);
-      function Category(props) {
-        babelHelpers.classCallCheck(this, Category);
-        return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(Category).call(this,
-          props));
-      }
-
-      babelHelpers.createClass(Category, [{
-        key: 'render', value: function render() {
-          return (
-            _react2.default.createElement(_reactNative.ScrollView, {
-                contentContainerStyle: styles.contentContainer,
-                __source: { fileName: _jsxFileName, lineNumber: 22 }
-              },
-              _react2.default.createElement(_reactNative.View, { __source: { fileName: _jsxFileName, lineNumber: 23 } },
-                _react2.default.createElement(_reactNative.Image, {
-                  source: { uri: 'http://img.hb.aicdn.com/cbf3ebcae08ef62ef02dd61aa2407414dc64e794150313-KRUD1s_fw658' },
-                  style: { height: 220, margin: 20 }, __source: { fileName: _jsxFileName, lineNumber: 24 }
-                }),
-                _react2.default.createElement(_reactNative.Text, {
-                  style: {
-                    fontSize: 16,
-                    color: '#484848',
-                    alignSelf: 'center'
-                  }, __source: { fileName: _jsxFileName, lineNumber: 26 }
-                }, 'HOT PRODUCTS'),
-                _react2.default.createElement(_reactNative.View, {
-                    style: styles.photoRow,
-                    __source: { fileName: _jsxFileName, lineNumber: 27 }
-                  },
-                  _react2.default.createElement(_reactNative.View, {
-                      __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 28
-                      }
-                    },
-                    _react2.default.createElement(_reactNative.Image, {
-                      source: { uri: 'https://gw.alicdn.com/bao/uploaded/TB1YQAPKVXXXXa9XFXXwu0bFXXX.png_270x270Q90.jpg' },
-                      style: styles.photoItem, __source: { fileName: _jsxFileName, lineNumber: 29 }
-                    }),
-                    _react2.default.createElement(_reactNative.Text, {
-                      style: styles.photoName,
-                      __source: { fileName: _jsxFileName, lineNumber: 31 }
-                    }, 'TEL ORGES'),
-                    _react2.default.createElement(_reactNative.Text, {
-                      style: styles.photoPrice,
-                      __source: { fileName: _jsxFileName, lineNumber: 32 }
-                    }, '$99')),
-
-                  _react2.default.createElement(_reactNative.View, {
-                      __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 34
-                      }
-                    },
-                    _react2.default.createElement(_reactNative.Image, {
-                      source: { uri: 'https://gw.alicdn.com/bao/uploaded/TB1DteFKVXXXXXQapXXSutbFXXX.jpg_270x270Q90.jpg' },
-                      style: styles.photoItem, __source: { fileName: _jsxFileName, lineNumber: 35 }
-                    }),
-                    _react2.default.createElement(_reactNative.Text, {
-                      style: styles.photoName,
-                      __source: { fileName: _jsxFileName, lineNumber: 37 }
-                    }, 'ARFL JUYHS'),
-                    _react2.default.createElement(_reactNative.Text, {
-                      style: styles.photoPrice,
-                      __source: { fileName: _jsxFileName, lineNumber: 38 }
-                    }, '$34.2')),
-
-                  _react2.default.createElement(_reactNative.View, {
-                      __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 40
-                      }
-                    },
-                    _react2.default.createElement(_reactNative.Image, {
-                      source: { uri: 'https://gw.alicdn.com/bao/uploaded/TB1dQGTKVXXXXaaXVXXSutbFXXX.jpg_270x270Q90.jpg' },
-                      style: styles.photoItem, __source: { fileName: _jsxFileName, lineNumber: 41 }
-                    }),
-                    _react2.default.createElement(_reactNative.Text, {
-                      style: styles.photoName,
-                      __source: { fileName: _jsxFileName, lineNumber: 43 }
-                    }, 'TKLL ORGES'),
-                    _react2.default.createElement(_reactNative.Text, {
-                      style: styles.photoPrice,
-                      __source: { fileName: _jsxFileName, lineNumber: 44 }
-                    }, '$182'))),
-
-
-                _react2.default.createElement(_reactNative.Text, {
-                  style: {
-                    fontSize: 16,
-                    color: '#484848',
-                    alignSelf: 'center',
-                    marginTop: 20
-                  }, __source: { fileName: _jsxFileName, lineNumber: 47 }
-                }, 'NEW COLLECTIONS'),
-                _react2.default.createElement(_reactNative.View, {
-                    style: styles.photoRow,
-                    __source: { fileName: _jsxFileName, lineNumber: 48 }
-                  },
-                  _react2.default.createElement(_reactNative.View, {
-                      __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 49
-                      }
-                    },
-                    _react2.default.createElement(_reactNative.Image, {
-                      source: { uri: 'https://gw.alicdn.com/bao/uploaded/TB1rzGNKVXXXXbGXVXXSutbFXXX.jpg_270x270Q90.jpg' },
-                      style: styles.photoItem, __source: { fileName: _jsxFileName, lineNumber: 50 }
-                    }),
-                    _react2.default.createElement(_reactNative.Text, {
-                      style: styles.photoName,
-                      __source: { fileName: _jsxFileName, lineNumber: 52 }
-                    }, 'TEL ORGES'),
-                    _react2.default.createElement(_reactNative.Text, {
-                      style: styles.photoPrice,
-                      __source: { fileName: _jsxFileName, lineNumber: 53 }
-                    }, '$99')),
-
-                  _react2.default.createElement(_reactNative.View, {
-                      __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 55
-                      }
-                    },
-                    _react2.default.createElement(_reactNative.Image, {
-                      source: { uri: 'https://gw.alicdn.com/bao/uploaded/TB1rzGNKVXXXXbGXVXXSutbFXXX.jpg_270x270Q90.jpg' },
-                      style: styles.photoItem, __source: { fileName: _jsxFileName, lineNumber: 56 }
-                    }),
-                    _react2.default.createElement(_reactNative.Text, {
-                      style: styles.photoName,
-                      __source: { fileName: _jsxFileName, lineNumber: 58 }
-                    }, 'ARFL JUYHS'),
-                    _react2.default.createElement(_reactNative.Text, {
-                      style: styles.photoPrice,
-                      __source: { fileName: _jsxFileName, lineNumber: 59 }
-                    }, '$34.2')),
-
-                  _react2.default.createElement(_reactNative.View, {
-                      __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 61
-                      }
-                    },
-                    _react2.default.createElement(_reactNative.Image, {
-                      source: { uri: 'https://gw.alicdn.com/bao/uploaded/TB1uBUxKVXXXXcGXpXXSutbFXXX.jpg_270x270Q90.jpg' },
-                      style: styles.photoItem, __source: { fileName: _jsxFileName, lineNumber: 62 }
-                    }),
-                    _react2.default.createElement(_reactNative.Text, {
-                      style: styles.photoName,
-                      __source: { fileName: _jsxFileName, lineNumber: 64 }
-                    }, 'TKLL ORGES'),
-                    _react2.default.createElement(_reactNative.Text, {
-                      style: styles.photoPrice,
-                      __source: { fileName: _jsxFileName, lineNumber: 65 }
-                    }, '$182'))),
-
-
-                _react2.default.createElement(_reactNative.Text, {
-                  style: {
-                    fontSize: 16,
-                    color: '#484848',
-                    alignSelf: 'center',
-                    marginTop: 20
-                  }, __source: { fileName: _jsxFileName, lineNumber: 68 }
-                }, 'MOST POP'),
-                _react2.default.createElement(_reactNative.View, {
-                    style: styles.photoRow,
-                    __source: { fileName: _jsxFileName, lineNumber: 69 }
-                  },
-                  _react2.default.createElement(_reactNative.View, {
-                      __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 70
-                      }
-                    },
-                    _react2.default.createElement(_reactNative.Image, {
-                      source: { uri: 'https://gw.alicdn.com/bao/uploaded/TB1Rqa3KVXXXXb6XpXXSutbFXXX.jpg_270x270Q90.jpg' },
-                      style: styles.photoItem, __source: { fileName: _jsxFileName, lineNumber: 71 }
-                    }),
-                    _react2.default.createElement(_reactNative.Text, {
-                      style: styles.photoName,
-                      __source: { fileName: _jsxFileName, lineNumber: 73 }
-                    }, 'TEL ORGES'),
-                    _react2.default.createElement(_reactNative.Text, {
-                      style: styles.photoPrice,
-                      __source: { fileName: _jsxFileName, lineNumber: 74 }
-                    }, '$99')),
-
-                  _react2.default.createElement(_reactNative.View, {
-                      __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 76
-                      }
-                    },
-                    _react2.default.createElement(_reactNative.Image, {
-                      source: { uri: 'https://gw.alicdn.com/bao/uploaded/TB1Rqa3KVXXXXb6XpXXSutbFXXX.jpg_270x270Q90.jpg' },
-                      style: styles.photoItem, __source: { fileName: _jsxFileName, lineNumber: 77 }
-                    }),
-                    _react2.default.createElement(_reactNative.Text, {
-                      style: styles.photoName,
-                      __source: { fileName: _jsxFileName, lineNumber: 79 }
-                    }, 'ARFL JUYHS'),
-                    _react2.default.createElement(_reactNative.Text, {
-                      style: styles.photoPrice,
-                      __source: { fileName: _jsxFileName, lineNumber: 80 }
-                    }, '$34.2')),
-
-                  _react2.default.createElement(_reactNative.View, {
-                      __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 82
-                      }
-                    },
-                    _react2.default.createElement(_reactNative.Image, {
-                      source: { uri: 'https://gw.alicdn.com/bao/uploaded/TB1lMksKVXXXXa7XpXXSutbFXXX.jpg_270x270Q90.jpg' },
-                      style: styles.photoItem, __source: { fileName: _jsxFileName, lineNumber: 83 }
-                    }),
-                    _react2.default.createElement(_reactNative.Text, {
-                      style: styles.photoName,
-                      __source: { fileName: _jsxFileName, lineNumber: 85 }
-                    }, 'TKLL ORGES'),
-                    _react2.default.createElement(_reactNative.Text, {
-                      style: styles.photoPrice,
-                      __source: { fileName: _jsxFileName, lineNumber: 86 }
-                    }, '$182'))))));
-
-
-        }
-      }]);
-      return Category;
-    }(_react.Component);
-  exports.default = Category;
-
-
-  var styles = _reactNative.StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: '#F5FCFF'
-    },
-
-    welcome: {
-      fontSize: 20,
-      textAlign: 'center',
-      margin: 10,
-      color: 'red'
-    },
-
-    instructions: {
-      textAlign: 'center',
-      color: '#333333',
-      marginTop: 15,
-      marginBottom: 5,
-      fontSize: 14
-    },
-
-    contentContainer: {},
-
-
-    listItem: {},
-
-
-    photoRow: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      paddingLeft: 20,
-      paddingRight: 20,
-      marginTop: 10
-    },
-
-    photoItem: {
-      height: 120,
-      width: 90,
-      alignItems: 'stretch',
-      alignSelf: 'center'
-    },
-
-    photoName: {
-      fontSize: 14,
-      color: '#f39d7f',
-      alignSelf: 'center'
-    },
-
-    photoPrice: {
-      fontSize: 12, color: '#484848', alignSelf: 'center'
-    }
-  });
-}, "SmartRectNativeApp/component/home/Category.js");
-__d(665 /* SmartRectNativeApp/component/tabs/index.js */, function (global, require, module, exports) {
-  Object.defineProperty(exports, "__esModule", { value: true });
-  var _jsxFileName = '/Users/sky/dev/react/native/SmartReactNativeApp/component/tabs/index.js';
-  var _react = require(12 /* react */);
-  var _react2 = babelHelpers.interopRequireDefault(_react);
-  var _reactNative = require(43 /* react-native */);
-
-
-  var _SimpleExample = require(666 /* ./SimpleExample */);
-  var _SimpleExample2 = babelHelpers.interopRequireDefault(_SimpleExample);
-  var _ScrollableTabsExample = require(675 /* ./ScrollableTabsExample */);
-  var _ScrollableTabsExample2 = babelHelpers.interopRequireDefault(_ScrollableTabsExample);
-  var _OverlayExample = require(676 /* ./OverlayExample */);
-  var _OverlayExample2 = babelHelpers.interopRequireDefault(_OverlayExample);
-  var _FacebookExample = require(798 /* ./FacebookExample */);
-  var _FacebookExample2 = babelHelpers.interopRequireDefault(_FacebookExample);
-  var _DynamicExample = require(800 /* ./DynamicExample */);
-  var _DynamicExample2 = babelHelpers.interopRequireDefault(_DynamicExample);
-  exports.default =
-
-    _react2.default.createClass({
-      displayName: 'tabs',
-      render: function render() {
-        return _react2.default.createElement(_reactNative.Navigator, {
-          style: { flex: 1 },
-          initialRoute: {},
-          configureScene: function configureScene(route, routeStack) {
-            return _reactNative.Navigator.SceneConfigs.FadeAndroid;
-          },
-          renderScene: this.renderScene, __source: { fileName: _jsxFileName, lineNumber: 19 }
-        });
-
-      },
-
-      renderScene: function renderScene(route, nav) {
-        this._navigator = nav;
-        switch (route.id) {
-          case'simple':
-            return _react2.default.createElement(_SimpleExample2.default, {
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 31
-              }
-            });
-          case'scrollable':
-            return _react2.default.createElement(_ScrollableTabsExample2.default, {
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 33
-              }
-            });
-          case'overlay':
-            return _react2.default.createElement(_OverlayExample2.default, {
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 35
-              }
-            });
-          case'facebook':
-            return _react2.default.createElement(_FacebookExample2.default, {
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 37
-              }
-            });
-          case'dynamic':
-            return _react2.default.createElement(_DynamicExample2.default, {
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 39
-              }
-            });
-          default:
-            return _react2.default.createElement(_reactNative.View, {
-                style: styles.container,
-                __source: { fileName: _jsxFileName, lineNumber: 41 }
-              },
-              _react2.default.createElement(_reactNative.TouchableOpacity, {
-                  style: styles.button,
-                  onPress: function onPress() {
-                    return nav.push({ id: 'simple' });
-                  }, __source: { fileName: _jsxFileName, lineNumber: 42 }
-                },
-                _react2.default.createElement(_reactNative.Text, {
-                  __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 45
-                  }
-                }, 'Simple example')),
-
-
-              _react2.default.createElement(_reactNative.TouchableOpacity, {
-                  style: styles.button,
-                  onPress: function onPress() {
-                    return nav.push({ id: 'scrollable' });
-                  }, __source: { fileName: _jsxFileName, lineNumber: 48 }
-                },
-                _react2.default.createElement(_reactNative.Text, {
-                  __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 51
-                  }
-                }, 'Scrollable tabs example')),
-
-
-              _react2.default.createElement(_reactNative.TouchableOpacity, {
-                  style: styles.button,
-                  onPress: function onPress() {
-                    return nav.push({ id: 'overlay' });
-                  }, __source: { fileName: _jsxFileName, lineNumber: 54 }
-                },
-
-                _react2.default.createElement(_reactNative.Text, {
-                  __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 58
-                  }
-                }, 'Overlay example')),
-
-
-              _react2.default.createElement(_reactNative.TouchableOpacity, {
-                  style: styles.button,
-                  onPress: function onPress() {
-                    return nav.push({ id: 'facebook' });
-                  }, __source: { fileName: _jsxFileName, lineNumber: 61 }
-                },
-
-                _react2.default.createElement(_reactNative.Text, {
-                  __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 65
-                  }
-                }, 'Facebook tabs example')),
-
-
-              _react2.default.createElement(_reactNative.TouchableOpacity, {
-                  style: styles.button,
-                  onPress: function onPress() {
-                    return nav.push({ id: 'dynamic' });
-                  }, __source: { fileName: _jsxFileName, lineNumber: 68 }
-                },
-
-                _react2.default.createElement(_reactNative.Text, {
-                  __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 72
-                  }
-                }, 'Dynamic tabs example')));
-        }
-
-
-      },
-
-      componentDidMount: function componentDidMount() {
-        var navigator = this._navigator;
-        _reactNative.BackAndroid.addEventListener('hardwareBackPress', function () {
-          if (navigator && navigator.getCurrentRoutes().length > 1) {
-            navigator.pop();
-            return true;
-          }
-          return false;
-        });
-      },
-
-
-      componentWillUnmount: function componentWillUnmount() {
-        _reactNative.BackAndroid.removeEventListener('hardwareBackPress');
-      }
-    });
-
-
-  var styles = _reactNative.StyleSheet.create({
-    container: {
-      flex: 1,
-      marginTop: 30,
-      alignItems: 'center'
-    },
-
-    button: {
-      padding: 10
-    }
-  });
-}, "SmartRectNativeApp/component/tabs/index.js");
-__d(666 /* SmartRectNativeApp/component/tabs/SimpleExample.js */, function (global, require, module, exports) {
-  Object.defineProperty(exports, "__esModule", { value: true });
-  var _jsxFileName = '/Users/sky/dev/react/native/SmartReactNativeApp/component/tabs/SimpleExample.js';
-  var _react = require(12 /* react */);
-  var _react2 = babelHelpers.interopRequireDefault(_react);
-  var _reactNative = require(43 /* react-native */);
-
-
-  var _reactNativeScrollableTabView = require(667 /* react-native-scrollable-tab-view */);
-  var _reactNativeScrollableTabView2 = babelHelpers.interopRequireDefault(_reactNativeScrollableTabView);
-  exports.default =
-
-    _react2.default.createClass({
-      displayName: 'SimpleExample',
-      render: function render() {
-        return _react2.default.createElement(_reactNativeScrollableTabView2.default, {
-            style: { marginTop: 20 },
-            renderTabBar: function renderTabBar() {
-              return _react2.default.createElement(_reactNativeScrollableTabView.DefaultTabBar, {
-                __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 12
-                }
-              });
-            }, __source: { fileName: _jsxFileName, lineNumber: 10 }
-          },
-
-          _react2.default.createElement(_reactNative.Text, {
-            tabLabel: 'Tab #1',
-            __source: { fileName: _jsxFileName, lineNumber: 14 }
-          }, 'My'),
-          _react2.default.createElement(_reactNative.Text, {
-            tabLabel: 'Tab #2',
-            __source: { fileName: _jsxFileName, lineNumber: 15 }
-          }, 'favorite'),
-          _react2.default.createElement(_reactNative.Text, {
-            tabLabel: 'Tab #3',
-            __source: { fileName: _jsxFileName, lineNumber: 16 }
-          }, 'project'));
-
-      }
-    });
-}, "SmartRectNativeApp/component/tabs/SimpleExample.js");
-__d(667 /* react-native-scrollable-tab-view/index.js */, function (global, require, module, exports) {
-  var _jsxFileName = '/Users/sky/dev/react/native/SmartReactNativeApp/node_modules/react-native-scrollable-tab-view/index.js';
-  var React = require(12 /* react */);
-  var
-
-    PropTypes =
-
-      React.PropTypes;
-  var Component = React.Component;
-  var ReactNative = require(43 /* react-native */);
-  var
-
-    Dimensions =
-
-
-      ReactNative.Dimensions;
-  var View = ReactNative.View;
-  var Animated = ReactNative.Animated;
-  var ScrollView = ReactNative.ScrollView;
-  var Platform = ReactNative.Platform;
-  var StyleSheet = ReactNative.StyleSheet;
-  var ViewPagerAndroid = ReactNative.ViewPagerAndroid;
-  var InteractionManager = ReactNative.InteractionManager;
-  var TimerMixin = require(668 /* react-timer-mixin */);
-
-  var SceneComponent = require(669 /* ./SceneComponent */);
-  var DefaultTabBar = require(672 /* ./DefaultTabBar */);
-  var ScrollableTabBar = require(674 /* ./ScrollableTabBar */);
-
-
-  var ScrollableTabView = React.createClass({
-    displayName: 'ScrollableTabView',
-    mixins: [TimerMixin],
-    statics: {
-      DefaultTabBar: DefaultTabBar,
-      ScrollableTabBar: ScrollableTabBar
-    },
-
-
-    propTypes: {
-      tabBarPosition: PropTypes.oneOf(['top', 'bottom', 'overlayTop', 'overlayBottom']),
-      initialPage: PropTypes.number,
-      page: PropTypes.number,
-      onChangeTab: PropTypes.func,
-      onScroll: PropTypes.func,
-      renderTabBar: PropTypes.any,
-      style: View.propTypes.style,
-      contentProps: PropTypes.object,
-      scrollWithoutAnimation: PropTypes.bool,
-      locked: PropTypes.bool,
-      prerenderingSiblingsNumber: PropTypes.number
-    },
-
-
-    getDefaultProps: function getDefaultProps() {
-      return {
-        tabBarPosition: 'top',
-        initialPage: 0,
-        page: -1,
-        onChangeTab: function onChangeTab() {
-        },
-        onScroll: function onScroll() {
-        },
-        contentProps: {},
-        scrollWithoutAnimation: false,
-        locked: false,
-        prerenderingSiblingsNumber: 0
-      };
-
-    },
-
-    getInitialState: function getInitialState() {
-      return {
-        currentPage: this.props.initialPage,
-        scrollValue: new Animated.Value(this.props.initialPage),
-        containerWidth: Dimensions.get('window').width,
-        sceneKeys: this.newSceneKeys({ currentPage: this.props.initialPage })
-      };
-
-    },
-
-    componentWillReceiveProps: function componentWillReceiveProps(props) {
-      if (props.page >= 0 && props.page !== this.state.currentPage) {
-        this.goToPage(props.page);
-      }
-
-      if (props.children !== this.props.children) {
-        this.updateSceneKeys({ page: this.state.currentPage, children: props.children });
-      }
-    },
-
-    goToPage: function goToPage(pageNumber) {
-      if (Platform.OS === 'ios') {
-        var offset = pageNumber * this.state.containerWidth;
-        if (this.scrollView) {
-          this.scrollView.scrollTo({ x: offset, y: 0, animated: !this.props.scrollWithoutAnimation });
-        }
-      } else {
-        if (this.scrollView) {
-          if (this.props.scrollWithoutAnimation) {
-            this.scrollView.setPageWithoutAnimation(pageNumber);
-          } else {
-            this.scrollView.setPage(pageNumber);
-          }
-        }
-      }
-
-      var currentPage = this.state.currentPage;
-      this.updateSceneKeys({
-        page: pageNumber,
-        callback: this._onChangeTab.bind(this, currentPage, pageNumber)
-      });
-
-    },
-
-    renderTabBar: function renderTabBar(props) {
-      if (this.props.renderTabBar === false) {
-        return null;
-      } else if (this.props.renderTabBar) {
-        return React.cloneElement(this.props.renderTabBar(props), props);
-      } else {
-        return React.createElement(DefaultTabBar, babelHelpers.extends({}, props, {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 107
-          }
-        }));
-      }
-    },
-
-    updateSceneKeys: function updateSceneKeys(_ref) {
-      var page = _ref.page;
-      var _ref$children = _ref.children;
-      var children = _ref$children === undefined ? this.props.children : _ref$children;
-      var _ref$callback = _ref.callback;
-      var callback = _ref$callback === undefined ? function () {
-      } : _ref$callback;
-      var newKeys = this.newSceneKeys({ previousKeys: this.state.sceneKeys, currentPage: page, children: children });
-      this.setState({ currentPage: page, sceneKeys: newKeys }, callback);
-    },
-
-    newSceneKeys: function newSceneKeys(_ref2) {
-      var _this = this;
-      var _ref2$previousKeys = _ref2.previousKeys;
-      var previousKeys = _ref2$previousKeys === undefined ? [] : _ref2$previousKeys;
-      var _ref2$currentPage = _ref2.currentPage;
-      var currentPage = _ref2$currentPage === undefined ? 0 : _ref2$currentPage;
-      var _ref2$children = _ref2.children;
-      var children = _ref2$children === undefined ? this.props.children : _ref2$children;
-      var newKeys = [];
-      this._children(children).forEach(function (child, idx) {
-        var key = _this._makeSceneKey(child, idx);
-        if (_this._keyExists(previousKeys, key) ||
-          _this._shouldRenderSceneKey(idx, currentPage)) {
-          newKeys.push(key);
-        }
-      });
-      return newKeys;
-    },
-
-    _shouldRenderSceneKey: function _shouldRenderSceneKey(idx, currentPageKey) {
-      var numOfSibling = this.props.prerenderingSiblingsNumber;
-      return idx < currentPageKey + numOfSibling + 1 &&
-        idx > currentPageKey - numOfSibling - 1;
-    },
-
-    _keyExists: function _keyExists(sceneKeys, key) {
-      return sceneKeys.find(function (sceneKey) {
-        return key === sceneKey;
-      });
-    },
-
-    _makeSceneKey: function _makeSceneKey(child, idx) {
-      return child.props.tabLabel + '_' + idx;
-    },
-
-    renderScrollableContent: function renderScrollableContent() {
-      var _this2 = this;
-      if (Platform.OS === 'ios') {
-        var scenes = this._composeScenes();
-        return React.createElement(ScrollView, babelHelpers.extends({
-            horizontal: true,
-            pagingEnabled: true,
-            automaticallyAdjustContentInsets: false,
-            contentOffset: { x: this.props.initialPage * this.state.containerWidth },
-            ref: function ref(scrollView) {
-              _this2.scrollView = scrollView;
-            },
-            onScroll: function onScroll(e) {
-              var offsetX = e.nativeEvent.contentOffset.x;
-              _this2._updateScrollValue(offsetX / _this2.state.containerWidth);
-            },
-            onMomentumScrollBegin: function onMomentumScrollBegin(e) {
-              var offsetX = e.nativeEvent.contentOffset.x;
-              var page = Math.round(offsetX / _this2.state.containerWidth);
-              if (_this2.state.currentPage !== page) {
-                _this2._updateSelectedPage(page);
-              }
-            },
-            onMomentumScrollEnd: function onMomentumScrollEnd(e) {
-              var offsetX = e.nativeEvent.contentOffset.x;
-              var page = Math.round(offsetX / _this2.state.containerWidth);
-              if (_this2.state.currentPage !== page) {
-                _this2._updateSelectedPage(page);
-              }
-            },
-            scrollEventThrottle: 16,
-            scrollsToTop: false,
-            showsHorizontalScrollIndicator: false,
-            scrollEnabled: !this.props.locked,
-            directionalLockEnabled: true,
-            alwaysBounceVertical: false,
-            keyboardDismissMode: 'on-drag'
-          },
-          this.props.contentProps, { __source: { fileName: _jsxFileName, lineNumber: 145 } }),
-
-          scenes);
-
-      } else {
-        var _scenes = this._composeScenes();
-        return React.createElement(ViewPagerAndroid, babelHelpers.extends({
-            key: this._children().length,
-            style: styles.scrollableContentAndroid,
-            initialPage: this.props.initialPage,
-            onPageSelected: this._updateSelectedPage,
-            keyboardDismissMode: 'on-drag',
-            scrollEnabled: !this.props.locked,
-            onPageScroll: function onPageScroll(e) {
-              var _e$nativeEvent =
-                e.nativeEvent;
-              var offset = _e$nativeEvent.offset;
-              var position = _e$nativeEvent.position;
-              _this2._updateScrollValue(position + offset);
-            },
-            ref: function ref(scrollView) {
-              _this2.scrollView = scrollView;
-            }
-          },
-          this.props.contentProps, { __source: { fileName: _jsxFileName, lineNumber: 182 } }),
-
-          _scenes);
-
-      }
-    },
-
-    _composeScenes: function _composeScenes() {
-      var _this3 = this;
-      return this._children().map(function (child, idx) {
-        var key = _this3._makeSceneKey(child, idx);
-        return React.createElement(SceneComponent, {
-            key: child.key,
-            shouldUpdated: _this3._shouldRenderSceneKey(idx, _this3.state.currentPage),
-            style: { width: _this3.state.containerWidth }, __source: { fileName: _jsxFileName, lineNumber: 204 }
-          },
-
-          _this3._keyExists(_this3.state.sceneKeys, key) ? child : React.createElement(View, {
-            tabLabel: child.props.tabLabel,
-            __source: { fileName: _jsxFileName, lineNumber: 209 }
-          }));
-
-      });
-    },
-
-    _updateSelectedPage: function _updateSelectedPage(nextPage) {
-      var localNextPage = nextPage;
-      if (typeof localNextPage === 'object') {
-        localNextPage = nextPage.nativeEvent.position;
-      }
-
-      var currentPage = this.state.currentPage;
-      this.updateSceneKeys({
-        page: localNextPage,
-        callback: this._onChangeTab.bind(this, currentPage, localNextPage)
-      });
-
-    },
-
-    _onChangeTab: function _onChangeTab(prevPage, currentPage) {
-      this.props.onChangeTab({
-        i: currentPage,
-        ref: this._children()[currentPage],
-        from: prevPage
-      });
-
-    },
-
-    _updateScrollValue: function _updateScrollValue(value) {
-      this.state.scrollValue.setValue(value);
-      this.props.onScroll(value);
-    },
-
-    _handleLayout: function _handleLayout(e) {
-      var _this4 = this;
-      var
-        width = e.nativeEvent.layout.width;
-
-      if (width !== this.state.containerWidth) {
-        this.setState({ containerWidth: width });
-        this.requestAnimationFrame(function () {
-          _this4.goToPage(_this4.state.currentPage);
-        });
-      }
-    },
-
-    _children: function _children() {
-      var children = arguments.length <= 0 || arguments[0] === undefined ? this.props.children : arguments[0];
-      return React.Children.map(children, function (child) {
-        return child;
-      });
-    },
-
-    render: function render() {
-      var overlayTabs = this.props.tabBarPosition === 'overlayTop' || this.props.tabBarPosition === 'overlayBottom';
-      var tabBarProps = {
-        goToPage: this.goToPage,
-        tabs: this._children().map(function (child) {
-          return child.props.tabLabel;
-        }),
-        activeTab: this.state.currentPage,
-        scrollValue: this.state.scrollValue,
-        containerWidth: this.state.containerWidth
-      };
-
-
-      if (this.props.tabBarUnderlineColor) {
-        tabBarProps.underlineColor = this.props.tabBarUnderlineColor;
-      }
-      if (this.props.tabBarBackgroundColor) {
-        tabBarProps.backgroundColor = this.props.tabBarBackgroundColor;
-      }
-      if (this.props.tabBarActiveTextColor) {
-        tabBarProps.activeTextColor = this.props.tabBarActiveTextColor;
-      }
-      if (this.props.tabBarInactiveTextColor) {
-        tabBarProps.inactiveTextColor = this.props.tabBarInactiveTextColor;
-      }
-      if (this.props.tabBarTextStyle) {
-        tabBarProps.textStyle = this.props.tabBarTextStyle;
-      }
-      if (overlayTabs) {
-        tabBarProps.style = babelHelpers.defineProperty({
-            position: 'absolute',
-            left: 0,
-            right: 0
-          },
-          this.props.tabBarPosition === 'overlayTop' ? 'top' : 'bottom', 0);
-
-      }
-
-      return React.createElement(View, {
-          style: [styles.container, this.props.style],
-          onLayout: this._handleLayout,
-          __source: { fileName: _jsxFileName, lineNumber: 289 }
-        },
-        this.props.tabBarPosition === 'top' && this.renderTabBar(tabBarProps),
-        this.renderScrollableContent(),
-        (this.props.tabBarPosition === 'bottom' || overlayTabs) && this.renderTabBar(tabBarProps));
-
-    }
-  });
-
-
-  module.exports = ScrollableTabView;
-
-  var styles = StyleSheet.create({
-    container: {
-      flex: 1
-    },
-
-    scrollableContentAndroid: {
-      flex: 1
-    }
-  });
-}, "react-native-scrollable-tab-view/index.js");
-__d(668 /* react-timer-mixin/TimerMixin.js */, function (global, require, module, exports) {
-
-
-  'use strict';
-
-  var GLOBAL = typeof window === 'undefined' ? global : window;
-
-  var setter = function setter(_setter, _clearer, array) {
-    return function (callback, delta) {
-      var id = _setter(function () {
-        _clearer.call(this, id);
-        callback.apply(this, arguments);
-      }.bind(this), delta);
-
-      if (!this[array]) {
-        this[array] = [id];
-      } else {
-        this[array].push(id);
-      }
-      return id;
-    };
-  };
-
-  var clearer = function clearer(_clearer, array) {
-    return function (id) {
-      if (this[array]) {
-        var index = this[array].indexOf(id);
-        if (index !== -1) {
-          this[array].splice(index, 1);
-        }
-      }
-      _clearer(id);
-    };
-  };
-
-  var _timeouts = 'TimerMixin_timeouts';
-  var _clearTimeout = clearer(GLOBAL.clearTimeout, _timeouts);
-  var _setTimeout = setter(GLOBAL.setTimeout, _clearTimeout, _timeouts);
-
-  var _intervals = 'TimerMixin_intervals';
-  var _clearInterval = clearer(GLOBAL.clearInterval, _intervals);
-  var _setInterval = setter(GLOBAL.setInterval, function () {
-  }, _intervals);
-
-  var _immediates = 'TimerMixin_immediates';
-  var _clearImmediate = clearer(GLOBAL.clearImmediate, _immediates);
-  var _setImmediate = setter(GLOBAL.setImmediate, _clearImmediate, _immediates);
-
-  var _rafs = 'TimerMixin_rafs';
-  var _cancelAnimationFrame = clearer(GLOBAL.cancelAnimationFrame, _rafs);
-  var _requestAnimationFrame = setter(GLOBAL.requestAnimationFrame, _cancelAnimationFrame, _rafs);
-
-  var TimerMixin = {
-    componentWillUnmount: function componentWillUnmount() {
-      this[_timeouts] && this[_timeouts].forEach(function (id) {
-        GLOBAL.clearTimeout(id);
-      });
-      this[_timeouts] = null;
-      this[_intervals] && this[_intervals].forEach(function (id) {
-        GLOBAL.clearInterval(id);
-      });
-      this[_intervals] = null;
-      this[_immediates] && this[_immediates].forEach(function (id) {
-        GLOBAL.clearImmediate(id);
-      });
-      this[_immediates] = null;
-      this[_rafs] && this[_rafs].forEach(function (id) {
-        GLOBAL.cancelAnimationFrame(id);
-      });
-      this[_rafs] = null;
-    },
-
-    setTimeout: _setTimeout,
-    clearTimeout: _clearTimeout,
-
-    setInterval: _setInterval,
-    clearInterval: _clearInterval,
-
-    setImmediate: _setImmediate,
-    clearImmediate: _clearImmediate,
-
-    requestAnimationFrame: _requestAnimationFrame,
-    cancelAnimationFrame: _cancelAnimationFrame
-  };
-
-
-  module.exports = TimerMixin;
-}, "react-timer-mixin/TimerMixin.js");
-__d(669 /* react-native-scrollable-tab-view/SceneComponent.js */, function (global, require, module, exports) {
-  var _jsxFileName = '/Users/sky/dev/react/native/SmartReactNativeApp/node_modules/react-native-scrollable-tab-view/SceneComponent.js';
-  var React = require(12 /* react */);
-  var ReactNative = require(43 /* react-native */);
-  var
-    Component = React.Component;
-  var
-    View = ReactNative.View;
-  var StyleSheet = ReactNative.StyleSheet;
-
-  var StaticContainer = require(670 /* react-static-container */);
-
-  var SceneComponent = function SceneComponent(Props) {
-    var
-      shouldUpdated = Props.shouldUpdated;
-    var props = babelHelpers.objectWithoutProperties(Props, ['shouldUpdated']);
-    return React.createElement(View, babelHelpers.extends({}, props, {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 10
-        }
-      }),
-      React.createElement(StaticContainer, {
-          shouldUpdate: shouldUpdated,
-          __source: { fileName: _jsxFileName, lineNumber: 11 }
-        },
-        props.children));
-
-
-  };
-
-  module.exports = SceneComponent;
-}, "react-native-scrollable-tab-view/SceneComponent.js");
-__d(670 /* react-static-container/index.js */, function (global, require, module, exports) {
-
-
-  module.exports = require(671 /* ./lib/StaticContainer.react */);
-}, "react-static-container/index.js");
-__d(671 /* react-static-container/lib/StaticContainer.react.js */, function (global, require, module, exports) {
-
-
-  'use strict';
-
-  var _createClass = function () {
-    function defineProperties(target, props) {
-      for (var i = 0; i < props.length; i++) {
-        var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || false;
-        descriptor.configurable = true;
-        if ('value' in descriptor)descriptor.writable = true;
-        Object.defineProperty(target, descriptor.key, descriptor);
-      }
-    }
-
-    return function (Constructor, protoProps, staticProps) {
-      if (protoProps)defineProperties(Constructor.prototype, protoProps);
-      if (staticProps)defineProperties(Constructor, staticProps);
-      return Constructor;
-    };
-  }();
-
-  var _get = function get(_x, _x2, _x3) {
-    var _again = true;
-    _function:while (_again) {
-      var object = _x, property = _x2, receiver = _x3;
-      _again = false;
-      if (object === null)object = Function.prototype;
-      var desc = Object.getOwnPropertyDescriptor(object, property);
-      if (desc === undefined) {
-        var parent = Object.getPrototypeOf(object);
-        if (parent === null) {
-          return undefined;
-        } else {
-          _x = parent;
-          _x2 = property;
-          _x3 = receiver;
-          _again = true;
-          desc = parent = undefined;
-          continue _function;
-        }
-      } else if ('value' in desc) {
-        return desc.value;
-      } else {
-        var getter = desc.get;
-        if (getter === undefined) {
-          return undefined;
-        }
-        return getter.call(receiver);
-      }
-    }
-  };
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError('Cannot call a class as a function');
-    }
-  }
-
-  function _inherits(subClass, superClass) {
-    if (typeof superClass !== 'function' && superClass !== null) {
-      throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass);
-    }
-    subClass.prototype = Object.create(superClass && superClass.prototype, {
-      constructor: {
-        value: subClass,
-        enumerable: false,
-        writable: true,
-        configurable: true
-      }
-    });
-    if (superClass)Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-  }
-
-  var React = require(12 /* react */);
-
-
-  var StaticContainer = function (_React$Component) {
-    _inherits(StaticContainer, _React$Component);
-
-    function StaticContainer() {
-      _classCallCheck(this, StaticContainer);
-
-      _get(Object.getPrototypeOf(StaticContainer.prototype), 'constructor', this).apply(this, arguments);
-    }
-
-    _createClass(StaticContainer, [{
-      key: 'shouldComponentUpdate',
-      value: function shouldComponentUpdate(nextProps) {
-        return !!nextProps.shouldUpdate;
-      }
-    },
-      {
-        key: 'render',
-        value: function render() {
-          var child = this.props.children;
-          if (child === null || child === false) {
-            return null;
-          }
-          return React.Children.only(child);
-        }
-      }]);
-
-
-    return StaticContainer;
-  }(React.Component);
-
-  module.exports = StaticContainer;
-}, "react-static-container/lib/StaticContainer.react.js");
-__d(672 /* react-native-scrollable-tab-view/DefaultTabBar.js */, function (global, require, module, exports) {
-  var _jsxFileName = '/Users/sky/dev/react/native/SmartReactNativeApp/node_modules/react-native-scrollable-tab-view/DefaultTabBar.js';
-  var React = require(12 /* react */);
-  var ReactNative = require(43 /* react-native */);
-  var
-
-    StyleSheet =
-
-
-      ReactNative.StyleSheet;
-  var Text = ReactNative.Text;
-  var View = ReactNative.View;
-  var Animated = ReactNative.Animated;
-  var Button = require(673 /* ./Button */);
-
-  var DefaultTabBar = React.createClass({
-    displayName: 'DefaultTabBar',
-    propTypes: {
-      goToPage: React.PropTypes.func,
-      activeTab: React.PropTypes.number,
-      tabs: React.PropTypes.array,
-      underlineColor: React.PropTypes.string,
-      underlineHeight: React.PropTypes.number,
-      backgroundColor: React.PropTypes.string,
-      activeTextColor: React.PropTypes.string,
-      inactiveTextColor: React.PropTypes.string,
-      textStyle: Text.propTypes.style,
-      tabStyle: View.propTypes.style
-    },
-
-
-    getDefaultProps: function getDefaultProps() {
-      return {
-        activeTextColor: 'navy',
-        inactiveTextColor: 'black',
-        underlineColor: 'navy',
-        backgroundColor: null,
-        underlineHeight: 4
-      };
-
-    },
-
-    renderTabOption: function renderTabOption(name, page) {
-      var _this = this;
-      var isTabActive = this.props.activeTab === page;
-      var _props =
-        this.props;
-      var activeTextColor = _props.activeTextColor;
-      var inactiveTextColor = _props.inactiveTextColor;
-      var textStyle = _props.textStyle;
-      var textColor = isTabActive ? activeTextColor : inactiveTextColor;
-      var fontWeight = isTabActive ? 'bold' : 'normal';
-
-      return React.createElement(Button, {
-          style: { flex: 1 },
-          key: name,
-          accessible: true,
-          accessibilityLabel: name,
-          accessibilityTraits: 'button',
-          onPress: function onPress() {
-            return _this.props.goToPage(page);
-          }, __source: { fileName: _jsxFileName, lineNumber: 41 }
-        },
-
-        React.createElement(View, {
-            style: [styles.tab, this.props.tabStyle],
-            __source: { fileName: _jsxFileName, lineNumber: 49 }
-          },
-          React.createElement(Text, {
-              style: [{ color: textColor, fontWeight: fontWeight }, textStyle],
-              __source: { fileName: _jsxFileName, lineNumber: 50 }
-            },
-            name)));
-
-
-    },
-
-    render: function render() {
-      var _this2 = this;
-      var containerWidth = this.props.containerWidth;
-      var numberOfTabs = this.props.tabs.length;
-      var tabUnderlineStyle = {
-        position: 'absolute',
-        width: containerWidth / numberOfTabs,
-        height: this.props.underlineHeight,
-        backgroundColor: this.props.underlineColor,
-        bottom: 0
-      };
-
-
-      var left = this.props.scrollValue.interpolate({
-        inputRange: [0, 1], outputRange: [0, containerWidth / numberOfTabs]
-      });
-
-
-      return (
-        React.createElement(View, {
-            style: [styles.tabs, { backgroundColor: this.props.backgroundColor }, this.props.style],
-            __source: { fileName: _jsxFileName, lineNumber: 73 }
-          },
-          this.props.tabs.map(function (tab, i) {
-            return _this2.renderTabOption(tab, i);
-          }),
-          React.createElement(Animated.View, {
-            style: [tabUnderlineStyle, { left: left }],
-            __source: { fileName: _jsxFileName, lineNumber: 75 }
-          })));
-
-
-    }
-  });
-
-
-  var styles = StyleSheet.create({
-    tab: {
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
-      paddingBottom: 10
-    },
-
-    tabs: {
-      height: 50,
-      flexDirection: 'row',
-      justifyContent: 'space-around',
-      borderWidth: 1,
-      borderTopWidth: 0,
-      borderLeftWidth: 0,
-      borderRightWidth: 0,
-      borderBottomColor: '#ccc'
-    }
-  });
-
-
-  module.exports = DefaultTabBar;
-}, "react-native-scrollable-tab-view/DefaultTabBar.js");
-__d(673 /* react-native-scrollable-tab-view/Button.android.js */, function (global, require, module, exports) {
-  var _jsxFileName = '/Users/sky/dev/react/native/SmartReactNativeApp/node_modules/react-native-scrollable-tab-view/Button.android.js';
-  var React = require(12 /* react */);
-  var ReactNative = require(43 /* react-native */);
-  var
-
-    TouchableNativeFeedback =
-
-      ReactNative.TouchableNativeFeedback;
-  var View = ReactNative.View;
-
-  var Button = function Button(props) {
-    return React.createElement(TouchableNativeFeedback, babelHelpers.extends({
-        delayPressIn: 0,
-        background: TouchableNativeFeedback.SelectableBackground()
-      },
-      props, { __source: { fileName: _jsxFileName, lineNumber: 9 } }),
-
-      props.children);
-
-  };
-
-  module.exports = Button;
-}, "react-native-scrollable-tab-view/Button.android.js");
-__d(674 /* react-native-scrollable-tab-view/ScrollableTabBar.js */, function (global, require, module, exports) {
-  var _jsxFileName = '/Users/sky/dev/react/native/SmartReactNativeApp/node_modules/react-native-scrollable-tab-view/ScrollableTabBar.js';
-  var React = require(12 /* react */);
-  var ReactNative = require(43 /* react-native */);
-  var
-
-    View =
-
-
-      ReactNative.View;
-  var Animated = ReactNative.Animated;
-  var StyleSheet = ReactNative.StyleSheet;
-  var ScrollView = ReactNative.ScrollView;
-  var Text = ReactNative.Text;
-  var Platform = ReactNative.Platform;
-  var Dimensions = ReactNative.Dimensions;
-  var Button = require(673 /* ./Button */);
-
-  var WINDOW_WIDTH = Dimensions.get('window').width;
-
-  var ScrollableTabBar = React.createClass({
-    displayName: 'ScrollableTabBar',
-    propTypes: {
-      goToPage: React.PropTypes.func,
-      activeTab: React.PropTypes.number,
-      tabs: React.PropTypes.array,
-      underlineColor: React.PropTypes.string,
-      underlineHeight: React.PropTypes.number,
-      backgroundColor: React.PropTypes.string,
-      activeTextColor: React.PropTypes.string,
-      inactiveTextColor: React.PropTypes.string,
-      scrollOffset: React.PropTypes.number,
-      style: View.propTypes.style,
-      tabStyle: View.propTypes.style,
-      tabsContainerStyle: View.propTypes.style,
-      textStyle: Text.propTypes.style
-    },
-
-
-    getDefaultProps: function getDefaultProps() {
-      return {
-        scrollOffset: 52,
-        activeTextColor: 'navy',
-        inactiveTextColor: 'black',
-        underlineColor: 'navy',
-        backgroundColor: null,
-        underlineHeight: 4,
-        style: {},
-        tabStyle: {},
-        tabsContainerStyle: {}
-      };
-
-    },
-
-    getInitialState: function getInitialState() {
-      this._tabsMeasurements = [];
-      return {
-        _leftTabUnderline: new Animated.Value(0),
-        _widthTabUnderline: new Animated.Value(0),
-        _containerWidth: null
-      };
-
-    },
-
-    componentDidMount: function componentDidMount() {
-      this.props.scrollValue.addListener(this.updateView);
-    },
-
-    updateView: function updateView(offset) {
-      var position = Math.floor(offset.value);
-      var pageOffset = offset.value % 1;
-      var tabCount = this.props.tabs.length;
-      var lastTabPosition = tabCount - 1;
-
-      if (tabCount === 0 || offset.value < 0 || offset.value > lastTabPosition) {
-        return;
-      }
-
-      if (this.necessarilyMeasurementsCompleted(position, position === lastTabPosition)) {
-        this.updateTabPanel(position, pageOffset);
-        this.updateTabUnderline(position, pageOffset, tabCount);
-      }
-    },
-
-    necessarilyMeasurementsCompleted: function necessarilyMeasurementsCompleted(position, isLastTab) {
-      return this._tabsMeasurements[position] && (
-        isLastTab || this._tabsMeasurements[position + 1]) &&
-        this._tabContainerMeasurements &&
-        this._containerMeasurements;
-    },
-
-    updateTabPanel: function updateTabPanel(position, pageOffset) {
-      var containerWidth = this._containerMeasurements.width;
-      var tabWidth = this._tabsMeasurements[position].width;
-      var nextTabMeasurements = this._tabsMeasurements[position + 1];
-      var nextTabWidth = nextTabMeasurements && nextTabMeasurements.width || 0;
-      var tabOffset = this._tabsMeasurements[position].left;
-      var absolutePageOffset = pageOffset * tabWidth;
-      var newScrollX = tabOffset + absolutePageOffset;
-
-
-      newScrollX -= (containerWidth - (1 - pageOffset) * tabWidth - pageOffset * nextTabWidth) / 2;
-      newScrollX = newScrollX >= 0 ? newScrollX : 0;
-
-      if (Platform.OS === 'android') {
-        this._scrollView.scrollTo({ x: newScrollX, y: 0, animated: false });
-      } else {
-        var rightBoundScroll = this._tabContainerMeasurements.width - this._containerMeasurements.width;
-        newScrollX = newScrollX > rightBoundScroll ? rightBoundScroll : newScrollX;
-        this._scrollView.scrollTo({ x: newScrollX, y: 0, animated: false });
-      }
-
-    },
-
-    updateTabUnderline: function updateTabUnderline(position, pageOffset, tabCount) {
-      var lineLeft = this._tabsMeasurements[position].left;
-      var lineRight = this._tabsMeasurements[position].right;
-
-      if (position < tabCount - 1) {
-        var nextTabLeft = this._tabsMeasurements[position + 1].left;
-        var nextTabRight = this._tabsMeasurements[position + 1].right;
-
-        var newLineLeft = pageOffset * nextTabLeft + (1 - pageOffset) * lineLeft;
-        var newLineRight = pageOffset * nextTabRight + (1 - pageOffset) * lineRight;
-
-        this.state._leftTabUnderline.setValue(newLineLeft);
-        this.state._widthTabUnderline.setValue(newLineRight - newLineLeft);
-      } else {
-        this.state._leftTabUnderline.setValue(lineLeft);
-        this.state._widthTabUnderline.setValue(lineRight - lineLeft);
-      }
-    },
-
-    renderTabOption: function renderTabOption(name, page) {
-      var _this = this;
-      var isTabActive = this.props.activeTab === page;
-      var _props =
-        this.props;
-      var activeTextColor = _props.activeTextColor;
-      var inactiveTextColor = _props.inactiveTextColor;
-      var textStyle = _props.textStyle;
-      var textColor = isTabActive ? activeTextColor : inactiveTextColor;
-      var fontWeight = isTabActive ? 'bold' : 'normal';
-
-      return React.createElement(Button, {
-          key: name + '_' + page,
-          accessible: true,
-          accessibilityLabel: name,
-          accessibilityTraits: 'button',
-          onPress: function onPress() {
-            return _this.props.goToPage(page);
-          },
-          onLayout: this.measureTab.bind(this, page), __source: { fileName: _jsxFileName, lineNumber: 131 }
-        },
-
-        React.createElement(View, {
-            style: [styles.tab, this.props.tabStyle],
-            __source: { fileName: _jsxFileName, lineNumber: 139 }
-          },
-          React.createElement(Text, {
-              style: [{ color: textColor, fontWeight: fontWeight }, textStyle],
-              __source: { fileName: _jsxFileName, lineNumber: 140 }
-            },
-            name)));
-
-
-    },
-
-    measureTab: function measureTab(page, event) {
-      var _event$nativeEvent$la =
-        event.nativeEvent.layout;
-      var x = _event$nativeEvent$la.x;
-      var width = _event$nativeEvent$la.width;
-      var height = _event$nativeEvent$la.height;
-      this._tabsMeasurements[page] = { left: x, right: x + width, width: width, height: height };
-      this.updateView({ value: this.props.scrollValue._value });
-    },
-
-    render: function render() {
-      var _this2 = this;
-      var tabUnderlineStyle = {
-        position: 'absolute',
-        height: this.props.underlineHeight,
-        backgroundColor: this.props.underlineColor,
-        bottom: 0
-      };
-
-
-      var dynamicTabUnderline = {
-        left: this.state._leftTabUnderline,
-        width: this.state._widthTabUnderline
-      };
-
-
-      return React.createElement(View, {
-          style: [styles.container, { backgroundColor: this.props.backgroundColor }, this.props.style],
-          onLayout: this.onContainerLayout, __source: { fileName: _jsxFileName, lineNumber: 166 }
-        },
-
-        React.createElement(ScrollView, {
-            ref: function ref(scrollView) {
-              _this2._scrollView = scrollView;
-            },
-            horizontal: true,
-            showsHorizontalScrollIndicator: false,
-            showsVerticalScrollIndicator: false,
-            directionalLockEnabled: true,
-            bounces: false, __source: { fileName: _jsxFileName, lineNumber: 170 }
-          },
-
-          React.createElement(View, {
-              style: [styles.tabs, { width: this.state._containerWidth }, this.props.tabsContainerStyle],
-              ref: 'tabContainer',
-              onLayout: this.onTabContainerLayout, __source: { fileName: _jsxFileName, lineNumber: 178 }
-            },
-
-            this.props.tabs.map(function (tab, i) {
-              return _this2.renderTabOption(tab, i);
-            }),
-            React.createElement(Animated.View, {
-              style: [tabUnderlineStyle, dynamicTabUnderline],
-              __source: { fileName: _jsxFileName, lineNumber: 184 }
-            }))));
-
-
-    },
-
-    onTabContainerLayout: function onTabContainerLayout(e) {
-      this._tabContainerMeasurements = e.nativeEvent.layout;
-      var width = this._tabContainerMeasurements.width;
-      if (width < WINDOW_WIDTH) {
-        width = WINDOW_WIDTH;
-      }
-      this.setState({ _containerWidth: width });
-      this.updateView({ value: this.props.scrollValue._value });
-    },
-
-    onContainerLayout: function onContainerLayout(e) {
-      this._containerMeasurements = e.nativeEvent.layout;
-      this.updateView({ value: this.props.scrollValue._value });
-    }
-  });
-
-
-  module.exports = ScrollableTabBar;
-
-  var styles = StyleSheet.create({
-    tab: {
-      height: 49,
-      alignItems: 'center',
-      justifyContent: 'center',
-      paddingLeft: 20,
-      paddingRight: 20
-    },
-
-    container: {
-      height: 50,
-      borderWidth: 1,
-      borderTopWidth: 0,
-      borderLeftWidth: 0,
-      borderRightWidth: 0,
-      borderBottomColor: '#ccc'
-    },
-
-    tabs: {
-      flexDirection: 'row',
-      justifyContent: 'space-around'
-    }
-  });
-}, "react-native-scrollable-tab-view/ScrollableTabBar.js");
-__d(675 /* SmartRectNativeApp/component/tabs/ScrollableTabsExample.js */, function (global, require, module, exports) {
-  Object.defineProperty(exports, "__esModule", { value: true });
-  var _jsxFileName = '/Users/sky/dev/react/native/SmartReactNativeApp/component/tabs/ScrollableTabsExample.js';
-  var _react = require(12 /* react */);
-  var _react2 = babelHelpers.interopRequireDefault(_react);
-  var _reactNative = require(43 /* react-native */);
-
-
-  var _reactNativeScrollableTabView = require(667 /* react-native-scrollable-tab-view */);
-  var _reactNativeScrollableTabView2 = babelHelpers.interopRequireDefault(_reactNativeScrollableTabView);
-  exports.default =
-
-    _react2.default.createClass({
-      displayName: 'ScrollableTabsExample',
-      render: function render() {
-        return _react2.default.createElement(_reactNativeScrollableTabView2.default, {
-            style: { marginTop: 20 },
-            initialPage: 0,
-            renderTabBar: function renderTabBar() {
-              return _react2.default.createElement(_reactNativeScrollableTabView.ScrollableTabBar, {
-                __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 14
-                }
-              });
-            }, __source: { fileName: _jsxFileName, lineNumber: 11 }
-          },
-
-          _react2.default.createElement(_reactNative.Text, {
-            tabLabel: 'Tab #1',
-            __source: { fileName: _jsxFileName, lineNumber: 16 }
-          }, 'My'),
-          _react2.default.createElement(_reactNative.Text, {
-            tabLabel: 'Tab #2 word word',
-            __source: { fileName: _jsxFileName, lineNumber: 17 }
-          }, 'favorite'),
-          _react2.default.createElement(_reactNative.Text, {
-            tabLabel: 'Tab #3 word word word',
-            __source: { fileName: _jsxFileName, lineNumber: 18 }
-          }, 'project'),
-          _react2.default.createElement(_reactNative.Text, {
-            tabLabel: 'Tab #4 word word word word',
-            __source: { fileName: _jsxFileName, lineNumber: 19 }
-          }, 'favorite'),
-          _react2.default.createElement(_reactNative.Text, {
-            tabLabel: 'Tab #5',
-            __source: { fileName: _jsxFileName, lineNumber: 20 }
-          }, 'project'));
-
-      }
-    });
-}, "SmartRectNativeApp/component/tabs/ScrollableTabsExample.js");
-__d(676 /* SmartRectNativeApp/component/tabs/OverlayExample.js */, function (global, require, module, exports) {
-  Object.defineProperty(exports, "__esModule", { value: true });
-  var _jsxFileName = '/Users/sky/dev/react/native/SmartReactNativeApp/component/tabs/OverlayExample.js';
-  var _react = require(12 /* react */);
-  var _react2 = babelHelpers.interopRequireDefault(_react);
-  var _reactNative = require(43 /* react-native */);
-
-
-  var _reactNativeScrollableTabView = require(667 /* react-native-scrollable-tab-view */);
-  var _reactNativeScrollableTabView2 = babelHelpers.interopRequireDefault(_reactNativeScrollableTabView);
-  var _Ionicons = require(677 /* react-native-vector-icons/Ionicons */);
-  var _Ionicons2 = babelHelpers.interopRequireDefault(_Ionicons);
-  var _Category = require(664 /* ../home/Category */);
-  var _Category2 = babelHelpers.interopRequireDefault(_Category);
-  var _pullrefresh = require(792 /* ../test/pullrefresh */);
-  var _pullrefresh2 = babelHelpers.interopRequireDefault(_pullrefresh);
-  var _ListViewPullRefreshExample = require(793 /* ../test/ListViewPullRefreshExample */);
-  var _ListViewPullRefreshExample2 = babelHelpers.interopRequireDefault(_ListViewPullRefreshExample);
-  var _ListViewRefreshExample = require(795 /* ../test/ListViewRefreshExample */);
-  var _ListViewRefreshExample2 = babelHelpers.interopRequireDefault(_ListViewRefreshExample);
-  exports.default =
-
-
-    _react2.default.createClass({
-      displayName: 'OverlayExample',
-      render: function render() {
-        return _react2.default.createElement(_reactNativeScrollableTabView2.default, {
-            style: styles.container,
-            tabBarUnderlineColor: '#1E90FF', tabBarActiveTextColor: '#1E90FF',
-            renderTabBar: function renderTabBar() {
-              return _react2.default.createElement(_reactNativeScrollableTabView.DefaultTabBar, {
-                backgroundColor: 'rgba(255, 255, 255, 0.7)',
-                __source: { fileName: _jsxFileName, lineNumber: 23 }
-              });
-            },
-            tabBarPosition: 'overlayTop', __source: { fileName: _jsxFileName, lineNumber: 20 }
-          },
-
-          _react2.default.createElement(_reactNative.View, {
-              tabLabel: 'ListViewPullRefresh',
-              style: { flex: 1 },
-              __source: { fileName: _jsxFileName, lineNumber: 26 }
-            },
-            _react2.default.createElement(_ListViewPullRefreshExample2.default, {
-              marginTop: 48,
-              __source: { fileName: _jsxFileName, lineNumber: 27 }
-            })),
-
-          _react2.default.createElement(_reactNative.View, {
-              tabLabel: 'ListViewRefreshExample',
-              style: { flex: 1 },
-              __source: { fileName: _jsxFileName, lineNumber: 29 }
-            },
-            _react2.default.createElement(_reactNative.View, {
-              style: styles.category,
-              __source: { fileName: _jsxFileName, lineNumber: 30 }
-            }),
-            _react2.default.createElement(_ListViewRefreshExample2.default, {
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 31
-              }
-            }),
-            _react2.default.createElement(_reactNative.View, {
-              style: styles.category,
-              __source: { fileName: _jsxFileName, lineNumber: 32 }
-            })));
-
-
-      }
-    });
-
-
-  var styles = _reactNative.StyleSheet.create({
-    category: {
-      height: 48
-    },
-
-    container: {
-      marginTop: 0,
-      marginBottom: 0
-    },
-
-    icon: {
-      width: 300,
-      height: 300,
-      alignSelf: 'center'
-    }
-  });
-}, "SmartRectNativeApp/component/tabs/OverlayExample.js");
-__d(677 /* react-native-vector-icons/Ionicons.js */, function (global, require, module, exports) {
-
-
-  var _createIconSet = require(678 /* ./lib/create-icon-set */);
-  var _createIconSet2 = babelHelpers.interopRequireDefault(_createIconSet);
-  var glyphMap = {
-    "ios-add": 61698,
-    "ios-add-circle": 61697,
-    "ios-add-circle-outline": 61696,
-    "ios-add-outline": 61698,
-    "ios-alarm": 62408,
-    "ios-alarm-outline": 62407,
-    "ios-albums": 62410,
-    "ios-albums-outline": 62409,
-    "ios-alert": 61700,
-    "ios-alert-outline": 61699,
-    "ios-american-football": 61702,
-    "ios-american-football-outline": 61701,
-    "ios-analytics": 62414,
-    "ios-analytics-outline": 62413,
-    "ios-aperture": 61704,
-    "ios-aperture-outline": 61703,
-    "ios-apps": 61706,
-    "ios-apps-outline": 61705,
-    "ios-appstore": 61708,
-    "ios-appstore-outline": 61707,
-    "ios-archive": 61710,
-    "ios-archive-outline": 61709,
-    "ios-arrow-back": 62415,
-    "ios-arrow-back-outline": 62415,
-    "ios-arrow-down": 62416,
-    "ios-arrow-down-outline": 62416,
-    "ios-arrow-dropdown": 61712,
-    "ios-arrow-dropdown-circle": 61711,
-    "ios-arrow-dropdown-circle-outline": 61711,
-    "ios-arrow-dropdown-outline": 61712,
-    "ios-arrow-dropleft": 61714,
-    "ios-arrow-dropleft-circle": 61713,
-    "ios-arrow-dropleft-circle-outline": 61713,
-    "ios-arrow-dropleft-outline": 61714,
-    "ios-arrow-dropright": 61716,
-    "ios-arrow-dropright-circle": 61715,
-    "ios-arrow-dropright-circle-outline": 61715,
-    "ios-arrow-dropright-outline": 61716,
-    "ios-arrow-dropup": 61718,
-    "ios-arrow-dropup-circle": 61717,
-    "ios-arrow-dropup-circle-outline": 61717,
-    "ios-arrow-dropup-outline": 61718,
-    "ios-arrow-forward": 62417,
-    "ios-arrow-forward-outline": 62417,
-    "ios-arrow-round-back": 61719,
-    "ios-arrow-round-back-outline": 61719,
-    "ios-arrow-round-down": 61720,
-    "ios-arrow-round-down-outline": 61720,
-    "ios-arrow-round-forward": 61721,
-    "ios-arrow-round-forward-outline": 61721,
-    "ios-arrow-round-up": 61722,
-    "ios-arrow-round-up-outline": 61722,
-    "ios-arrow-up": 62424,
-    "ios-arrow-up-outline": 62424,
-    "ios-at": 62426,
-    "ios-at-outline": 62425,
-    "ios-attach": 61723,
-    "ios-attach-outline": 61723,
-    "ios-backspace": 61725,
-    "ios-backspace-outline": 61724,
-    "ios-barcode": 62428,
-    "ios-barcode-outline": 62427,
-    "ios-baseball": 62430,
-    "ios-baseball-outline": 62429,
-    "ios-basket": 61727,
-    "ios-basket-outline": 61726,
-    "ios-basketball": 62432,
-    "ios-basketball-outline": 62431,
-    "ios-battery-charging": 61728,
-    "ios-battery-charging-outline": 61728,
-    "ios-battery-dead": 61729,
-    "ios-battery-dead-outline": 61729,
-    "ios-battery-full": 61730,
-    "ios-battery-full-outline": 61730,
-    "ios-beaker": 61732,
-    "ios-beaker-outline": 61731,
-    "ios-beer": 61734,
-    "ios-beer-outline": 61733,
-    "ios-bicycle": 61735,
-    "ios-bicycle-outline": 61735,
-    "ios-bluetooth": 61736,
-    "ios-bluetooth-outline": 61736,
-    "ios-boat": 61738,
-    "ios-boat-outline": 61737,
-    "ios-body": 62436,
-    "ios-body-outline": 62435,
-    "ios-bonfire": 61740,
-    "ios-bonfire-outline": 61739,
-    "ios-book": 62440,
-    "ios-book-outline": 62439,
-    "ios-bookmark": 61742,
-    "ios-bookmark-outline": 61741,
-    "ios-bookmarks": 62442,
-    "ios-bookmarks-outline": 62441,
-    "ios-bowtie": 61744,
-    "ios-bowtie-outline": 61743,
-    "ios-briefcase": 62446,
-    "ios-briefcase-outline": 62445,
-    "ios-browsers": 62448,
-    "ios-browsers-outline": 62447,
-    "ios-brush": 61746,
-    "ios-brush-outline": 61745,
-    "ios-bug": 61748,
-    "ios-bug-outline": 61747,
-    "ios-build": 61750,
-    "ios-build-outline": 61749,
-    "ios-bulb": 61752,
-    "ios-bulb-outline": 61751,
-    "ios-bus": 61754,
-    "ios-bus-outline": 61753,
-    "ios-cafe": 61756,
-    "ios-cafe-outline": 61755,
-    "ios-calculator": 62450,
-    "ios-calculator-outline": 62449,
-    "ios-calendar": 62452,
-    "ios-calendar-outline": 62451,
-    "ios-call": 61758,
-    "ios-call-outline": 61757,
-    "ios-camera": 62454,
-    "ios-camera-outline": 62453,
-    "ios-car": 61760,
-    "ios-car-outline": 61759,
-    "ios-card": 61762,
-    "ios-card-outline": 61761,
-    "ios-cart": 62456,
-    "ios-cart-outline": 62455,
-    "ios-cash": 61764,
-    "ios-cash-outline": 61763,
-    "ios-chatboxes": 62458,
-    "ios-chatboxes-outline": 62457,
-    "ios-chatbubbles": 61766,
-    "ios-chatbubbles-outline": 61765,
-    "ios-checkbox": 61768,
-    "ios-checkbox-outline": 61767,
-    "ios-checkmark": 62463,
-    "ios-checkmark-circle": 61770,
-    "ios-checkmark-circle-outline": 61769,
-    "ios-checkmark-outline": 62463,
-    "ios-clipboard": 61772,
-    "ios-clipboard-outline": 61771,
-    "ios-clock": 62467,
-    "ios-clock-outline": 62466,
-    "ios-close": 62470,
-    "ios-close-circle": 61774,
-    "ios-close-circle-outline": 61773,
-    "ios-close-outline": 62470,
-    "ios-closed-captioning": 61776,
-    "ios-closed-captioning-outline": 61775,
-    "ios-cloud": 62476,
-    "ios-cloud-circle": 61778,
-    "ios-cloud-circle-outline": 61777,
-    "ios-cloud-done": 61780,
-    "ios-cloud-done-outline": 61779,
-    "ios-cloud-download": 62472,
-    "ios-cloud-download-outline": 62471,
-    "ios-cloud-outline": 62473,
-    "ios-cloud-upload": 62475,
-    "ios-cloud-upload-outline": 62474,
-    "ios-cloudy": 62480,
-    "ios-cloudy-night": 62478,
-    "ios-cloudy-night-outline": 62477,
-    "ios-cloudy-outline": 62479,
-    "ios-code": 61783,
-    "ios-code-download": 61781,
-    "ios-code-download-outline": 61781,
-    "ios-code-outline": 61783,
-    "ios-code-working": 61782,
-    "ios-code-working-outline": 61782,
-    "ios-cog": 62482,
-    "ios-cog-outline": 62481,
-    "ios-color-fill": 61785,
-    "ios-color-fill-outline": 61784,
-    "ios-color-filter": 62484,
-    "ios-color-filter-outline": 62483,
-    "ios-color-palette": 61787,
-    "ios-color-palette-outline": 61786,
-    "ios-color-wand": 62486,
-    "ios-color-wand-outline": 62485,
-    "ios-compass": 61789,
-    "ios-compass-outline": 61788,
-    "ios-construct": 61791,
-    "ios-construct-outline": 61790,
-    "ios-contact": 62490,
-    "ios-contact-outline": 62489,
-    "ios-contacts": 61793,
-    "ios-contacts-outline": 61792,
-    "ios-contract": 61794,
-    "ios-contract-outline": 61794,
-    "ios-contrast": 61795,
-    "ios-contrast-outline": 61795,
-    "ios-copy": 62492,
-    "ios-copy-outline": 62491,
-    "ios-create": 61797,
-    "ios-create-outline": 61796,
-    "ios-crop": 62494,
-    "ios-crop-outline": 61798,
-    "ios-cube": 61800,
-    "ios-cube-outline": 61799,
-    "ios-cut": 61802,
-    "ios-cut-outline": 61801,
-    "ios-desktop": 61804,
-    "ios-desktop-outline": 61803,
-    "ios-disc": 61806,
-    "ios-disc-outline": 61805,
-    "ios-document": 61808,
-    "ios-document-outline": 61807,
-    "ios-done-all": 61809,
-    "ios-done-all-outline": 61809,
-    "ios-download": 62496,
-    "ios-download-outline": 62495,
-    "ios-easel": 61811,
-    "ios-easel-outline": 61810,
-    "ios-egg": 61813,
-    "ios-egg-outline": 61812,
-    "ios-exit": 61815,
-    "ios-exit-outline": 61814,
-    "ios-expand": 61816,
-    "ios-expand-outline": 61816,
-    "ios-eye": 62501,
-    "ios-eye-off": 61818,
-    "ios-eye-off-outline": 61817,
-    "ios-eye-outline": 62500,
-    "ios-fastforward": 62503,
-    "ios-fastforward-outline": 62502,
-    "ios-female": 61819,
-    "ios-female-outline": 61819,
-    "ios-filing": 62505,
-    "ios-filing-outline": 62504,
-    "ios-film": 62507,
-    "ios-film-outline": 62506,
-    "ios-finger-print": 61820,
-    "ios-finger-print-outline": 61820,
-    "ios-flag": 62509,
-    "ios-flag-outline": 62508,
-    "ios-flame": 62511,
-    "ios-flame-outline": 62510,
-    "ios-flash": 61822,
-    "ios-flash-outline": 61821,
-    "ios-flask": 62513,
-    "ios-flask-outline": 62512,
-    "ios-flower": 62515,
-    "ios-flower-outline": 62514,
-    "ios-folder": 62517,
-    "ios-folder-open": 61824,
-    "ios-folder-open-outline": 61823,
-    "ios-folder-outline": 62516,
-    "ios-football": 62519,
-    "ios-football-outline": 62518,
-    "ios-funnel": 61826,
-    "ios-funnel-outline": 61825,
-    "ios-game-controller-a": 62521,
-    "ios-game-controller-a-outline": 62520,
-    "ios-game-controller-b": 62523,
-    "ios-game-controller-b-outline": 62522,
-    "ios-git-branch": 61827,
-    "ios-git-branch-outline": 61827,
-    "ios-git-commit": 61828,
-    "ios-git-commit-outline": 61828,
-    "ios-git-compare": 61829,
-    "ios-git-compare-outline": 61829,
-    "ios-git-merge": 61830,
-    "ios-git-merge-outline": 61830,
-    "ios-git-network": 61831,
-    "ios-git-network-outline": 61831,
-    "ios-git-pull-request": 61832,
-    "ios-git-pull-request-outline": 61832,
-    "ios-glasses": 62527,
-    "ios-glasses-outline": 62526,
-    "ios-globe": 61834,
-    "ios-globe-outline": 61833,
-    "ios-grid": 61836,
-    "ios-grid-outline": 61835,
-    "ios-hammer": 61838,
-    "ios-hammer-outline": 61837,
-    "ios-hand": 61840,
-    "ios-hand-outline": 61839,
-    "ios-happy": 61842,
-    "ios-happy-outline": 61841,
-    "ios-headset": 61844,
-    "ios-headset-outline": 61843,
-    "ios-heart": 62531,
-    "ios-heart-outline": 62530,
-    "ios-help": 62534,
-    "ios-help-buoy": 61846,
-    "ios-help-buoy-outline": 61845,
-    "ios-help-circle": 61848,
-    "ios-help-circle-outline": 61847,
-    "ios-help-outline": 62534,
-    "ios-home": 62536,
-    "ios-home-outline": 62535,
-    "ios-ice-cream": 61850,
-    "ios-ice-cream-outline": 61849,
-    "ios-image": 61852,
-    "ios-image-outline": 61851,
-    "ios-images": 61854,
-    "ios-images-outline": 61853,
-    "ios-infinite": 62538,
-    "ios-infinite-outline": 62537,
-    "ios-information": 62541,
-    "ios-information-circle": 61856,
-    "ios-information-circle-outline": 61855,
-    "ios-information-outline": 62541,
-    "ios-ionic": 61857,
-    "ios-ionic-outline": 62542,
-    "ios-ionitron": 61859,
-    "ios-ionitron-outline": 61858,
-    "ios-jet": 61861,
-    "ios-jet-outline": 61860,
-    "ios-key": 61863,
-    "ios-key-outline": 61862,
-    "ios-keypad": 62544,
-    "ios-keypad-outline": 62543,
-    "ios-laptop": 61864,
-    "ios-laptop-outline": 61864,
-    "ios-leaf": 61866,
-    "ios-leaf-outline": 61865,
-    "ios-link": 61994,
-    "ios-link-outline": 61898,
-    "ios-list": 62548,
-    "ios-list-box": 61868,
-    "ios-list-box-outline": 61867,
-    "ios-list-outline": 62548,
-    "ios-locate": 61870,
-    "ios-locate-outline": 61869,
-    "ios-lock": 61872,
-    "ios-lock-outline": 61871,
-    "ios-log-in": 61873,
-    "ios-log-in-outline": 61873,
-    "ios-log-out": 61874,
-    "ios-log-out-outline": 61874,
-    "ios-magnet": 61876,
-    "ios-magnet-outline": 61875,
-    "ios-mail": 61880,
-    "ios-mail-open": 61878,
-    "ios-mail-open-outline": 61877,
-    "ios-mail-outline": 61879,
-    "ios-male": 61881,
-    "ios-male-outline": 61881,
-    "ios-man": 61883,
-    "ios-man-outline": 61882,
-    "ios-map": 61885,
-    "ios-map-outline": 61884,
-    "ios-medal": 61887,
-    "ios-medal-outline": 61886,
-    "ios-medical": 62556,
-    "ios-medical-outline": 62555,
-    "ios-medkit": 62558,
-    "ios-medkit-outline": 62557,
-    "ios-megaphone": 61889,
-    "ios-megaphone-outline": 61888,
-    "ios-menu": 61891,
-    "ios-menu-outline": 61890,
-    "ios-mic": 62561,
-    "ios-mic-off": 62559,
-    "ios-mic-off-outline": 61892,
-    "ios-mic-outline": 62560,
-    "ios-microphone": 61894,
-    "ios-microphone-outline": 61893,
-    "ios-moon": 62568,
-    "ios-moon-outline": 62567,
-    "ios-more": 61896,
-    "ios-more-outline": 61895,
-    "ios-move": 61899,
-    "ios-move-outline": 61899,
-    "ios-musical-note": 62571,
-    "ios-musical-note-outline": 61900,
-    "ios-musical-notes": 62572,
-    "ios-musical-notes-outline": 61901,
-    "ios-navigate": 62574,
-    "ios-navigate-outline": 62573,
-    "ios-no-smoking": 61903,
-    "ios-no-smoking-outline": 61902,
-    "ios-notifications": 61907,
-    "ios-notifications-off": 61905,
-    "ios-notifications-off-outline": 61904,
-    "ios-notifications-outline": 61906,
-    "ios-nuclear": 61909,
-    "ios-nuclear-outline": 61908,
-    "ios-nutrition": 62576,
-    "ios-nutrition-outline": 62575,
-    "ios-open": 61911,
-    "ios-open-outline": 61910,
-    "ios-options": 61913,
-    "ios-options-outline": 61912,
-    "ios-outlet": 61915,
-    "ios-outlet-outline": 61914,
-    "ios-paper": 62578,
-    "ios-paper-outline": 62577,
-    "ios-paper-plane": 61917,
-    "ios-paper-plane-outline": 61916,
-    "ios-partly-sunny": 61919,
-    "ios-partly-sunny-outline": 61918,
-    "ios-pause": 62584,
-    "ios-pause-outline": 62583,
-    "ios-paw": 62586,
-    "ios-paw-outline": 62585,
-    "ios-people": 62588,
-    "ios-people-outline": 62587,
-    "ios-person": 62590,
-    "ios-person-add": 61921,
-    "ios-person-add-outline": 61920,
-    "ios-person-outline": 62589,
-    "ios-phone-landscape": 61922,
-    "ios-phone-landscape-outline": 61922,
-    "ios-phone-portrait": 61923,
-    "ios-phone-portrait-outline": 61923,
-    "ios-photos": 62594,
-    "ios-photos-outline": 62593,
-    "ios-pie": 62596,
-    "ios-pie-outline": 62595,
-    "ios-pin": 61925,
-    "ios-pin-outline": 61924,
-    "ios-pint": 62598,
-    "ios-pint-outline": 62597,
-    "ios-pizza": 61927,
-    "ios-pizza-outline": 61926,
-    "ios-plane": 61929,
-    "ios-plane-outline": 61928,
-    "ios-planet": 61931,
-    "ios-planet-outline": 61930,
-    "ios-play": 62600,
-    "ios-play-outline": 62599,
-    "ios-podium": 61933,
-    "ios-podium-outline": 61932,
-    "ios-power": 61935,
-    "ios-power-outline": 61934,
-    "ios-pricetag": 62605,
-    "ios-pricetag-outline": 62604,
-    "ios-pricetags": 62607,
-    "ios-pricetags-outline": 62606,
-    "ios-print": 61937,
-    "ios-print-outline": 61936,
-    "ios-pulse": 62611,
-    "ios-pulse-outline": 61938,
-    "ios-qr-scanner": 61939,
-    "ios-qr-scanner-outline": 61939,
-    "ios-quote": 61941,
-    "ios-quote-outline": 61940,
-    "ios-radio": 61945,
-    "ios-radio-button-off": 61942,
-    "ios-radio-button-off-outline": 61942,
-    "ios-radio-button-on": 61943,
-    "ios-radio-button-on-outline": 61943,
-    "ios-radio-outline": 61944,
-    "ios-rainy": 62613,
-    "ios-rainy-outline": 62612,
-    "ios-recording": 62615,
-    "ios-recording-outline": 62614,
-    "ios-redo": 62617,
-    "ios-redo-outline": 62616,
-    "ios-refresh": 62620,
-    "ios-refresh-circle": 61990,
-    "ios-refresh-circle-outline": 61988,
-    "ios-refresh-outline": 62620,
-    "ios-remove": 61948,
-    "ios-remove-circle": 61947,
-    "ios-remove-circle-outline": 61946,
-    "ios-remove-outline": 61948,
-    "ios-reorder": 61949,
-    "ios-reorder-outline": 61949,
-    "ios-repeat": 61950,
-    "ios-repeat-outline": 61950,
-    "ios-resize": 61951,
-    "ios-resize-outline": 61951,
-    "ios-restaurant": 61953,
-    "ios-restaurant-outline": 61952,
-    "ios-return-left": 61954,
-    "ios-return-left-outline": 61954,
-    "ios-return-right": 61955,
-    "ios-return-right-outline": 61955,
-    "ios-reverse-camera": 62623,
-    "ios-reverse-camera-outline": 62622,
-    "ios-rewind": 62625,
-    "ios-rewind-outline": 62624,
-    "ios-ribbon": 61957,
-    "ios-ribbon-outline": 61956,
-    "ios-rose": 62627,
-    "ios-rose-outline": 62626,
-    "ios-sad": 61959,
-    "ios-sad-outline": 61958,
-    "ios-school": 61961,
-    "ios-school-outline": 61960,
-    "ios-search": 62629,
-    "ios-search-outline": 61962,
-    "ios-send": 61964,
-    "ios-send-outline": 61963,
-    "ios-settings": 62631,
-    "ios-settings-outline": 61965,
-    "ios-share": 61969,
-    "ios-share-alt": 61967,
-    "ios-share-alt-outline": 61966,
-    "ios-share-outline": 61968,
-    "ios-shirt": 61971,
-    "ios-shirt-outline": 61970,
-    "ios-shuffle": 62633,
-    "ios-shuffle-outline": 62633,
-    "ios-skip-backward": 61973,
-    "ios-skip-backward-outline": 61972,
-    "ios-skip-forward": 61975,
-    "ios-skip-forward-outline": 61974,
-    "ios-snow": 61976,
-    "ios-snow-outline": 61996,
-    "ios-speedometer": 62640,
-    "ios-speedometer-outline": 62639,
-    "ios-square": 61978,
-    "ios-square-outline": 61977,
-    "ios-star": 62643,
-    "ios-star-half": 62641,
-    "ios-star-half-outline": 62641,
-    "ios-star-outline": 62642,
-    "ios-stats": 61980,
-    "ios-stats-outline": 61979,
-    "ios-stopwatch": 62645,
-    "ios-stopwatch-outline": 62644,
-    "ios-subway": 61982,
-    "ios-subway-outline": 61981,
-    "ios-sunny": 62647,
-    "ios-sunny-outline": 62646,
-    "ios-swap": 61983,
-    "ios-swap-outline": 61983,
-    "ios-switch": 61985,
-    "ios-switch-outline": 61984,
-    "ios-sync": 61986,
-    "ios-sync-outline": 61986,
-    "ios-tablet-landscape": 61987,
-    "ios-tablet-landscape-outline": 61987,
-    "ios-tablet-portrait": 62030,
-    "ios-tablet-portrait-outline": 62030,
-    "ios-tennisball": 62651,
-    "ios-tennisball-outline": 62650,
-    "ios-text": 62032,
-    "ios-text-outline": 62031,
-    "ios-thermometer": 62034,
-    "ios-thermometer-outline": 62033,
-    "ios-thumbs-down": 62036,
-    "ios-thumbs-down-outline": 62035,
-    "ios-thumbs-up": 62038,
-    "ios-thumbs-up-outline": 62037,
-    "ios-thunderstorm": 62653,
-    "ios-thunderstorm-outline": 62652,
-    "ios-time": 62655,
-    "ios-time-outline": 62654,
-    "ios-timer": 62657,
-    "ios-timer-outline": 62656,
-    "ios-train": 62040,
-    "ios-train-outline": 62039,
-    "ios-transgender": 62041,
-    "ios-transgender-outline": 62041,
-    "ios-trash": 62661,
-    "ios-trash-outline": 62660,
-    "ios-trending-down": 62042,
-    "ios-trending-down-outline": 62042,
-    "ios-trending-up": 62043,
-    "ios-trending-up-outline": 62043,
-    "ios-trophy": 62045,
-    "ios-trophy-outline": 62044,
-    "ios-umbrella": 62047,
-    "ios-umbrella-outline": 62046,
-    "ios-undo": 62663,
-    "ios-undo-outline": 62662,
-    "ios-unlock": 62049,
-    "ios-unlock-outline": 62048,
-    "ios-videocam": 62669,
-    "ios-videocam-outline": 62668,
-    "ios-volume-down": 62050,
-    "ios-volume-down-outline": 62050,
-    "ios-volume-mute": 62051,
-    "ios-volume-mute-outline": 62051,
-    "ios-volume-off": 62052,
-    "ios-volume-off-outline": 62052,
-    "ios-volume-up": 62053,
-    "ios-volume-up-outline": 62053,
-    "ios-walk": 62054,
-    "ios-walk-outline": 62054,
-    "ios-warning": 62056,
-    "ios-warning-outline": 62055,
-    "ios-watch": 62057,
-    "ios-watch-outline": 62057,
-    "ios-water": 62059,
-    "ios-water-outline": 62058,
-    "ios-wifi": 62061,
-    "ios-wifi-outline": 62060,
-    "ios-wine": 62063,
-    "ios-wine-outline": 62062,
-    "ios-woman": 62065,
-    "ios-woman-outline": 62064,
-    "logo-android": 61989,
-    "logo-angular": 61991,
-    "logo-apple": 61993,
-    "logo-bitcoin": 61995,
-    "logo-buffer": 61997,
-    "logo-chrome": 61999,
-    "logo-codepen": 62000,
-    "logo-css3": 62001,
-    "logo-designernews": 62002,
-    "logo-dribbble": 62003,
-    "logo-dropbox": 62004,
-    "logo-euro": 62005,
-    "logo-facebook": 62006,
-    "logo-foursquare": 62007,
-    "logo-freebsd-devil": 62008,
-    "logo-github": 62009,
-    "logo-google": 62010,
-    "logo-googleplus": 62011,
-    "logo-hackernews": 62012,
-    "logo-html5": 62013,
-    "logo-instagram": 62014,
-    "logo-javascript": 62015,
-    "logo-linkedin": 62016,
-    "logo-markdown": 62017,
-    "logo-nodejs": 62018,
-    "logo-octocat": 62019,
-    "logo-pinterest": 62020,
-    "logo-playstation": 62021,
-    "logo-python": 62022,
-    "logo-reddit": 62023,
-    "logo-rss": 62024,
-    "logo-sass": 62025,
-    "logo-skype": 62026,
-    "logo-snapchat": 62027,
-    "logo-steam": 62028,
-    "logo-tumblr": 62029,
-    "logo-tux": 62126,
-    "logo-twitch": 62127,
-    "logo-twitter": 62128,
-    "logo-usd": 62129,
-    "logo-vimeo": 62148,
-    "logo-whatsapp": 62149,
-    "logo-windows": 62255,
-    "logo-wordpress": 62256,
-    "logo-xbox": 62284,
-    "logo-yahoo": 62285,
-    "logo-yen": 62286,
-    "logo-youtube": 62287,
-    "md-add": 62067,
-    "md-add-circle": 62066,
-    "md-alarm": 62068,
-    "md-albums": 62069,
-    "md-alert": 62070,
-    "md-american-football": 62071,
-    "md-analytics": 62072,
-    "md-aperture": 62073,
-    "md-apps": 62074,
-    "md-appstore": 62075,
-    "md-archive": 62076,
-    "md-arrow-back": 62077,
-    "md-arrow-down": 62078,
-    "md-arrow-dropdown": 62080,
-    "md-arrow-dropdown-circle": 62079,
-    "md-arrow-dropleft": 62082,
-    "md-arrow-dropleft-circle": 62081,
-    "md-arrow-dropright": 62084,
-    "md-arrow-dropright-circle": 62083,
-    "md-arrow-dropup": 62086,
-    "md-arrow-dropup-circle": 62085,
-    "md-arrow-forward": 62087,
-    "md-arrow-round-back": 62088,
-    "md-arrow-round-down": 62089,
-    "md-arrow-round-forward": 62090,
-    "md-arrow-round-up": 62091,
-    "md-arrow-up": 62092,
-    "md-at": 62093,
-    "md-attach": 62094,
-    "md-backspace": 62095,
-    "md-barcode": 62096,
-    "md-baseball": 62097,
-    "md-basket": 62098,
-    "md-basketball": 62099,
-    "md-battery-charging": 62100,
-    "md-battery-dead": 62101,
-    "md-battery-full": 62102,
-    "md-beaker": 62103,
-    "md-beer": 62104,
-    "md-bicycle": 62105,
-    "md-bluetooth": 62106,
-    "md-boat": 62107,
-    "md-body": 62108,
-    "md-bonfire": 62109,
-    "md-book": 62110,
-    "md-bookmark": 62111,
-    "md-bookmarks": 62112,
-    "md-bowtie": 62113,
-    "md-briefcase": 62114,
-    "md-browsers": 62115,
-    "md-brush": 62116,
-    "md-bug": 62117,
-    "md-build": 62118,
-    "md-bulb": 62119,
-    "md-bus": 62120,
-    "md-cafe": 62121,
-    "md-calculator": 62122,
-    "md-calendar": 62123,
-    "md-call": 62124,
-    "md-camera": 62125,
-    "md-car": 62130,
-    "md-card": 62131,
-    "md-cart": 62132,
-    "md-cash": 62133,
-    "md-chatboxes": 62134,
-    "md-chatbubbles": 62135,
-    "md-checkbox": 62137,
-    "md-checkbox-outline": 62136,
-    "md-checkmark": 62140,
-    "md-checkmark-circle": 62139,
-    "md-checkmark-circle-outline": 62138,
-    "md-clipboard": 62141,
-    "md-clock": 62142,
-    "md-close": 62144,
-    "md-close-circle": 62143,
-    "md-closed-captioning": 62145,
-    "md-cloud": 62153,
-    "md-cloud-circle": 62146,
-    "md-cloud-done": 62147,
-    "md-cloud-download": 62150,
-    "md-cloud-outline": 62151,
-    "md-cloud-upload": 62152,
-    "md-cloudy": 62155,
-    "md-cloudy-night": 62154,
-    "md-code": 62158,
-    "md-code-download": 62156,
-    "md-code-working": 62157,
-    "md-cog": 62159,
-    "md-color-fill": 62160,
-    "md-color-filter": 62161,
-    "md-color-palette": 62162,
-    "md-color-wand": 62163,
-    "md-compass": 62164,
-    "md-construct": 62165,
-    "md-contact": 62166,
-    "md-contacts": 62167,
-    "md-contract": 62168,
-    "md-contrast": 62169,
-    "md-copy": 62170,
-    "md-create": 62171,
-    "md-crop": 62172,
-    "md-cube": 62173,
-    "md-cut": 62174,
-    "md-desktop": 62175,
-    "md-disc": 62176,
-    "md-document": 62177,
-    "md-done-all": 62178,
-    "md-download": 62179,
-    "md-easel": 62180,
-    "md-egg": 62181,
-    "md-exit": 62182,
-    "md-expand": 62183,
-    "md-eye": 62185,
-    "md-eye-off": 62184,
-    "md-fastforward": 62186,
-    "md-female": 62187,
-    "md-filing": 62188,
-    "md-film": 62189,
-    "md-finger-print": 62190,
-    "md-flag": 62191,
-    "md-flame": 62192,
-    "md-flash": 62193,
-    "md-flask": 62194,
-    "md-flower": 62195,
-    "md-folder": 62197,
-    "md-folder-open": 62196,
-    "md-football": 62198,
-    "md-funnel": 62199,
-    "md-game-controller-a": 62200,
-    "md-game-controller-b": 62201,
-    "md-git-branch": 62202,
-    "md-git-commit": 62203,
-    "md-git-compare": 62204,
-    "md-git-merge": 62205,
-    "md-git-network": 62206,
-    "md-git-pull-request": 62207,
-    "md-glasses": 62208,
-    "md-globe": 62209,
-    "md-grid": 62210,
-    "md-hammer": 62211,
-    "md-hand": 62212,
-    "md-happy": 62213,
-    "md-headset": 62214,
-    "md-heart": 62216,
-    "md-heart-outline": 62215,
-    "md-help": 62219,
-    "md-help-buoy": 62217,
-    "md-help-circle": 62218,
-    "md-home": 62220,
-    "md-ice-cream": 62221,
-    "md-image": 62222,
-    "md-images": 62223,
-    "md-infinite": 62224,
-    "md-information": 62226,
-    "md-information-circle": 62225,
-    "md-ionic": 62227,
-    "md-ionitron": 62228,
-    "md-jet": 62229,
-    "md-key": 62230,
-    "md-keypad": 62231,
-    "md-laptop": 62232,
-    "md-leaf": 62233,
-    "md-link": 61998,
-    "md-list": 62235,
-    "md-list-box": 62234,
-    "md-locate": 62236,
-    "md-lock": 62237,
-    "md-log-in": 62238,
-    "md-log-out": 62239,
-    "md-magnet": 62240,
-    "md-mail": 62242,
-    "md-mail-open": 62241,
-    "md-male": 62243,
-    "md-man": 62244,
-    "md-map": 62245,
-    "md-medal": 62246,
-    "md-medical": 62247,
-    "md-medkit": 62248,
-    "md-megaphone": 62249,
-    "md-menu": 62250,
-    "md-mic": 62252,
-    "md-mic-off": 62251,
-    "md-microphone": 62253,
-    "md-moon": 62254,
-    "md-more": 61897,
-    "md-move": 62257,
-    "md-musical-note": 62258,
-    "md-musical-notes": 62259,
-    "md-navigate": 62260,
-    "md-no-smoking": 62261,
-    "md-notifications": 62264,
-    "md-notifications-off": 62262,
-    "md-notifications-outline": 62263,
-    "md-nuclear": 62265,
-    "md-nutrition": 62266,
-    "md-open": 62267,
-    "md-options": 62268,
-    "md-outlet": 62269,
-    "md-paper": 62271,
-    "md-paper-plane": 62270,
-    "md-partly-sunny": 62272,
-    "md-pause": 62273,
-    "md-paw": 62274,
-    "md-people": 62275,
-    "md-person": 62277,
-    "md-person-add": 62276,
-    "md-phone-landscape": 62278,
-    "md-phone-portrait": 62279,
-    "md-photos": 62280,
-    "md-pie": 62281,
-    "md-pin": 62282,
-    "md-pint": 62283,
-    "md-pizza": 62292,
-    "md-plane": 62293,
-    "md-planet": 62294,
-    "md-play": 62295,
-    "md-podium": 62296,
-    "md-power": 62297,
-    "md-pricetag": 62298,
-    "md-pricetags": 62299,
-    "md-print": 62300,
-    "md-pulse": 62301,
-    "md-qr-scanner": 62302,
-    "md-quote": 62303,
-    "md-radio": 62306,
-    "md-radio-button-off": 62304,
-    "md-radio-button-on": 62305,
-    "md-rainy": 62307,
-    "md-recording": 62308,
-    "md-redo": 62309,
-    "md-refresh": 62310,
-    "md-refresh-circle": 61992,
-    "md-remove": 62312,
-    "md-remove-circle": 62311,
-    "md-reorder": 62313,
-    "md-repeat": 62314,
-    "md-resize": 62315,
-    "md-restaurant": 62316,
-    "md-return-left": 62317,
-    "md-return-right": 62318,
-    "md-reverse-camera": 62319,
-    "md-rewind": 62320,
-    "md-ribbon": 62321,
-    "md-rose": 62322,
-    "md-sad": 62323,
-    "md-school": 62324,
-    "md-search": 62325,
-    "md-send": 62326,
-    "md-settings": 62327,
-    "md-share": 62329,
-    "md-share-alt": 62328,
-    "md-shirt": 62330,
-    "md-shuffle": 62331,
-    "md-skip-backward": 62332,
-    "md-skip-forward": 62333,
-    "md-snow": 62334,
-    "md-speedometer": 62335,
-    "md-square": 62337,
-    "md-square-outline": 62336,
-    "md-star": 62340,
-    "md-star-half": 62338,
-    "md-star-outline": 62339,
-    "md-stats": 62341,
-    "md-stopwatch": 62342,
-    "md-subway": 62343,
-    "md-sunny": 62344,
-    "md-swap": 62345,
-    "md-switch": 62346,
-    "md-sync": 62347,
-    "md-tablet-landscape": 62348,
-    "md-tablet-portrait": 62349,
-    "md-tennisball": 62350,
-    "md-text": 62351,
-    "md-thermometer": 62352,
-    "md-thumbs-down": 62353,
-    "md-thumbs-up": 62354,
-    "md-thunderstorm": 62355,
-    "md-time": 62356,
-    "md-timer": 62357,
-    "md-train": 62358,
-    "md-transgender": 62359,
-    "md-trash": 62360,
-    "md-trending-down": 62361,
-    "md-trending-up": 62362,
-    "md-trophy": 62363,
-    "md-umbrella": 62364,
-    "md-undo": 62365,
-    "md-unlock": 62366,
-    "md-videocam": 62367,
-    "md-volume-down": 62368,
-    "md-volume-mute": 62369,
-    "md-volume-off": 62370,
-    "md-volume-up": 62371,
-    "md-walk": 62372,
-    "md-warning": 62373,
-    "md-watch": 62374,
-    "md-water": 62375,
-    "md-wifi": 62376,
-    "md-wine": 62377,
-    "md-woman": 62378
-  };
-
-
-  var Ionicons = (0, _createIconSet2.default)(glyphMap, 'Ionicons', 'Ionicons.ttf');
-
-  module.exports = Ionicons;
-  module.exports.glyphMap = glyphMap;
-}, "react-native-vector-icons/Ionicons.js");
-__d(678 /* react-native-vector-icons/lib/create-icon-set.js */, function (global, require, module, exports) {
-  Object.defineProperty(exports, "__esModule", { value: true });
-  var _jsxFileName = '/Users/sky/dev/react/native/SmartReactNativeApp/node_modules/react-native-vector-icons/lib/create-icon-set.js';
-  exports.default =
-
-
-    createIconSet;
-  var _react = require(12 /* react */);
-  var _react2 = babelHelpers.interopRequireDefault(_react);
-  var _reactNative = require(679 /* ./react-native */);
-  var _iconButton = require(680 /* ./icon-button */);
-  var _iconButton2 = babelHelpers.interopRequireDefault(_iconButton);
-  var _tabBarItemIos = require(790 /* ./tab-bar-item-ios */);
-  var _tabBarItemIos2 = babelHelpers.interopRequireDefault(_tabBarItemIos);
-  var _toolbarAndroid = require(791 /* ./toolbar-android */);
-  var _toolbarAndroid2 = babelHelpers.interopRequireDefault(_toolbarAndroid);
-  var NativeIconAPI = _reactNative.NativeModules && (_reactNative.NativeModules.RNVectorIconsManager || _reactNative.NativeModules.RNVectorIconsModule);
-  var DEFAULT_ICON_SIZE = 12;
-  var DEFAULT_ICON_COLOR = 'black';
-
-  function createIconSet(glyphMap, fontFamily, fontFile) {
-    var fontReference = fontFamily;
-
-    if (_reactNative.Platform.OS === 'android' && fontFile) {
-      fontReference = fontFile.replace(/\.(otf|ttf)$/, '');
-    }
-
-    var IconNamePropType = _react.PropTypes.oneOf(Object.keys(glyphMap));
-    var
-
-      Icon = function (_Component) {
-        babelHelpers.inherits(Icon, _Component);
-        function Icon() {
-          babelHelpers.classCallCheck(this, Icon);
-          return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(Icon).apply(this, arguments));
-        }
-
-        babelHelpers.createClass(Icon, [{
-          key: 'setNativeProps', value: function setNativeProps(nativeProps) {
-            if (this._root) {
-              this._root.setNativeProps(nativeProps);
-            }
-          }
-        }, {
-          key: 'render', value: function render() {
-            var _this2 = this;
-            var _props =
-              this.props;
-            var name = _props.name;
-            var size = _props.size;
-            var color = _props.color;
-            var style = _props.style;
-            var props = babelHelpers.objectWithoutProperties(_props, ['name', 'size', 'color', 'style']);
-
-            var glyph = glyphMap[name] || '?';
-            if (typeof glyph === 'number') {
-              glyph = String.fromCharCode(glyph);
-            }
-
-            var styleDefaults = {
-              fontSize: size,
-              fontWeight: 'normal',
-              fontStyle: 'normal',
-              color: color
-            };
-
-
-            props.style = [styleDefaults, style];
-            props.ref = function (component) {
-              _this2._root = component;
-            };
-
-            styleDefaults.fontFamily = fontReference;
-
-            return _react2.default.createElement(_reactNative.Text, babelHelpers.extends({}, props, {
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 73
-              }
-            }), glyph, this.props.children);
-          }
-        }]);
-        return Icon;
-      }(_react.Component);
-    Icon.propTypes = {
-      name: IconNamePropType.isRequired,
-      size: _react.PropTypes.number,
-      color: _react.PropTypes.string
-    };
-    Icon.defaultProps = { size: DEFAULT_ICON_SIZE, allowFontScaling: false };
-
-
-    var imageSourceCache = {};
-
-    function getImageSource(name) {
-      var size = arguments.length <= 1 || arguments[1] === undefined ? DEFAULT_ICON_SIZE : arguments[1];
-      var color = arguments.length <= 2 || arguments[2] === undefined ? DEFAULT_ICON_COLOR : arguments[2];
-      if (!NativeIconAPI) {
-        if (_reactNative.Platform.OS === 'android') {
-          throw new Error('RNVectorIconsModule not available, did you properly integrate the module?');
-        }
-        throw new Error('RNVectorIconsManager not available, did you add the library to your project and link with libRNVectorIcons.a?');
-      }
-
-      var glyph = glyphMap[name] || '?';
-      if (typeof glyph === 'number') {
-        glyph = String.fromCharCode(glyph);
-      }
-
-      var proessedColor = (0, _reactNative.processColor)(color);
-      var cacheKey = glyph + ':' + size + ':' + proessedColor;
-      var scale = _reactNative.PixelRatio.get();
-
-      return new Promise(function (resolve, reject) {
-        var cached = imageSourceCache[cacheKey];
-        if (typeof cached !== 'undefined') {
-          if (!cached || cached instanceof Error) {
-            reject(cached);
-          }
-          resolve({ uri: cached, scale: scale });
-        } else {
-          NativeIconAPI.getImageForFont(fontReference, glyph, size, proessedColor, function (err, image) {
-            var error = typeof err === 'string' ? new Error(err) : err;
-            imageSourceCache[cacheKey] = image || error || false;
-            if (!error && image) {
-              resolve({ uri: image, scale: scale });
-            } else {
-              reject(error);
-            }
-          });
-        }
-      });
-    }
-
-    Icon.Button = (0, _iconButton2.default)(Icon);
-    Icon.TabBarItem = Icon.TabBarItemIOS = (0, _tabBarItemIos2.default)(IconNamePropType, getImageSource);
-    Icon.ToolbarAndroid = (0, _toolbarAndroid2.default)(IconNamePropType, getImageSource);
-    Icon.getImageSource = getImageSource;
-
-    return Icon;
-  }
-}, "react-native-vector-icons/lib/create-icon-set.js");
-__d(679 /* react-native-vector-icons/lib/react-native.js */, function (global, require, module, exports) {
-  Object.defineProperty(exports, "__esModule", { value: true });
-  var _reactNative = require(43 /* react-native */);
-  Object.keys(_reactNative).forEach(function (key) {
-    if (key === "default")return;
-    Object.defineProperty(exports, key, {
-      enumerable: true, get: function get() {
-        return _reactNative[key];
-      }
-    });
-  });
-}, "react-native-vector-icons/lib/react-native.js");
-__d(680 /* react-native-vector-icons/lib/icon-button.js */, function (global, require, module, exports) {
-  Object.defineProperty(exports, "__esModule", { value: true });
-  var _jsxFileName = '/Users/sky/dev/react/native/SmartReactNativeApp/node_modules/react-native-vector-icons/lib/icon-button.js';
-  exports.default =
-
-
-    createIconButtonComponent;
-  var _isEqual = require(681 /* lodash/isEqual */);
-  var _isEqual2 = babelHelpers.interopRequireDefault(_isEqual);
-  var _isString = require(750 /* lodash/isString */);
-  var _isString2 = babelHelpers.interopRequireDefault(_isString);
-  var _omit = require(759 /* lodash/omit */);
-  var _omit2 = babelHelpers.interopRequireDefault(_omit);
-  var _pick = require(789 /* lodash/pick */);
-  var _pick2 = babelHelpers.interopRequireDefault(_pick);
-  var _react = require(12 /* react */);
-  var _react2 = babelHelpers.interopRequireDefault(_react);
-  var _reactNative = require(679 /* ./react-native */);
-  var styles = _reactNative.StyleSheet.create({
-    container: {
-      flexDirection: 'row',
-      justifyContent: 'flex-start',
-      alignItems: 'center',
-      padding: 8
-    },
-    touchable: { overflow: 'hidden' },
-    icon: { marginRight: 10 },
-    text: { fontWeight: '600', backgroundColor: 'transparent' }
-  });
-  var IOS7_BLUE = '#007AFF';
-
-  function createIconButtonComponent(Icon) {
-    var _class, _temp;
-    return _temp = _class = function (_Component) {
-      babelHelpers.inherits(IconButton, _Component);
-      function IconButton() {
-        babelHelpers.classCallCheck(this, IconButton);
-        return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(IconButton).apply(this, arguments));
-      }
-
-      babelHelpers.createClass(IconButton, [{
-        key: 'render', value: function render() {
-          var _props =
-
-
-            this.props;
-          var style = _props.style;
-          var iconStyle = _props.iconStyle;
-          var children = _props.children;
-          var props = babelHelpers.objectWithoutProperties(_props, ['style', 'iconStyle', 'children']);
-
-          var iconProps = (0, _pick2.default)(props, Object.keys(_reactNative.Text.propTypes), 'style', 'name', 'size', 'color');
-          var touchableProps = (0, _pick2.default)(props, Object.keys(_reactNative.TouchableHighlight.propTypes));
-          props = (0, _omit2.default)(
-            props,
-            Object.keys(iconProps),
-            Object.keys(touchableProps),
-            'iconStyle',
-            'borderRadius',
-            'backgroundColor');
-
-          iconProps.style = this.props.iconStyle ? [styles.icon, this.props.iconStyle] : styles.icon;
-
-          var colorStyle = (0, _pick2.default)(this.props, 'color');
-          var blockStyle = (0, _pick2.default)(this.props, 'backgroundColor', 'borderRadius');
-
-          if ((0, _isString2.default)(children)) {
-            children = _react2.default.createElement(_reactNative.Text, {
-              style: [styles.text, colorStyle],
-              __source: { fileName: _jsxFileName, lineNumber: 79 }
-            }, children);
-          }
-
-          return (
-            _react2.default.createElement(_reactNative.TouchableHighlight, babelHelpers.extends({ style: [styles.touchable, blockStyle] }, touchableProps, {
-                __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 83
-                }
-              }),
-              _react2.default.createElement(_reactNative.View, babelHelpers.extends({
-                  style: [styles.container, blockStyle, style]
-                },
-                props, { __source: { fileName: _jsxFileName, lineNumber: 84 } }),
-
-                _react2.default.createElement(Icon, babelHelpers.extends({}, iconProps, {
-                  __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 88
-                  }
-                })),
-                children)));
-
-
-        }
-      }]);
-      return IconButton;
-    }(_react.Component), _class.propTypes = {
-      backgroundColor: _react.PropTypes.string,
-      borderRadius: _react.PropTypes.number,
-      color: _react.PropTypes.string,
-      size: _react.PropTypes.number
-    }, _class.defaultProps = { backgroundColor: IOS7_BLUE, borderRadius: 5, color: 'white', size: 20 }, _temp;
-
-  }
-}, "react-native-vector-icons/lib/icon-button.js");
-__d(681 /* lodash/isEqual.js */, function (global, require, module, exports) {
-  var baseIsEqual = require(682 /* ./_baseIsEqual */);
-
-
-  function isEqual(value, other) {
-    return baseIsEqual(value, other);
-  }
-
-  module.exports = isEqual;
-}, "lodash/isEqual.js");
-__d(682 /* lodash/_baseIsEqual.js */, function (global, require, module, exports) {
-  var baseIsEqualDeep = require(683 /* ./_baseIsEqualDeep */),
-    isObject = require(706 /* ./isObject */),
-    isObjectLike = require(748 /* ./isObjectLike */);
-
-
-  function baseIsEqual(value, other, customizer, bitmask, stack) {
-    if (value === other) {
-      return true;
-    }
-    if (value == null || other == null || !isObject(value) && !isObjectLike(other)) {
-      return value !== value && other !== other;
-    }
-    return baseIsEqualDeep(value, other, baseIsEqual, customizer, bitmask, stack);
-  }
-
-  module.exports = baseIsEqual;
-}, "lodash/_baseIsEqual.js");
-__d(683 /* lodash/_baseIsEqualDeep.js */, function (global, require, module, exports) {
-  var Stack = require(684 /* ./_Stack */),
-    equalArrays = require(725 /* ./_equalArrays */),
-    equalByTag = require(730 /* ./_equalByTag */),
-    equalObjects = require(735 /* ./_equalObjects */),
-    getTag = require(753 /* ./_getTag */),
-    isArray = require(749 /* ./isArray */),
-    isHostObject = require(707 /* ./_isHostObject */),
-    isTypedArray = require(758 /* ./isTypedArray */);
-
-
-  var PARTIAL_COMPARE_FLAG = 2;
-
-
-  var argsTag = '[object Arguments]',
-    arrayTag = '[object Array]',
-    objectTag = '[object Object]';
-
-
-  var objectProto = Object.prototype;
-
-
-  var hasOwnProperty = objectProto.hasOwnProperty;
-
-
-  function baseIsEqualDeep(object, other, equalFunc, customizer, bitmask, stack) {
-    var objIsArr = isArray(object),
-      othIsArr = isArray(other),
-      objTag = arrayTag,
-      othTag = arrayTag;
-
-    if (!objIsArr) {
-      objTag = getTag(object);
-      objTag = objTag == argsTag ? objectTag : objTag;
-    }
-    if (!othIsArr) {
-      othTag = getTag(other);
-      othTag = othTag == argsTag ? objectTag : othTag;
-    }
-    var objIsObj = objTag == objectTag && !isHostObject(object),
-      othIsObj = othTag == objectTag && !isHostObject(other),
-      isSameTag = objTag == othTag;
-
-    if (isSameTag && !objIsObj) {
-      stack || (stack = new Stack());
-      return objIsArr || isTypedArray(object) ?
-        equalArrays(object, other, equalFunc, customizer, bitmask, stack) :
-        equalByTag(object, other, objTag, equalFunc, customizer, bitmask, stack);
-    }
-    if (!(bitmask & PARTIAL_COMPARE_FLAG)) {
-      var objIsWrapped = objIsObj && hasOwnProperty.call(object, '__wrapped__'),
-        othIsWrapped = othIsObj && hasOwnProperty.call(other, '__wrapped__');
-
-      if (objIsWrapped || othIsWrapped) {
-        var objUnwrapped = objIsWrapped ? object.value() : object,
-          othUnwrapped = othIsWrapped ? other.value() : other;
-
-        stack || (stack = new Stack());
-        return equalFunc(objUnwrapped, othUnwrapped, customizer, bitmask, stack);
-      }
-    }
-    if (!isSameTag) {
-      return false;
-    }
-    stack || (stack = new Stack());
-    return equalObjects(object, other, equalFunc, customizer, bitmask, stack);
-  }
-
-  module.exports = baseIsEqualDeep;
-}, "lodash/_baseIsEqualDeep.js");
-__d(684 /* lodash/_Stack.js */, function (global, require, module, exports) {
-  var ListCache = require(685 /* ./_ListCache */),
-    stackClear = require(693 /* ./_stackClear */),
-    stackDelete = require(694 /* ./_stackDelete */),
-    stackGet = require(695 /* ./_stackGet */),
-    stackHas = require(696 /* ./_stackHas */),
-    stackSet = require(697 /* ./_stackSet */);
-
-
-  function Stack(entries) {
-    this.__data__ = new ListCache(entries);
-  }
-
-
-  Stack.prototype.clear = stackClear;
-  Stack.prototype['delete'] = stackDelete;
-  Stack.prototype.get = stackGet;
-  Stack.prototype.has = stackHas;
-  Stack.prototype.set = stackSet;
-
-  module.exports = Stack;
-}, "lodash/_Stack.js");
-__d(685 /* lodash/_ListCache.js */, function (global, require, module, exports) {
-  var listCacheClear = require(686 /* ./_listCacheClear */),
-    listCacheDelete = require(687 /* ./_listCacheDelete */),
-    listCacheGet = require(690 /* ./_listCacheGet */),
-    listCacheHas = require(691 /* ./_listCacheHas */),
-    listCacheSet = require(692 /* ./_listCacheSet */);
-
-
-  function ListCache(entries) {
-    var index = -1,
-      length = entries ? entries.length : 0;
-
-    this.clear();
-    while (++index < length) {
-      var entry = entries[index];
-      this.set(entry[0], entry[1]);
-    }
-  }
-
-
-  ListCache.prototype.clear = listCacheClear;
-  ListCache.prototype['delete'] = listCacheDelete;
-  ListCache.prototype.get = listCacheGet;
-  ListCache.prototype.has = listCacheHas;
-  ListCache.prototype.set = listCacheSet;
-
-  module.exports = ListCache;
-}, "lodash/_ListCache.js");
-__d(686 /* lodash/_listCacheClear.js */, function (global, require, module, exports) {
-
-
-  function listCacheClear() {
-    this.__data__ = [];
-  }
-
-  module.exports = listCacheClear;
-}, "lodash/_listCacheClear.js");
-__d(687 /* lodash/_listCacheDelete.js */, function (global, require, module, exports) {
-  var assocIndexOf = require(688 /* ./_assocIndexOf */);
-
-
-  var arrayProto = Array.prototype;
-
-
-  var splice = arrayProto.splice;
-
-
-  function listCacheDelete(key) {
-    var data = this.__data__,
-      index = assocIndexOf(data, key);
-
-    if (index < 0) {
-      return false;
-    }
-    var lastIndex = data.length - 1;
-    if (index == lastIndex) {
-      data.pop();
-    } else {
-      splice.call(data, index, 1);
-    }
-    return true;
-  }
-
-  module.exports = listCacheDelete;
-}, "lodash/_listCacheDelete.js");
-__d(688 /* lodash/_assocIndexOf.js */, function (global, require, module, exports) {
-  var eq = require(689 /* ./eq */);
-
-
-  function assocIndexOf(array, key) {
-    var length = array.length;
-    while (length--) {
-      if (eq(array[length][0], key)) {
-        return length;
-      }
-    }
-    return -1;
-  }
-
-  module.exports = assocIndexOf;
-}, "lodash/_assocIndexOf.js");
-__d(689 /* lodash/eq.js */, function (global, require, module, exports) {
-
-
-  function eq(value, other) {
-    return value === other || value !== value && other !== other;
-  }
-
-  module.exports = eq;
-}, "lodash/eq.js");
-__d(690 /* lodash/_listCacheGet.js */, function (global, require, module, exports) {
-  var assocIndexOf = require(688 /* ./_assocIndexOf */);
-
-
-  function listCacheGet(key) {
-    var data = this.__data__,
-      index = assocIndexOf(data, key);
-
-    return index < 0 ? undefined : data[index][1];
-  }
-
-  module.exports = listCacheGet;
-}, "lodash/_listCacheGet.js");
-__d(691 /* lodash/_listCacheHas.js */, function (global, require, module, exports) {
-  var assocIndexOf = require(688 /* ./_assocIndexOf */);
-
-
-  function listCacheHas(key) {
-    return assocIndexOf(this.__data__, key) > -1;
-  }
-
-  module.exports = listCacheHas;
-}, "lodash/_listCacheHas.js");
-__d(692 /* lodash/_listCacheSet.js */, function (global, require, module, exports) {
-  var assocIndexOf = require(688 /* ./_assocIndexOf */);
-
-
-  function listCacheSet(key, value) {
-    var data = this.__data__,
-      index = assocIndexOf(data, key);
-
-    if (index < 0) {
-      data.push([key, value]);
-    } else {
-      data[index][1] = value;
-    }
-    return this;
-  }
-
-  module.exports = listCacheSet;
-}, "lodash/_listCacheSet.js");
-__d(693 /* lodash/_stackClear.js */, function (global, require, module, exports) {
-  var ListCache = require(685 /* ./_ListCache */);
-
-
-  function stackClear() {
-    this.__data__ = new ListCache();
-  }
-
-  module.exports = stackClear;
-}, "lodash/_stackClear.js");
-__d(694 /* lodash/_stackDelete.js */, function (global, require, module, exports) {
-
-
-  function stackDelete(key) {
-    return this.__data__['delete'](key);
-  }
-
-  module.exports = stackDelete;
-}, "lodash/_stackDelete.js");
-__d(695 /* lodash/_stackGet.js */, function (global, require, module, exports) {
-
-
-  function stackGet(key) {
-    return this.__data__.get(key);
-  }
-
-  module.exports = stackGet;
-}, "lodash/_stackGet.js");
-__d(696 /* lodash/_stackHas.js */, function (global, require, module, exports) {
-
-
-  function stackHas(key) {
-    return this.__data__.has(key);
-  }
-
-  module.exports = stackHas;
-}, "lodash/_stackHas.js");
-__d(697 /* lodash/_stackSet.js */, function (global, require, module, exports) {
-  var ListCache = require(685 /* ./_ListCache */),
-    MapCache = require(698 /* ./_MapCache */);
-
-
-  var LARGE_ARRAY_SIZE = 200;
-
-
-  function stackSet(key, value) {
-    var cache = this.__data__;
-    if (cache instanceof ListCache && cache.__data__.length == LARGE_ARRAY_SIZE) {
-      cache = this.__data__ = new MapCache(cache.__data__);
-    }
-    cache.set(key, value);
-    return this;
-  }
-
-  module.exports = stackSet;
-}, "lodash/_stackSet.js");
-__d(698 /* lodash/_MapCache.js */, function (global, require, module, exports) {
-  var mapCacheClear = require(699 /* ./_mapCacheClear */),
-    mapCacheDelete = require(719 /* ./_mapCacheDelete */),
-    mapCacheGet = require(722 /* ./_mapCacheGet */),
-    mapCacheHas = require(723 /* ./_mapCacheHas */),
-    mapCacheSet = require(724 /* ./_mapCacheSet */);
-
-
-  function MapCache(entries) {
-    var index = -1,
-      length = entries ? entries.length : 0;
-
-    this.clear();
-    while (++index < length) {
-      var entry = entries[index];
-      this.set(entry[0], entry[1]);
-    }
-  }
-
-
-  MapCache.prototype.clear = mapCacheClear;
-  MapCache.prototype['delete'] = mapCacheDelete;
-  MapCache.prototype.get = mapCacheGet;
-  MapCache.prototype.has = mapCacheHas;
-  MapCache.prototype.set = mapCacheSet;
-
-  module.exports = MapCache;
-}, "lodash/_MapCache.js");
-__d(699 /* lodash/_mapCacheClear.js */, function (global, require, module, exports) {
-  var Hash = require(700 /* ./_Hash */),
-    ListCache = require(685 /* ./_ListCache */),
-    Map = require(718 /* ./_Map */);
-
-
-  function mapCacheClear() {
-    this.__data__ = {
-      'hash': new Hash(),
-      'map': new (Map || ListCache)(),
-      'string': new Hash()
-    };
-
-  }
-
-  module.exports = mapCacheClear;
-}, "lodash/_mapCacheClear.js");
-__d(700 /* lodash/_Hash.js */, function (global, require, module, exports) {
-  var hashClear = require(701 /* ./_hashClear */),
-    hashDelete = require(714 /* ./_hashDelete */),
-    hashGet = require(715 /* ./_hashGet */),
-    hashHas = require(716 /* ./_hashHas */),
-    hashSet = require(717 /* ./_hashSet */);
-
-
-  function Hash(entries) {
-    var index = -1,
-      length = entries ? entries.length : 0;
-
-    this.clear();
-    while (++index < length) {
-      var entry = entries[index];
-      this.set(entry[0], entry[1]);
-    }
-  }
-
-
-  Hash.prototype.clear = hashClear;
-  Hash.prototype['delete'] = hashDelete;
-  Hash.prototype.get = hashGet;
-  Hash.prototype.has = hashHas;
-  Hash.prototype.set = hashSet;
-
-  module.exports = Hash;
-}, "lodash/_Hash.js");
-__d(701 /* lodash/_hashClear.js */, function (global, require, module, exports) {
-  var nativeCreate = require(702 /* ./_nativeCreate */);
-
-
-  function hashClear() {
-    this.__data__ = nativeCreate ? nativeCreate(null) : {};
-  }
-
-  module.exports = hashClear;
-}, "lodash/_hashClear.js");
-__d(702 /* lodash/_nativeCreate.js */, function (global, require, module, exports) {
-  var getNative = require(703 /* ./_getNative */);
-
-
-  var nativeCreate = getNative(Object, 'create');
-
-  module.exports = nativeCreate;
-}, "lodash/_nativeCreate.js");
-__d(703 /* lodash/_getNative.js */, function (global, require, module, exports) {
-  var baseIsNative = require(704 /* ./_baseIsNative */),
-    getValue = require(713 /* ./_getValue */);
-
-
-  function getNative(object, key) {
-    var value = getValue(object, key);
-    return baseIsNative(value) ? value : undefined;
-  }
-
-  module.exports = getNative;
-}, "lodash/_getNative.js");
-__d(704 /* lodash/_baseIsNative.js */, function (global, require, module, exports) {
-  var isFunction = require(705 /* ./isFunction */),
-    isHostObject = require(707 /* ./_isHostObject */),
-    isMasked = require(708 /* ./_isMasked */),
-    isObject = require(706 /* ./isObject */),
-    toSource = require(712 /* ./_toSource */);
-
-
-  var reRegExpChar = /[\\^$.*+?()[\]{}|]/g;
-
-
-  var reIsHostCtor = /^\[object .+?Constructor\]$/;
-
-
-  var objectProto = Object.prototype;
-
-
-  var funcToString = Function.prototype.toString;
-
-
-  var hasOwnProperty = objectProto.hasOwnProperty;
-
-
-  var reIsNative = RegExp('^' +
-    funcToString.call(hasOwnProperty).replace(reRegExpChar, '\\$&').
-    replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, '$1.*?') + '$');
-
-
-  function baseIsNative(value) {
-    if (!isObject(value) || isMasked(value)) {
-      return false;
-    }
-    var pattern = isFunction(value) || isHostObject(value) ? reIsNative : reIsHostCtor;
-    return pattern.test(toSource(value));
-  }
-
-  module.exports = baseIsNative;
-}, "lodash/_baseIsNative.js");
-__d(705 /* lodash/isFunction.js */, function (global, require, module, exports) {
-  var isObject = require(706 /* ./isObject */);
-
-
-  var funcTag = '[object Function]',
-    genTag = '[object GeneratorFunction]';
-
-
-  var objectProto = Object.prototype;
-
-
-  var objectToString = objectProto.toString;
-
-
-  function isFunction(value) {
-
-
-    var tag = isObject(value) ? objectToString.call(value) : '';
-    return tag == funcTag || tag == genTag;
-  }
-
-  module.exports = isFunction;
-}, "lodash/isFunction.js");
-__d(706 /* lodash/isObject.js */, function (global, require, module, exports) {
-
-
-  function isObject(value) {
-    var type = typeof value;
-    return !!value && (type == 'object' || type == 'function');
-  }
-
-  module.exports = isObject;
-}, "lodash/isObject.js");
-__d(707 /* lodash/_isHostObject.js */, function (global, require, module, exports) {
-
-
-  function isHostObject(value) {
-
-
-    var result = false;
-    if (value != null && typeof value.toString != 'function') {
-      try {
-        result = !!(value + '');
-      } catch (e) {
-      }
-    }
-    return result;
-  }
-
-  module.exports = isHostObject;
-}, "lodash/_isHostObject.js");
-__d(708 /* lodash/_isMasked.js */, function (global, require, module, exports) {
-  var coreJsData = require(709 /* ./_coreJsData */);
-
-
-  var maskSrcKey = function () {
-    var uid = /[^.]+$/.exec(coreJsData && coreJsData.keys && coreJsData.keys.IE_PROTO || '');
-    return uid ? 'Symbol(src)_1.' + uid : '';
-  }();
-
-
-  function isMasked(func) {
-    return !!maskSrcKey && maskSrcKey in func;
-  }
-
-  module.exports = isMasked;
-}, "lodash/_isMasked.js");
-__d(709 /* lodash/_coreJsData.js */, function (global, require, module, exports) {
-  var root = require(710 /* ./_root */);
-
-
-  var coreJsData = root['__core-js_shared__'];
-
-  module.exports = coreJsData;
-}, "lodash/_coreJsData.js");
-__d(710 /* lodash/_root.js */, function (global, require, module, exports) {
-  var checkGlobal = require(711 /* ./_checkGlobal */);
-
-
-  var freeGlobal = checkGlobal(typeof global == 'object' && global);
-
-
-  var freeSelf = checkGlobal(typeof self == 'object' && self);
-
-
-  var thisGlobal = checkGlobal(typeof this == 'object' && this);
-
-
-  var root = freeGlobal || freeSelf || thisGlobal || Function('return this')();
-
-  module.exports = root;
-}, "lodash/_root.js");
-__d(711 /* lodash/_checkGlobal.js */, function (global, require, module, exports) {
-
-
-  function checkGlobal(value) {
-    return value && value.Object === Object ? value : null;
-  }
-
-  module.exports = checkGlobal;
-}, "lodash/_checkGlobal.js");
-__d(712 /* lodash/_toSource.js */, function (global, require, module, exports) {
-  var funcToString = Function.prototype.toString;
-
-
-  function toSource(func) {
-    if (func != null) {
-      try {
-        return funcToString.call(func);
-      } catch (e) {
-      }
-      try {
-        return func + '';
-      } catch (e) {
-      }
-    }
-    return '';
-  }
-
-  module.exports = toSource;
-}, "lodash/_toSource.js");
-__d(713 /* lodash/_getValue.js */, function (global, require, module, exports) {
-
-
-  function getValue(object, key) {
-    return object == null ? undefined : object[key];
-  }
-
-  module.exports = getValue;
-}, "lodash/_getValue.js");
-__d(714 /* lodash/_hashDelete.js */, function (global, require, module, exports) {
-
-
-  function hashDelete(key) {
-    return this.has(key) && delete this.__data__[key];
-  }
-
-  module.exports = hashDelete;
-}, "lodash/_hashDelete.js");
-__d(715 /* lodash/_hashGet.js */, function (global, require, module, exports) {
-  var nativeCreate = require(702 /* ./_nativeCreate */);
-
-
-  var HASH_UNDEFINED = '__lodash_hash_undefined__';
-
-
-  var objectProto = Object.prototype;
-
-
-  var hasOwnProperty = objectProto.hasOwnProperty;
-
-
-  function hashGet(key) {
-    var data = this.__data__;
-    if (nativeCreate) {
-      var result = data[key];
-      return result === HASH_UNDEFINED ? undefined : result;
-    }
-    return hasOwnProperty.call(data, key) ? data[key] : undefined;
-  }
-
-  module.exports = hashGet;
-}, "lodash/_hashGet.js");
-__d(716 /* lodash/_hashHas.js */, function (global, require, module, exports) {
-  var nativeCreate = require(702 /* ./_nativeCreate */);
-
-
-  var objectProto = Object.prototype;
-
-
-  var hasOwnProperty = objectProto.hasOwnProperty;
-
-
-  function hashHas(key) {
-    var data = this.__data__;
-    return nativeCreate ? data[key] !== undefined : hasOwnProperty.call(data, key);
-  }
-
-  module.exports = hashHas;
-}, "lodash/_hashHas.js");
-__d(717 /* lodash/_hashSet.js */, function (global, require, module, exports) {
-  var nativeCreate = require(702 /* ./_nativeCreate */);
-
-
-  var HASH_UNDEFINED = '__lodash_hash_undefined__';
-
-
-  function hashSet(key, value) {
-    var data = this.__data__;
-    data[key] = nativeCreate && value === undefined ? HASH_UNDEFINED : value;
-    return this;
-  }
-
-  module.exports = hashSet;
-}, "lodash/_hashSet.js");
-__d(718 /* lodash/_Map.js */, function (global, require, module, exports) {
-  var getNative = require(703 /* ./_getNative */),
-    root = require(710 /* ./_root */);
-
-
-  var Map = getNative(root, 'Map');
-
-  module.exports = Map;
-}, "lodash/_Map.js");
-__d(719 /* lodash/_mapCacheDelete.js */, function (global, require, module, exports) {
-  var getMapData = require(720 /* ./_getMapData */);
-
-
-  function mapCacheDelete(key) {
-    return getMapData(this, key)['delete'](key);
-  }
-
-  module.exports = mapCacheDelete;
-}, "lodash/_mapCacheDelete.js");
-__d(720 /* lodash/_getMapData.js */, function (global, require, module, exports) {
-  var isKeyable = require(721 /* ./_isKeyable */);
-
-
-  function getMapData(map, key) {
-    var data = map.__data__;
-    return isKeyable(key) ?
-      data[typeof key == 'string' ? 'string' : 'hash'] :
-      data.map;
-  }
-
-  module.exports = getMapData;
-}, "lodash/_getMapData.js");
-__d(721 /* lodash/_isKeyable.js */, function (global, require, module, exports) {
-
-
-  function isKeyable(value) {
-    var type = typeof value;
-    return type == 'string' || type == 'number' || type == 'symbol' || type == 'boolean' ?
-    value !== '__proto__' :
-    value === null;
-  }
-
-  module.exports = isKeyable;
-}, "lodash/_isKeyable.js");
-__d(722 /* lodash/_mapCacheGet.js */, function (global, require, module, exports) {
-  var getMapData = require(720 /* ./_getMapData */);
-
-
-  function mapCacheGet(key) {
-    return getMapData(this, key).get(key);
-  }
-
-  module.exports = mapCacheGet;
-}, "lodash/_mapCacheGet.js");
-__d(723 /* lodash/_mapCacheHas.js */, function (global, require, module, exports) {
-  var getMapData = require(720 /* ./_getMapData */);
-
-
-  function mapCacheHas(key) {
-    return getMapData(this, key).has(key);
-  }
-
-  module.exports = mapCacheHas;
-}, "lodash/_mapCacheHas.js");
-__d(724 /* lodash/_mapCacheSet.js */, function (global, require, module, exports) {
-  var getMapData = require(720 /* ./_getMapData */);
-
-
-  function mapCacheSet(key, value) {
-    getMapData(this, key).set(key, value);
-    return this;
-  }
-
-  module.exports = mapCacheSet;
-}, "lodash/_mapCacheSet.js");
-__d(725 /* lodash/_equalArrays.js */, function (global, require, module, exports) {
-  var SetCache = require(726 /* ./_SetCache */),
-    arraySome = require(729 /* ./_arraySome */);
-
-
-  var UNORDERED_COMPARE_FLAG = 1,
-    PARTIAL_COMPARE_FLAG = 2;
-
-
-  function equalArrays(array, other, equalFunc, customizer, bitmask, stack) {
-    var isPartial = bitmask & PARTIAL_COMPARE_FLAG,
-      arrLength = array.length,
-      othLength = other.length;
-
-    if (arrLength != othLength && !(isPartial && othLength > arrLength)) {
-      return false;
-    }
-
-    var stacked = stack.get(array);
-    if (stacked) {
-      return stacked == other;
-    }
-    var index = -1,
-      result = true,
-      seen = bitmask & UNORDERED_COMPARE_FLAG ? new SetCache() : undefined;
-
-    stack.set(array, other);
-
-
-    while (++index < arrLength) {
-      var arrValue = array[index],
-        othValue = other[index];
-
-      if (customizer) {
-        var compared = isPartial ?
-          customizer(othValue, arrValue, index, other, array, stack) :
-          customizer(arrValue, othValue, index, array, other, stack);
-      }
-      if (compared !== undefined) {
-        if (compared) {
-          continue;
-        }
-        result = false;
-        break;
-      }
-
-      if (seen) {
-        if (!arraySome(other, function (othValue, othIndex) {
-            if (!seen.has(othIndex) && (
-              arrValue === othValue || equalFunc(arrValue, othValue, customizer, bitmask, stack))) {
-              return seen.add(othIndex);
-            }
-          })) {
-          result = false;
-          break;
-        }
-      } else if (!(
-        arrValue === othValue ||
-        equalFunc(arrValue, othValue, customizer, bitmask, stack))) {
-        result = false;
-        break;
-      }
-    }
-    stack['delete'](array);
-    return result;
-  }
-
-  module.exports = equalArrays;
-}, "lodash/_equalArrays.js");
-__d(726 /* lodash/_SetCache.js */, function (global, require, module, exports) {
-  var MapCache = require(698 /* ./_MapCache */),
-    setCacheAdd = require(727 /* ./_setCacheAdd */),
-    setCacheHas = require(728 /* ./_setCacheHas */);
-
-
-  function SetCache(values) {
-    var index = -1,
-      length = values ? values.length : 0;
-
-    this.__data__ = new MapCache();
-    while (++index < length) {
-      this.add(values[index]);
-    }
-  }
-
-
-  SetCache.prototype.add = SetCache.prototype.push = setCacheAdd;
-  SetCache.prototype.has = setCacheHas;
-
-  module.exports = SetCache;
-}, "lodash/_SetCache.js");
-__d(727 /* lodash/_setCacheAdd.js */, function (global, require, module, exports) {
-  var HASH_UNDEFINED = '__lodash_hash_undefined__';
-
-
-  function setCacheAdd(value) {
-    this.__data__.set(value, HASH_UNDEFINED);
-    return this;
-  }
-
-  module.exports = setCacheAdd;
-}, "lodash/_setCacheAdd.js");
-__d(728 /* lodash/_setCacheHas.js */, function (global, require, module, exports) {
-
-
-  function setCacheHas(value) {
-    return this.__data__.has(value);
-  }
-
-  module.exports = setCacheHas;
-}, "lodash/_setCacheHas.js");
-__d(729 /* lodash/_arraySome.js */, function (global, require, module, exports) {
-
-
-  function arraySome(array, predicate) {
-    var index = -1,
-      length = array ? array.length : 0;
-
-    while (++index < length) {
-      if (predicate(array[index], index, array)) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  module.exports = arraySome;
-}, "lodash/_arraySome.js");
-__d(730 /* lodash/_equalByTag.js */, function (global, require, module, exports) {
-  var Symbol = require(731 /* ./_Symbol */),
-    Uint8Array = require(732 /* ./_Uint8Array */),
-    equalArrays = require(725 /* ./_equalArrays */),
-    mapToArray = require(733 /* ./_mapToArray */),
-    setToArray = require(734 /* ./_setToArray */);
-
-
-  var UNORDERED_COMPARE_FLAG = 1,
-    PARTIAL_COMPARE_FLAG = 2;
-
-
-  var boolTag = '[object Boolean]',
-    dateTag = '[object Date]',
-    errorTag = '[object Error]',
-    mapTag = '[object Map]',
-    numberTag = '[object Number]',
-    regexpTag = '[object RegExp]',
-    setTag = '[object Set]',
-    stringTag = '[object String]',
-    symbolTag = '[object Symbol]';
-
-  var arrayBufferTag = '[object ArrayBuffer]',
-    dataViewTag = '[object DataView]';
-
-
-  var symbolProto = Symbol ? typeof Symbol === 'function' ? Symbol.prototype : '@@prototype' : undefined,
-    symbolValueOf = symbolProto ? symbolProto.valueOf : undefined;
-
-
-  function equalByTag(object, other, tag, equalFunc, customizer, bitmask, stack) {
-    switch (tag) {
-      case dataViewTag:
-        if (object.byteLength != other.byteLength ||
-          object.byteOffset != other.byteOffset) {
-          return false;
-        }
-        object = object.buffer;
-        other = other.buffer;
-
-      case arrayBufferTag:
-        if (object.byteLength != other.byteLength || !equalFunc(new Uint8Array(object), new Uint8Array(other))) {
-          return false;
-        }
-        return true;
-
-      case boolTag:
-      case dateTag:
-
-
-        return +object == +other;
-
-      case errorTag:
-        return object.name == other.name && object.message == other.message;
-
-      case numberTag:
-
-        return object != +object ? other != +other : object == +other;
-
-      case regexpTag:
-      case stringTag:
-
-
-        return object == other + '';
-
-      case mapTag:
-        var convert = mapToArray;
-
-      case setTag:
-        var isPartial = bitmask & PARTIAL_COMPARE_FLAG;
-        convert || (convert = setToArray);
-
-        if (object.size != other.size && !isPartial) {
-          return false;
-        }
-
-        var stacked = stack.get(object);
-        if (stacked) {
-          return stacked == other;
-        }
-        bitmask |= UNORDERED_COMPARE_FLAG;
-        stack.set(object, other);
-
-
-        return equalArrays(convert(object), convert(other), equalFunc, customizer, bitmask, stack);
-
-      case symbolTag:
-        if (symbolValueOf) {
-          return symbolValueOf.call(object) == symbolValueOf.call(other);
-        }
-    }
-
-    return false;
-  }
-
-  module.exports = equalByTag;
-}, "lodash/_equalByTag.js");
-__d(731 /* lodash/_Symbol.js */, function (global, require, module, exports) {
-  var root = require(710 /* ./_root */);
-
-
-  var Symbol = root.Symbol;
-
-  module.exports = Symbol;
-}, "lodash/_Symbol.js");
-__d(732 /* lodash/_Uint8Array.js */, function (global, require, module, exports) {
-  var root = require(710 /* ./_root */);
-
-
-  var Uint8Array = root.Uint8Array;
-
-  module.exports = Uint8Array;
-}, "lodash/_Uint8Array.js");
-__d(733 /* lodash/_mapToArray.js */, function (global, require, module, exports) {
-
-
-  function mapToArray(map) {
-    var index = -1,
-      result = Array(map.size);
-
-    map.forEach(function (value, key) {
-      result[++index] = [key, value];
-    });
-    return result;
-  }
-
-  module.exports = mapToArray;
-}, "lodash/_mapToArray.js");
-__d(734 /* lodash/_setToArray.js */, function (global, require, module, exports) {
-
-
-  function setToArray(set) {
-    var index = -1,
-      result = Array(set.size);
-
-    set.forEach(function (value) {
-      result[++index] = value;
-    });
-    return result;
-  }
-
-  module.exports = setToArray;
-}, "lodash/_setToArray.js");
-__d(735 /* lodash/_equalObjects.js */, function (global, require, module, exports) {
-  var baseHas = require(736 /* ./_baseHas */),
-    keys = require(738 /* ./keys */);
-
-
-  var PARTIAL_COMPARE_FLAG = 2;
-
-
-  function equalObjects(object, other, equalFunc, customizer, bitmask, stack) {
-    var isPartial = bitmask & PARTIAL_COMPARE_FLAG,
-      objProps = keys(object),
-      objLength = objProps.length,
-      othProps = keys(other),
-      othLength = othProps.length;
-
-    if (objLength != othLength && !isPartial) {
-      return false;
-    }
-    var index = objLength;
-    while (index--) {
-      var key = objProps[index];
-      if (!(isPartial ? key in other : baseHas(other, key))) {
-        return false;
-      }
-    }
-
-    var stacked = stack.get(object);
-    if (stacked) {
-      return stacked == other;
-    }
-    var result = true;
-    stack.set(object, other);
-
-    var skipCtor = isPartial;
-    while (++index < objLength) {
-      key = objProps[index];
-      var objValue = object[key],
-        othValue = other[key];
-
-      if (customizer) {
-        var compared = isPartial ?
-          customizer(othValue, objValue, key, other, object, stack) :
-          customizer(objValue, othValue, key, object, other, stack);
-      }
-
-      if (!(compared === undefined ?
-        objValue === othValue || equalFunc(objValue, othValue, customizer, bitmask, stack) :
-          compared)) {
-        result = false;
-        break;
-      }
-      skipCtor || (skipCtor = key == 'constructor');
-    }
-    if (result && !skipCtor) {
-      var objCtor = object.constructor,
-        othCtor = other.constructor;
-
-
-      if (objCtor != othCtor &&
-        'constructor' in object && 'constructor' in other && !(typeof objCtor == 'function' && objCtor instanceof objCtor &&
-        typeof othCtor == 'function' && othCtor instanceof othCtor)) {
-        result = false;
-      }
-    }
-    stack['delete'](object);
-    return result;
-  }
-
-  module.exports = equalObjects;
-}, "lodash/_equalObjects.js");
-__d(736 /* lodash/_baseHas.js */, function (global, require, module, exports) {
-  var getPrototype = require(737 /* ./_getPrototype */);
-
-
-  var objectProto = Object.prototype;
-
-
-  var hasOwnProperty = objectProto.hasOwnProperty;
-
-
-  function baseHas(object, key) {
-
-
-    return object != null && (
-      hasOwnProperty.call(object, key) ||
-      typeof object == 'object' && key in object && getPrototype(object) === null);
-  }
-
-  module.exports = baseHas;
-}, "lodash/_baseHas.js");
-__d(737 /* lodash/_getPrototype.js */, function (global, require, module, exports) {
-  var nativeGetPrototype = Object.getPrototypeOf;
-
-
-  function getPrototype(value) {
-    return nativeGetPrototype(Object(value));
-  }
-
-  module.exports = getPrototype;
-}, "lodash/_getPrototype.js");
-__d(738 /* lodash/keys.js */, function (global, require, module, exports) {
-  var baseHas = require(736 /* ./_baseHas */),
-    baseKeys = require(739 /* ./_baseKeys */),
-    indexKeys = require(740 /* ./_indexKeys */),
-    isArrayLike = require(744 /* ./isArrayLike */),
-    isIndex = require(751 /* ./_isIndex */),
-    isPrototype = require(752 /* ./_isPrototype */);
-
-
-  function keys(object) {
-    var isProto = isPrototype(object);
-    if (!(isProto || isArrayLike(object))) {
-      return baseKeys(object);
-    }
-    var indexes = indexKeys(object),
-      skipIndexes = !!indexes,
-      result = indexes || [],
-      length = result.length;
-
-    for (var key in object) {
-      if (baseHas(object, key) && !(skipIndexes && (key == 'length' || isIndex(key, length))) && !(isProto && key == 'constructor')) {
-        result.push(key);
-      }
-    }
-    return result;
-  }
-
-  module.exports = keys;
-}, "lodash/keys.js");
-__d(739 /* lodash/_baseKeys.js */, function (global, require, module, exports) {
-  var nativeKeys = Object.keys;
-
-
-  function baseKeys(object) {
-    return nativeKeys(Object(object));
-  }
-
-  module.exports = baseKeys;
-}, "lodash/_baseKeys.js");
-__d(740 /* lodash/_indexKeys.js */, function (global, require, module, exports) {
-  var baseTimes = require(741 /* ./_baseTimes */),
-    isArguments = require(742 /* ./isArguments */),
-    isArray = require(749 /* ./isArray */),
-    isLength = require(747 /* ./isLength */),
-    isString = require(750 /* ./isString */);
-
-
-  function indexKeys(object) {
-    var length = object ? object.length : undefined;
-    if (isLength(length) && (
-      isArray(object) || isString(object) || isArguments(object))) {
-      return baseTimes(length, String);
-    }
-    return null;
-  }
-
-  module.exports = indexKeys;
-}, "lodash/_indexKeys.js");
-__d(741 /* lodash/_baseTimes.js */, function (global, require, module, exports) {
-
-
-  function baseTimes(n, iteratee) {
-    var index = -1,
-      result = Array(n);
-
-    while (++index < n) {
-      result[index] = iteratee(index);
-    }
-    return result;
-  }
-
-  module.exports = baseTimes;
-}, "lodash/_baseTimes.js");
-__d(742 /* lodash/isArguments.js */, function (global, require, module, exports) {
-  var isArrayLikeObject = require(743 /* ./isArrayLikeObject */);
-
-
-  var argsTag = '[object Arguments]';
-
-
-  var objectProto = Object.prototype;
-
-
-  var hasOwnProperty = objectProto.hasOwnProperty;
-
-
-  var objectToString = objectProto.toString;
-
-
-  var propertyIsEnumerable = objectProto.propertyIsEnumerable;
-
-
-  function isArguments(value) {
-
-    return isArrayLikeObject(value) && hasOwnProperty.call(value, 'callee') && (
-      !propertyIsEnumerable.call(value, 'callee') || objectToString.call(value) == argsTag);
-  }
-
-  module.exports = isArguments;
-}, "lodash/isArguments.js");
-__d(743 /* lodash/isArrayLikeObject.js */, function (global, require, module, exports) {
-  var isArrayLike = require(744 /* ./isArrayLike */),
-    isObjectLike = require(748 /* ./isObjectLike */);
-
-
-  function isArrayLikeObject(value) {
-    return isObjectLike(value) && isArrayLike(value);
-  }
-
-  module.exports = isArrayLikeObject;
-}, "lodash/isArrayLikeObject.js");
-__d(744 /* lodash/isArrayLike.js */, function (global, require, module, exports) {
-  var getLength = require(745 /* ./_getLength */),
-    isFunction = require(705 /* ./isFunction */),
-    isLength = require(747 /* ./isLength */);
-
-
-  function isArrayLike(value) {
-    return value != null && isLength(getLength(value)) && !isFunction(value);
-  }
-
-  module.exports = isArrayLike;
-}, "lodash/isArrayLike.js");
-__d(745 /* lodash/_getLength.js */, function (global, require, module, exports) {
-  var baseProperty = require(746 /* ./_baseProperty */);
-
-
-  var getLength = baseProperty('length');
-
-  module.exports = getLength;
-}, "lodash/_getLength.js");
-__d(746 /* lodash/_baseProperty.js */, function (global, require, module, exports) {
-
-
-  function baseProperty(key) {
-    return function (object) {
-      return object == null ? undefined : object[key];
-    };
-  }
-
-  module.exports = baseProperty;
-}, "lodash/_baseProperty.js");
-__d(747 /* lodash/isLength.js */, function (global, require, module, exports) {
-  var MAX_SAFE_INTEGER = 9007199254740991;
-
-
-  function isLength(value) {
-    return typeof value == 'number' &&
-      value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
-  }
-
-  module.exports = isLength;
-}, "lodash/isLength.js");
-__d(748 /* lodash/isObjectLike.js */, function (global, require, module, exports) {
-
-
-  function isObjectLike(value) {
-    return !!value && typeof value == 'object';
-  }
-
-  module.exports = isObjectLike;
-}, "lodash/isObjectLike.js");
-__d(749 /* lodash/isArray.js */, function (global, require, module, exports) {
-
-
-  var isArray = Array.isArray;
-
-  module.exports = isArray;
-}, "lodash/isArray.js");
-__d(750 /* lodash/isString.js */, function (global, require, module, exports) {
-  var isArray = require(749 /* ./isArray */),
-    isObjectLike = require(748 /* ./isObjectLike */);
-
-
-  var stringTag = '[object String]';
-
-
-  var objectProto = Object.prototype;
-
-
-  var objectToString = objectProto.toString;
-
-
-  function isString(value) {
-    return typeof value == 'string' ||
-      !isArray(value) && isObjectLike(value) && objectToString.call(value) == stringTag;
-  }
-
-  module.exports = isString;
-}, "lodash/isString.js");
-__d(751 /* lodash/_isIndex.js */, function (global, require, module, exports) {
-  var MAX_SAFE_INTEGER = 9007199254740991;
-
-
-  var reIsUint = /^(?:0|[1-9]\d*)$/;
-
-
-  function isIndex(value, length) {
-    length = length == null ? MAX_SAFE_INTEGER : length;
-    return !!length && (
-      typeof value == 'number' || reIsUint.test(value)) &&
-      value > -1 && value % 1 == 0 && value < length;
-  }
-
-  module.exports = isIndex;
-}, "lodash/_isIndex.js");
-__d(752 /* lodash/_isPrototype.js */, function (global, require, module, exports) {
-  var objectProto = Object.prototype;
-
-
-  function isPrototype(value) {
-    var Ctor = value && value.constructor,
-      proto = typeof Ctor == 'function' && Ctor.prototype || objectProto;
-
-    return value === proto;
-  }
-
-  module.exports = isPrototype;
-}, "lodash/_isPrototype.js");
-__d(753 /* lodash/_getTag.js */, function (global, require, module, exports) {
-  var DataView = require(754 /* ./_DataView */),
-    Map = require(718 /* ./_Map */),
-    Promise = require(755 /* ./_Promise */),
-    Set = require(756 /* ./_Set */),
-    WeakMap = require(757 /* ./_WeakMap */),
-    toSource = require(712 /* ./_toSource */);
-
-
-  var mapTag = '[object Map]',
-    objectTag = '[object Object]',
-    promiseTag = '[object Promise]',
-    setTag = '[object Set]',
-    weakMapTag = '[object WeakMap]';
-
-  var dataViewTag = '[object DataView]';
-
-
-  var objectProto = Object.prototype;
-
-
-  var objectToString = objectProto.toString;
-
-
-  var dataViewCtorString = toSource(DataView),
-    mapCtorString = toSource(Map),
-    promiseCtorString = toSource(Promise),
-    setCtorString = toSource(Set),
-    weakMapCtorString = toSource(WeakMap);
-
-
-  function getTag(value) {
-    return objectToString.call(value);
-  }
-
-
-  if (DataView && getTag(new DataView(new ArrayBuffer(1))) != dataViewTag ||
-    Map && getTag(new Map()) != mapTag ||
-    Promise && getTag(Promise.resolve()) != promiseTag ||
-    Set && getTag(new Set()) != setTag ||
-    WeakMap && getTag(new WeakMap()) != weakMapTag) {
-    getTag = function getTag(value) {
-      var result = objectToString.call(value),
-        Ctor = result == objectTag ? value.constructor : undefined,
-        ctorString = Ctor ? toSource(Ctor) : undefined;
-
-      if (ctorString) {
-        switch (ctorString) {
-          case dataViewCtorString:
-            return dataViewTag;
-          case mapCtorString:
-            return mapTag;
-          case promiseCtorString:
-            return promiseTag;
-          case setCtorString:
-            return setTag;
-          case weakMapCtorString:
-            return weakMapTag;
-        }
-
-      }
-      return result;
-    };
-  }
-
-  module.exports = getTag;
-}, "lodash/_getTag.js");
-__d(754 /* lodash/_DataView.js */, function (global, require, module, exports) {
-  var getNative = require(703 /* ./_getNative */),
-    root = require(710 /* ./_root */);
-
-
-  var DataView = getNative(root, 'DataView');
-
-  module.exports = DataView;
-}, "lodash/_DataView.js");
-__d(755 /* lodash/_Promise.js */, function (global, require, module, exports) {
-  var getNative = require(703 /* ./_getNative */),
-    root = require(710 /* ./_root */);
-
-
-  var Promise = getNative(root, 'Promise');
-
-  module.exports = Promise;
-}, "lodash/_Promise.js");
-__d(756 /* lodash/_Set.js */, function (global, require, module, exports) {
-  var getNative = require(703 /* ./_getNative */),
-    root = require(710 /* ./_root */);
-
-
-  var Set = getNative(root, 'Set');
-
-  module.exports = Set;
-}, "lodash/_Set.js");
-__d(757 /* lodash/_WeakMap.js */, function (global, require, module, exports) {
-  var getNative = require(703 /* ./_getNative */),
-    root = require(710 /* ./_root */);
-
-
-  var WeakMap = getNative(root, 'WeakMap');
-
-  module.exports = WeakMap;
-}, "lodash/_WeakMap.js");
-__d(758 /* lodash/isTypedArray.js */, function (global, require, module, exports) {
-  var isLength = require(747 /* ./isLength */),
-    isObjectLike = require(748 /* ./isObjectLike */);
-
-
-  var argsTag = '[object Arguments]',
-    arrayTag = '[object Array]',
-    boolTag = '[object Boolean]',
-    dateTag = '[object Date]',
-    errorTag = '[object Error]',
-    funcTag = '[object Function]',
-    mapTag = '[object Map]',
-    numberTag = '[object Number]',
-    objectTag = '[object Object]',
-    regexpTag = '[object RegExp]',
-    setTag = '[object Set]',
-    stringTag = '[object String]',
-    weakMapTag = '[object WeakMap]';
-
-  var arrayBufferTag = '[object ArrayBuffer]',
-    dataViewTag = '[object DataView]',
-    float32Tag = '[object Float32Array]',
-    float64Tag = '[object Float64Array]',
-    int8Tag = '[object Int8Array]',
-    int16Tag = '[object Int16Array]',
-    int32Tag = '[object Int32Array]',
-    uint8Tag = '[object Uint8Array]',
-    uint8ClampedTag = '[object Uint8ClampedArray]',
-    uint16Tag = '[object Uint16Array]',
-    uint32Tag = '[object Uint32Array]';
-
-
-  var typedArrayTags = {};
-  typedArrayTags[float32Tag] = typedArrayTags[float64Tag] =
-    typedArrayTags[int8Tag] = typedArrayTags[int16Tag] =
-      typedArrayTags[int32Tag] = typedArrayTags[uint8Tag] =
-        typedArrayTags[uint8ClampedTag] = typedArrayTags[uint16Tag] =
-          typedArrayTags[uint32Tag] = true;
-  typedArrayTags[argsTag] = typedArrayTags[arrayTag] =
-    typedArrayTags[arrayBufferTag] = typedArrayTags[boolTag] =
-      typedArrayTags[dataViewTag] = typedArrayTags[dateTag] =
-        typedArrayTags[errorTag] = typedArrayTags[funcTag] =
-          typedArrayTags[mapTag] = typedArrayTags[numberTag] =
-            typedArrayTags[objectTag] = typedArrayTags[regexpTag] =
-              typedArrayTags[setTag] = typedArrayTags[stringTag] =
-                typedArrayTags[weakMapTag] = false;
-
-
-  var objectProto = Object.prototype;
-
-
-  var objectToString = objectProto.toString;
-
-
-  function isTypedArray(value) {
-    return isObjectLike(value) &&
-      isLength(value.length) && !!typedArrayTags[objectToString.call(value)];
-  }
-
-  module.exports = isTypedArray;
-}, "lodash/isTypedArray.js");
-__d(759 /* lodash/omit.js */, function (global, require, module, exports) {
-  var arrayMap = require(760 /* ./_arrayMap */),
-    baseDifference = require(761 /* ./_baseDifference */),
-    baseFlatten = require(768 /* ./_baseFlatten */),
-    basePick = require(771 /* ./_basePick */),
-    getAllKeysIn = require(773 /* ./_getAllKeysIn */),
-    rest = require(782 /* ./rest */),
-    toKey = require(788 /* ./_toKey */);
-
-
-  var omit = rest(function (object, props) {
-    if (object == null) {
-      return {};
-    }
-    props = arrayMap(baseFlatten(props, 1), toKey);
-    return basePick(object, baseDifference(getAllKeysIn(object), props));
-  });
-
-  module.exports = omit;
-}, "lodash/omit.js");
-__d(760 /* lodash/_arrayMap.js */, function (global, require, module, exports) {
-
-
-  function arrayMap(array, iteratee) {
-    var index = -1,
-      length = array ? array.length : 0,
-      result = Array(length);
-
-    while (++index < length) {
-      result[index] = iteratee(array[index], index, array);
-    }
-    return result;
-  }
-
-  module.exports = arrayMap;
-}, "lodash/_arrayMap.js");
-__d(761 /* lodash/_baseDifference.js */, function (global, require, module, exports) {
-  var SetCache = require(726 /* ./_SetCache */),
-    arrayIncludes = require(762 /* ./_arrayIncludes */),
-    arrayIncludesWith = require(765 /* ./_arrayIncludesWith */),
-    arrayMap = require(760 /* ./_arrayMap */),
-    baseUnary = require(766 /* ./_baseUnary */),
-    cacheHas = require(767 /* ./_cacheHas */);
-
-
-  var LARGE_ARRAY_SIZE = 200;
-
-
-  function baseDifference(array, values, iteratee, comparator) {
-    var index = -1,
-      includes = arrayIncludes,
-      isCommon = true,
-      length = array.length,
-      result = [],
-      valuesLength = values.length;
-
-    if (!length) {
-      return result;
-    }
-    if (iteratee) {
-      values = arrayMap(values, baseUnary(iteratee));
-    }
-    if (comparator) {
-      includes = arrayIncludesWith;
-      isCommon = false;
-    } else if (values.length >= LARGE_ARRAY_SIZE) {
-      includes = cacheHas;
-      isCommon = false;
-      values = new SetCache(values);
-    }
-    outer:
-      while (++index < length) {
-        var value = array[index],
-          computed = iteratee ? iteratee(value) : value;
-
-        value = comparator || value !== 0 ? value : 0;
-        if (isCommon && computed === computed) {
-          var valuesIndex = valuesLength;
-          while (valuesIndex--) {
-            if (values[valuesIndex] === computed) {
-              continue outer;
-            }
-          }
-          result.push(value);
-        } else if (!includes(values, computed, comparator)) {
-          result.push(value);
-        }
-      }
-    return result;
-  }
-
-  module.exports = baseDifference;
-}, "lodash/_baseDifference.js");
-__d(762 /* lodash/_arrayIncludes.js */, function (global, require, module, exports) {
-  var baseIndexOf = require(763 /* ./_baseIndexOf */);
-
-
-  function arrayIncludes(array, value) {
-    var length = array ? array.length : 0;
-    return !!length && baseIndexOf(array, value, 0) > -1;
-  }
-
-  module.exports = arrayIncludes;
-}, "lodash/_arrayIncludes.js");
-__d(763 /* lodash/_baseIndexOf.js */, function (global, require, module, exports) {
-  var indexOfNaN = require(764 /* ./_indexOfNaN */);
-
-
-  function baseIndexOf(array, value, fromIndex) {
-    if (value !== value) {
-      return indexOfNaN(array, fromIndex);
-    }
-    var index = fromIndex - 1,
-      length = array.length;
-
-    while (++index < length) {
-      if (array[index] === value) {
-        return index;
-      }
-    }
-    return -1;
-  }
-
-  module.exports = baseIndexOf;
-}, "lodash/_baseIndexOf.js");
-__d(764 /* lodash/_indexOfNaN.js */, function (global, require, module, exports) {
-
-
-  function indexOfNaN(array, fromIndex, fromRight) {
-    var length = array.length,
-      index = fromIndex + (fromRight ? 1 : -1);
-
-    while (fromRight ? index-- : ++index < length) {
-      var other = array[index];
-      if (other !== other) {
-        return index;
-      }
-    }
-    return -1;
-  }
-
-  module.exports = indexOfNaN;
-}, "lodash/_indexOfNaN.js");
-__d(765 /* lodash/_arrayIncludesWith.js */, function (global, require, module, exports) {
-
-
-  function arrayIncludesWith(array, value, comparator) {
-    var index = -1,
-      length = array ? array.length : 0;
-
-    while (++index < length) {
-      if (comparator(value, array[index])) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  module.exports = arrayIncludesWith;
-}, "lodash/_arrayIncludesWith.js");
-__d(766 /* lodash/_baseUnary.js */, function (global, require, module, exports) {
-
-
-  function baseUnary(func) {
-    return function (value) {
-      return func(value);
-    };
-  }
-
-  module.exports = baseUnary;
-}, "lodash/_baseUnary.js");
-__d(767 /* lodash/_cacheHas.js */, function (global, require, module, exports) {
-
-
-  function cacheHas(cache, key) {
-    return cache.has(key);
-  }
-
-  module.exports = cacheHas;
-}, "lodash/_cacheHas.js");
-__d(768 /* lodash/_baseFlatten.js */, function (global, require, module, exports) {
-  var arrayPush = require(769 /* ./_arrayPush */),
-    isFlattenable = require(770 /* ./_isFlattenable */);
-
-
-  function baseFlatten(array, depth, predicate, isStrict, result) {
-    var index = -1,
-      length = array.length;
-
-    predicate || (predicate = isFlattenable);
-    result || (result = []);
-
-    while (++index < length) {
-      var value = array[index];
-      if (depth > 0 && predicate(value)) {
-        if (depth > 1) {
-
-          baseFlatten(value, depth - 1, predicate, isStrict, result);
-        } else {
-          arrayPush(result, value);
-        }
-      } else if (!isStrict) {
-        result[result.length] = value;
-      }
-    }
-    return result;
-  }
-
-  module.exports = baseFlatten;
-}, "lodash/_baseFlatten.js");
-__d(769 /* lodash/_arrayPush.js */, function (global, require, module, exports) {
-
-
-  function arrayPush(array, values) {
-    var index = -1,
-      length = values.length,
-      offset = array.length;
-
-    while (++index < length) {
-      array[offset + index] = values[index];
-    }
-    return array;
-  }
-
-  module.exports = arrayPush;
-}, "lodash/_arrayPush.js");
-__d(770 /* lodash/_isFlattenable.js */, function (global, require, module, exports) {
-  var isArguments = require(742 /* ./isArguments */),
-    isArray = require(749 /* ./isArray */);
-
-
-  function isFlattenable(value) {
-    return isArray(value) || isArguments(value);
-  }
-
-  module.exports = isFlattenable;
-}, "lodash/_isFlattenable.js");
-__d(771 /* lodash/_basePick.js */, function (global, require, module, exports) {
-  var arrayReduce = require(772 /* ./_arrayReduce */);
-
-
-  function basePick(object, props) {
-    object = Object(object);
-    return arrayReduce(props, function (result, key) {
-      if (key in object) {
-        result[key] = object[key];
-      }
-      return result;
-    }, {});
-  }
-
-  module.exports = basePick;
-}, "lodash/_basePick.js");
-__d(772 /* lodash/_arrayReduce.js */, function (global, require, module, exports) {
-
-
-  function arrayReduce(array, iteratee, accumulator, initAccum) {
-    var index = -1,
-      length = array ? array.length : 0;
-
-    if (initAccum && length) {
-      accumulator = array[++index];
-    }
-    while (++index < length) {
-      accumulator = iteratee(accumulator, array[index], index, array);
-    }
-    return accumulator;
-  }
-
-  module.exports = arrayReduce;
-}, "lodash/_arrayReduce.js");
-__d(773 /* lodash/_getAllKeysIn.js */, function (global, require, module, exports) {
-  var baseGetAllKeys = require(774 /* ./_baseGetAllKeys */),
-    getSymbolsIn = require(775 /* ./_getSymbolsIn */),
-    keysIn = require(778 /* ./keysIn */);
-
-
-  function getAllKeysIn(object) {
-    return baseGetAllKeys(object, keysIn, getSymbolsIn);
-  }
-
-  module.exports = getAllKeysIn;
-}, "lodash/_getAllKeysIn.js");
-__d(774 /* lodash/_baseGetAllKeys.js */, function (global, require, module, exports) {
-  var arrayPush = require(769 /* ./_arrayPush */),
-    isArray = require(749 /* ./isArray */);
-
-
-  function baseGetAllKeys(object, keysFunc, symbolsFunc) {
-    var result = keysFunc(object);
-    return isArray(object) ? result : arrayPush(result, symbolsFunc(object));
-  }
-
-  module.exports = baseGetAllKeys;
-}, "lodash/_baseGetAllKeys.js");
-__d(775 /* lodash/_getSymbolsIn.js */, function (global, require, module, exports) {
-  var arrayPush = require(769 /* ./_arrayPush */),
-    getPrototype = require(737 /* ./_getPrototype */),
-    getSymbols = require(776 /* ./_getSymbols */);
-
-
-  var getOwnPropertySymbols = Object.getOwnPropertySymbols;
-
-
-  var getSymbolsIn = !getOwnPropertySymbols ? getSymbols : function (object) {
-    var result = [];
-    while (object) {
-      arrayPush(result, getSymbols(object));
-      object = getPrototype(object);
-    }
-    return result;
-  };
-
-  module.exports = getSymbolsIn;
-}, "lodash/_getSymbolsIn.js");
-__d(776 /* lodash/_getSymbols.js */, function (global, require, module, exports) {
-  var stubArray = require(777 /* ./stubArray */);
-
-
-  var getOwnPropertySymbols = Object.getOwnPropertySymbols;
-
-
-  function getSymbols(object) {
-
-
-    return getOwnPropertySymbols(Object(object));
-  }
-
-
-  if (!getOwnPropertySymbols) {
-    getSymbols = stubArray;
-  }
-
-  module.exports = getSymbols;
-}, "lodash/_getSymbols.js");
-__d(777 /* lodash/stubArray.js */, function (global, require, module, exports) {
-
-
-  function stubArray() {
-    return [];
-  }
-
-  module.exports = stubArray;
-}, "lodash/stubArray.js");
-__d(778 /* lodash/keysIn.js */, function (global, require, module, exports) {
-  var baseKeysIn = require(779 /* ./_baseKeysIn */),
-    indexKeys = require(740 /* ./_indexKeys */),
-    isIndex = require(751 /* ./_isIndex */),
-    isPrototype = require(752 /* ./_isPrototype */);
-
-
-  var objectProto = Object.prototype;
-
-
-  var hasOwnProperty = objectProto.hasOwnProperty;
-
-
-  function keysIn(object) {
-    var index = -1,
-      isProto = isPrototype(object),
-      props = baseKeysIn(object),
-      propsLength = props.length,
-      indexes = indexKeys(object),
-      skipIndexes = !!indexes,
-      result = indexes || [],
-      length = result.length;
-
-    while (++index < propsLength) {
-      var key = props[index];
-      if (!(skipIndexes && (key == 'length' || isIndex(key, length))) && !(key == 'constructor' && (isProto || !hasOwnProperty.call(object, key)))) {
-        result.push(key);
-      }
-    }
-    return result;
-  }
-
-  module.exports = keysIn;
-}, "lodash/keysIn.js");
-__d(779 /* lodash/_baseKeysIn.js */, function (global, require, module, exports) {
-  var Reflect = require(780 /* ./_Reflect */),
-    iteratorToArray = require(781 /* ./_iteratorToArray */);
-
-
-  var objectProto = Object.prototype;
-
-
-  var enumerate = Reflect ? Reflect.enumerate : undefined,
-    propertyIsEnumerable = objectProto.propertyIsEnumerable;
-
-
-  function baseKeysIn(object) {
-    object = object == null ? object : Object(object);
-
-    var result = [];
-    for (var key in object) {
-      result.push(key);
-    }
-    return result;
-  }
-
-
-  if (enumerate && !propertyIsEnumerable.call({ 'valueOf': 1 }, 'valueOf')) {
-    baseKeysIn = function baseKeysIn(object) {
-      return iteratorToArray(enumerate(object));
-    };
-  }
-
-  module.exports = baseKeysIn;
-}, "lodash/_baseKeysIn.js");
-__d(780 /* lodash/_Reflect.js */, function (global, require, module, exports) {
-  var root = require(710 /* ./_root */);
-
-
-  var Reflect = root.Reflect;
-
-  module.exports = Reflect;
-}, "lodash/_Reflect.js");
-__d(781 /* lodash/_iteratorToArray.js */, function (global, require, module, exports) {
-
-
-  function iteratorToArray(iterator) {
-    var data,
-      result = [];
-
-    while (!(data = iterator.next()).done) {
-      result.push(data.value);
-    }
-    return result;
-  }
-
-  module.exports = iteratorToArray;
-}, "lodash/_iteratorToArray.js");
-__d(782 /* lodash/rest.js */, function (global, require, module, exports) {
-  var apply = require(783 /* ./_apply */),
-    toInteger = require(784 /* ./toInteger */);
-
-
-  var FUNC_ERROR_TEXT = 'Expected a function';
-
-
-  var nativeMax = Math.max;
-
-
-  function rest(func, start) {
-    if (typeof func != 'function') {
-      throw new TypeError(FUNC_ERROR_TEXT);
-    }
-    start = nativeMax(start === undefined ? func.length - 1 : toInteger(start), 0);
-    return function () {
-      var args = arguments,
-        index = -1,
-        length = nativeMax(args.length - start, 0),
-        array = Array(length);
-
-      while (++index < length) {
-        array[index] = args[start + index];
-      }
-      switch (start) {
-        case 0:
-          return func.call(this, array);
-        case 1:
-          return func.call(this, args[0], array);
-        case 2:
-          return func.call(this, args[0], args[1], array);
-      }
-
-      var otherArgs = Array(start + 1);
-      index = -1;
-      while (++index < start) {
-        otherArgs[index] = args[index];
-      }
-      otherArgs[start] = array;
-      return apply(func, this, otherArgs);
-    };
-  }
-
-  module.exports = rest;
-}, "lodash/rest.js");
-__d(783 /* lodash/_apply.js */, function (global, require, module, exports) {
-
-
-  function apply(func, thisArg, args) {
-    var length = args.length;
-    switch (length) {
-      case 0:
-        return func.call(thisArg);
-      case 1:
-        return func.call(thisArg, args[0]);
-      case 2:
-        return func.call(thisArg, args[0], args[1]);
-      case 3:
-        return func.call(thisArg, args[0], args[1], args[2]);
-    }
-
-    return func.apply(thisArg, args);
-  }
-
-  module.exports = apply;
-}, "lodash/_apply.js");
-__d(784 /* lodash/toInteger.js */, function (global, require, module, exports) {
-  var toFinite = require(785 /* ./toFinite */);
-
-
-  function toInteger(value) {
-    var result = toFinite(value),
-      remainder = result % 1;
-
-    return result === result ? remainder ? result - remainder : result : 0;
-  }
-
-  module.exports = toInteger;
-}, "lodash/toInteger.js");
-__d(785 /* lodash/toFinite.js */, function (global, require, module, exports) {
-  var toNumber = require(786 /* ./toNumber */);
-
-
-  var INFINITY = 1 / 0,
-    MAX_INTEGER = 1.7976931348623157e+308;
-
-
-  function toFinite(value) {
-    if (!value) {
-      return value === 0 ? value : 0;
-    }
-    value = toNumber(value);
-    if (value === INFINITY || value === -INFINITY) {
-      var sign = value < 0 ? -1 : 1;
-      return sign * MAX_INTEGER;
-    }
-    return value === value ? value : 0;
-  }
-
-  module.exports = toFinite;
-}, "lodash/toFinite.js");
-__d(786 /* lodash/toNumber.js */, function (global, require, module, exports) {
-  var isFunction = require(705 /* ./isFunction */),
-    isObject = require(706 /* ./isObject */),
-    isSymbol = require(787 /* ./isSymbol */);
-
-
-  var NAN = 0 / 0;
-
-
-  var reTrim = /^\s+|\s+$/g;
-
-
-  var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
-
-
-  var reIsBinary = /^0b[01]+$/i;
-
-
-  var reIsOctal = /^0o[0-7]+$/i;
-
-
-  var freeParseInt = parseInt;
-
-
-  function toNumber(value) {
-    if (typeof value == 'number') {
-      return value;
-    }
-    if (isSymbol(value)) {
-      return NAN;
-    }
-    if (isObject(value)) {
-      var other = isFunction(value.valueOf) ? value.valueOf() : value;
-      value = isObject(other) ? other + '' : other;
-    }
-    if (typeof value != 'string') {
-      return value === 0 ? value : +value;
-    }
-    value = value.replace(reTrim, '');
-    var isBinary = reIsBinary.test(value);
-    return isBinary || reIsOctal.test(value) ?
-      freeParseInt(value.slice(2), isBinary ? 2 : 8) :
-      reIsBadHex.test(value) ? NAN : +value;
-  }
-
-  module.exports = toNumber;
-}, "lodash/toNumber.js");
-__d(787 /* lodash/isSymbol.js */, function (global, require, module, exports) {
-  var isObjectLike = require(748 /* ./isObjectLike */);
-
-
-  var symbolTag = '[object Symbol]';
-
-
-  var objectProto = Object.prototype;
-
-
-  var objectToString = objectProto.toString;
-
-
-  function isSymbol(value) {
-    return typeof value == 'symbol' ||
-      isObjectLike(value) && objectToString.call(value) == symbolTag;
-  }
-
-  module.exports = isSymbol;
-}, "lodash/isSymbol.js");
-__d(788 /* lodash/_toKey.js */, function (global, require, module, exports) {
-  var isSymbol = require(787 /* ./isSymbol */);
-
-
-  var INFINITY = 1 / 0;
-
-
-  function toKey(value) {
-    if (typeof value == 'string' || isSymbol(value)) {
-      return value;
-    }
-    var result = value + '';
-    return result == '0' && 1 / value == -INFINITY ? '-0' : result;
-  }
-
-  module.exports = toKey;
-}, "lodash/_toKey.js");
-__d(789 /* lodash/pick.js */, function (global, require, module, exports) {
-  var arrayMap = require(760 /* ./_arrayMap */),
-    baseFlatten = require(768 /* ./_baseFlatten */),
-    basePick = require(771 /* ./_basePick */),
-    rest = require(782 /* ./rest */),
-    toKey = require(788 /* ./_toKey */);
-
-
-  var pick = rest(function (object, props) {
-    return object == null ? {} : basePick(object, arrayMap(baseFlatten(props, 1), toKey));
-  });
-
-  module.exports = pick;
-}, "lodash/pick.js");
-__d(790 /* react-native-vector-icons/lib/tab-bar-item-ios.js */, function (global, require, module, exports) {
-  Object.defineProperty(exports, "__esModule", { value: true });
-  var _jsxFileName = '/Users/sky/dev/react/native/SmartReactNativeApp/node_modules/react-native-vector-icons/lib/tab-bar-item-ios.js';
-  exports.default =
-
-
-    createTabBarItemIOSComponent;
-  var _isEqual = require(681 /* lodash/isEqual */);
-  var _isEqual2 = babelHelpers.interopRequireDefault(_isEqual);
-  var _pick = require(789 /* lodash/pick */);
-  var _pick2 = babelHelpers.interopRequireDefault(_pick);
-  var _react = require(12 /* react */);
-  var _react2 = babelHelpers.interopRequireDefault(_react);
-  var _reactNative = require(679 /* ./react-native */);
-
-  function createTabBarItemIOSComponent(IconNamePropType, getImageSource) {
-    var _class, _temp;
-    return _temp = _class = function (_Component) {
-      babelHelpers.inherits(TabBarItemIOS, _Component);
-      function TabBarItemIOS() {
-        babelHelpers.classCallCheck(this, TabBarItemIOS);
-        return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(TabBarItemIOS).apply(this, arguments));
-      }
-
-      babelHelpers.createClass(TabBarItemIOS, [{
-        key: 'updateIconSources', value: function updateIconSources(props) {
-          var _this2 = this;
-          if (props.iconName) {
-            getImageSource(props.iconName, props.iconSize).then(function (icon) {
-              return _this2.setState({ icon: icon });
-            });
-          }
-          if (props.selectedIconName) {
-            getImageSource(props.selectedIconName, props.iconSize).then(function (selectedIcon) {
-              return _this2.setState({ selectedIcon: selectedIcon });
-            });
-          }
-        }
-      }, {
-        key: 'componentWillMount', value: function componentWillMount() {
-          this.updateIconSources(this.props);
-        }
-      }, {
-        key: 'componentWillReceiveProps', value: function componentWillReceiveProps(nextProps) {
-          var keys = Object.keys(TabBarItemIOS.propTypes);
-          if (!(0, _isEqual2.default)((0, _pick2.default)(nextProps, keys), (0, _pick2.default)(this.props, keys))) {
-            this.updateIconSources(nextProps);
-          }
-        }
-      }, {
-        key: 'render', value: function render() {
-          return _react2.default.createElement(_reactNative.TabBarIOS.Item, babelHelpers.extends({}, this.props, this.state, {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 46
-            }
-          }));
-        }
-      }]);
-      return TabBarItemIOS;
-    }(_react.Component), _class.propTypes = {
-      iconName: IconNamePropType.isRequired,
-      selectedIconName: IconNamePropType,
-      iconSize: _react.PropTypes.number
-    }, _class.defaultProps = { iconSize: 30 }, _temp;
-
-  }
-}, "react-native-vector-icons/lib/tab-bar-item-ios.js");
-__d(791 /* react-native-vector-icons/lib/toolbar-android.js */, function (global, require, module, exports) {
-  Object.defineProperty(exports, "__esModule", { value: true });
-  var _jsxFileName = '/Users/sky/dev/react/native/SmartReactNativeApp/node_modules/react-native-vector-icons/lib/toolbar-android.js';
-  exports.default =
-
-
-    createToolbarAndroidComponent;
-  var _isEqual = require(681 /* lodash/isEqual */);
-  var _isEqual2 = babelHelpers.interopRequireDefault(_isEqual);
-  var _pick = require(789 /* lodash/pick */);
-  var _pick2 = babelHelpers.interopRequireDefault(_pick);
-  var _react = require(12 /* react */);
-  var _react2 = babelHelpers.interopRequireDefault(_react);
-  var _reactNative = require(679 /* ./react-native */);
-
-  function createToolbarAndroidComponent(IconNamePropType, getImageSource) {
-    var _class, _temp;
-    return _temp = _class = function (_Component) {
-      babelHelpers.inherits(IconToolbarAndroid, _Component);
-      function IconToolbarAndroid() {
-        babelHelpers.classCallCheck(this, IconToolbarAndroid);
-        return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(IconToolbarAndroid).apply(this, arguments));
-      }
-
-      babelHelpers.createClass(IconToolbarAndroid, [{
-        key: 'updateIconSources', value: function updateIconSources(props) {
-          var _this2 = this;
-          var size = props.iconSize;
-          var color = props.iconColor || props.titleColor;
-          if (props.navIconName) {
-            getImageSource(props.navIconName, size, color).then(function (navIcon) {
-              return _this2.setState({ navIcon: navIcon });
-            });
-          }
-          if (props.overflowIconName) {
-            getImageSource(props.overflowIconName, size, color).then(function (overflowIcon) {
-              return _this2.setState({ overflowIcon: overflowIcon });
-            });
-          }
-
-          Promise.all((props.actions || []).map(function (action) {
-            if (action.iconName) {
-              return getImageSource(action.iconName, action.iconSize || size, action.iconColor || color).then(function (icon) {
-                return babelHelpers.extends({},
-                  action, {
-                    icon: icon
-                  });
-              });
-
-            }
-            return Promise.resolve(action);
-          })).then(function (actions) {
-            return _this2.setState({ actions: actions });
-          });
-        }
-      }, {
-        key: 'componentWillMount', value: function componentWillMount() {
-          this.updateIconSources(this.props);
-        }
-      }, {
-        key: 'componentWillReceiveProps', value: function componentWillReceiveProps(nextProps) {
-          var _this3 = this;
-          var keys = Object.keys(IconToolbarAndroid.propTypes);
-          if (!(0, _isEqual2.default)((0, _pick2.default)(nextProps, keys), (0, _pick2.default)(this.props, keys))) {
-            var stateToEvict = {};
-            if (!nextProps.navIconName) {
-              stateToEvict.navIcon = undefined;
-            }
-            if (!nextProps.iconName) {
-              stateToEvict.icon = undefined;
-            }
-            if (this.state && Object.keys(stateToEvict).length) {
-              this.setState(stateToEvict, function () {
-                return _this3.updateIconSources(nextProps);
-              });
-            } else {
-              this.updateIconSources(nextProps);
-            }
-          }
-        }
-      }, {
-        key: 'render', value: function render() {
-          return _react2.default.createElement(_reactNative.ToolbarAndroid, babelHelpers.extends({}, this.props, this.state, {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 78
-            }
-          }));
-        }
-      }]);
-      return IconToolbarAndroid;
-    }(_react.Component), _class.propTypes = {
-      navIconName: IconNamePropType,
-      overflowIconName: IconNamePropType,
-      actions: _react.PropTypes.arrayOf(_react.PropTypes.shape({
-        title: _react.PropTypes.string.isRequired,
-        iconName: IconNamePropType,
-        iconSize: _react.PropTypes.number,
-        iconColor: _react.PropTypes.string,
-        show: _react.PropTypes.oneOf(['always', 'ifRoom', 'never']),
-        showWithText: _react.PropTypes.bool
-      })),
-      iconSize: _react.PropTypes.number,
-      iconColor: _react.PropTypes.string
-    }, _class.defaultProps = { iconSize: 24 }, _temp;
-
-  }
-}, "react-native-vector-icons/lib/toolbar-android.js");
-__d(792 /* SmartRectNativeApp/component/test/pullrefresh.android.js */, function (global, require, module, exports) {
-  'use strict';
-  var _jsxFileName = '/Users/sky/dev/react/native/SmartReactNativeApp/component/test/pullrefresh.android.js';
-
-  var React = require(12 /* react */);
-  var ReactNative = require(43 /* react-native */);
-  var
-
-    ScrollView =
-
-
-      ReactNative.ScrollView;
-  var StyleSheet = ReactNative.StyleSheet;
-  var RefreshControl = ReactNative.RefreshControl;
-  var Text = ReactNative.Text;
-  var TouchableWithoutFeedback = ReactNative.TouchableWithoutFeedback;
-  var View = ReactNative.View;
-
-  var styles = StyleSheet.create({
-    row: {
-      borderColor: 'grey',
-      borderWidth: 1,
-      padding: 20,
-      backgroundColor: '#3a5795',
-      margin: 5
-    },
-
-    text: {
-      alignSelf: 'center',
-      color: '#fff'
-    },
-
-    scrollview: {
-      flex: 1
-    }
-  });
-
-
-  var Row = React.createClass({
-    displayName: 'Row',
-    _onClick: function _onClick() {
-      this.props.onClick(this.props.data);
-    },
-    render: function render() {
-      return (
-        React.createElement(TouchableWithoutFeedback, {
-            onPress: this._onClick,
-            __source: { fileName: _jsxFileName, lineNumber: 37 }
-          },
-          React.createElement(View, { style: styles.row, __source: { fileName: _jsxFileName, lineNumber: 38 } },
-            React.createElement(Text, { style: styles.text, __source: { fileName: _jsxFileName, lineNumber: 39 } },
-              this.props.data.text + ' (' + this.props.data.clicks + ' clicks)'))));
-
-
-    }
-  });
-
-
-  var RefreshControlExample = React.createClass({
-    displayName: 'RefreshControlExample',
-    statics: {
-      title: '<RefreshControl>',
-      description: 'Adds pull-to-refresh support to a scrollview.'
-    },
-
-
-    getInitialState: function getInitialState() {
-      return {
-        isRefreshing: false,
-        loaded: 0,
-        rowData: Array.from(new Array(20)).map(
-          function (val, i) {
-            return { text: 'Initial row ' + i, clicks: 0 };
-          })
-      };
-
-    },
-
-    _onClick: function _onClick(row) {
-      row.clicks++;
-      this.setState({
-        rowData: this.state.rowData
-      });
-
-    },
-
-    render: function render() {
-      var _this = this;
-      var rows = this.state.rowData.map(function (row, ii) {
-        return React.createElement(Row, {
-          key: ii,
-          data: row,
-          onClick: _this._onClick,
-          __source: { fileName: _jsxFileName, lineNumber: 72 }
-        });
-      });
-      return (
-        React.createElement(ScrollView, {
-            style: styles.scrollview,
-            refreshControl: React.createElement(RefreshControl, {
-              refreshing: this.state.isRefreshing,
-              onRefresh: this._onRefresh,
-              tintColor: '#ff0000',
-              title: 'Loading...',
-              titleColor: '#00ff00',
-              colors: ['#ff0000', '#00ff00', '#0000ff'],
-              progressBackgroundColor: '#ffff00', __source: { fileName: _jsxFileName, lineNumber: 78 }
-            }), __source: { fileName: _jsxFileName, lineNumber: 75 }
-          },
-
-
-          rows));
-
-
-    },
-
-    _onRefresh: function _onRefresh() {
-      var _this2 = this;
-      this.setState({ isRefreshing: true });
-      setTimeout(function () {
-
-        var rowData = Array.from(new Array(10)).
-        map(function (val, i) {
-          return {
-            text: 'Loaded row ' + (+_this2.state.loaded + i),
-            clicks: 0
-          };
-        }).
-
-        concat(_this2.state.rowData);
-
-        _this2.setState({
-          loaded: _this2.state.loaded + 10,
-          isRefreshing: false,
-          rowData: rowData
-        });
-
-      }, 2000);
-    }
-  });
-
-
-  module.exports = RefreshControlExample;
-}, "SmartRectNativeApp/component/test/pullrefresh.android.js");
-__d(793 /* SmartRectNativeApp/component/test/ListViewPullRefreshExample.js */, function (global, require, module, exports) {
-
-
-  'use strict';
-  var _jsxFileName = '/Users/sky/dev/react/native/SmartReactNativeApp/component/test/ListViewPullRefreshExample.js';
-
-  var React = require(12 /* react */);
-  var _require =
-
-
-    require(43 /* react-native */);
-  var StyleSheet = _require.StyleSheet;
-  var Text = _require.Text;
-  var View = _require.View;
-  var Alert = _require.Alert;
-  var TouchableHighlight = _require.TouchableHighlight;
-  var Platform = _require.Platform;
-  var ActivityIndicator = _require.ActivityIndicator;
-
-  var ListViewPullRefresh = require(794 /* ../common/ListViewPullRefresh */);
-  var DEFAULT_MARGIN_TOP = 0;
-  var ListViewPullRefreshExample = React.createClass({
-    displayName: 'ListViewPullRefreshExample',
-    propTypes: {
-      marginTop: React.PropTypes.number
-    },
-
-
-    getDefaultProps: function getDefaultProps() {
-      return {
-        marginTop: DEFAULT_MARGIN_TOP
-      };
-
-    },
-
-
-    _onFetch: function _onFetch() {
-      var page = arguments.length <= 0 || arguments[0] === undefined ? 1 : arguments[0];
-      var callback = arguments[1];
-      var options = arguments[2];
-      setTimeout(function () {
-        var header = 'Header ' + page;
-        var rows = {};
-        var list = [];
-        for (var i = 1; i <= 10; i++) {
-          list.push({ key: (page - 1) * 10 + i, value: 'row ' + ((page - 1) * 10 + i) });
-        }
-        rows[header] = list;
-        if (page === 5) {
-          callback(rows, {
-            allLoaded: true
-          });
-
-        } else if (page < 5) {
-          callback(rows);
-        }
-      }, 1000);
-    },
-
-
-    _onPress: function _onPress(rowData) {
-      Alert.alert(JSON.stringify(rowData) + ' pressed');
-    },
-
-
-    _renderRowView: function _renderRowView(rowData) {
-      var _this = this;
-      return (
-        React.createElement(View, {
-            style: customStyles.rowContainer,
-            __source: { fileName: _jsxFileName, lineNumber: 71 }
-          },
-          React.createElement(TouchableHighlight, {
-              style: customStyles.row,
-              underlayColor: '#c8c7cc',
-              onPress: function onPress() {
-                return _this._onPress(rowData);
-              }, __source: { fileName: _jsxFileName, lineNumber: 72 }
-            },
-
-            React.createElement(Text, { __source: { fileName: _jsxFileName, lineNumber: 77 } }, rowData.value))));
-
-
-    },
-
-
-    _renderSectionHeaderView: function _renderSectionHeaderView(sectionData, sectionID) {
-      return (
-        React.createElement(View, { style: customStyles.header, __source: { fileName: _jsxFileName, lineNumber: 90 } },
-          React.createElement(Text, {
-              style: customStyles.headerTitle,
-              __source: { fileName: _jsxFileName, lineNumber: 91 }
-            },
-            sectionID)));
-
-
-    },
-
-
-    _renderRefreshableWaitingView: function _renderRefreshableWaitingView(refreshCallback) {
-      if (Platform.OS !== 'android') {
-        return (
-          React.createElement(View, {
-              style: customStyles.refreshableView,
-              __source: { fileName: _jsxFileName, lineNumber: 106 }
-            },
-            React.createElement(Text, {
-              style: customStyles.actionsLabel,
-              __source: { fileName: _jsxFileName, lineNumber: 107 }
-            }, '鈫�')));
-
-
-      } else {
-        return (
-          React.createElement(TouchableHighlight, {
-              underlayColor: '#c8c7cc',
-              onPress: refreshCallback,
-              style: customStyles.refreshableView, __source: { fileName: _jsxFileName, lineNumber: 114 }
-            },
-
-            React.createElement(Text, {
-              style: customStyles.actionsLabel,
-              __source: { fileName: _jsxFileName, lineNumber: 119 }
-            }, '鈫�')));
-
-
-      }
-    },
-
-
-    _renderRefreshableWillRefreshView: function _renderRefreshableWillRefreshView() {
-      return (
-        React.createElement(View, {
-            style: customStyles.refreshableView,
-            __source: { fileName: _jsxFileName, lineNumber: 133 }
-          },
-          React.createElement(Text, {
-            style: customStyles.actionsLabel,
-            __source: { fileName: _jsxFileName, lineNumber: 134 }
-          }, '鈫�')));
-
-
-    },
-
-
-    _renderRefreshableFetchingView: function _renderRefreshableFetchingView() {
-      return (
-        React.createElement(View, {
-            style: customStyles.refreshableView,
-            __source: { fileName: _jsxFileName, lineNumber: 146 }
-          },
-          React.createElement(ActivityIndicator, babelHelpers.extends({
-              animating: true,
-              size: 'small'
-            },
-            this.props, { __source: { fileName: _jsxFileName, lineNumber: 147 } }))));
-
-
-    },
-
-
-    _renderPaginationWaitingView: function _renderPaginationWaitingView(paginateCallback) {
-      return (
-        React.createElement(TouchableHighlight, {
-            underlayColor: '#c8c7cc',
-            onPress: paginateCallback,
-            style: customStyles.paginationView, __source: { fileName: _jsxFileName, lineNumber: 162 }
-          },
-
-          React.createElement(Text, {
-            style: [customStyles.actionsLabel, { fontSize: 13 }],
-            __source: { fileName: _jsxFileName, lineNumber: 167 }
-          }, 'Load more')));
-
-
-    },
-
-
-    _renderPaginationFetchigView: function _renderPaginationFetchigView() {
-      return (
-        React.createElement(View, {
-            style: customStyles.paginationView,
-            __source: { fileName: _jsxFileName, lineNumber: 179 }
-          },
-          React.createElement(ActivityIndicator, babelHelpers.extends({
-              animating: true,
-              size: 'small'
-            },
-            this.props, { __source: { fileName: _jsxFileName, lineNumber: 180 } }))));
-
-
-    },
-
-
-    _renderPaginationAllLoadedView: function _renderPaginationAllLoadedView() {
-      return (
-        React.createElement(View, {
-            style: customStyles.paginationView,
-            __source: { fileName: _jsxFileName, lineNumber: 194 }
-          },
-          React.createElement(Text, {
-            style: customStyles.actionsLabel,
-            __source: { fileName: _jsxFileName, lineNumber: 195 }
-          }, '~')));
-
-
-    },
-
-
-    _renderEmptyView: function _renderEmptyView(refreshCallback) {
-      return (
-        React.createElement(View, {
-            style: customStyles.defaultView,
-            __source: { fileName: _jsxFileName, lineNumber: 208 }
-          },
-          React.createElement(Text, {
-            style: customStyles.defaultViewTitle,
-            __source: { fileName: _jsxFileName, lineNumber: 209 }
-          }, 'Sorry, there is no content to display'),
-
-
-          React.createElement(TouchableHighlight, {
-              underlayColor: '#c8c7cc',
-              onPress: refreshCallback, __source: { fileName: _jsxFileName, lineNumber: 213 }
-            },
-
-            React.createElement(Text, { __source: { fileName: _jsxFileName, lineNumber: 217 } }, '鈫�'))));
-
-
-    },
-
-
-    _renderSeparatorView: function _renderSeparatorView(sectionID, rowID, adjacentRowHighlighted) {
-      return (
-        React.createElement(View, {
-          style: customStyles.separator,
-          key: sectionID + '-' + rowID,
-          __source: { fileName: _jsxFileName, lineNumber: 230 }
-        }));
-
-    },
-
-    render: function render() {
-      return (
-        React.createElement(View, {
-            style: { marginTop: this.props.marginTop, flex: 1, backgroundColor: '#FFF' },
-            __source: { fileName: _jsxFileName, lineNumber: 236 }
-          },
-
-          React.createElement(ListViewPullRefresh, {
-            rowView: this._renderRowView,
-            onFetch: this._onFetch,
-            initialListSize: 8,
-            pagingEnabled: false,
-            firstLoader: true,
-            pagination: true,
-            paginationFetchigView: this._renderPaginationFetchigView,
-            paginationAllLoadedView: this._renderPaginationAllLoadedView,
-            paginationWaitingView: this._renderPaginationWaitingView,
-
-            refreshable: true,
-            refreshableViewHeight: 50,
-            refreshableDistance: 40,
-            refreshableFetchingView: this._renderRefreshableFetchingView,
-            refreshableWillRefreshView: this._renderRefreshableWillRefreshView,
-            refreshableWaitingView: this._renderRefreshableWaitingView,
-
-            emptyView: this._renderEmptyView,
-
-
-            withSections: true,
-
-
-            PullToRefreshViewAndroidProps: {
-              colors: ['#fff'],
-              progressBackgroundColor: '#003e82'
-            },
-
-
-            rowHasChanged: function rowHasChanged(r1, r2) {
-              r1.id !== r2.id;
-            },
-            distinctRows: function distinctRows(rows) {
-              var indentitis = {};
-              var newRows = [];
-              for (var i = 0; i < rows.length; i++) {
-                if (indentitis[rows[i].id]) {
-
-                } else {
-                  indentitis[rows[i].id] = true;
-                  newRows.push(rows[i]);
-                }
-              }
-              return newRows;
-            }, __source: { fileName: _jsxFileName, lineNumber: 238 }
-          })));
-
-
-    }
-  });
-
-
-  var customStyles = {
-    separator: {
-      height: 1,
-      backgroundColor: '#CCC'
-    },
-
-    refreshableView: {
-      height: 50,
-      backgroundColor: '#fff',
-      justifyContent: 'center',
-      alignItems: 'center'
-    },
-
-    actionsLabel: {
-      fontSize: 20,
-      color: '#007aff'
-    },
-
-    paginationView: {
-      height: 44,
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: '#FFF'
-    },
-
-    defaultView: {
-      justifyContent: 'center',
-      alignItems: 'center',
-      padding: 20
-    },
-
-    defaultViewTitle: {
-      fontSize: 16,
-      fontWeight: 'bold',
-      marginBottom: 15
-    },
-
-    rowContainer: {
-      borderBottomColor: '#CCC',
-      borderBottomWidth: 1
-    },
-
-    row: {
-      padding: 10,
-      height: 44
-    },
-
-    header: {
-      backgroundColor: '#50a4ff',
-      padding: 10
-    },
-
-    headerTitle: {
-      color: '#fff'
-    }
-  };
-
-
-  var screenStyles = {
-    container: {
-      flex: 1,
-      backgroundColor: '#FFF'
-    },
-
-    navBar: {
-      height: 64,
-      backgroundColor: '#007aff',
-
-      justifyContent: 'center',
-      alignItems: 'center'
-    },
-
-    navBarTitle: {
-      color: '#fff',
-      fontSize: 16,
-      marginTop: 12
-    }
-  };
-
-
-  module.exports = ListViewPullRefreshExample;
-}, "SmartRectNativeApp/component/test/ListViewPullRefreshExample.js");
-__d(794 /* SmartRectNativeApp/component/common/ListViewPullRefresh.js */, function (global, require, module, exports) {
-  'use strict';
-  var _jsxFileName = '/Users/sky/dev/react/native/SmartReactNativeApp/component/common/ListViewPullRefresh.js';
-
-  var React = require(12 /* react */);
-  var _require =
-
-
-    require(43 /* react-native */);
-  var ListView = _require.ListView;
-  var Platform = _require.Platform;
-  var TouchableHighlight = _require.TouchableHighlight;
-  var View = _require.View;
-  var Text = _require.Text;
-  var RefreshControl = _require.RefreshControl;
-  var ActivityIndicator = _require.ActivityIndicator;
-
-
-  function MergeRecursive(obj1, obj2) {
-    for (var p in obj2) {
-      try {
-        if (obj2[p].constructor == Object) {
-          obj1[p] = MergeRecursive(obj1[p], obj2[p]);
-        } else {
-          obj1[p] = obj2[p];
-        }
-      } catch (e) {
-        obj1[p] = obj2[p];
-      }
-    }
-    return obj1;
-  }
-
-  var ListViewPullRefresh = React.createClass({
-    displayName: 'ListViewPullRefresh',
-
-    getDefaultProps: function getDefaultProps() {
-      return {
-        customStyles: {},
-        initialListSize: 10,
-        firstLoader: true,
-        pagination: true,
-        refreshable: true,
-        refreshableColors: undefined,
-        refreshableProgressBackgroundColor: undefined,
-        refreshableSize: undefined,
-        refreshableTitle: undefined,
-        refreshableTintColor: undefined,
-        renderRefreshControl: null,
-        headerView: null,
-        sectionHeaderView: null,
-        scrollEnabled: true,
-        withSections: false,
-        onFetch: function onFetch(page, callback, options) {
-          callback([]);
-        },
-
-        paginationFetchingView: null,
-        paginationAllLoadedView: null,
-        paginationWaitingView: null,
-        emptyView: null,
-        renderSeparator: null,
-        rowHasChanged: null,
-        distinctRows: null
-      };
-
-    },
-
-    propTypes: {
-      customStyles: React.PropTypes.object,
-      initialListSize: React.PropTypes.number,
-      firstLoader: React.PropTypes.bool,
-      pagination: React.PropTypes.bool,
-      refreshable: React.PropTypes.bool,
-      refreshableColors: React.PropTypes.array,
-      refreshableProgressBackgroundColor: React.PropTypes.string,
-      refreshableSize: React.PropTypes.string,
-      refreshableTitle: React.PropTypes.string,
-      refreshableTintColor: React.PropTypes.string,
-      renderRefreshControl: React.PropTypes.func,
-      headerView: React.PropTypes.func,
-      sectionHeaderView: React.PropTypes.func,
-      scrollEnabled: React.PropTypes.bool,
-      withSections: React.PropTypes.bool,
-      onFetch: React.PropTypes.func,
-
-      paginationFetchingView: React.PropTypes.func,
-      paginationAllLoadedView: React.PropTypes.func,
-      paginationWaitingView: React.PropTypes.func,
-      emptyView: React.PropTypes.func,
-      renderSeparator: React.PropTypes.func,
-
-      rowHasChanged: React.PropTypes.func,
-      distinctRows: React.PropTypes.func
-    },
-
-
-    _setPage: function _setPage(page) {
-      this._page = page;
-    },
-    _getPage: function _getPage() {
-      return this._page;
-    },
-    _setRows: function _setRows(rows) {
-      this._rows = rows;
-    },
-    _getRows: function _getRows() {
-      return this._rows;
-    },
-
-
-    paginationFetchingView: function paginationFetchingView() {
-      if (this.props.paginationFetchingView) {
-        return this.props.paginationFetchingView();
-      }
-
-      return (
-        React.createElement(View, {
-            style: [this.defaultStyles.paginationView, this.props.customStyles.paginationView],
-            __source: { fileName: _jsxFileName, lineNumber: 103 }
-          },
-          React.createElement(ActivityIndicator, babelHelpers.extends({
-              animating: true,
-              size: 'small'
-            },
-            this.props, { __source: { fileName: _jsxFileName, lineNumber: 104 } }))));
-
-
-    },
-    paginationAllLoadedView: function paginationAllLoadedView() {
-      if (this.props.paginationAllLoadedView) {
-        return this.props.paginationAllLoadedView();
-      }
-
-      return (
-        React.createElement(View, {
-            style: [this.defaultStyles.paginationView, this.props.customStyles.paginationView],
-            __source: { fileName: _jsxFileName, lineNumber: 118 }
-          },
-          React.createElement(Text, {
-            style: [this.defaultStyles.actionsLabel, this.props.customStyles.actionsLabel],
-            __source: { fileName: _jsxFileName, lineNumber: 119 }
-          }, '~')));
-
-
-    },
-    paginationWaitingView: function paginationWaitingView(paginateCallback) {
-      if (this.props.paginationWaitingView) {
-        return this.props.paginationWaitingView(paginateCallback);
-      }
-
-      return (
-        React.createElement(TouchableHighlight, {
-            underlayColor: '#c8c7cc',
-            onPress: paginateCallback,
-            style: [this.defaultStyles.paginationView, this.props.customStyles.paginationView],
-            __source: { fileName: _jsxFileName, lineNumber: 131 }
-          },
-
-          React.createElement(Text, {
-            style: [this.defaultStyles.actionsLabel, this.props.customStyles.actionsLabel],
-            __source: { fileName: _jsxFileName, lineNumber: 136 }
-          }, 'Load more')));
-
-
-    },
-    headerView: function headerView() {
-      if (this.state.paginationStatus === 'firstLoad' || !this.props.headerView) {
-        return null;
-      }
-      return this.props.headerView();
-    },
-    emptyView: function emptyView(refreshCallback) {
-      if (this.props.emptyView) {
-        return this.props.emptyView(refreshCallback);
-      }
-
-      return (
-        React.createElement(View, {
-            style: [this.defaultStyles.defaultView, this.props.customStyles.defaultView],
-            __source: { fileName: _jsxFileName, lineNumber: 154 }
-          },
-          React.createElement(Text, {
-            style: [this.defaultStyles.defaultViewTitle, this.props.customStyles.defaultViewTitle],
-            __source: { fileName: _jsxFileName, lineNumber: 155 }
-          }, 'Sorry, there is no content to display'),
-
-
-          React.createElement(TouchableHighlight, {
-              underlayColor: '#c8c7cc',
-              onPress: refreshCallback, __source: { fileName: _jsxFileName, lineNumber: 159 }
-            },
-
-            React.createElement(Text, { __source: { fileName: _jsxFileName, lineNumber: 163 } }, '鈫�'))));
-
-
-    },
-    renderSeparator: function renderSeparator() {
-      if (this.props.renderSeparator) {
-        return this.props.renderSeparator();
-      }
-
-      return (
-        React.createElement(View, {
-          style: [this.defaultStyles.separator, this.props.customStyles.separator],
-          __source: { fileName: _jsxFileName, lineNumber: 176 }
-        }));
-
-    },
-
-    getInitialState: function getInitialState() {
-      this._setPage(1);
-      this._setRows([]);
-
-      var ds = null;
-      if (this.props.withSections === true) {
-        ds = new ListView.DataSource({
-          rowHasChanged: this.props.rowHasChanged ? this.props.rowHasChanged : function (row1, row2) {
-            return row1 !== row2;
-          },
-          sectionHeaderHasChanged: function sectionHeaderHasChanged(section1, section2) {
-            return section1 !== section2;
-          }
-        });
-
-        return {
-          dataSource: ds.cloneWithRowsAndSections(this._getRows()),
-          isRefreshing: false,
-          paginationStatus: 'firstLoad'
-        };
-
-      } else {
-        ds = new ListView.DataSource({
-          rowHasChanged: this.props.rowHasChanged ? this.props.rowHasChanged : function (row1, row2) {
-            return row1 !== row2;
-          }
-        });
-
-        return {
-          dataSource: ds.cloneWithRows(this._getRows()),
-          isRefreshing: false,
-          paginationStatus: 'firstLoad'
-        };
-
-      }
-    },
-
-    componentDidMount: function componentDidMount() {
-      this.props.onFetch(this._getPage(), this._postRefresh, { firstLoad: true });
-    },
-
-    setNativeProps: function setNativeProps(props) {
-      this.refs.listview.setNativeProps(props);
-    },
-
-    _refresh: function _refresh() {
-      this._onRefresh({ external: true });
-    },
-
-    _onRefresh: function _onRefresh() {
-      var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
-      if (this.isMounted()) {
-        this.setState({
-          isRefreshing: true
-        });
-
-        this._setPage(1);
-        this.props.onFetch(this._getPage(), this._postRefresh, options);
-      }
-    },
-
-    _postRefresh: function _postRefresh() {
-      var rows = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
-      var options = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
-      if (this.isMounted()) {
-        this._updateRows(rows, options);
-      }
-    },
-
-    _onPaginate: function _onPaginate() {
-      if (this.state.paginationStatus === 'allLoaded') {
-        return null;
-      } else {
-        this.setState({
-          paginationStatus: 'fetching'
-        });
-
-        this.props.onFetch(this._getPage() + 1, this._postPaginate, {});
-      }
-    },
-
-    _postPaginate: function _postPaginate() {
-      var rows = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
-      var options = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
-      this._setPage(this._getPage() + 1);
-      var mergedRows = null;
-      if (this.props.withSections === true) {
-        mergedRows = MergeRecursive(this._getRows(), rows);
-      } else {
-        mergedRows = this._getRows().concat(rows);
-      }
-
-
-      this._updateRows(mergedRows, options);
-    },
-
-    _updateRows: function _updateRows() {
-      var rows = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
-      var options = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
-      if (rows !== null) {
-        this._setRows(rows);
-        if (this.props.withSections === true) {
-          this.setState({
-            dataSource: this.state.dataSource.cloneWithRowsAndSections(rows),
-            isRefreshing: false,
-            paginationStatus: options.allLoaded === true ? 'allLoaded' : 'waiting'
-          });
-
-        } else {
-          this.setState({
-            dataSource: this.state.dataSource.cloneWithRows(rows),
-            isRefreshing: false,
-            paginationStatus: options.allLoaded === true ? 'allLoaded' : 'waiting'
-          });
-
-        }
-      } else {
-        this.setState({
-          isRefreshing: false,
-          paginationStatus: options.allLoaded === true ? 'allLoaded' : 'waiting'
-        });
-
-      }
-    },
-
-    _renderPaginationView: function _renderPaginationView() {
-      if (this.state.paginationStatus === 'fetching' && this.props.pagination === true || this.state.paginationStatus === 'firstLoad' && this.props.firstLoader === true) {
-        return this.paginationFetchingView();
-      } else if (this.state.paginationStatus === 'waiting' && this.props.pagination === true && (this.props.withSections === true || this._getRows().length > 0)) {
-        return this.paginationWaitingView(this._onPaginate);
-      } else if (this.state.paginationStatus === 'allLoaded' && this.props.pagination === true) {
-        return this.paginationAllLoadedView();
-      } else if (this._getRows().length === 0) {
-        return this.emptyView(this._onRefresh);
-      } else {
-        return null;
-      }
-    },
-
-    renderRefreshControl: function renderRefreshControl() {
-      if (this.props.renderRefreshControl) {
-        return this.props.renderRefreshControl({ onRefresh: this._onRefresh });
-      }
-      return (
-        React.createElement(RefreshControl, {
-          onRefresh: this._onRefresh,
-          refreshing: this.state.isRefreshing,
-          colors: this.props.refreshableColors,
-          progressBackgroundColor: this.props.refreshableProgressBackgroundColor,
-          size: this.props.refreshableSize,
-          tintColor: this.props.refreshableTintColor,
-          title: this.props.refreshableTitle, __source: { fileName: _jsxFileName, lineNumber: 305 }
-        }));
-
-
-    },
-
-    render: function render() {
-      return (
-        React.createElement(ListView, babelHelpers.extends({
-            ref: 'listview',
-            dataSource: this.state.dataSource,
-            renderRow: this.props.rowView,
-            renderSectionHeader: this.props.sectionHeaderView,
-            renderHeader: this.headerView,
-            renderFooter: this._renderPaginationView,
-            renderSeparator: this.renderSeparator,
-            automaticallyAdjustContentInsets: false,
-            scrollEnabled: this.props.scrollEnabled,
-            canCancelContentTouches: true,
-            refreshControl: this.props.refreshable === true ? this.renderRefreshControl() : null
-          },
-
-          this.props, {
-
-            style: this.props.style, __source: { fileName: _jsxFileName, lineNumber: 319 }
-          })));
-
-
-    },
-
-    defaultStyles: {
-      separator: {
-        height: 1,
-        backgroundColor: '#CCC'
-      },
-
-      actionsLabel: {
-        fontSize: 20
-      },
-
-      paginationView: {
-        height: 44,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#FFF'
-      },
-
-      defaultView: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 20
-      },
-
-      defaultViewTitle: {
-        fontSize: 16,
-        fontWeight: 'bold',
-        marginBottom: 15
-      }
-    }
-  });
-
-
-  module.exports = ListViewPullRefresh;
-}, "SmartRectNativeApp/component/common/ListViewPullRefresh.js");
-__d(795 /* SmartRectNativeApp/component/test/ListViewRefreshExample.js */, function (global, require, module, exports) {
-  'use strict';
-  var _jsxFileName = '/Users/sky/dev/react/native/SmartReactNativeApp/component/test/ListViewRefreshExample.js';
-
-  var _react = require(12 /* react */);
-  var _react2 = babelHelpers.interopRequireDefault(_react);
-  var _reactNative = require(43 /* react-native */);
-
-
-  var _reactTimerMixin = require(796 /* react-timer-mixin */);
-  var _reactTimerMixin2 = babelHelpers.interopRequireDefault(_reactTimerMixin);
-  var _ListViewRefresh = require(797 /* ../common/ListViewRefresh */);
-  var _ListViewRefresh2 = babelHelpers.interopRequireDefault(_ListViewRefresh);
-
-  var ds = new _reactNative.ListView.DataSource({
-    rowHasChanged: function rowHasChanged(r1, r2) {
-      return r1 !== r2;
-    }
-  });
-  module.exports = _react2.default.createClass({
-    displayName: 'exports',
-    mixins: [_reactTimerMixin2.default],
-    data: { index: 0, maxIndex: 20, list: [] },
-    getData: function getData(init) {
-      var total = 5;
-      if (init) {
-        this.data.index = 0;
-        this.data.list = [];
-        total = Math.floor(Math.random() * 5);
-      }
-      for (var i = 0; i < total; i++) {
-        this.data.list[this.data.index] = "Row" + (this.data.index + 1);
-        this.data.index++;
-      }
-    },
-    getInitialState: function getInitialState() {
-      this.getData(true);
-      return {
-        dataSource: ds.cloneWithRows(this.data.list)
-      };
-
-    },
-    onRefresh: function onRefresh() {
-      var _this = this;
-      this.getData(true);
-      this.setTimeout(function () {
-        _this.list.hideHeader();
-        _this.setState({ dataSource: ds.cloneWithRows(_this.data.list) });
-      }, 1000);
-    },
-    onInfinite: function onInfinite() {
-      var _this2 = this;
-      this.getData();
-      this.setTimeout(function () {
-        _this2.list.hideFooter();
-        _this2.setState({ dataSource: ds.cloneWithRows(_this2.data.list) });
-      }, 1000);
-    },
-    loadedAllData: function loadedAllData() {
-      return this.data.index >= this.data.maxIndex || this.data.index === 0;
-    },
-    renderRow: function renderRow(text) {
-      return (
-        _react2.default.createElement(_reactNative.View, {
-            style: styles.row,
-            __source: { fileName: _jsxFileName, lineNumber: 55 }
-          },
-          _react2.default.createElement(_reactNative.Text, { __source: { fileName: _jsxFileName, lineNumber: 56 } },
-            text)));
-
-
-    },
-    renderSeparator: function renderSeparator(sectionID, rowID) {
-      return (
-        _react2.default.createElement(_reactNative.View, {
-          style: styles.separator,
-          key: sectionID + rowID,
-          __source: { fileName: _jsxFileName, lineNumber: 64 }
-        }));
-
-    },
-    render: function render() {
-      var _this3 = this;
-      return (
-        _react2.default.createElement(_reactNative.View, {
-            style: { flex: 1 },
-            __source: { fileName: _jsxFileName, lineNumber: 69 }
-          },
-          _react2.default.createElement(_reactNative.View, {
-            style: { height: 20 },
-            __source: { fileName: _jsxFileName, lineNumber: 70 }
-          }),
-          _react2.default.createElement(_ListViewRefresh2.default, {
-            ref: function ref(list) {
-              _this3.list = list;
-            },
-            dataSource: this.state.dataSource,
-            renderRow: this.renderRow,
-            renderSeparator: this.renderSeparator,
-            loadedAllData: this.loadedAllData,
-            initialListSize: 30,
-            scrollEventThrottle: 10,
-            style: { backgroundColor: 'transparent' },
-            onRefresh: this.onRefresh,
-            onInfinite: this.onInfinite, __source: { fileName: _jsxFileName, lineNumber: 71 }
-          })));
-
-
-    }
-  });
-
-
-  var styles = _reactNative.StyleSheet.create({
-    row: {
-      height: 60,
-      flex: 1,
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'center'
-    },
-
-    list: {
-      alignSelf: 'stretch'
-    },
-
-    separator: {
-      height: 1,
-      backgroundColor: '#CCC'
-    }
-  });
-}, "SmartRectNativeApp/component/test/ListViewRefreshExample.js");
-__d(796 /* react-timer-mixin/TimerMixin.js */, function (global, require, module, exports) {
-
-
-  'use strict';
-
-  var GLOBAL = typeof window === 'undefined' ? global : window;
-
-  var setter = function setter(_setter, _clearer, array) {
-    return function (callback, delta) {
-      var id = _setter(function () {
-        _clearer.call(this, id);
-        callback.apply(this, arguments);
-      }.bind(this), delta);
-
-      if (!this[array]) {
-        this[array] = [id];
-      } else {
-        this[array].push(id);
-      }
-      return id;
-    };
-  };
-
-  var clearer = function clearer(_clearer, array) {
-    return function (id) {
-      if (this[array]) {
-        var index = this[array].indexOf(id);
-        if (index !== -1) {
-          this[array].splice(index, 1);
-        }
-      }
-      _clearer(id);
-    };
-  };
-
-  var _timeouts = 'TimerMixin_timeouts';
-  var _clearTimeout = clearer(GLOBAL.clearTimeout, _timeouts);
-  var _setTimeout = setter(GLOBAL.setTimeout, _clearTimeout, _timeouts);
-
-  var _intervals = 'TimerMixin_intervals';
-  var _clearInterval = clearer(GLOBAL.clearInterval, _intervals);
-  var _setInterval = setter(GLOBAL.setInterval, function () {
-  }, _intervals);
-
-  var _immediates = 'TimerMixin_immediates';
-  var _clearImmediate = clearer(GLOBAL.clearImmediate, _immediates);
-  var _setImmediate = setter(GLOBAL.setImmediate, _clearImmediate, _immediates);
-
-  var _rafs = 'TimerMixin_rafs';
-  var _cancelAnimationFrame = clearer(GLOBAL.cancelAnimationFrame, _rafs);
-  var _requestAnimationFrame = setter(GLOBAL.requestAnimationFrame, _cancelAnimationFrame, _rafs);
-
-  var TimerMixin = {
-    componentWillUnmount: function componentWillUnmount() {
-      this[_timeouts] && this[_timeouts].forEach(function (id) {
-        GLOBAL.clearTimeout(id);
-      });
-      this[_timeouts] = null;
-      this[_intervals] && this[_intervals].forEach(function (id) {
-        GLOBAL.clearInterval(id);
-      });
-      this[_intervals] = null;
-      this[_immediates] && this[_immediates].forEach(function (id) {
-        GLOBAL.clearImmediate(id);
-      });
-      this[_immediates] = null;
-      this[_rafs] && this[_rafs].forEach(function (id) {
-        GLOBAL.cancelAnimationFrame(id);
-      });
-      this[_rafs] = null;
-    },
-
-    setTimeout: _setTimeout,
-    clearTimeout: _clearTimeout,
-
-    setInterval: _setInterval,
-    clearInterval: _clearInterval,
-
-    setImmediate: _setImmediate,
-    clearImmediate: _clearImmediate,
-
-    requestAnimationFrame: _requestAnimationFrame,
-    cancelAnimationFrame: _cancelAnimationFrame
-  };
-
-
-  module.exports = TimerMixin;
-}, "react-timer-mixin/TimerMixin.js");
-__d(797 /* SmartRectNativeApp/component/common/ListViewRefresh.js */, function (global, require, module, exports) {
-  'use strict';
-  var _jsxFileName = '/Users/sky/dev/react/native/SmartReactNativeApp/component/common/ListViewRefresh.js';
-
-  var _react = require(12 /* react */);
-  var _react2 = babelHelpers.interopRequireDefault(_react);
-  var _reactNative = require(43 /* react-native */);
-
-
-  var
-    STATUS_NONE = 0,
-    STATUS_REFRESH_IDLE = 1,
-    STATUS_WILL_REFRESH = 2,
-    STATUS_REFRESHING = 3,
-    STATUS_INFINITE_IDLE = 4,
-    STATUS_WILL_INFINITE = 5,
-    STATUS_INFINITING = 6,
-    STATUS_INFINITE_LOADED_ALL = 7;
-
-  var DEFAULT_PULL_DISTANCE = 60;
-  var DEFAULT_HF_HEIGHT = 50;
-
-  var RefreshInfiniteListView = _react2.default.createClass({
-    displayName: 'RefreshInfiniteListView',
-    propTypes: {
-      footerHeight: _react.PropTypes.number,
-      pullDistance: _react.PropTypes.number,
-      renderEmptyRow: _react.PropTypes.func,
-      renderHeaderRefreshIdle: _react.PropTypes.func,
-      renderHeaderWillRefresh: _react.PropTypes.func,
-      renderHeaderRefreshing: _react.PropTypes.func,
-      renderFooterInifiteIdle: _react.PropTypes.func,
-      renderFooterWillInifite: _react.PropTypes.func,
-      renderFooterInifiting: _react.PropTypes.func,
-      renderFooterInifiteLoadedAll: _react.PropTypes.func
-    },
-
-    getDefaultProps: function getDefaultProps() {
-      return {
-        footerHeight: DEFAULT_HF_HEIGHT,
-        pullDistance: DEFAULT_PULL_DISTANCE,
-        renderEmptyRow: function renderEmptyRow() {
-          return (
-            _react2.default.createElement(_reactNative.View, {
-                style: {
-                  height: _reactNative.Dimensions.get('window').height * 2 / 3,
-                  justifyContent: 'center',
-                  alignItems: 'center'
-                }, __source: { fileName: _jsxFileName, lineNumber: 58 }
-              },
-              _react2.default.createElement(_reactNative.Text, {
-                style: {
-                  fontSize: 40,
-                  fontWeight: '800',
-                  color: 'red'
-                }, __source: { fileName: _jsxFileName, lineNumber: 59 }
-              }, 'have no data')));
-
-
-        },
-        renderHeaderRefreshIdle: function renderHeaderRefreshIdle() {
-          return (
-            _react2.default.createElement(_reactNative.View, {
-                style: {
-                  flex: 1,
-                  height: DEFAULT_HF_HEIGHT,
-                  justifyContent: 'center',
-                  alignItems: 'center'
-                }, __source: { fileName: _jsxFileName, lineNumber: 66 }
-              },
-              _react2.default.createElement(_reactNative.Text, {
-                style: styles.text,
-                __source: { fileName: _jsxFileName, lineNumber: 67 }
-              }, 'pull down refresh...'),
-
-
-              _react2.default.createElement(_reactNative.Image, {
-                source: require('./pull_arrow.png'),
-                resizeMode: _reactNative.Image.resizeMode.stretch,
-                style: styles.image, __source: { fileName: _jsxFileName, lineNumber: 70 }
-              })));
-
-
-        },
-        renderHeaderWillRefresh: function renderHeaderWillRefresh() {
-          return (
-            _react2.default.createElement(_reactNative.View, {
-                style: {
-                  height: DEFAULT_HF_HEIGHT,
-                  justifyContent: 'center',
-                  alignItems: 'center'
-                }, __source: { fileName: _jsxFileName, lineNumber: 78 }
-              },
-              _react2.default.createElement(_reactNative.Text, {
-                style: styles.text,
-                __source: { fileName: _jsxFileName, lineNumber: 79 }
-              }, 'release to refresh...'),
-
-
-              _react2.default.createElement(_reactNative.Image, {
-                source: require('./pull_arrow.png'),
-                resizeMode: _reactNative.Image.resizeMode.stretch,
-                style: [styles.image, styles.imageRotate], __source: { fileName: _jsxFileName, lineNumber: 82 }
-              })));
-
-
-        },
-        renderHeaderRefreshing: function renderHeaderRefreshing() {
-          return (
-            _react2.default.createElement(_reactNative.View, {
-                style: {
-                  height: DEFAULT_HF_HEIGHT,
-                  justifyContent: 'center',
-                  alignItems: 'center'
-                }, __source: { fileName: _jsxFileName, lineNumber: 90 }
-              },
-              _react2.default.createElement(_reactNative.Text, {
-                style: styles.text,
-                __source: { fileName: _jsxFileName, lineNumber: 91 }
-              }, 'refreshing...'),
-
-
-              _react2.default.createElement(_reactNative.ActivityIndicatorIOS, {
-                size: 'small',
-                animating: true, __source: { fileName: _jsxFileName, lineNumber: 95 }
-              })));
-
-        },
-        renderFooterInifiteIdle: function renderFooterInifiteIdle() {
-          return (
-            _react2.default.createElement(_reactNative.View, {
-                style: {
-                  height: DEFAULT_HF_HEIGHT,
-                  justifyContent: 'center',
-                  alignItems: 'center'
-                }, __source: { fileName: _jsxFileName, lineNumber: 101 }
-              },
-              _react2.default.createElement(_reactNative.Image, {
-                source: require('./pull_arrow.png'),
-                resizeMode: _reactNative.Image.resizeMode.stretch,
-                style: [styles.image, styles.imageRotate], __source: { fileName: _jsxFileName, lineNumber: 102 }
-              }),
-
-              _react2.default.createElement(_reactNative.Text, {
-                style: styles.text,
-                __source: { fileName: _jsxFileName, lineNumber: 107 }
-              }, 'pull up to load more...')));
-
-
-        },
-        renderFooterWillInifite: function renderFooterWillInifite() {
-          return (
-            _react2.default.createElement(_reactNative.View, {
-                style: {
-                  height: DEFAULT_HF_HEIGHT,
-                  justifyContent: 'center',
-                  alignItems: 'center'
-                }, __source: { fileName: _jsxFileName, lineNumber: 113 }
-              },
-              _react2.default.createElement(_reactNative.Image, {
-                source: require('./pull_arrow.png'),
-                resizeMode: _reactNative.Image.resizeMode.stretch,
-                style: styles.image, __source: { fileName: _jsxFileName, lineNumber: 114 }
-              }),
-
-              _react2.default.createElement(_reactNative.Text, {
-                style: styles.text,
-                __source: { fileName: _jsxFileName, lineNumber: 119 }
-              }, 'release to load more...')));
-
-
-        },
-        renderFooterInifiting: function renderFooterInifiting() {
-          return (
-            _react2.default.createElement(_reactNative.View, {
-                style: {
-                  height: DEFAULT_HF_HEIGHT,
-                  justifyContent: 'center',
-                  alignItems: 'center'
-                }, __source: { fileName: _jsxFileName, lineNumber: 125 }
-              },
-              _react2.default.createElement(_reactNative.ActivityIndicatorIOS, {
-                size: 'small',
-                animating: true, __source: { fileName: _jsxFileName, lineNumber: 126 }
-              }),
-              _react2.default.createElement(_reactNative.Text, {
-                style: styles.text,
-                __source: { fileName: _jsxFileName, lineNumber: 129 }
-              }, 'loading...')));
-
-
-        },
-        renderFooterInifiteLoadedAll: function renderFooterInifiteLoadedAll() {
-          return (
-            _react2.default.createElement(_reactNative.View, {
-                style: {
-                  height: DEFAULT_HF_HEIGHT,
-                  justifyContent: 'center',
-                  alignItems: 'center'
-                }, __source: { fileName: _jsxFileName, lineNumber: 135 }
-              },
-              _react2.default.createElement(_reactNative.Text, {
-                style: styles.text,
-                __source: { fileName: _jsxFileName, lineNumber: 136 }
-              }, 'have loaded all data')));
-
-
-        },
-        loadedAllData: function loadedAllData() {
-          return false;
-        },
-        onRefresh: function onRefresh() {
-          console.log("onRefresh");
-        },
-        onInfinite: function onInfinite() {
-          console.log("onInfinite");
-        }
-      };
-
-    },
-    getInitialState: function getInitialState() {
-      return {
-        status: STATUS_NONE,
-        isLoadedAllData: false
-      };
-
-    },
-    renderRow: function renderRow(text) {
-      if (this.dataSource) {
-        return this.props.renderEmptyRow(text);
-      } else {
-        return this.props.renderRow(text);
-      }
-    },
-    renderHeader: function renderHeader() {
-      var status = this.state.status;
-      if (status === STATUS_REFRESH_IDLE) {
-        return this.props.renderHeaderRefreshIdle();
-      }
-      if (status === STATUS_WILL_REFRESH) {
-        return this.props.renderHeaderWillRefresh();
-      }
-      if (status === STATUS_REFRESHING) {
-        return this.props.renderHeaderRefreshing();
-      }
-      return null;
-    },
-    renderFooter: function renderFooter() {
-      var status = this.state.status;
-      this.footerIsRender = true;
-      if (status === STATUS_INFINITE_IDLE) {
-        return this.props.renderFooterInifiteIdle();
-      }
-      if (status === STATUS_WILL_INFINITE) {
-        return this.props.renderFooterWillInifite();
-      }
-      if (status === STATUS_INFINITING) {
-        return this.props.renderFooterInifiting();
-      }
-      if (status === STATUS_INFINITE_LOADED_ALL) {
-        return this.props.renderFooterInifiteLoadedAll();
-      }
-      this.footerIsRender = false;
-      return null;
-    },
-    handleResponderGrant: function handleResponderGrant(event) {
-      var nativeEvent = event.nativeEvent;
-      if (!nativeEvent.contentInset || this.state.status !== STATUS_NONE) {
-        return;
-      }
-      var y0 = nativeEvent.contentInset.top + nativeEvent.contentOffset.y;
-      if (y0 < 0) {
-        this.setState({ status: STATUS_REFRESH_IDLE });
-        return;
-      }
-      y0 = nativeEvent.contentInset.top + nativeEvent.contentOffset.y +
-        nativeEvent.layoutMeasurement.height - nativeEvent.contentSize.height;
-      if (y0 > 0) {
-        if (!this.props.loadedAllData()) {
-          this.initialInfiniteOffset = y0 > 0 ? y0 : 0;
-          this.setState({ status: STATUS_INFINITE_IDLE });
-        } else {
-          this.setState({ status: STATUS_INFINITE_LOADED_ALL });
-        }
-      }
-    },
-    hideHeader: function hideHeader() {
-      this.setState({ status: STATUS_NONE });
-    },
-    hideFooter: function hideFooter() {
-      this.setState({ status: STATUS_NONE });
-    },
-    handleResponderRelease: function handleResponderRelease(event) {
-      var status = this.state.status;
-      if (status === STATUS_REFRESH_IDLE) {
-        this.setState({ status: STATUS_NONE });
-      } else if (status === STATUS_WILL_REFRESH) {
-        this.setState({ status: STATUS_REFRESHING });
-        this.props.onRefresh();
-      } else if (status === STATUS_INFINITE_IDLE) {
-        this.setState({ status: STATUS_NONE });
-      } else if (status === STATUS_WILL_INFINITE) {
-        this.setState({ status: STATUS_INFINITING });
-        this.props.onInfinite();
-      } else if (status === STATUS_INFINITE_LOADED_ALL) {
-        this.setState({ status: STATUS_NONE });
-      }
-    },
-    handleScroll: function handleScroll(event) {
-      var nativeEvent = event.nativeEvent;
-      var status = this.state.status;
-      if (status === STATUS_REFRESH_IDLE || status === STATUS_WILL_REFRESH) {
-        var y = nativeEvent.contentInset.top + nativeEvent.contentOffset.y;
-        if (status !== STATUS_WILL_REFRESH && y < -this.props.pullDistance) {
-          this.setState({ status: STATUS_WILL_REFRESH });
-        } else if (status === STATUS_WILL_REFRESH && y >= -this.props.pullDistance) {
-          this.setState({ status: STATUS_REFRESH_IDLE });
-        }
-        return;
-      }
-
-      if (status === STATUS_INFINITE_IDLE || status === STATUS_WILL_INFINITE) {
-        var y = nativeEvent.contentInset.top + nativeEvent.contentOffset.y + nativeEvent.layoutMeasurement.height -
-          nativeEvent.contentSize.height - this.initialInfiniteOffset;
-        if (this.footerIsRender) {
-          y += this.props.footerHeight;
-        }
-        if (status !== STATUS_WILL_INFINITE && y > this.props.pullDistance) {
-          this.setState({ status: STATUS_WILL_INFINITE });
-        } else if (status === STATUS_WILL_INFINITE && y <= this.props.pullDistance) {
-          this.setState({ status: STATUS_INFINITE_IDLE });
-        }
-      }
-    },
-    render: function render() {
-      this.dataSource = null;
-      if (!this.props.dataSource.getRowCount()) {
-        var DataSource = new _reactNative.ListView.DataSource({
-          rowHasChanged: function rowHasChanged(r1, r2) {
-            return r1 !== r2;
-          }
-        });
-        this.dataSource = DataSource.cloneWithRows([""]);
-
-      }
-      return (
-        _react2.default.createElement(_reactNative.ListView, babelHelpers.extends({},
-          this.props, {
-            dataSource: this.dataSource ? this.dataSource : this.props.dataSource,
-            renderRow: this.renderRow,
-            renderHeader: this.renderHeader,
-            renderFooter: this.renderFooter,
-            onResponderGrant: this.handleResponderGrant,
-            onResponderRelease: this.handleResponderRelease,
-            onScroll: this.handleScroll, __source: { fileName: _jsxFileName, lineNumber: 273 }
-          })));
-
-
-    }
-  });
-
-
-  var styles = _reactNative.StyleSheet.create({
-    text: {
-      fontSize: 16
-    },
-
-    image: {
-      width: 40,
-      height: 32
-    },
-
-    imageRotate: {
-      transform: [{ rotateX: '180deg' }]
-    }
-  });
-
-
-  module.exports = RefreshInfiniteListView;
-}, "SmartRectNativeApp/component/common/ListViewRefresh.js");
-__d(798 /* SmartRectNativeApp/component/tabs/FacebookExample.js */, function (global, require, module, exports) {
-  Object.defineProperty(exports, "__esModule", { value: true });
-  var _jsxFileName = '/Users/sky/dev/react/native/SmartReactNativeApp/component/tabs/FacebookExample.js';
-  var _react = require(12 /* react */);
-  var _react2 = babelHelpers.interopRequireDefault(_react);
-  var _reactNative = require(43 /* react-native */);
-
-
-  var _FacebookTabBar = require(799 /* ./FacebookTabBar */);
-  var _FacebookTabBar2 = babelHelpers.interopRequireDefault(_FacebookTabBar);
-  var _reactNativeScrollableTabView = require(667 /* react-native-scrollable-tab-view */);
-  var _reactNativeScrollableTabView2 = babelHelpers.interopRequireDefault(_reactNativeScrollableTabView);
-  exports.default =
-
-    _react2.default.createClass({
-      displayName: 'FacebookExample',
-      render: function render() {
-        return _react2.default.createElement(_reactNativeScrollableTabView2.default, {
-            style: { marginTop: 0 },
-            initialPage: 1,
-            renderTabBar: function renderTabBar() {
-              return _react2.default.createElement(_FacebookTabBar2.default, {
-                __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 17
-                }
-              });
-            }, __source: { fileName: _jsxFileName, lineNumber: 14 }
-          },
-
-          _react2.default.createElement(_reactNative.ScrollView, {
-              tabLabel: 'ios-paper',
-              style: styles.tabView,
-              __source: { fileName: _jsxFileName, lineNumber: 19 }
-            },
-            _react2.default.createElement(_reactNative.View, {
-                style: styles.card,
-                __source: { fileName: _jsxFileName, lineNumber: 20 }
-              },
-              _react2.default.createElement(_reactNative.Text, {
-                __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 21
-                }
-              }, 'News'))),
-
-
-          _react2.default.createElement(_reactNative.ScrollView, {
-              tabLabel: 'ios-people',
-              style: styles.tabView,
-              __source: { fileName: _jsxFileName, lineNumber: 24 }
-            },
-            _react2.default.createElement(_reactNative.View, {
-                style: styles.card,
-                __source: { fileName: _jsxFileName, lineNumber: 25 }
-              },
-              _react2.default.createElement(_reactNative.Text, {
-                __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 26
-                }
-              }, 'Friends'))),
-
-
-          _react2.default.createElement(_reactNative.ScrollView, {
-              tabLabel: 'ios-chatboxes',
-              style: styles.tabView,
-              __source: { fileName: _jsxFileName, lineNumber: 29 }
-            },
-            _react2.default.createElement(_reactNative.View, {
-                style: styles.card,
-                __source: { fileName: _jsxFileName, lineNumber: 30 }
-              },
-              _react2.default.createElement(_reactNative.Text, {
-                __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 31
-                }
-              }, 'Messenger'))),
-
-
-          _react2.default.createElement(_reactNative.ScrollView, {
-              tabLabel: 'ios-notifications',
-              style: styles.tabView,
-              __source: { fileName: _jsxFileName, lineNumber: 34 }
-            },
-            _react2.default.createElement(_reactNative.View, {
-                style: styles.card,
-                __source: { fileName: _jsxFileName, lineNumber: 35 }
-              },
-              _react2.default.createElement(_reactNative.Text, {
-                __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 36
-                }
-              }, 'Notifications'))),
-
-
-          _react2.default.createElement(_reactNative.ScrollView, {
-              tabLabel: 'ios-list',
-              style: styles.tabView,
-              __source: { fileName: _jsxFileName, lineNumber: 39 }
-            },
-            _react2.default.createElement(_reactNative.View, {
-                style: styles.card,
-                __source: { fileName: _jsxFileName, lineNumber: 40 }
-              },
-              _react2.default.createElement(_reactNative.Text, {
-                __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 41
-                }
-              }, 'Other nav'))));
-
-
-      }
-    });
-
-
-  var styles = _reactNative.StyleSheet.create({
-    tabView: {
-      flex: 1,
-      padding: 10,
-      backgroundColor: 'rgba(0,0,0,0.01)'
-    },
-
-    card: {
-      borderWidth: 1,
-      backgroundColor: '#fff',
-      borderColor: 'rgba(0,0,0,0.1)',
-      margin: 5,
-      height: 150,
-      padding: 15,
-      shadowColor: '#ccc',
-      shadowOffset: { width: 2, height: 2 },
-      shadowOpacity: 0.5,
-      shadowRadius: 3
-    }
-  });
-}, "SmartRectNativeApp/component/tabs/FacebookExample.js");
-__d(799 /* SmartRectNativeApp/component/tabs/FacebookTabBar.js */, function (global, require, module, exports) {
-  Object.defineProperty(exports, "__esModule", { value: true });
-  var _jsxFileName = '/Users/sky/dev/react/native/SmartReactNativeApp/component/tabs/FacebookTabBar.js';
-  var _react = require(12 /* react */);
-  var _react2 = babelHelpers.interopRequireDefault(_react);
-  var _reactNative = require(43 /* react-native */);
-
-
-  var _Ionicons = require(677 /* react-native-vector-icons/Ionicons */);
-  var _Ionicons2 = babelHelpers.interopRequireDefault(_Ionicons);
-
-  var FacebookTabBar = _react2.default.createClass({
-    displayName: 'FacebookTabBar',
-    tabIcons: [],
-
-    propTypes: {
-      goToPage: _react2.default.PropTypes.func,
-      activeTab: _react2.default.PropTypes.number,
-      tabs: _react2.default.PropTypes.array
-    },
-
-
-    componentDidMount: function componentDidMount() {
-      this._listener = this.props.scrollValue.addListener(this.setAnimationValue);
-    },
-
-    setAnimationValue: function setAnimationValue(_ref) {
-      var _this = this;
-      var value = _ref.value;
-      this.tabIcons.forEach(function (icon, i) {
-        var progress = value - i >= 0 && value - i <= 1 ? value - i : 1;
-        icon.setNativeProps({
-          style: {
-            color: _this.iconColor(progress)
-          }
-        });
-
-
-      });
-    },
-
-
-    iconColor: function iconColor(progress) {
-      var red = 59 + (204 - 59) * progress;
-      var green = 89 + (204 - 89) * progress;
-      var blue = 152 + (204 - 152) * progress;
-      return 'rgb(' + red + ', ' + green + ', ' + blue + ')';
-    },
-
-    render: function render() {
-      var _this2 = this;
-      return _react2.default.createElement(_reactNative.View, {
-          style: [styles.tabs, this.props.style],
-          __source: { fileName: _jsxFileName, lineNumber: 43 }
-        },
-        this.props.tabs.map(function (tab, i) {
-          return _react2.default.createElement(_reactNative.TouchableOpacity, {
-              key: tab, onPress: function onPress() {
-                return _this2.props.goToPage(i);
-              }, style: styles.tab, __source: { fileName: _jsxFileName, lineNumber: 45 }
-            },
-            _react2.default.createElement(_Ionicons2.default, {
-              name: tab,
-              size: 30,
-              color: _this2.props.activeTab === i ? 'rgb(59,89,152)' : 'rgb(204,204,204)',
-              ref: function ref(icon) {
-                _this2.tabIcons[i] = icon;
-              }, __source: { fileName: _jsxFileName, lineNumber: 46 }
-            }));
-
-
-        }));
-
-    }
-  });
-
-
-  var styles = _reactNative.StyleSheet.create({
-    tab: {
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
-      paddingBottom: 10
-    },
-
-    tabs: {
-      height: 45,
-      flexDirection: 'row',
-      paddingTop: 5,
-      borderWidth: 1,
-      borderTopWidth: 0,
-      borderLeftWidth: 0,
-      borderRightWidth: 0,
-      borderBottomColor: 'rgba(0,0,0,0.05)'
-    }
-  });
-  exports.default =
-
-
-    FacebookTabBar;
-}, "SmartRectNativeApp/component/tabs/FacebookTabBar.js");
-__d(800 /* SmartRectNativeApp/component/tabs/DynamicExample.js */, function (global, require, module, exports) {
-  Object.defineProperty(exports, "__esModule", { value: true });
-  var _jsxFileName = '/Users/sky/dev/react/native/SmartReactNativeApp/component/tabs/DynamicExample.js';
-  var _react = require(12 /* react */);
-  var _react2 = babelHelpers.interopRequireDefault(_react);
-  var _reactNative = require(43 /* react-native */);
-
-
-  var _reactTimerMixin = require(796 /* react-timer-mixin */);
-  var _reactTimerMixin2 = babelHelpers.interopRequireDefault(_reactTimerMixin);
-
-  var _reactNativeScrollableTabView = require(667 /* react-native-scrollable-tab-view */);
-  var _reactNativeScrollableTabView2 = babelHelpers.interopRequireDefault(_reactNativeScrollableTabView);
-
-  var Child = _react2.default.createClass({
-    displayName: 'Child',
-    onEnter: function onEnter() {
-      console.log('enter: ' + this.props.i);
-    },
-
-    onLeave: function onLeave() {
-      console.log('leave: ' + this.props.i);
-    },
-
-    render: function render() {
-      var i = this.props.i;
-      return _react2.default.createElement(_reactNative.Text, {
-        key: i,
-        __source: { fileName: _jsxFileName, lineNumber: 20 }
-      }, 'tab' + i);
-    }
-  });
-  exports.default =
-
-
-    _react2.default.createClass({
-      displayName: 'DynamicExample',
-      mixins: [_reactTimerMixin2.default],
-      children: [],
-
-      getInitialState: function getInitialState() {
-        return {
-          tabs: []
-        };
-
-      },
-
-      componentDidMount: function componentDidMount() {
-        var _this = this;
-        this.setTimeout(
-          function () {
-            _this.setState({ tabs: [1, 2, 3] });
-          },
-          100);
-
-      },
-
-      handleChangeTab: function handleChangeTab(_ref) {
-        var i = _ref.i;
-        var ref = _ref.ref;
-        var from = _ref.from;
-        this.children[i].onEnter();
-        this.children[from].onLeave();
-      },
-
-      render: function render() {
-        var _this2 = this;
-        return _react2.default.createElement(_reactNativeScrollableTabView2.default, {
-            style: { marginTop: 0 },
-            renderTabBar: function renderTabBar() {
-              return _react2.default.createElement(_reactNativeScrollableTabView.DefaultTabBar, {
-                __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 49
-                }
-              });
-            },
-            onChangeTab: this.handleChangeTab, __source: { fileName: _jsxFileName, lineNumber: 47 }
-          },
-
-          this.state.tabs.map(function (tab, i) {
-            return _react2.default.createElement(Child, {
-              ref: function ref(_ref2) {
-                return _this2.children[i] = _ref2;
-              },
-              tabLabel: 'tab' + i,
-              i: i,
-              key: i, __source: { fileName: _jsxFileName, lineNumber: 53 }
-            });
-
-          }));
-
-      }
-    });
-}, "SmartRectNativeApp/component/tabs/DynamicExample.js");
-__d(801 /* SmartRectNativeApp/images/tabs/widget_bar_news_nor.png */, function (global, require, module, exports) {
-  module.exports = require(169 /* react-native/Libraries/Image/AssetRegistry */).registerAsset({
-    "__packager_asset": true,
-    "fileSystemLocation": "/Users/sky/dev/react/native/SmartReactNativeApp/images/tabs",
-    "httpServerLocation": "/assets/images/tabs",
-    "width": 48,
-    "height": 48,
-    "scales": [1],
-    "files": ["/Users/sky/dev/react/native/SmartReactNativeApp/images/tabs/widget_bar_news_nor.png"],
-    "hash": "6adff5fd9bc633bc5e574bec5dda4c3c",
-    "name": "widget_bar_news_nor",
-    "type": "png"
-  });
-}, "SmartRectNativeApp/images/tabs/widget_bar_news_nor.png");
-__d(802 /* SmartRectNativeApp/images/tabs/widget_bar_news_over.png */, function (global, require, module, exports) {
-  module.exports = require(169 /* react-native/Libraries/Image/AssetRegistry */).registerAsset({
-    "__packager_asset": true,
-    "fileSystemLocation": "/Users/sky/dev/react/native/SmartReactNativeApp/images/tabs",
-    "httpServerLocation": "/assets/images/tabs",
-    "width": 48,
-    "height": 48,
-    "scales": [1],
-    "files": ["/Users/sky/dev/react/native/SmartReactNativeApp/images/tabs/widget_bar_news_over.png"],
-    "hash": "6adff5fd9bc633bc5e574bec5dda4c3c",
-    "name": "widget_bar_news_over",
-    "type": "png"
-  });
-}, "SmartRectNativeApp/images/tabs/widget_bar_news_over.png");
-__d(803 /* SmartRectNativeApp/images/tabs/widget_bar_tweet_nor.png */, function (global, require, module, exports) {
-  module.exports = require(169 /* react-native/Libraries/Image/AssetRegistry */).registerAsset({
-    "__packager_asset": true,
-    "fileSystemLocation": "/Users/sky/dev/react/native/SmartReactNativeApp/images/tabs",
-    "httpServerLocation": "/assets/images/tabs",
-    "width": 48,
-    "height": 48,
-    "scales": [1],
-    "files": ["/Users/sky/dev/react/native/SmartReactNativeApp/images/tabs/widget_bar_tweet_nor.png"],
-    "hash": "6adff5fd9bc633bc5e574bec5dda4c3c",
-    "name": "widget_bar_tweet_nor",
-    "type": "png"
-  });
-}, "SmartRectNativeApp/images/tabs/widget_bar_tweet_nor.png");
-__d(804 /* SmartRectNativeApp/images/tabs/widget_bar_tweet_over.png */, function (global, require, module, exports) {
-  module.exports = require(169 /* react-native/Libraries/Image/AssetRegistry */).registerAsset({
-    "__packager_asset": true,
-    "fileSystemLocation": "/Users/sky/dev/react/native/SmartReactNativeApp/images/tabs",
-    "httpServerLocation": "/assets/images/tabs",
-    "width": 48,
-    "height": 48,
-    "scales": [1],
-    "files": ["/Users/sky/dev/react/native/SmartReactNativeApp/images/tabs/widget_bar_tweet_over.png"],
-    "hash": "6adff5fd9bc633bc5e574bec5dda4c3c",
-    "name": "widget_bar_tweet_over",
-    "type": "png"
-  });
-}, "SmartRectNativeApp/images/tabs/widget_bar_tweet_over.png");
-__d(805 /* SmartRectNativeApp/images/tabs/widget_bar_explore_nor.png */, function (global, require, module, exports) {
-  module.exports = require(169 /* react-native/Libraries/Image/AssetRegistry */).registerAsset({
-    "__packager_asset": true,
-    "fileSystemLocation": "/Users/sky/dev/react/native/SmartReactNativeApp/images/tabs",
-    "httpServerLocation": "/assets/images/tabs",
-    "width": 48,
-    "height": 48,
-    "scales": [1],
-    "files": ["/Users/sky/dev/react/native/SmartReactNativeApp/images/tabs/widget_bar_explore_nor.png"],
-    "hash": "6adff5fd9bc633bc5e574bec5dda4c3c",
-    "name": "widget_bar_explore_nor",
-    "type": "png"
-  });
-}, "SmartRectNativeApp/images/tabs/widget_bar_explore_nor.png");
-__d(806 /* SmartRectNativeApp/images/tabs/widget_bar_explore_over.png */, function (global, require, module, exports) {
-  module.exports = require(169 /* react-native/Libraries/Image/AssetRegistry */).registerAsset({
-    "__packager_asset": true,
-    "fileSystemLocation": "/Users/sky/dev/react/native/SmartReactNativeApp/images/tabs",
-    "httpServerLocation": "/assets/images/tabs",
-    "width": 48,
-    "height": 48,
-    "scales": [1],
-    "files": ["/Users/sky/dev/react/native/SmartReactNativeApp/images/tabs/widget_bar_explore_over.png"],
-    "hash": "6adff5fd9bc633bc5e574bec5dda4c3c",
-    "name": "widget_bar_explore_over",
-    "type": "png"
-  });
-}, "SmartRectNativeApp/images/tabs/widget_bar_explore_over.png");
-__d(807 /* SmartRectNativeApp/images/tabs/widget_bar_me_nor.png */, function (global, require, module, exports) {
-  module.exports = require(169 /* react-native/Libraries/Image/AssetRegistry */).registerAsset({
-    "__packager_asset": true,
-    "fileSystemLocation": "/Users/sky/dev/react/native/SmartReactNativeApp/images/tabs",
-    "httpServerLocation": "/assets/images/tabs",
-    "width": 48,
-    "height": 48,
-    "scales": [1],
-    "files": ["/Users/sky/dev/react/native/SmartReactNativeApp/images/tabs/widget_bar_me_nor.png"],
-    "hash": "6adff5fd9bc633bc5e574bec5dda4c3c",
-    "name": "widget_bar_me_nor",
-    "type": "png"
-  });
-}, "SmartRectNativeApp/images/tabs/widget_bar_me_nor.png");
-__d(808 /* SmartRectNativeApp/images/tabs/widget_bar_me_over.png */, function (global, require, module, exports) {
-  module.exports = require(169 /* react-native/Libraries/Image/AssetRegistry */).registerAsset({
-    "__packager_asset": true,
-    "fileSystemLocation": "/Users/sky/dev/react/native/SmartReactNativeApp/images/tabs",
-    "httpServerLocation": "/assets/images/tabs",
-    "width": 48,
-    "height": 48,
-    "scales": [1],
-    "files": ["/Users/sky/dev/react/native/SmartReactNativeApp/images/tabs/widget_bar_me_over.png"],
-    "hash": "6adff5fd9bc633bc5e574bec5dda4c3c",
-    "name": "widget_bar_me_over",
-    "type": "png"
-  });
-}, "SmartRectNativeApp/images/tabs/widget_bar_me_over.png");
-__d(809 /* SmartRectNativeApp/component/home/WebView.js */, function (global, require, module, exports) {
-
-
-  'use strict';
-  Object.defineProperty(exports, "__esModule", { value: true });
-  var _jsxFileName = '/Users/sky/dev/react/native/SmartReactNativeApp/component/home/WebView.js';
-  var _react = require(12 /* react */);
-  var _react2 = babelHelpers.interopRequireDefault(_react);
-
-  var _reactNative = require(43 /* react-native */);
-  var
-
-
-    CustomWebView = function (_Component) {
-      babelHelpers.inherits(CustomWebView, _Component);
-
-      function CustomWebView(props) {
-        babelHelpers.classCallCheck(this, CustomWebView);
-        return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(CustomWebView).call(this,
-          props));
-      }
-
-      babelHelpers.createClass(CustomWebView, [{
-        key: 'render', value: function render() {
-          return (
-            _react2.default.createElement(_reactNative.View, {
-                style: {
-                  flex: 1,
-                  paddingTop: _reactNative.Platform.os === 'ios' ? 20 : 0
-                }, __source: { fileName: _jsxFileName, lineNumber: 21 }
-              },
-              _react2.default.createElement(_reactNative.WebView, {
-                startInLoadingState: true,
-                javaScriptEnabled: true,
-                source: { uri: this.props.url, method: 'GET' }, __source: { fileName: _jsxFileName, lineNumber: 22 }
-              })));
-
-
-        }
-      }]);
-      return CustomWebView;
-    }(_react.Component);
-  exports.default = CustomWebView;
-}, "SmartRectNativeApp/component/home/WebView.js");
 ;require(191);
 ;require(0);
-//# sourceMappingURL=/index.android.map?platform=android&dev=true&hot=false&minify=false
+//# sourceMappingURL=/debug.android.map?platform=android&dev=true&hot=false&minify=false
