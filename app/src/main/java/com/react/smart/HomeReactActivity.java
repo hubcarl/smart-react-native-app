@@ -2,6 +2,7 @@ package com.react.smart;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.design.BuildConfig;
 import android.util.Log;
 import android.view.KeyEvent;
 
@@ -11,7 +12,6 @@ import com.facebook.react.ReactRootView;
 import com.facebook.react.bridge.ReactMarker;
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 import com.facebook.react.shell.MainReactPackage;
-import com.react.smart.BuildConfig;
 import com.react.smart.componet.RNPackage;
 
 public class HomeReactActivity extends Activity implements DefaultHardwareBackBtnHandler {
@@ -38,7 +38,6 @@ public class HomeReactActivity extends Activity implements DefaultHardwareBackBt
                 .setBundleAssetName("index.android.bundle")
                 .setJSMainModuleName("index.android")
                 .setCurrentActivity(this)
-                //.setUseNewBridge()
                 .addPackage(new MainReactPackage())
                 .addPackage(new RNPackage())
                 .setUseDeveloperSupport(BuildConfig.DEBUG)

@@ -1,3 +1,28 @@
+### JSBundle打包到assets目录
+
+1、生成签名密钥
+
+keytool -genkey -v -keystore my-release-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000
+
+
+2. jsbundle生成到asset目录
+
+react-native bundle --entry-file ./index.android.js  --bundle-output ./app/src/main/assets/index.android.bundle --platform android --assets-dest ./app/src/main/res/ --dev false
+
+react-native bundle --entry-file ./debug.android.js  --bundle-output ./app/src/main/assets/release.android.bundle --platform android --assets-dest ./app/src/main/res/ --dev false
+
+react-native bundle --entry-file ./debug.android.js  --bundle-output ./app/src/main/assets/debug.android.bundle --platform android --assets-dest ./app/src/main/res/ --dev true
+
+curl "http://localhost:8081/debug.android.bundle?platform=android" -o  "./app/src/main/assets/debug.android.bundle"
+
+3. 生成apk，在 android/app/build/outputs/apk/ 下，找到打包生成的 app-release.apk
+
+gradlew assembleRelease
+
+
+http://www.jianshu.com/p/61e27d9b02f2 打包
+
+
 ### React Native与Android原生应用集成(Android Studio, React Native 0.29.1, ES6语法)
 
 

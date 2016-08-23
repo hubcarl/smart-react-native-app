@@ -22,11 +22,13 @@ public class DebugReactActivity extends Activity implements DefaultHardwareBackB
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        Log.i("ReactNativeJS","performance react start:"+System.currentTimeMillis());
+
         // 开启ReactNative日志答应
         ReactMarker.setMarkerListener(new ReactMarker.MarkerListener(){
             @Override
             public void logMarker(String name) {
-                Log.i("ReactNativeDebug", name);
+                Log.i("ReactNativeJS", name.toLowerCase() + " cost:" + System.currentTimeMillis());
             }
         });
 
@@ -37,10 +39,10 @@ public class DebugReactActivity extends Activity implements DefaultHardwareBackB
                 .setBundleAssetName("debug.android.bundle")
                 .setJSMainModuleName("debug.android")
                 .setCurrentActivity(this)
-                //.setUseNewBridge()
+                .setUseOldBridge(false)
                 .addPackage(new MainReactPackage())
                 .addPackage(new RNPackage())
-                .setUseDeveloperSupport(BuildConfig.DEBUG)
+                .setUseDeveloperSupport(false)
                 .setInitialLifecycleState(LifecycleState.RESUMED)
                 .build();
 

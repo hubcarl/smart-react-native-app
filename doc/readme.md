@@ -113,3 +113,7 @@ https://www.processon.com
 ### 参考资料
 
 https://github.com/Kennytian/embedded
+
+
+
+https://segmentfault.com/a/1190000004508328
