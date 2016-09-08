@@ -42,6 +42,7 @@ class ReactTabApp extends Component {
     }
 
     componentDidMount() {
+        console.log('>>>react#componentDidMount', +new Date());
         var navigator = this.navigator;
         BackAndroid.addEventListener('hardwareBackPress', function() {
             if (navigator && navigator.getCurrentRoutes().length > 1) {

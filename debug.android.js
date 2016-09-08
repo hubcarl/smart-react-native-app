@@ -27,9 +27,11 @@ class SmartRectNativeApp extends Component {
             text: 'Welcome to React Native!',
             navigateCount: 0
         };
+        console.log('>>>react#constructor', +new Date());
     }
 
     componentWillMount() {
+        console.log('>>>react#componentWillMount', +new Date());
         if (Platform.OS === 'android') {
             BackAndroid.addEventListener('hardwareBackPress', ()=>this._backButton());
         }
@@ -38,34 +40,34 @@ class SmartRectNativeApp extends Component {
     _backButton(){
         const {navigateCount} = this.state;
         if (navigateCount) {
-            NativeModules.RNIntentModule.backActivity(navigateCount)
+            NativeModules.IntentModule.backActivity(navigateCount)
             return true;
         }
         return false;
     }
 
     _secondActivity(){
-           NativeModules.RNIntentModule.openSecondActivity();
+           NativeModules.IntentModule.openSecondActivity();
     }
 
      _secondReactActivity(){
-          NativeModules.RNIntentModule.openSecondReactActivity();
+          NativeModules.IntentModule.openSecondReactActivity();
      }
 
     _setCache(){
         const start = +new Date();
-        NativeModules.RNIntentModule.setCache('RN001','我是来自React Native缓存消息',(msg)=>{
+        NativeModules.IntentModule.setCache('RN001','我是来自React Native缓存消息',(msg)=>{
             console.log('>>>>cost[setCache]:', +new Date()-start);
             NativeModules.ToastAndroid.show(msg, 3000);
           },(errorMsg)=>{
             NativeModules.ToastAndroid.show(errorMsg, 3000);
         });
-        //NativeModules.RNIntentModule.finishActivity('我是来自React Native的消息');
+        //NativeModules.IntentModule.finishActivity('我是来自React Native的消息');
     }
 
     _getCache(){
            const start = +new Date();
-           NativeModules.RNIntentModule.getCache('RN001',(value)=>{
+           NativeModules.IntentModule.getCache('RN001',(value)=>{
                 console.log('>>>>cost[getCache]:', +new Date()-start);
                 NativeModules.ToastAndroid.show(value, 3000)
            });
@@ -73,7 +75,7 @@ class SmartRectNativeApp extends Component {
 
     _getJSNativeCost(){
            const start = +new Date();
-           NativeModules.RNIntentModule.getJSNativeCost('JS Native Cost Test',(value)=>{
+           NativeModules.IntentModule.getJSNativeCost('JS Native Cost Test',(value)=>{
                 const time = +new Date()-start;
                 console.log('>>>>cost[getJSNativeCost]:', time);
                 NativeModules.ToastAndroid.show(value+' cost:'+ time, 3000)
@@ -119,12 +121,14 @@ class SmartRectNativeApp extends Component {
     }
 
     componentDidMount() {
-        NativeModules.RNIntentModule.getDataFromIntent(
-            successMsg => this.setState({text: successMsg, navigateCount: 1}),
-            errorMsg => this.setState({text: errorMsg, navigateCount: 1})
-       );
+      console.log('>>>react#componentDidMount', +new Date());
+      NativeModules.ToastAndroid.show('Toast 是原生支持的!', 3000);
+      console.log('>>>react#componentDidMount#ToastAndroid.show', +new Date());
 
-       NativeModules.ToastAndroid.show('Toast 是原生支持的!', 3000);
+      NativeModules.IntentModule.getDataFromIntent(
+          successMsg => this.setState({text: successMsg, navigateCount: 1}),
+          errorMsg => this.setState({text: errorMsg, navigateCount: 1})
+      );
     }
 
     componentWillUnmount() {
@@ -156,4 +160,4 @@ const styles = StyleSheet.create({
     },
 });
 
-AppRegistry.registerComponent('SmartDebugReactApp', () => SmartRectNativeApp);
+AppRegistry.registerComponent('SmartReactApp', () => SmartRectNativeApp);

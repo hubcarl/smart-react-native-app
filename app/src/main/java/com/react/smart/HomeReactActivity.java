@@ -12,7 +12,7 @@ import com.facebook.react.ReactRootView;
 import com.facebook.react.bridge.ReactMarker;
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 import com.facebook.react.shell.MainReactPackage;
-import com.react.smart.componet.RNPackage;
+import com.react.smart.componet.Package;
 
 public class HomeReactActivity extends Activity implements DefaultHardwareBackBtnHandler {
 
@@ -39,7 +39,7 @@ public class HomeReactActivity extends Activity implements DefaultHardwareBackBt
                 .setJSMainModuleName("index.android")
                 .setCurrentActivity(this)
                 .addPackage(new MainReactPackage())
-                .addPackage(new RNPackage())
+                .addPackage(new Package())
                 .setUseDeveloperSupport(BuildConfig.DEBUG)
                 .setInitialLifecycleState(LifecycleState.RESUMED)
                 .build();

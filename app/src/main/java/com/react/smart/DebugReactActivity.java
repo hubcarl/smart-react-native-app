@@ -11,7 +11,7 @@ import com.facebook.react.ReactRootView;
 import com.facebook.react.bridge.ReactMarker;
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 import com.facebook.react.shell.MainReactPackage;
-import com.react.smart.componet.RNPackage;
+import com.react.smart.componet.Package;
 
 public class DebugReactActivity extends Activity implements DefaultHardwareBackBtnHandler {
 
@@ -22,7 +22,7 @@ public class DebugReactActivity extends Activity implements DefaultHardwareBackB
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Log.i("ReactNativeJS","performance react start:"+System.currentTimeMillis());
+        Log.i("ReactNativeJS",">>>react performance react start:"+System.currentTimeMillis());
 
         // 开启ReactNative日志答应
         ReactMarker.setMarkerListener(new ReactMarker.MarkerListener(){
@@ -36,19 +36,21 @@ public class DebugReactActivity extends Activity implements DefaultHardwareBackB
 
         mReactInstanceManager = ReactInstanceManager.builder()
                 .setApplication(getApplication())
-                .setBundleAssetName("debug.android.bundle")
-                .setJSMainModuleName("debug.android")
+                .setBundleAssetName("index.android.bundle")
+                .setJSMainModuleName("index.android")
                 .setCurrentActivity(this)
                 .setUseOldBridge(false)
                 .addPackage(new MainReactPackage())
-                .addPackage(new RNPackage())
+                .addPackage(new Package())
                 .setUseDeveloperSupport(false)
                 .setInitialLifecycleState(LifecycleState.RESUMED)
                 .build();
 
-        mReactRootView.startReactApplication(mReactInstanceManager, "SmartDebugReactApp", null);
+        mReactRootView.startReactApplication(mReactInstanceManager, "SmartReactApp", null);
 
         setContentView(mReactRootView);
+
+        Log.i("ReactNativeJS", ">>>react performance react end:"+System.currentTimeMillis());
     }
 
     @Override

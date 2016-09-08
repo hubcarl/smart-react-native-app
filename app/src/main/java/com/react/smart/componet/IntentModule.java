@@ -18,11 +18,11 @@ import com.react.smart.test.SecondReactActivity;
 /**
  * Created by sky on 16/7/15.
  */
-public class RNIntentModule extends ReactContextBaseJavaModule {
+public class IntentModule extends ReactContextBaseJavaModule {
 
     private SharedPreferences sharedPreference;
 
-    public RNIntentModule(ReactApplicationContext reactContext) {
+    public IntentModule(ReactApplicationContext reactContext) {
         super(reactContext);
     }
 

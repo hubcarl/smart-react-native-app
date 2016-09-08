@@ -13,12 +13,12 @@ import java.util.List;
 /**
  * Created by sky on 16/7/15.
  */
-public class RNPackage implements ReactPackage {
+public class Package implements ReactPackage {
 
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
         return Arrays.<NativeModule>asList(
-                new RNIntentModule(reactContext)
+                new IntentModule(reactContext)
         );
     }
 
