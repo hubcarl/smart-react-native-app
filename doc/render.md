@@ -41,7 +41,13 @@ ReactMarker.setMarkerListener(new ReactMarker.MarkerListener(){
 08-28 20:33:48.787 I/ReactNativeJS: create_react_context_end cost:1472387628786
 08-28 20:33:48.787 I/ReactNativeJS: run_js_bundle_end cost:1472387628787
 
-### view源码
+
+### 简单的React Native View创建流程
+
+![image](https://raw.githubusercontent.com/hubcarl/hubcarl.github.io/master/_posts/images/react/rn-simple-view.jpg)
+
+
+#### view源码
 
 ```
 render() {
@@ -161,25 +167,28 @@ _react2.default.createElement(_reactNative.Text,{style:styles.instructions},'Sha
 
 
 
-### performance
+#### React Native 首次加载性能测试
+
+
+##### Nexus5 5.0系统测试
 
 第一次:
 
 09-08 20:41:39.002  12023-12023/com.react.smart I/ReactNativeJS﹕ >>>react performance react start:1473338499002
 09-08 20:41:39.081  12023-12023/com.react.smart I/ReactNativeJS﹕ >>>react performance react end:1473338499081
 09-08 20:41:39.601  12023-12052/com.react.smart I/ReactNativeJS﹕ >>>react[runApplication]:1473338499600
-09-08 20:41:39.618  12023-12052/com.react.smart I/ReactNativeJS﹕ '>>>react#constructor', 1473338499616
-09-08 20:41:39.618  12023-12052/com.react.smart I/ReactNativeJS﹕ '>>>react#componentWillMount', 1473338499618
-09-08 20:41:39.711  12023-12052/com.react.smart I/ReactNativeJS﹕ '>>>react#componentDidMount', 1473338499711
+09-08 20:41:39.618  12023-12052/com.react.smart I/ReactNativeJS﹕ >>>react#constructor, 1473338499616
+09-08 20:41:39.618  12023-12052/com.react.smart I/ReactNativeJS﹕ >>>react#componentWillMount, 1473338499618
+09-08 20:41:39.711  12023-12052/com.react.smart I/ReactNativeJS﹕ >>>react#componentDidMount, 1473338499711
 
 cost:1473338499711-1473338499002=709
 
 09-08 20:45:42.774  14935-14935/com.react.smart I/ReactNativeJS﹕ >>>react performance react start:1473338742774
 09-08 20:45:42.806  14935-14935/com.react.smart I/ReactNativeJS﹕ >>>react performance react end:1473338742806
 09-08 20:45:43.300  14935-14965/com.react.smart I/ReactNativeJS﹕ >>>react[runApplication]:1473338743299
-09-08 20:45:43.320  14935-14965/com.react.smart I/ReactNativeJS﹕ '>>>react#constructor', 1473338743319
-09-08 20:45:43.321  14935-14965/com.react.smart I/ReactNativeJS﹕ '>>>react#componentWillMount', 1473338743321
-09-08 20:45:43.471  14935-14965/com.react.smart I/ReactNativeJS﹕ '>>>react#componentDidMount', 1473338743471
+09-08 20:45:43.320  14935-14965/com.react.smart I/ReactNativeJS﹕ >>>react#constructor, 1473338743319
+09-08 20:45:43.321  14935-14965/com.react.smart I/ReactNativeJS﹕ >>>react#componentWillMount, 1473338743321
+09-08 20:45:43.471  14935-14965/com.react.smart I/ReactNativeJS﹕ >>>react#componentDidMount, 1473338743471
 
 cost:1473338743471-1473338742774=697
 
@@ -187,56 +196,134 @@ cost:1473338743471-1473338742774=697
 09-08 20:41:39.002  12023-12023/com.react.smart I/ReactNativeJS﹕ >>>react performance react start:1473338499002
 09-08 20:41:39.081  12023-12023/com.react.smart I/ReactNativeJS﹕ >>>react performance react end:1473338499081
 09-08 20:41:39.601  12023-12052/com.react.smart I/ReactNativeJS﹕ >>>react[runApplication]:1473338499600
-09-08 20:41:39.618  12023-12052/com.react.smart I/ReactNativeJS﹕ '>>>react#constructor', 1473338499616
-09-08 20:41:39.618  12023-12052/com.react.smart I/ReactNativeJS﹕ '>>>react#componentWillMount', 1473338499618
-09-08 20:41:39.711  12023-12052/com.react.smart I/ReactNativeJS﹕ '>>>react#componentDidMount', 1473338499711
+09-08 20:41:39.618  12023-12052/com.react.smart I/ReactNativeJS﹕ >>>react#constructor, 1473338499616
+09-08 20:41:39.618  12023-12052/com.react.smart I/ReactNativeJS﹕ >>>react#componentWillMount, 1473338499618
+09-08 20:41:39.711  12023-12052/com.react.smart I/ReactNativeJS﹕ >>>react#componentDidMount, 1473338499711
 
 cost:1473338499711-1473338499002=709
 
 09-08 20:50:46.781  14935-14935/com.react.smart I/ReactNativeJS﹕ >>>react performance react start:1473339046781
 09-08 20:50:46.789  14935-14935/com.react.smart I/ReactNativeJS﹕ >>>react performance react end:1473339046789
 09-08 20:50:47.213  14935-18051/com.react.smart I/ReactNativeJS﹕ >>>react[runApplication]:1473339047213
-09-08 20:50:47.231  14935-18051/com.react.smart I/ReactNativeJS﹕ '>>>react#constructor', 1473339047229
-09-08 20:50:47.231  14935-18051/com.react.smart I/ReactNativeJS﹕ '>>>react#componentWillMount', 1473339047231
-09-08 20:50:47.327  14935-18051/com.react.smart I/ReactNativeJS﹕ '>>>react#componentDidMount', 1473339047327
+09-08 20:50:47.231  14935-18051/com.react.smart I/ReactNativeJS﹕ >>>react#constructor, 1473339047229
+09-08 20:50:47.231  14935-18051/com.react.smart I/ReactNativeJS﹕ >>>react#componentWillMount, 1473339047231
+09-08 20:50:47.327  14935-18051/com.react.smart I/ReactNativeJS﹕ >>>react#componentDidMount, 1473339047327
 
 cost:1473339047327-1473339046781=546
 
 09-08 20:51:31.920  18784-18784/com.react.smart I/ReactNativeJS﹕ >>>react performance react start:1473339091920
 09-08 20:51:31.956  18784-18784/com.react.smart I/ReactNativeJS﹕ >>>react performance react end:1473339091956
 09-08 20:51:32.456  18784-18820/com.react.smart I/ReactNativeJS﹕ >>>react[runApplication]:1473339092456
-09-08 20:51:32.474  18784-18820/com.react.smart I/ReactNativeJS﹕ '>>>react#constructor', 1473339092471
-09-08 20:51:32.474  18784-18820/com.react.smart I/ReactNativeJS﹕ '>>>react#componentWillMount', 1473339092474
-09-08 20:51:32.565  18784-18820/com.react.smart I/ReactNativeJS﹕ '>>>react#componentDidMount', 1473339092565
+09-08 20:51:32.474  18784-18820/com.react.smart I/ReactNativeJS﹕ >>>react#constructor, 1473339092471
+09-08 20:51:32.474  18784-18820/com.react.smart I/ReactNativeJS﹕ >>>react#componentWillMount, 1473339092474
+09-08 20:51:32.565  18784-18820/com.react.smart I/ReactNativeJS﹕ >>>react#componentDidMount, 1473339092565
 
 cost:1473339092565-1473339091920=645ms
 
+从测试结果来看, Nexus5 时间稳定在500ms-700ms之间, 时间可以接受.
+
+##### MX3 5.0系统测试
 
 
-####
+**第一次测试**
+
+09-11 16:51:36.967  10179-10179/com.react.smart I/ReactNativeJS﹕ >>>react performance react start:1473583896967
+09-11 16:51:37.091  10179-10179/com.react.smart I/ReactNativeJS﹕ >>>react performance react end:1473583897091
+09-11 16:51:38.349  10179-10209/com.react.smart I/ReactNativeJS﹕ '>>>react#constructor', 1473583898342
+09-11 16:51:38.350  10179-10209/com.react.smart I/ReactNativeJS﹕ '>>>react#componentWillMount', 1473583898349
+09-11 16:51:38.523  10179-10209/com.react.smart I/ReactNativeJS﹕ '>>>react#componentDidMount', 1473583898523
+09-11 16:51:38.528  10179-10209/com.react.smart I/ReactNativeJS﹕ '>>>react#componentDidMount#ToastAndroid.show', 1473583898527
+
+cost:1473583898527-1473583896967=1560
+
+**第二次测试**
+
+09-11 16:53:48.688  11260-11260/com.react.smart I/ReactNativeJS﹕ >>>react performance react start:1473584028688
+09-11 16:53:48.887  11260-11260/com.react.smart I/ReactNativeJS﹕ >>>react performance react end:1473584028887
+09-11 16:53:50.345  11260-11292/com.react.smart I/ReactNativeJS﹕ '>>>react#constructor', 1473584030342
+09-11 16:53:50.346  11260-11292/com.react.smart I/ReactNativeJS﹕ '>>>react#componentWillMount', 1473584030345
+09-11 16:53:50.500  11260-11292/com.react.smart I/ReactNativeJS﹕ '>>>react#componentDidMount', 1473584030500
+09-11 16:53:50.504  11260-11292/com.react.smart I/ReactNativeJS﹕ '>>>react#componentDidMount#ToastAndroid.show', 1473584030503
+
+cost:1473584030503-1473584028688=1815
+
+**第三次测试**
+
+
+09-11 17:10:20.694  18623-18623/com.react.smart I/ReactNativeJS﹕ >>>react performance react start:1473585020694
+09-11 17:10:20.894  18623-18623/com.react.smart I/ReactNativeJS﹕ >>>react performance react end:1473585020894
+09-11 17:10:22.225  18623-18657/com.react.smart I/ReactNativeJS﹕ '>>>react#constructor', 1473585022222
+09-11 17:10:22.226  18623-18657/com.react.smart I/ReactNativeJS﹕ '>>>react#componentWillMount', 1473585022225
+09-11 17:10:22.405  18623-18657/com.react.smart I/ReactNativeJS﹕ '>>>react#componentDidMount', 1473585022405
+09-11 17:10:22.409  18623-18657/com.react.smart I/ReactNativeJS﹕ '>>>react#componentDidMount#ToastAndroid.show', 1473585022408
+
+cost:1473585022408-1473585020694=1714
+
+**第四次测试**
+
+09-11 17:11:25.690  19167-19167/com.react.smart I/ReactNativeJS﹕ >>>react performance react start:1473585085690
+09-11 17:11:25.865  19167-19167/com.react.smart I/ReactNativeJS﹕ >>>react performance react end:1473585085865
+09-11 17:11:27.173  19167-19199/com.react.smart I/ReactNativeJS﹕ '>>>react#constructor', 1473585087169
+09-11 17:11:27.173  19167-19199/com.react.smart I/ReactNativeJS﹕ '>>>react#componentWillMount', 1473585087173
+09-11 17:11:27.336  19167-19199/com.react.smart I/ReactNativeJS﹕ '>>>react#componentDidMount', 1473585087335
+09-11 17:11:27.340  19167-19199/com.react.smart I/ReactNativeJS﹕ '>>>react#componentDidMount#ToastAndroid.show', 1473585087339
+
+cost: 1473585087339-1473585085690=1649
+
+从测试结果来看, MX3 时间稳定在1500ms-1800ms之间, 明显比Nexus5要慢
+
+
+
+
+######
 
 --首次安装打开
 
 09-08 21:13:50.182    4541-4541/com.react.smart I/ReactNativeJS﹕ >>>react performance react start:1473340430182
 09-08 21:13:50.215    4541-4541/com.react.smart I/ReactNativeJS﹕ >>>react performance react end:1473340430215
-09-08 21:13:51.413    4541-4576/com.react.smart I/ReactNativeJS﹕ '>>>react#componentDidMount', 1473340431411
+09-08 21:13:51.413    4541-4576/com.react.smart I/ReactNativeJS﹕ >>>react#componentDidMount, 1473340431411
 
 1473340431411-1473340430182=1229
 
 --再次打开
 
 09-08 21:08:05.495  31311-31311/com.react.smart I/ReactNativeJS﹕ >>>react performance react start:1473340085495
-09-08 21:08:06.704  31311-31351/com.react.smart I/ReactNativeJS﹕ '>>>react#componentDidMount', 1473340086701
+09-08 21:08:06.704  31311-31351/com.react.smart I/ReactNativeJS﹕ >>>react#componentDidMount, 1473340086701
 
 1473340086701-1473340085495=1206
 
 09-08 21:08:27.371  31768-31768/com.react.smart I/ReactNativeJS﹕ >>>react performance react start:1473340107371
-09-08 21:08:28.515  31768-31813/com.react.smart I/ReactNativeJS﹕ '>>>react#componentDidMount', 1473340108513
+09-08 21:08:28.515  31768-31813/com.react.smart I/ReactNativeJS﹕ >>>react#componentDidMount, 1473340108513
 
 1473340108513-1473340107371=1142
 
 
 09-08 21:11:27.119    2485-2485/com.react.smart I/ReactNativeJS﹕ >>>react performance react start:1473340287119
-09-08 21:11:28.295    2485-2522/com.react.smart I/ReactNativeJS﹕ '>>>react#componentDidMount', 1473340288294
+09-08 21:11:28.295    2485-2522/com.react.smart I/ReactNativeJS﹕ >>>react#componentDidMount, 1473340288294
 
 1473340288294-1473340287119=1175
+
+
+MX3 5.0系统
+
+复杂页面:
+
+09-11 16:32:09.830  31176-31176/com.react.smart I/ReactNativeJS﹕ >>>react performance react start:1473582729830
+09-11 16:32:10.108  31176-31176/com.react.smart I/ReactNativeJS﹕ >>>react performance react end:1473582730108
+09-11 16:32:12.555  31176-31250/com.react.smart I/ReactNativeJS﹕ >>>react#componentDidMount, 1473582732551
+
+1473582732551-1473582729830=2721
+
+
+09-11 16:34:30.688  32703-32703/com.react.smart I/ReactNativeJS﹕ >>>react performance react start:1473582870688
+09-11 16:34:30.978  32703-32703/com.react.smart I/ReactNativeJS﹕ >>>react performance react end:1473582870978
+09-11 16:34:33.409  32703-316/  com.react.smart I/ReactNativeJS﹕ >>>react#componentDidMount, 1473582873405
+
+1473582873405-1473582870688=2717
+
+09-11 16:39:21.912    3978-3978/com.react.smart I/ReactNativeJS﹕ >>>react performance react start:1473583161912
+09-11 16:39:22.115    3978-3978/com.react.smart I/ReactNativeJS﹕ >>>react performance react end:1473583162115
+09-11 16:39:24.393    3978-4010/com.react.smart I/ReactNativeJS﹕ >>>react#componentDidMount, 1473583164390
+
+1473583164390-1473583161912=2478
+

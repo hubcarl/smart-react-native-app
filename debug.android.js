@@ -19,7 +19,7 @@ import {
 } from 'react-native';
 
 
-class SmartRectNativeApp extends Component {
+class SmartReactApp extends Component {
     constructor(props){
         super(props);
 
@@ -160,4 +160,4 @@ const styles = StyleSheet.create({
     },
 });
 
-AppRegistry.registerComponent('SmartReactApp', () => SmartRectNativeApp);
+AppRegistry.registerComponent('SmartReactApp', () => SmartReactApp);

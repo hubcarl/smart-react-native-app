@@ -36,8 +36,8 @@ public class DebugReactActivity extends Activity implements DefaultHardwareBackB
 
         mReactInstanceManager = ReactInstanceManager.builder()
                 .setApplication(getApplication())
-                .setBundleAssetName("index.android.bundle")
-                .setJSMainModuleName("index.android")
+                .setBundleAssetName("debug.android.bundle")
+                .setJSMainModuleName("debug.android")
                 .setCurrentActivity(this)
                 .setUseOldBridge(false)
                 .addPackage(new MainReactPackage())
