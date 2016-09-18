@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <style>
+        .panel {
+            text-align: center;
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            border: 1px solid #cecece
+        }
+    </style>
+    <script>
+        function getTestData() {
+            var arr = [];
+            for (var i = 0; i < 10; i++) {
+                arr.push({
+                    "id": 000001 + i + (+new Date()),
+                    "title": "React Native接口性能测试" + i + (+new Date()),
+                    "summary": "炫斗不停，精彩不断，不要怂就是干的全武将萌化翻转扮演的新式三国策略养成手游《女神三国》邀您..." + i + (+new Date()),
+                    "category": "React Native" + i,
+                    "createTime": "2016-09-09 17:48:0" + i,
+                    "publicTime": "2016-09-10 17:48:00" + i,
+                });
+            }
+
+            return arr;
+        }
+
+        var key = +new Date();
+        var start;
+        function setCache() {
+
+            key = +new Date();
+
+            HybridApp.setCache(key, JSON.stringify(getTestData()));
+        }
+
+
+        function setPromptCache() {
+            var arr = [];
+            for (var i = 0; i < 10; i++) {
+                arr.push({
+                    "id": 000001 + i + (+new Date()),
+                    "title": "React Native接口性能测试" + i + (+new Date()),
+                    "summary": "炫斗不停，精彩不断，不要怂就是干的全武将萌化翻转扮演的新式三国策略养成手游《女神三国》邀您..." + i + (+new Date()),
+                    "category": "React Native" + i,
+                    "createTime": "2016-09-09 17:48:0" + i,
+                    "publicTime": "2016-09-10 17:48:00" + i,
+                });
+            }
+            key = +new Date();
+
+            start = +new Date();
+            var str = JSON.stringify({ key: key, value: getTestData() });
+            var result = window.prompt(str);
+            console.log('>>>cost[setPromptCache]:'+ (+new Date() -start) + ' result:' + result);
+        }
+
+        function getCache() {
+            var start = +new Date();
+            var ret = HybridApp.getCache(key);
+            var end = +new Date();
+            var str = '>>>cost[getCache]:' + (end - start) + '  result:' + ret;
+            console.log(str);
+            alert(str);
+        }
+    </script>
+</head>
+<body style="background-color: white;margin-bottom: 100px">
+<div class="panel" onclick="setCache()">setCache interface test</div>
+<p></p>
+
+<div class="panel" onclick="getCache()">getCache调用</div>
+<p></p>
+
+<div class="panel" onclick="setPromptCache()">setCache prompt test</div>
+<p></p>
+
+</body>
+</html>

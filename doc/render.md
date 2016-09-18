@@ -327,3 +327,9 @@ MX3 5.0系统
 
 1473583164390-1473583161912=2478
 
+
+##### WebView addJavascriptInterface 测试
+
+
+
+

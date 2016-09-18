@@ -55,8 +55,20 @@ class SmartReactApp extends Component {
      }
 
     _setCache(){
+        var arr=[];
+        for(var i=0;i<10;i++){
+          arr.push({
+            "id": 1 + i + (+ new Date()),
+            "title": "React Native接口性能测试"+i+ (+ new Date()),
+            "summary": "炫斗不停，精彩不断，不要怂就是干的全武将萌化翻转扮演的新式三国策略养成手游《女神三国》邀您..." +i + (+ new Date()),
+            "category": "React Native"+i,
+            "createTime": "2016-09-09 17:48:0"+i,
+            "publicTime": "2016-09-10 17:48:00"+i,
+          });
+        }
+        const str = JSON.stringify(arr);
         const start = +new Date();
-        NativeModules.IntentModule.setCache('RN001','我是来自React Native缓存消息',(msg)=>{
+        NativeModules.IntentModule.setCache('RN001',str,(msg)=>{
             console.log('>>>>cost[setCache]:', +new Date()-start);
             NativeModules.ToastAndroid.show(msg, 3000);
           },(errorMsg)=>{
@@ -68,7 +80,7 @@ class SmartReactApp extends Component {
     _getCache(){
            const start = +new Date();
            NativeModules.IntentModule.getCache('RN001',(value)=>{
-                console.log('>>>>cost[getCache]:', +new Date()-start);
+                console.log('>>>>cost[getCache]:'+(+new Date()-start) + ' value:'+value);
                 NativeModules.ToastAndroid.show(value, 3000)
            });
     }

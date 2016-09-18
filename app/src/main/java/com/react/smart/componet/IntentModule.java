@@ -13,6 +13,7 @@ import com.facebook.react.bridge.ReactMethod;
 import com.react.smart.test.ThirdReactActivity;
 import com.react.smart.test.SecondNativeActivity;
 import com.react.smart.test.SecondReactActivity;
+import com.react.smart.test.WebViewActivity;
 
 
 /**
@@ -60,7 +61,7 @@ public class IntentModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void openSecondActivity() {
         Activity currentActivity = getCurrentActivity();
-        Intent intent = new Intent(currentActivity, SecondNativeActivity.class);
+        Intent intent = new Intent(currentActivity, WebViewActivity.class);
         currentActivity.startActivity(intent);
     }
 
