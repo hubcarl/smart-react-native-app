@@ -33,7 +33,7 @@ public class UpdateReactActivity extends Activity implements DefaultHardwareBack
 
     private static final String TAG = "UpdateReactActivity";
 
-    public static final String JS_BUNDLE_REMOTE_URL = "https://raw.githubusercontent.com/hubcarl/smart-react-native-app/master/index.android.bundle";
+    public static final String JS_BUNDLE_REMOTE_URL = "https://raw.githubusercontent.com/hubcarl/smart-react-native-app/debug/app/src/main/assets/index.android.bundle";
     public static final String JS_BUNDLE_LOCAL_FILE = "debug.android.bundle";
     public static final String JS_BUNDLE_LOCAL_PATH = Environment.getExternalStorageDirectory().toString() + File.separator + JS_BUNDLE_LOCAL_FILE;
 
@@ -73,7 +73,7 @@ public class UpdateReactActivity extends Activity implements DefaultHardwareBack
 
         mReactRootView = new ReactRootView(this);
         mReactInstanceManager = builder.build();
-        mReactRootView.startReactApplication(mReactInstanceManager, "DoubanMovie", null);
+        mReactRootView.startReactApplication(mReactInstanceManager, "SmartReactApp", null);
         setContentView(mReactRootView);
     }
 
@@ -114,29 +114,29 @@ public class UpdateReactActivity extends Activity implements DefaultHardwareBack
     ;
 
     private void onJSBundleLoadedFromServer() {
-//        File file = new File(JS_BUNDLE_LOCAL_PATH);
-//        if (file == null || !file.exists()) {
-//            Log.i(TAG, "js bundle file download error, check URL or network state");
-//            return;
-//        }
-//
-//        Log.i(TAG, "js bundle file file success, reload js bundle");
-//
-//        Toast.makeText(UpdateReactActivity.this, "Downloading complete", Toast.LENGTH_SHORT).show();
-//        try {
-//            Class<?> RIManagerClazz = mReactInstanceManager.getClass();
-//            Method method = RIManagerClazz.getDeclaredMethod("recreateReactContextInBackground", JavaScriptExecutor.class, JSBundleLoader.class);
-//            method.setAccessible(true);
-//            method.invoke(mReactInstanceManager, new JSCJavaScriptExecutor(), JSBundleLoader.createFileLoader(getApplicationContext(), JS_BUNDLE_LOCAL_PATH));
-//        } catch (NoSuchMethodException e) {
-//            e.printStackTrace();
-//        } catch (IllegalAccessException e) {
-//            e.printStackTrace();
-//        } catch (InvocationTargetException e) {
-//            e.printStackTrace();
-//        } catch (IllegalArgumentException e) {
-//            e.printStackTrace();
-//        }
+        File file = new File(JS_BUNDLE_LOCAL_PATH);
+        if (file == null || !file.exists()) {
+            Log.i(TAG, "js bundle file download error, check URL or network state");
+            return;
+        }
+
+        Log.i(TAG, "js bundle file file success, reload js bundle");
+
+        Toast.makeText(UpdateReactActivity.this, "Downloading complete", Toast.LENGTH_SHORT).show();
+        try {
+            Class<?> RIManagerClazz = mReactInstanceManager.getClass();
+            Method method = RIManagerClazz.getDeclaredMethod("recreateReactContextInBackground", JavaScriptExecutor.class, JSBundleLoader.class);
+            method.setAccessible(true);
+            method.invoke(mReactInstanceManager, new JSCJavaScriptExecutor.Factory(), JSBundleLoader.createFileLoader(getApplicationContext(), JS_BUNDLE_LOCAL_PATH));
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
