@@ -9,7 +9,6 @@ import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Handler;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.widget.Toast;
@@ -18,13 +17,10 @@ import com.facebook.react.JSCConfig;
 import com.facebook.react.LifecycleState;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactRootView;
-import com.facebook.react.bridge.JSBundleLoader;
-import com.facebook.react.bridge.JSCJavaScriptExecutor;
-import com.facebook.react.bridge.JavaScriptExecutor;
-import com.facebook.react.bridge.WritableNativeMap;
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 import com.facebook.react.shell.MainReactPackage;
 import com.react.smart.componet.Package;
+import com.react.smart.utils.FileAssetUtils;
 
 import java.io.File;
 import java.lang.reflect.Field;
@@ -44,7 +40,8 @@ public class UpdateReactActivity extends Activity implements DefaultHardwareBack
 
     public static final String JS_BUNDLE_REMOTE_URL = "https://raw.githubusercontent.com/hubcarl/smart-react-native-app/debug/app/src/main/assets/index.android.bundle";
     public static final String JS_BUNDLE_LOCAL_FILE = "debug.android.bundle";
-    public static final String JS_BUNDLE_LOCAL_PATH = Environment.getExternalStorageDirectory().toString() + File.separator + JS_BUNDLE_LOCAL_FILE;
+    public static final String JS_BUNDLE_REACT_UPDATE_PATH = Environment.getExternalStorageDirectory().toString() + File.separator + "react_native_update";
+    public static final String JS_BUNDLE_LOCAL_PATH = JS_BUNDLE_REACT_UPDATE_PATH + File.separator + JS_BUNDLE_LOCAL_FILE;
 
     private ReactInstanceManager mReactInstanceManager;
     private ReactRootView mReactRootView;
@@ -54,15 +51,18 @@ public class UpdateReactActivity extends Activity implements DefaultHardwareBack
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        iniReactRootView(false);
+        iniReactRootView(true);
         initDownloadManager();
-        updateJSBundle(false);
+        updateJSBundle(true);
     }
 
+    // 如果bundle在sd卡【 比如bundle在file://sdcard/myapp_cache/index.android.bundle 那么图片目录在file://sdcard/myapp_cache/drawable-mdpi】
+    // 如果你的bundle在assets里，图片资源要放到res文件夹里,例如res/drawable-mdpi
+    // http://bbs.reactnative.cn/user/cnsnake11
     private void iniReactRootView(boolean isRelease) {
         ReactInstanceManager.Builder builder = ReactInstanceManager.builder()
                 .setApplication(getApplication())
-                .setJSMainModuleName("debug.android")
+                .setJSMainModuleName(JS_BUNDLE_LOCAL_FILE)
                 .addPackage(new MainReactPackage())
                 .addPackage(new Package())
                 .setInitialLifecycleState(LifecycleState.RESUMED);
@@ -89,6 +89,20 @@ public class UpdateReactActivity extends Activity implements DefaultHardwareBack
             Log.i(TAG, "new bundle exists !");
             return;
         }
+
+
+        File rootDir = new File(JS_BUNDLE_REACT_UPDATE_PATH);
+        if (rootDir != null && !rootDir.exists()) {
+            rootDir.mkdir();
+        }
+
+        File res = new File(JS_BUNDLE_REACT_UPDATE_PATH + File.separator + "drawable-mdpi");
+        if (res != null && !res.exists()) {
+            res.mkdir();
+        }
+
+        FileAssetUtils.copyAssets(this, "drawable-mdpi", JS_BUNDLE_REACT_UPDATE_PATH);
+
 
         DownloadManager.Request request = new DownloadManager.Request(Uri.parse(JS_BUNDLE_REMOTE_URL));
         request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI);
@@ -124,7 +138,7 @@ public class UpdateReactActivity extends Activity implements DefaultHardwareBack
 
         Log.i(TAG, "js bundle file file success, reload js bundle");
 
-        Toast.makeText(UpdateReactActivity.this, "donwload bundle complete", Toast.LENGTH_SHORT).show();
+        Toast.makeText(UpdateReactActivity.this, "download bundle complete", Toast.LENGTH_SHORT).show();
         try {
 
             Class<?> RIManagerClazz = mReactInstanceManager.getClass();
