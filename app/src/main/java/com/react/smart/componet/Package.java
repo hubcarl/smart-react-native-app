@@ -12,6 +12,7 @@ import java.util.List;
 
 /**
  * Created by sky on 16/7/15.
+ * https://github.com/hubcarl
  */
 public class Package implements ReactPackage {
 

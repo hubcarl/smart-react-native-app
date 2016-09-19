@@ -14,6 +14,10 @@ import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 import com.facebook.react.shell.MainReactPackage;
 import com.react.smart.componet.Package;
 
+/**
+ * Created by sky on 16/7/15.
+ * https://github.com/hubcarl
+ */
 public class HomeReactActivity extends Activity implements DefaultHardwareBackBtnHandler {
 
     private ReactInstanceManager mReactInstanceManager;

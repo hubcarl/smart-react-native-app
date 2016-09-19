@@ -20,6 +20,7 @@ import okhttp3.OkHttpClient;
 
 /**
  * Created by sky on 16/7/15.
+ * https://github.com/hubcarl
  */
 public class CustomApplication extends Application {
 

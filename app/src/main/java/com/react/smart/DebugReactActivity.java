@@ -13,6 +13,10 @@ import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 import com.facebook.react.shell.MainReactPackage;
 import com.react.smart.componet.Package;
 
+/**
+ * Created by sky on 16/7/15.
+ * https://github.com/hubcarl
+ */
 public class DebugReactActivity extends Activity implements DefaultHardwareBackBtnHandler {
 
     private ReactInstanceManager mReactInstanceManager;
@@ -36,8 +40,8 @@ public class DebugReactActivity extends Activity implements DefaultHardwareBackB
 
         mReactInstanceManager = ReactInstanceManager.builder()
                 .setApplication(getApplication())
-                .setBundleAssetName("debug.android.bundle")
-                .setJSMainModuleName("debug.android")
+                .setBundleAssetName("index.android.bundle")
+                .setJSMainModuleName("index.android")
                 .setCurrentActivity(this)
                 .setUseOldBridge(false)
                 .addPackage(new MainReactPackage())

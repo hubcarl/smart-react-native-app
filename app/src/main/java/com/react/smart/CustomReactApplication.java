@@ -14,6 +14,7 @@ import java.util.List;
 
 /**
  * Created by sky on 16/7/15.
+ * https://github.com/hubcarl
  */
 public class CustomReactApplication extends Application implements ReactApplication {
     private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {

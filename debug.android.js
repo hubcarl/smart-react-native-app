@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
         color: '#333333',
         marginTop: 15,
         marginBottom: 5,
-        fontSize: 14,
+        fontSize: 14
     },
 });
 

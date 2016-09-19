@@ -18,6 +18,7 @@ import com.react.smart.test.WebViewActivity;
 
 /**
  * Created by sky on 16/7/15.
+ * https://github.com/hubcarl
  */
 public class IntentModule extends ReactContextBaseJavaModule {
 

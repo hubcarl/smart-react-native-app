@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.widget.Toast;
 
+import com.facebook.react.JSCConfig;
 import com.facebook.react.LifecycleState;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactRootView;
@@ -26,11 +27,16 @@ import com.facebook.react.shell.MainReactPackage;
 import com.react.smart.componet.Package;
 
 import java.io.File;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-
+/**
+ * Created by sky on 16/7/15.
+ * https://github.com/hubcarl
+ */
 /**
  * Created by sky on 16/9/4.
+ *
  */
 public class UpdateReactActivity extends Activity implements DefaultHardwareBackBtnHandler {
 
@@ -118,15 +124,21 @@ public class UpdateReactActivity extends Activity implements DefaultHardwareBack
 
         Log.i(TAG, "js bundle file file success, reload js bundle");
 
-        Toast.makeText(UpdateReactActivity.this, "Downloading complete", Toast.LENGTH_SHORT).show();
+        Toast.makeText(UpdateReactActivity.this, "donwload bundle complete", Toast.LENGTH_SHORT).show();
         try {
+
             Class<?> RIManagerClazz = mReactInstanceManager.getClass();
+
+            Field f = RIManagerClazz.getDeclaredField("mJSCConfig");
+            f.setAccessible(true);
+            JSCConfig jscConfig = (JSCConfig)f.get(mReactInstanceManager);
+
             Method method = RIManagerClazz.getDeclaredMethod("recreateReactContextInBackground",
                     com.facebook.react.cxxbridge.JavaScriptExecutor.Factory.class,
                     com.facebook.react.cxxbridge.JSBundleLoader.class);
             method.setAccessible(true);
             method.invoke(mReactInstanceManager,
-                    new com.facebook.react.cxxbridge.JSCJavaScriptExecutor.Factory(new WritableNativeMap()),
+                    new com.facebook.react.cxxbridge.JSCJavaScriptExecutor.Factory(jscConfig.getConfigMap()),
                     com.facebook.react.cxxbridge.JSBundleLoader.createFileLoader(getApplicationContext(), JS_BUNDLE_LOCAL_PATH));
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
@@ -135,6 +147,8 @@ public class UpdateReactActivity extends Activity implements DefaultHardwareBack
         } catch (InvocationTargetException e) {
             e.printStackTrace();
         } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        } catch (NoSuchFieldException e){
             e.printStackTrace();
         }
     }
