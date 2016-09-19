@@ -9,6 +9,7 @@ import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.widget.Toast;
@@ -19,8 +20,10 @@ import com.facebook.react.ReactRootView;
 import com.facebook.react.bridge.JSBundleLoader;
 import com.facebook.react.bridge.JSCJavaScriptExecutor;
 import com.facebook.react.bridge.JavaScriptExecutor;
+import com.facebook.react.bridge.WritableNativeMap;
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 import com.facebook.react.shell.MainReactPackage;
+import com.react.smart.componet.Package;
 
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
@@ -45,25 +48,21 @@ public class UpdateReactActivity extends Activity implements DefaultHardwareBack
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        iniReactRootView();
+        iniReactRootView(false);
         initDownloadManager();
-        updateBundle();
+        updateJSBundle(false);
     }
 
-    private void initDownloadManager() {
-        mDownloadCompleteReceiver = new CompleteReceiver();
-        registerReceiver(mDownloadCompleteReceiver, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
-    }
-
-    private void iniReactRootView() {
+    private void iniReactRootView(boolean isRelease) {
         ReactInstanceManager.Builder builder = ReactInstanceManager.builder()
                 .setApplication(getApplication())
                 .setJSMainModuleName("debug.android")
                 .addPackage(new MainReactPackage())
+                .addPackage(new Package())
                 .setInitialLifecycleState(LifecycleState.RESUMED);
 
         File file = new File(JS_BUNDLE_LOCAL_PATH);
-        if (file != null && file.exists()) {
+        if (isRelease && file != null && file.exists()) {
             builder.setJSBundleFile(JS_BUNDLE_LOCAL_PATH);
             Log.i(TAG, "load bundle from local cache");
         } else {
@@ -77,16 +76,10 @@ public class UpdateReactActivity extends Activity implements DefaultHardwareBack
         setContentView(mReactRootView);
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        unregisterReceiver(mDownloadCompleteReceiver);
-    }
-
-    private void updateBundle() {
+    private void updateJSBundle(boolean isRelease) {
 
         File file = new File(JS_BUNDLE_LOCAL_PATH);
-        if (file != null && file.exists()) {
+        if (isRelease && file != null && file.exists()) {
             Log.i(TAG, "new bundle exists !");
             return;
         }
@@ -100,6 +93,11 @@ public class UpdateReactActivity extends Activity implements DefaultHardwareBack
         Log.i(TAG, "start download remote js bundle file");
     }
 
+    private void initDownloadManager() {
+        mDownloadCompleteReceiver = new CompleteReceiver();
+        registerReceiver(mDownloadCompleteReceiver, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
+    }
+
     private class CompleteReceiver extends BroadcastReceiver {
 
         @Override
@@ -110,8 +108,6 @@ public class UpdateReactActivity extends Activity implements DefaultHardwareBack
             }
         }
     }
-
-    ;
 
     private void onJSBundleLoadedFromServer() {
         File file = new File(JS_BUNDLE_LOCAL_PATH);
@@ -125,9 +121,13 @@ public class UpdateReactActivity extends Activity implements DefaultHardwareBack
         Toast.makeText(UpdateReactActivity.this, "Downloading complete", Toast.LENGTH_SHORT).show();
         try {
             Class<?> RIManagerClazz = mReactInstanceManager.getClass();
-            Method method = RIManagerClazz.getDeclaredMethod("recreateReactContextInBackground", JavaScriptExecutor.class, JSBundleLoader.class);
+            Method method = RIManagerClazz.getDeclaredMethod("recreateReactContextInBackground",
+                    com.facebook.react.cxxbridge.JavaScriptExecutor.Factory.class,
+                    com.facebook.react.cxxbridge.JSBundleLoader.class);
             method.setAccessible(true);
-            method.invoke(mReactInstanceManager, new JSCJavaScriptExecutor.Factory(), JSBundleLoader.createFileLoader(getApplicationContext(), JS_BUNDLE_LOCAL_PATH));
+            method.invoke(mReactInstanceManager,
+                    new com.facebook.react.cxxbridge.JSCJavaScriptExecutor.Factory(new WritableNativeMap()),
+                    com.facebook.react.cxxbridge.JSBundleLoader.createFileLoader(getApplicationContext(), JS_BUNDLE_LOCAL_PATH));
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
@@ -137,6 +137,13 @@ public class UpdateReactActivity extends Activity implements DefaultHardwareBack
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
         }
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(mDownloadCompleteReceiver);
     }
 
     @Override
