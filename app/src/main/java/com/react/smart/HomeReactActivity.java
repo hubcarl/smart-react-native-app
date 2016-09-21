@@ -12,7 +12,7 @@ import com.facebook.react.ReactRootView;
 import com.facebook.react.bridge.ReactMarker;
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 import com.facebook.react.shell.MainReactPackage;
-import com.react.smart.componet.Package;
+import com.react.smart.componet.IntentPackage;
 
 /**
  * Created by sky on 16/7/15.
@@ -43,7 +43,7 @@ public class HomeReactActivity extends Activity implements DefaultHardwareBackBt
                 .setJSMainModuleName("index.android")
                 .setCurrentActivity(this)
                 .addPackage(new MainReactPackage())
-                .addPackage(new Package())
+                .addPackage(new IntentPackage())
                 .setUseDeveloperSupport(BuildConfig.DEBUG)
                 .setInitialLifecycleState(LifecycleState.RESUMED)
                 .build();

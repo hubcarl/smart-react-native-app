@@ -1,3 +1,4 @@
+
 ### JSBundle打包到assets目录
 
 1、生成签名密钥
@@ -22,6 +23,28 @@ gradlew assembleRelease
 
 http://www.jianshu.com/p/61e27d9b02f2 打包
 
+
+4. adb 截屏
+
+adb shell screenrecord /sdcard/react-native-update.mp4
+
+http://note.rpsh.net/posts/2015/04/21/mac-osx-ffmpeg-mp4-gif-convert/
+
+ffmpeg -i  /Users/sky/dev/react/native/SmartReactNativeApp/images/react-native-update.mp4 /Users/sky/dev/react/native/SmartReactNativeApp/images/react-native-update.gif
+
+从视频中第9秒开始，截取时长为8秒的片段转化为 gif
+
+ffmpeg -t 8  -ss 00:00:09 -i /Users/sky/dev/react/native/SmartReactNativeApp/images/react-native-update.mp4 /Users/sky/dev/react/native/SmartReactNativeApp/images/react-native-update.gif
+
+
+
+**adb pull  就是从真机上拷贝文件到您的PC**
+
+adb pull /sdcard/react-native-update.mp4   /Users/sky/dev/react/native/SmartReactNativeApp/images
+
+**adb push  就是从PC上复制一份文件到您的真机上**
+
+adb push /Users/sky/dev/react/native/SmartReactNativeApp/images/home.png  /sdcard
 
 ### React Native与Android原生应用集成(Android Studio, React Native 0.29.1, ES6语法)
 

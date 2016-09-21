@@ -120,11 +120,6 @@ class SmartReactApp extends Component {
                         点击我，打开Android Native Activity页面
                     </Text>
                 </TouchableOpacity>
-                <TouchableOpacity activeOpacity={0.8} onPress={this._secondReactActivity}>
-                    <Text style={styles.instructions}>
-                        点击我，打开Android Second React Activity页面
-                    </Text>
-                </TouchableOpacity>
                 <Text style={styles.instructions}>
                     Shake or press menu button for dev menu
                 </Text>
@@ -137,10 +132,10 @@ class SmartReactApp extends Component {
       NativeModules.ToastAndroid.show('Toast 是原生支持的!', 3000);
       console.log('>>>react#componentDidMount#ToastAndroid.show', +new Date());
 
-      NativeModules.IntentModule.getDataFromIntent(
-          successMsg => this.setState({text: successMsg, navigateCount: 1}),
-          errorMsg => this.setState({text: errorMsg, navigateCount: 1})
-      );
+      //NativeModules.IntentModule.getDataFromIntent(
+      //    successMsg => this.setState({text: successMsg, navigateCount: 1}),
+      //    errorMsg => this.setState({text: errorMsg, navigateCount: 1})
+      //);
     }
 
     componentWillUnmount() {

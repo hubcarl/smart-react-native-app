@@ -11,7 +11,7 @@ import com.facebook.react.ReactRootView;
 import com.facebook.react.bridge.ReactMarker;
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 import com.facebook.react.shell.MainReactPackage;
-import com.react.smart.componet.Package;
+import com.react.smart.componet.IntentPackage;
 
 /**
  * Created by sky on 16/7/15.
@@ -26,15 +26,7 @@ public class DebugReactActivity extends Activity implements DefaultHardwareBackB
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Log.i("ReactNativeJS",">>>react performance react start:"+System.currentTimeMillis());
-
-        // 开启ReactNative日志答应
-        ReactMarker.setMarkerListener(new ReactMarker.MarkerListener(){
-            @Override
-            public void logMarker(String name) {
-                Log.i("ReactNativeJS", name.toLowerCase() + " cost:" + System.currentTimeMillis());
-            }
-        });
+        Log.i("ReactNativeJS",">>>react react start:"+System.currentTimeMillis());
 
         mReactRootView = new ReactRootView(this);
 
@@ -45,7 +37,7 @@ public class DebugReactActivity extends Activity implements DefaultHardwareBackB
                 .setCurrentActivity(this)
                 .setUseOldBridge(false)
                 .addPackage(new MainReactPackage())
-                .addPackage(new Package())
+                .addPackage(new IntentPackage())
                 .setUseDeveloperSupport(false)
                 .setInitialLifecycleState(LifecycleState.RESUMED)
                 .build();
@@ -54,7 +46,7 @@ public class DebugReactActivity extends Activity implements DefaultHardwareBackB
 
         setContentView(mReactRootView);
 
-        Log.i("ReactNativeJS", ">>>react performance react end:"+System.currentTimeMillis());
+        Log.i("ReactNativeJS", ">>>react react end:"+System.currentTimeMillis());
     }
 
     @Override

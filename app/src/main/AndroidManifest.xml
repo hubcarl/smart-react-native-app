@@ -3,6 +3,8 @@
     package="com.react.smart">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
 
     <application
         android:name=".CustomApplication"
@@ -12,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".UpdateReactActivity"
+            android:name=".DebugReactActivity"
             android:screenOrientation="portrait"
             >
             <intent-filter>

@@ -9,6 +9,7 @@ import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.widget.Toast;
@@ -19,7 +20,7 @@ import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactRootView;
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 import com.facebook.react.shell.MainReactPackage;
-import com.react.smart.componet.Package;
+import com.react.smart.componet.IntentPackage;
 import com.react.smart.utils.FileAssetUtils;
 
 import java.io.File;
@@ -56,15 +57,16 @@ public class UpdateReactActivity extends Activity implements DefaultHardwareBack
         updateJSBundle(true);
     }
 
-    // 如果bundle在sd卡【 比如bundle在file://sdcard/myapp_cache/index.android.bundle 那么图片目录在file://sdcard/myapp_cache/drawable-mdpi】
+    // 如果bundle在sd卡【 比如bundle在file://sdcard/react_native_update/index.android.bundle 那么图片目录在file://sdcard/react_native_update/drawable-mdpi】
     // 如果你的bundle在assets里，图片资源要放到res文件夹里,例如res/drawable-mdpi
-    // http://bbs.reactnative.cn/user/cnsnake11
     private void iniReactRootView(boolean isRelease) {
+        Log.i("ReactNativeJS",">>>react react start:"+System.currentTimeMillis());
         ReactInstanceManager.Builder builder = ReactInstanceManager.builder()
+                .setCurrentActivity(this)
                 .setApplication(getApplication())
                 .setJSMainModuleName(JS_BUNDLE_LOCAL_FILE)
                 .addPackage(new MainReactPackage())
-                .addPackage(new Package())
+                .addPackage(new IntentPackage())
                 .setInitialLifecycleState(LifecycleState.RESUMED);
 
         File file = new File(JS_BUNDLE_LOCAL_PATH);
@@ -80,13 +82,21 @@ public class UpdateReactActivity extends Activity implements DefaultHardwareBack
         mReactInstanceManager = builder.build();
         mReactRootView.startReactApplication(mReactInstanceManager, "SmartReactApp", null);
         setContentView(mReactRootView);
+        Log.i("ReactNativeJS", ">>>react react end:"+System.currentTimeMillis());
     }
 
     private void updateJSBundle(boolean isRelease) {
 
-        File file = new File(JS_BUNDLE_LOCAL_PATH);
+        final File file = new File(JS_BUNDLE_LOCAL_PATH);
         if (isRelease && file != null && file.exists()) {
             Log.i(TAG, "new bundle exists !");
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    file.delete();
+                    Log.i(TAG, "js bundle file delete success");
+                }
+            }, 5000);
             return;
         }
 
@@ -130,7 +140,7 @@ public class UpdateReactActivity extends Activity implements DefaultHardwareBack
     }
 
     private void onJSBundleLoadedFromServer() {
-        File file = new File(JS_BUNDLE_LOCAL_PATH);
+        final File file = new File(JS_BUNDLE_LOCAL_PATH);
         if (file == null || !file.exists()) {
             Log.i(TAG, "js bundle file download error, check URL or network state");
             return;
