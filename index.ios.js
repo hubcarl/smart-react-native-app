@@ -50,4 +50,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('smart_react_app', () => smart_react_app);
+AppRegistry.registerComponent('smart-react-app', () => smart_react_app);
