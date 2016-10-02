@@ -50,4 +50,5 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('smart-react-app', () => smart_react_app);
+import Main from './app/pages/Main';
+AppRegistry.registerComponent('DrawReactApp', () => Main);
