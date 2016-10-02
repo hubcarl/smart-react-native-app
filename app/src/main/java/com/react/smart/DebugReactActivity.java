@@ -38,7 +38,7 @@ public class DebugReactActivity extends Activity implements DefaultHardwareBackB
                 .setUseOldBridge(false)
                 .addPackage(new MainReactPackage())
                 .addPackage(new IntentPackage())
-                .setUseDeveloperSupport(false)
+                .setUseDeveloperSupport(true)
                 .setInitialLifecycleState(LifecycleState.RESUMED)
                 .build();
 
