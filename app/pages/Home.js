@@ -24,7 +24,6 @@ import {
   View
 } from 'react-native';
 
-import DeviceInfo from 'react-native-device-info';
 import ReadingToolbar from '../components/ReadingToolbar';
 import Button from '../components/Button';
 
@@ -33,7 +32,7 @@ const READING_REPO = 'https://github.com/attentiveness/reading';
 
 const aboutLogo = require('../images/about_logo.png');
 
-class List extends React.Component {
+class Home extends React.Component {
   onPress(url) {
     Linking.openURL(url);
   }
@@ -53,7 +52,7 @@ class List extends React.Component {
               source={aboutLogo}
             />
             <Text style={styles.version}>
-              {`v${DeviceInfo.getVersion()}`}
+
             </Text>
             <Text style={styles.title}>
               SmartApp
@@ -147,4 +146,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default List;
+export default Home;

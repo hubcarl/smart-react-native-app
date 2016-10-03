@@ -174,3 +174,7 @@ https://www.processon.com
 17. unrecognized font family ionicons 错误
 
 http://www.cnblogs.com/moxiaoyan33/p/5482024.html
+
+18. ios图片不显示
+
+https://segmentfault.com/q/1010000005882935?_ea=938052

@@ -50,5 +50,5 @@ const styles = StyleSheet.create({
   },
 });
 
-import Main from './app/pages/Main';
+import Main from './app/App';
 AppRegistry.registerComponent('DrawReactApp', () => Main);

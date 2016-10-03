@@ -24,7 +24,6 @@ import {
   View
 } from 'react-native';
 
-import DeviceInfo from 'react-native-device-info';
 import ReadingToolbar from '../components/ReadingToolbar';
 import Button from '../components/Button';
 
@@ -53,7 +52,7 @@ class About extends React.Component {
               source={aboutLogo}
             />
             <Text style={styles.version}>
-              {`v${DeviceInfo.getVersion()}`}
+
             </Text>
             <Text style={styles.title}>
               SmartApp

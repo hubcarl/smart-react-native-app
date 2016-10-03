@@ -29,9 +29,10 @@ import {
   Modal
 } from 'react-native';
 
-import * as WeChat from 'react-native-wechat';
+//import WeChat from 'react-native-wechat';
 import ReadingToolbar from '../components/ReadingToolbar';
 import LoadingView from '../components/LoadingView';
+import { toastShort } from '../utils/ToastUtil';
 
 const shareIconWechat = require('../images/share_icon_wechat.png');
 const shareIconMoments = require('../images/share_icon_moments.png');
@@ -41,7 +42,7 @@ const toolbarActions = [
 ];
 let canGoBack = false;
 
-class WebViewPage extends React.Component {
+class Detail extends React.Component {
   static onNavigationStateChange(navState) {
     canGoBack = navState.canGoBack;
   }
@@ -117,17 +118,17 @@ class WebViewPage extends React.Component {
                     .then((isInstalled) => {
                       if (isInstalled) {
                         WeChat.shareToSession({
-                          title: route.article.title,
+                          title: route.item.title,
                           description: '分享自：SmartApp',
-                          thumbImage: route.article.contentImg,
+                          thumbImage: route.item.icon,
                           type: 'news',
-                          webpageUrl: route.article.url
+                          webpageUrl: route.item.url
                         })
                         .catch((error) => {
-                          //Toast.show(error.message);
+                          toastShort(error.message);
                         });
                       } else {
-                        //Toast.show('没有安装微信软件，请您安装微信之后再试');
+                        toastShort('没有安装微信软件，请您安装微信之后再试');
                       }
                     });
                 }}
@@ -149,16 +150,16 @@ class WebViewPage extends React.Component {
                     .then((isInstalled) => {
                       if (isInstalled) {
                         WeChat.shareToTimeline({
-                          title: `[@SmartApp]${route.article.title}`,
-                          thumbImage: route.article.contentImg,
+                          title: `[@SmartApp]${route.item.title}`,
+                          thumbImage: route.item.icon,
                           type: 'news',
-                          webpageUrl: route.article.url
+                          webpageUrl: route.item.url
                         })
                         .catch((error) => {
-                            //Toast.show(error.message);
+                          toastShort(error.message);
                         });
                       } else {
-                        //Toast.show('没有安装微信软件，请您安装微信之后再试');
+                        toastShort('没有安装微信软件，请您安装微信之后再试');
                       }
                     });
                 }}
@@ -187,7 +188,7 @@ class WebViewPage extends React.Component {
         <ReadingToolbar
           actions={toolbarActions}
           onActionSelected={this.onActionSelected}
-          title={route.article.userName}
+          title={route.item.userName}
           navigator={navigator}
         />
         <Modal
@@ -206,7 +207,7 @@ class WebViewPage extends React.Component {
           ref={(ref) => { this.webview = ref; }}
           automaticallyAdjustContentInsets={false}
           style={styles.base}
-          source={{ uri: route.article.url }}
+          source={{ uri: route.item.url }}
           javaScriptEnabled
           domStorageEnabled
           startInLoadingState
@@ -269,4 +270,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default WebViewPage;
+export default Detail;

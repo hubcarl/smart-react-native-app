@@ -38,14 +38,17 @@ import DrawerLayout from 'react-native-drawer-layout';
 import ScrollableTabView, { DefaultTabBar } from 'react-native-scrollable-tab-view';
 import LoadingView from '../components/LoadingView';
 import ReadingToolbar from '../components/ReadingToolbar';
-import List from './List';
+import Home from './Home';
 import About from './About';
 import Feedback from './Feedback';
+import Detail from './Detail';
 
 const homeImg = require('../images/home.png');
 const categoryImg = require('../images/category.png');
 const inspectionImg = require('../images/inspection.png');
 const infoImg = require('../images/info.png');
+
+const DataList= require('../data/list');
 
 class Main extends React.Component {
   constructor(props) {
@@ -54,6 +57,8 @@ class Main extends React.Component {
       dataSource: new ListView.DataSource({
         rowHasChanged: (row1, row2) => row1 !== row2,
       }),
+      refreshing: false,
+      categorys: DataList.categorys,
       list: {}
     };
     this.renderItem = this.renderItem.bind(this);
@@ -63,6 +68,7 @@ class Main extends React.Component {
   }
 
   componentDidMount() {
+    //this.setState({categorys: DataList.categorys});
     InteractionManager.runAfterInteractions(() => {
 
     });
@@ -80,12 +86,20 @@ class Main extends React.Component {
 
   }
 
-  onRefresh(id) {
-
+  onRefresh(categoryId) {
+    this.setState({refreshing: true});
+    setTimeout(()=>{
+      this.setState({refreshing: false});
+    },2000);
   }
 
   onPress(item) {
-
+    const { navigator } = this.props;
+    navigator.push({
+      component: Detail,
+      name: 'Detail',
+      item
+    });
   }
 
   onPressDrawerItem(index) {
@@ -94,8 +108,8 @@ class Main extends React.Component {
     switch (index) {
       case 1:
         navigator.push({
-          component: List,
-          name: 'List'
+          component: Home,
+          name: 'Home'
         });
         break;
       case 2:
@@ -119,7 +133,7 @@ class Main extends React.Component {
     this.drawer.openDrawer();
   }
 
-  onEndReached(typeId) {
+  onEndReached(categoryId) {
 
   }
 
@@ -133,7 +147,7 @@ class Main extends React.Component {
         <View style={styles.containerItem}>
           <Image
             style={styles.itemImg}
-            source={{ uri: item.contentImg }}
+            source={{ uri: item.icon }}
           />
           <View style={styles.itemRightContent} >
             <Text style={styles.title}>
@@ -150,9 +164,10 @@ class Main extends React.Component {
     );
   }
 
-  renderContent(dataSource, typeId) {
-    const isEmpty = true;
-    if (isEmpty) {
+  renderContent(categoryId) {
+    const list = DataList.list(categoryId);
+    const dataSource = this.state.dataSource.cloneWithRows(list);
+    if (list.length==0) {
       return (
         <ScrollView
           automaticallyAdjustContentInsets={false}
@@ -162,7 +177,8 @@ class Main extends React.Component {
           refreshControl={
             <RefreshControl
               style={styles.refreshControlBase}
-              onRefresh={() => this.onRefresh(typeId)}
+              onRefresh={() => this.onRefresh(categoryId)}
+              refreshing={this.state.refreshing}
               title="Loading..."
               colors={['#ffaa66cc', '#ff00ddff', '#ffffbb33', '#ffff4444']}
             />
@@ -182,7 +198,7 @@ class Main extends React.Component {
         dataSource={dataSource}
         renderRow={this.renderItem}
         style={styles.listView}
-        onEndReached={() => this.onEndReached(typeId)}
+        onEndReached={() => this.onEndReached(categoryId)}
         onEndReachedThreshold={10}
         onScroll={this.onScroll}
         renderFooter={this.renderFooter}
@@ -190,7 +206,8 @@ class Main extends React.Component {
         refreshControl={
           <RefreshControl
             style={styles.refreshControlBase}
-            onRefresh={() => this.onRefresh(typeId)}
+            refreshing={this.state.refreshing}
+            onRefresh={() => this.onRefresh(categoryId)}
             title="Loading..."
             colors={['#ffaa66cc', '#ff00ddff', '#ffffbb33', '#ffff4444']}
           />
@@ -263,7 +280,17 @@ class Main extends React.Component {
             tabBarActiveTextColor="#3e9ce9"
             tabBarInactiveTextColor="#aaaaaa"
           >
-          <View />
+          {this.state.categorys.map((item) => {
+            const tabView = (
+              <View
+                key={item.id}
+                tabLabel={item.name}
+                style={styles.base}
+              >
+                {this.renderContent(this.state.dataSource.cloneWithRows([],item.id))}
+              </View>);
+            return tabView;
+          }) }
           </ScrollableTabView>
         </View>
       </DrawerLayout>
