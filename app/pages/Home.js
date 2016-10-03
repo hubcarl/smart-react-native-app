@@ -27,9 +27,6 @@ import {
 import ReadingToolbar from '../components/ReadingToolbar';
 import Button from '../components/Button';
 
-const API_STORE = 'http://apistore.baidu.com/';
-const READING_REPO = 'https://github.com/attentiveness/reading';
-
 const aboutLogo = require('../images/about_logo.png');
 
 class Home extends React.Component {
@@ -60,28 +57,6 @@ class Home extends React.Component {
             <Text style={styles.subtitle}>
               让生活更精彩
             </Text>
-          </View>
-          <View style={styles.bottomContainer}>
-            <View style={styles.disclaimerContent}>
-              <Text style={[styles.disclaimer, { color: '#999999' }]}>
-                免责声明：所有内容均来自——
-              </Text>
-              <Button
-                style={[styles.disclaimer, { color: '#3e9ce9' }]}
-                text={API_STORE}
-                onPress={() => this.onPress(API_STORE)}
-              />
-            </View>
-            <View style={styles.sourceContent}>
-              <Text style={[styles.source, { color: '#aaaaaa' }]}>
-                @Github：
-              </Text>
-              <Button
-                style={[styles.source, { color: '#3e9ce9' }]}
-                text={READING_REPO}
-                onPress={() => this.onPress(READING_REPO)}
-              />
-            </View>
           </View>
         </View>
       </View>

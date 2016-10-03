@@ -30,7 +30,14 @@ android {
     }
 }
 
+project.ext.vectoricons = [
+        iconFontNames: ['Entypo.ttf', 'EvilIcons.ttf' ,'FontAwesome.ttf', 'Foundation.ttf','Ionicons.ttf','MaterialIcons.ttf','Octicons.ttf','Zocial.ttf' ] // Name of the font files you want to copy
+]
+
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
+
 dependencies {
+    compile project(':react-native-wechat')
     compile project(':react-native-device-info')
     compile project(':react-native-vector-icons')
     compile fileTree(dir: 'libs', include: ['*.jar'])

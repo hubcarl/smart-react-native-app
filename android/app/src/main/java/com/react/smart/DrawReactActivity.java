@@ -12,6 +12,7 @@ import com.facebook.react.ReactRootView;
 import com.facebook.react.bridge.ReactMarker;
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 import com.facebook.react.shell.MainReactPackage;
+import com.oblador.vectoricons.VectorIconsPackage;
 
 /**
  * Created by sky on 16/7/15.
@@ -42,7 +43,8 @@ public class DrawReactActivity extends Activity implements DefaultHardwareBackBt
                 .setJSMainModuleName("index.android")
                 .setCurrentActivity(this)
                 .addPackage(new MainReactPackage())
-                .setUseDeveloperSupport(BuildConfig.DEBUG)
+                .addPackage(new VectorIconsPackage())
+                .setUseDeveloperSupport(true)
                 .setInitialLifecycleState(LifecycleState.RESUMED)
                 .build();
 
@@ -71,7 +73,11 @@ public class DrawReactActivity extends Activity implements DefaultHardwareBackBt
 
     @Override
     public void invokeDefaultOnBackPressed() {
-      super.onBackPressed();
+        if (mReactInstanceManager != null) {
+            mReactInstanceManager.onBackPressed();
+        } else {
+            super.onBackPressed();
+        }
     }
 
     @Override
