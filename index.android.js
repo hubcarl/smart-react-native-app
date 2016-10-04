@@ -1,61 +1,56 @@
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
+ * @flow
  */
-'use strict';
 
-import React,{Component} from 'react';
-
+import React, { Component } from 'react';
 import {
-    AppRegistry,
-    Navigator,
-    StyleSheet,
-    TouchableOpacity,
-    BackAndroid,
-    Text
+  AppRegistry,
+  StyleSheet,
+  Text,
+  View
 } from 'react-native';
 
-import MainScreen from './component/home/MainScreen';
-import CustomWebView from './component/home/WebView';
+//class smart_react_app extends Component {
+//  render() {
+//    return (
+//      <View style={styles.container}>
+//        <Text style={styles.welcome}>
+//          Welcome to React Native!
+//        </Text>
+//        <Text style={styles.instructions}>
+//          To get started, edit index.android.js
+//        </Text>
+//        <Text style={styles.instructions}>
+//          Double tap R on your keyboard to reload,{'\n'}
+//          Shake or press menu button for dev menu
+//        </Text>
+//      </View>
+//    );
+//  }
+//}
+//
+//const styles = StyleSheet.create({
+//  container: {
+//    flex: 1,
+//    justifyContent: 'center',
+//    alignItems: 'center',
+//    backgroundColor: '#F5FCFF',
+//  },
+//  welcome: {
+//    fontSize: 20,
+//    textAlign: 'center',
+//    margin: 10,
+//  },
+//  instructions: {
+//    textAlign: 'center',
+//    color: '#333333',
+//    marginBottom: 5,
+//  },
+//});
+//
+//AppRegistry.registerComponent('DrawReactApp', () => smart_react_app);
 
-class ReactTabApp extends Component {
-    render() {
-        return (
-           <Navigator
-               ref = {(navigator) => this.navigator = navigator}
-               initialRoute={{name: 'main', index: 0, id:'main'}}
-               configureScene={(route, routeStack) =>Navigator.SceneConfigs.FadeAndroid}
-               renderScene={(route, navigator) => ReactTabApp._renderPage(route,navigator)}
-           />
-        )
-    }
-
-    static _renderPage(route, nav) {
-        switch (route.id) {
-            case 'main':
-                return (<MainScreen nav={nav}/>);
-                break;
-            case 'webview':
-                return (<CustomWebView url={route.url}/>);
-                break;
-        }
-    }
-
-    componentDidMount() {
-        console.log('>>>react#componentDidMount', +new Date());
-        var navigator = this.navigator;
-        BackAndroid.addEventListener('hardwareBackPress', function() {
-            if (navigator && navigator.getCurrentRoutes().length > 1) {
-              navigator.pop();
-              return true;
-            }
-            return false;
-        });
-    }
-
-    componentWillUnmount() {
-      BackAndroid.removeEventListener('hardwareBackPress');
-    }
-}
-
-AppRegistry.registerComponent('SmartReactApp', () => ReactTabApp);
+ import App from './app/App';
+ AppRegistry.registerComponent('DrawReactApp', () => App);
