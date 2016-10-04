@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 
 
-import Main from './pages/Main';
+import Main from './pages/home/MainScreen';
 
 let tempNavigator;
 let isRemoved = false;

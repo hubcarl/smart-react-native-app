@@ -10,4 +10,4 @@ import {
 } from 'react-native';
 
 import App from './app/App';
-AppRegistry.registerComponent('DrawReactApp', () => App);
+AppRegistry.registerComponent('SmartReactApp', () => App);

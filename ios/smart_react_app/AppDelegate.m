@@ -14,6 +14,13 @@
 
 @implementation AppDelegate
 
+// - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
+// sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+// {
+//   return [RCTLinkingManager application:application openURL:url
+//                             sourceApplication:sourceApplication annotation:annotation];
+// }
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   NSURL *jsCodeLocation;
@@ -21,7 +28,7 @@
   jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
 
   RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
-                                                      moduleName:@"DrawReactApp"
+                                                      moduleName:@"SmartReactApp"
                                                initialProperties:nil
                                                    launchOptions:launchOptions];
   rootView.backgroundColor = [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];
