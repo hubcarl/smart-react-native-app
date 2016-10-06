@@ -8,7 +8,7 @@ import {
     StyleSheet,
     ListView,
     Dimensions,
-    ActivityIndicatorIOS
+    ActivityIndicator
 } from 'react-native'
 
 /*list status change graph
@@ -92,7 +92,7 @@ var RefreshInfiniteListView = React.createClass({
                         refreshing...
                     </Text>
 
-                    <ActivityIndicatorIOS
+                    <ActivityIndicator
                         size='small'
                         animating={true}/>
                 </View>
@@ -123,7 +123,7 @@ var RefreshInfiniteListView = React.createClass({
             )},
             renderFooterInifiting: () => {return (
                 <View style={{height:DEFAULT_HF_HEIGHT, justifyContent:'center', alignItems:'center'}}>
-                    <ActivityIndicatorIOS
+                    <ActivityIndicator
                         size='small'
                         animating={true}/>
                     <Text style={styles.text}>
