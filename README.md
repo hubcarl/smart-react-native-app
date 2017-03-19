@@ -20,15 +20,11 @@ react-native run-ios
 
 #### Tab实现
 
-![image](https://github.com/hubcarl/smart-react-native-app/blob/master/app/images/screenshot/tab.jpg)
-
 - [固定Tab](https://github.com/hubcarl/smart-react-native-app/blob/master/app/pages/tabs/SimpleExample.js)
 
 - [可滚动Tab](https://github.com/hubcarl/smart-react-native-app/blob/master/app/pages/tabs/ScrollableTabsExample.js)
 
 #### 抽屉侧边栏
-
-![image](https://github.com/hubcarl/smart-react-native-app/blob/master/app/images/screenshot/draw.jpg)
 
 [View Code](https://github.com/hubcarl/smart-react-native-app/blob/master/app/pages/test/drawMD.android.js)
 
@@ -41,8 +37,6 @@ react-native run-ios
 [View Code](https://github.com/hubcarl/smart-react-native-app/blob/master/app/pages/common/ListViewPullRefresh.js)
 
 #### 动态更新
-
-![image](https://raw.githubusercontent.com/hubcarl/hubcarl.github.io/master/_posts/images/react/react-native-update.gif)
 
 [View Code](https://github.com/hubcarl/smart-react-native-app/blob/master/android/app/src/main/java/com/react/smart/UpdateReactActivity.java)
 
