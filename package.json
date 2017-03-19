@@ -1,10 +1,21 @@
 {
   "name": "smart_react_app",
   "version": "0.0.1",
+  "description":"React Native 下拉刷新, 分页加载, 侧边栏, Tab导航学习",
   "private": true,
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start"
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "android":"react-native run-android",
+    "ios":"react-native run-ios"
   },
+  "dependencies": [
+   "React Native",
+   "PullRefresh",
+   "Pager",
+   "Load More",
+   "Tab Navigation",
+   "Draw Tab Navigation"
+  ],
   "dependencies": {
     "react": "15.2.1",
     "react-native": "0.31.0",
@@ -19,5 +30,11 @@
     "react-native-device-info": "^0.9.5",
     "react-native-vector-icons": "^2.1.0",
     "react-native-root-toast":"^1.0.3"
-  }
+  },
+  "homepage": "https://github.com/hubcarl",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hubcarl/smart-react-native-app"
+  },
+  "license": "MIT"
 }
