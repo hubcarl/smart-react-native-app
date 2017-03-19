@@ -15,7 +15,9 @@ var {
   ActivityIndicator
 } = require('react-native');
 
-var ListViewPullRefresh= require('../common/ListViewPullRefresh');
+import ListViewPullRefresh from '../common/ListViewPullRefreshPager';
+
+//var ListViewPullRefresh= require('../common/ListViewPullRefreshPager');
 var DEFAULT_MARGIN_TOP = 0;
 var ListViewPullRefreshExample = React.createClass({
   propTypes: {
@@ -35,24 +37,21 @@ var ListViewPullRefreshExample = React.createClass({
    * @param {object} options Inform if first load
    */
   _onFetch(page = 1, callback, options) {
-    setTimeout(() => {
-      var header = 'Header '+page;
-      var rows = {};
-      var list=[];
-      for(var i=1;i<=10;i++){
-        list.push({key:(page - 1) * 10 + i, value:'row '+((page - 1) * 10 + i)});
-      }
-      rows[header] = list;
-      if (page === 5) {
-        callback(rows, {
-          allLoaded: true, // the end of the list is reached
-        });
-      } else if(page<5){
-        callback(rows);
-      }
-    }, 1000);
+    var header = 'Header '+page;
+    var rows = {};
+    var list=[];
+    for(var i=1;i<=15;i++){
+      list.push({key:(page - 1) * 15 + i, value:'row '+((page - 1) * 15 + i)});
+    }
+    rows[header] = list;
+    if (page === 5) {
+      callback(rows, {
+        allLoaded: true, // the end of the list is reached
+      });
+    } else if(page<5){
+      callback(rows);
+    }
   },
-
 
   /**
    * When a row is touched
@@ -158,16 +157,25 @@ var ListViewPullRefreshExample = React.createClass({
    * @param {function} paginateCallback The function to call to load more rows
    */
   _renderPaginationWaitingView(paginateCallback) {
+    // return (
+    //   <TouchableHighlight
+    //     underlayColor='#c8c7cc'
+    //     onPress={paginateCallback}
+    //     style={customStyles.paginationView}
+    //   >
+    //     <Text style={[customStyles.actionsLabel, {fontSize: 13}]}>
+    //       Load more
+    //     </Text>
+    //   </TouchableHighlight>
+    // );
     return (
-      <TouchableHighlight
-        underlayColor='#c8c7cc'
-        onPress={paginateCallback}
-        style={customStyles.paginationView}
-      >
-        <Text style={[customStyles.actionsLabel, {fontSize: 13}]}>
-          Load more
-        </Text>
-      </TouchableHighlight>
+      <View style={customStyles.refreshableView}>
+      <ActivityIndicator
+        animating={true}
+        size="small"
+        {...this.props}
+        />
+      </View>
     );
   },
 
@@ -239,7 +247,7 @@ var ListViewPullRefreshExample = React.createClass({
           rowView={this._renderRowView}
           onFetch={this._onFetch}
           initialListSize={8} // the maximum number of rows displayable without scrolling (height of the listview / height of row)
-          pagingEnabled = {false}
+          pagingEnabled = {true}
           firstLoader={true} // display a loader for the first fetching
           pagination={true} // enable infinite scrolling using touch to load more
           paginationFetchigView={this._renderPaginationFetchigView}
