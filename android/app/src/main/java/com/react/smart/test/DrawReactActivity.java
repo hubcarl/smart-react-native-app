@@ -24,8 +24,8 @@ public class DrawReactActivity extends Activity implements DefaultHardwareBackBt
 
         mReactInstanceManager = ReactInstanceManager.builder()
                 .setApplication(getApplication())
-                .setBundleAssetName("components/test/drawMD.android.bundle")
-                .setJSMainModuleName("components/test/drawMD.android")
+                .setBundleAssetName("app/pages/test/drawMD.android.bundle")
+                .setJSMainModuleName("app/pages/test/drawMD.android")
                 .setCurrentActivity(this)
                 //.setUseNewBridge()
                 .addPackage(new MainReactPackage())

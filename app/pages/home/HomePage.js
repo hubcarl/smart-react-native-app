@@ -52,22 +52,22 @@ export default class HomePage extends Component {
     }
 
     componentWillMount() {
-        // fetch('http://m.jd.com/index/recommend.action?_format_=json&page=1')
-        //     .then((res)=> res.json())
-        //     .then((str)=> {
-        //         let arr = JSON.parse(str.recommend).wareInfoList;
-        //         var rows = [];
-        //         for (let i = 0; i < arr.length; i += 2) {
-        //             var item = {id: i, left: null, right: null};
-        //             item.left = (arr[i]);
-        //             if (i < arr.length - 1) {
-        //                 item.right = (arr[i + 1]);
-        //             }
-        //             rows.push(item);
-        //         }
-        //         var ds = this.state.listData.cloneWithRows(rows);
-        //         this.setState({listData: ds});
-        //     });
+        fetch('http://m.jd.com/index/recommend.action?_format_=json&page=1')
+            .then((res)=> res.json())
+            .then((str)=> {
+                let arr = JSON.parse(str.recommend).wareInfoList;
+                var rows = [];
+                for (let i = 0; i < arr.length; i += 2) {
+                    var item = {id: i, left: null, right: null};
+                    item.left = (arr[i]);
+                    if (i < arr.length - 1) {
+                        item.right = (arr[i + 1]);
+                    }
+                    rows.push(item);
+                }
+                var ds = this.state.listData.cloneWithRows(rows);
+                this.setState({listData: ds});
+            });
     }
 
     _renderPage(data, pageID) {
