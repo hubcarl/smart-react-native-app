@@ -43,6 +43,9 @@ react-native run-ios
 [React Native Android热更新实现](http://hubcarl.github.io/blog/2016/09/15/react-native-update/)
 
 
+[查看截图](https://github.com/hubcarl/smart-react-native-app/blob/master/screenshot.md)
+
+
 ### 4.adb文件下载和上传
 
 **adb pull  就是从真机上拷贝文件到您的PC**
