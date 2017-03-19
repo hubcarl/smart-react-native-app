@@ -32,7 +32,10 @@ react-native run-ios
 
 #### 动态更新
 
-[React Native Android热更新实现](http://codehelp.cn/blog/2016/09/15/react-native-update/)
+
+![image](https://raw.githubusercontent.com/hubcarl/hubcarl.github.io/master/_posts/images/react/react-native-update.gif =200x400)
+
+[React Native Android热更新实现](http://hubcarl.github.io/blog/2016/09/15/react-native-update/)
 
 
 ### 4.adb文件下载和上传
@@ -48,13 +51,15 @@ adb pull /sdcard/react-native-update.mp4   /Users/sky/dev/react/native/SmartReac
 adb push /Users/sky/dev/react/native/SmartReactNativeApp/images/home.png  /sdcard
 ```
 
-### 5.真机调试，bundle服务连不上,命令行执行以下命令
+### 5.真机调试
+
+- bundle服务连不上,命令行执行以下命令
 
 ```bash
 adb reverse tcp:8081 tcp:8081
 ```
 
-8081端口占用:
+- 8081端口占用:
 
 ```bash
 lsof -n -i4TCP:8081
@@ -98,14 +103,14 @@ ffmpeg -t 8  -ss 00:00:09 -i /Users/sky/dev/react/native/SmartReactNativeApp/ima
 
 ### 9.Android 系列学习总结
 
-1. [React Native, Hybrid App, H5 简单对比分析](http://codehelp.cn/blog/2016/08/07/react-native-compare/)
+1. [React Native, Hybrid App, H5 简单对比分析](http://hubcarl.github.io/blog/2016/08/07/react-native-compare/)
 
-2. [React Native Android 自定义插件](http://codehelp.cn/blog/2016/08/13/react-native-plugin)
+2. [React Native Android 自定义插件](http://hubcarl.github.io/blog/2016/08/13/react-native-plugin)
 
-3. [React Native Android APK包大小分析](http://codehelp.cn/blog/2016/08/21/react-native-size/)
+3. [React Native Android APK包大小分析](http://hubcarl.github.io/blog/2016/08/21/react-native-size/)
 
-4. [React Native Android源码解读和交互原理分析](http://codehelp.cn/blog/2016/08/28/react-native-js/)
+4. [React Native Android源码解读和交互原理分析](http://hubcarl.github.io/blog/2016/08/28/react-native-js/)
 
-5. [React Native Android代码执行跟踪和调试](http://codehelp.cn/blog/2016/09/04/react-native-debug/)
+5. [React Native Android代码执行跟踪和调试](http://hubcarl.github.io/blog/2016/09/04/react-native-debug/)
 
-6. [React Native Android热更新实现](http://codehelp.cn/blog/2016/09/15/react-native-update/)
+6. [React Native Android热更新实现](http://hubcarl.github.io/blog/2016/09/15/react-native-update/)
